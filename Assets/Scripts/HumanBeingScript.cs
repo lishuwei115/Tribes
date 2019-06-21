@@ -142,12 +142,8 @@ public class HumanBeingScript : MonoBehaviour
 	void Update () 
 	{
 
-		NewLive();
-		if (TargetHouse != null && Vector3.Distance(transform.position, TargetHouse.position) < 1f && CurrentState == StateType.ComingBackHome)
-		{
-			CurrentState = StateType.Home;
-            HomeSweetHome();
-		}
+		LookAround();
+
 
 		if(TargetDest != null && Vector3.Distance(transform.position, TargetDest) < 1.2f)
 		{
@@ -265,10 +261,10 @@ public class HumanBeingScript : MonoBehaviour
 			}
 		}
 		Food = 0;
-		FinallyBackHome();
-		Reproduce();
+		//FinallyBackHome();
+		//Reproduce();
 		CanIgetFood = true;
-		ResetAction();
+		//ResetAction();
 	}
 
     public void Reproduce()
@@ -324,33 +320,15 @@ public class HumanBeingScript : MonoBehaviour
 		}*/
 	}
 
-    private void NewLive()
+	private List<RaycastHit> LookAround()
 	{
-        // Set up the job data
-		/*MoveJob jobData = new MoveJob();
-
-		jobData.HumanPos = transform.position;
-		jobData.forward = transform.forward;
-		jobData.VisualDistance = 60;
-
-        // Schedule the job
-        JobHandle handle = jobData.Schedule();
-
-        // Wait for the job to complete
-        handle.Complete();*/
-
+        
 		List<RaycastHit> ElementHitted = new List<RaycastHit>();
 		RaycastHit[] hits = Physics.SphereCastAll(transform.position, Radius, transform.forward, Radius);
-       /* ElementHitted.AddRange(hits.ToList());
-        if (ElementHitted.Count > 0)
-        {
 
-            foreach (RaycastHit hit in ElementHitted)
-            {
-                //Debug.Log("Found   " + hit.collider.name);
-
-            }
-        }*/
+		ElementHitted.AddRange(hits.ToList());
+		 
+		return ElementHitted;
 	}
 
 
@@ -558,17 +536,33 @@ public class HumanBeingScript : MonoBehaviour
         float timeCount = 0;
         while (timeCount < 1)
         {
-            yield return new WaitForFixedUpdate();
+			List<RaycastHit> collisions = LookAround();
+			List<RaycastHit> Food = new List<RaycastHit>;
+			foreach (GameObject g in LookAround)
+			{
+				if (g.tag == "Food" )
+				{
+					
+				}
+			}
+			yield return new WaitForFixedUpdate();
 			transform.position = Vector3.Lerp(offset, dest, timeCount);
 			timeCount = timeCount + Time.deltaTime * 2;
 
         }
         MoveCo = null;
-		if(CurrentState== StateType.LookingForFood)
+		if (CurrentState == StateType.ComingBackHome)
+        {
+            CurrentState = StateType.Home;
+            HomeSweetHome();
+			Instance_DayStarted();
+		}
+		else if(CurrentState== StateType.LookingForFood)
 		{
 			CurrentState = StateType.ComingBackHome;
-			//GoToPosition()
+			GoToPosition(TargetHouse.position);
 		}
+
     }
 
 
