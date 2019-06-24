@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 23800194203784904}
   - component: {fileID: 114339723918809714}
   - component: {fileID: 135251763841391622}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Human
   m_TagString: Human
   m_Icon: {fileID: 0}
@@ -143,6 +143,7 @@ MonoBehaviour:
   OwnHouse: {fileID: 0}
   TargetDest: {x: 0, y: 0, z: 0}
   TargetFoodDest: {fileID: 0}
+  TargetHuman: {fileID: 0}
   IsStarted: 0
   TargetFood: {fileID: 0}
   DidIFindFood: 0

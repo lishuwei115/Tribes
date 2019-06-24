@@ -104,7 +104,9 @@ public class HumanBeingScript : MonoBehaviour
     [HideInInspector]
     public Vector3 TargetDest;
     [HideInInspector]
-    public Transform TargetFoodDest;
+	public Transform TargetFoodDest;
+	[HideInInspector]
+	public Transform TargetHuman;
     [HideInInspector]
     public bool IsStarted = false;
     [HideInInspector]
@@ -302,11 +304,11 @@ public class HumanBeingScript : MonoBehaviour
 		}*/
     }
 
-    private List<RaycastHit> LookAround()
+    private List<RaycastHit> LookAround(int layer)
     {
 
         List<RaycastHit> ElementHitted = new List<RaycastHit>();
-        RaycastHit[] hits = Physics.SphereCastAll(transform.position, Radius, transform.forward, Radius);
+		RaycastHit[] hits = Physics.SphereCastAll(transform.position, Radius, transform.forward, Radius, layer);
 
         ElementHitted.AddRange(hits.ToList());
 
@@ -518,26 +520,19 @@ public class HumanBeingScript : MonoBehaviour
         float timeCount = 0;
         while (timeCount < 1)
         {
-            //CheckSurroundings();
+            List<RaycastHit> Humancollisions = LookAround(9);
+            List<RaycastHit> Foodcollisions = LookAround(8);
 
-            //checking collisions and grouping them by category
-            List<RaycastHit> collisions = LookAround();
-            //Debug.Log(collisions.Count);
-            List<RaycastHit> Food = collisions.Where(a => a.collider.tag == "Food").ToList();
-            //Debug.Log(Food.Count);
-
-            List<RaycastHit> Enemy = collisions.Where(a => a.collider.tag == "Human" && a.collider.GetComponent<HumanBeingScript>().HouseType != HouseType).ToList();
-            List<RaycastHit> Allies = collisions.Where(a => a.collider.tag == "Human" && a.collider.GetComponent<HumanBeingScript>().HouseType == HouseType).ToList();
-
-            //Debug.Log(TargetFoodDest);
- 
-            if (TargetFoodDest== null && Food.Count>0)
+            if (Humancollisions.Count > 0 && TargetFoodDest == null && TargetHuman == null)
             {
-                TargetFoodDest = Food[0].transform;
+                TargetHuman = Humancollisions[0].collider.transform;
+            }
+            if (Foodcollisions.Count > 0 && TargetFoodDest && TargetHuman == null)
+            {
+                TargetFoodDest = Foodcollisions[0].collider.transform;
                 CurrentState = StateType.FoodFound;
                 GoToPosition(TargetFoodDest.position);
             }
-
 
             yield return new WaitForFixedUpdate();
             transform.position = Vector3.Lerp(offset, dest, timeCount);
@@ -545,7 +540,6 @@ public class HumanBeingScript : MonoBehaviour
             timeCount = timeCount + Time.deltaTime * Speed*.1f*((math.abs(.5f- math.abs(timeCount-.5f)) + 0.5f)/2);
 
         }
-        MoveCo = null;
         if (CurrentState == StateType.ComingBackHome)
         {
             CurrentState = StateType.Home;
@@ -575,16 +569,16 @@ public class HumanBeingScript : MonoBehaviour
                 GoToPosition(TargetDest);
             }
         }
-            CurrentState = StateType.ComingBackHome;
-            GoToPosition(TargetHouse.position);
+        CurrentState = StateType.ComingBackHome;
+        GoToPosition(TargetHouse.position);
         
-
+		MoveCo = null;
     }
 
     private void CheckSurroundings()
     {
         //checking collisions and grouping them by category
-        List<RaycastHit> collisions = LookAround();
+        List<RaycastHit> collisions = LookAround(8);
         List<RaycastHit> Food = collisions.Where(a => a.collider.tag == "Food").ToList();
         List<RaycastHit> Enemy = collisions.Where(a => a.collider.tag == "Human" && a.collider.GetComponent<HumanBeingScript>().HouseType != HouseType).ToList();
         List<RaycastHit> Allies = collisions.Where(a => a.collider.tag == "Human" && a.collider.GetComponent<HumanBeingScript>().HouseType == HouseType).ToList();
