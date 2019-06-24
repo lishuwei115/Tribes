@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd20d9f592b0490f85b4303061742de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Radius: 2
   HpMax: 40
   HpMin: 30
   Hp: 0
@@ -98,9 +99,9 @@ MonoBehaviour:
   AttackMax: 5
   AttackMin: 8
   Attack: 0
-  SpeedMax: 40
-  SpeedMin: 30
-  Speed: 0
+  SpeedMax: 60
+  SpeedMin: 120
+  Speed: 1
   Charity: 50
   Gratitude: 50
   Hate: 50
@@ -141,7 +142,7 @@ MonoBehaviour:
   TargetHouse: {fileID: 0}
   OwnHouse: {fileID: 0}
   TargetDest: {x: 0, y: 0, z: 0}
-  TargetFoodDest: {x: 0, y: 0, z: 0}
+  TargetFoodDest: {fileID: 0}
   IsStarted: 0
   TargetFood: {fileID: 0}
   DidIFindFood: 0

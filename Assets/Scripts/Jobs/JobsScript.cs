@@ -38,8 +38,8 @@ public struct ChecksSurroundingJob : IJob
     /// </summary>
     public void Execute()
     {
-        FoodResult = (NativeArray<RaycastHit>) collisions.Where(a => a.collider.tag == "Food").ToArray();
+        /*FoodResult = (NativeArray<RaycastHit>) collisions.Where(a => a.collider.tag == "Food").ToArray();
         EnemyResult = collisions.Where(a => a.collider.tag == "Food").ToList();
-        AlliesResult = collisions.Where(a => a.collider.tag == "Food").ToList();
+        AlliesResult = collisions.Where(a => a.collider.tag == "Food").ToList();*/
     }
 }

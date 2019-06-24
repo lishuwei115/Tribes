@@ -238,11 +238,15 @@ public class HumanBeingScript : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            OwnHouse.FoodStore += Food;
+        }
         Food = 0;
-        //FinallyBackHome();
+        FinallyBackHome();
         //Reproduce();
         CanIgetFood = true;
-        //ResetAction();
+        ResetAction();
     }
 
     public void Reproduce()
@@ -518,11 +522,16 @@ public class HumanBeingScript : MonoBehaviour
 
             //checking collisions and grouping them by category
             List<RaycastHit> collisions = LookAround();
+            //Debug.Log(collisions.Count);
             List<RaycastHit> Food = collisions.Where(a => a.collider.tag == "Food").ToList();
+            //Debug.Log(Food.Count);
+
             List<RaycastHit> Enemy = collisions.Where(a => a.collider.tag == "Human" && a.collider.GetComponent<HumanBeingScript>().HouseType != HouseType).ToList();
             List<RaycastHit> Allies = collisions.Where(a => a.collider.tag == "Human" && a.collider.GetComponent<HumanBeingScript>().HouseType == HouseType).ToList();
 
-            if(TargetFoodDest!= null && Food.Count>0)
+            //Debug.Log(TargetFoodDest);
+ 
+            if (TargetFoodDest== null && Food.Count>0)
             {
                 TargetFoodDest = Food[0].transform;
                 CurrentState = StateType.FoodFound;
@@ -532,7 +541,8 @@ public class HumanBeingScript : MonoBehaviour
 
             yield return new WaitForFixedUpdate();
             transform.position = Vector3.Lerp(offset, dest, timeCount);
-            timeCount = timeCount + Time.deltaTime * 2;
+            //timeCount = timeCount + Time.deltaTime * 2;
+            timeCount = timeCount + Time.deltaTime * Speed*.1f*((math.abs(.5f- math.abs(timeCount-.5f)) + 0.5f)/2);
 
         }
         MoveCo = null;
