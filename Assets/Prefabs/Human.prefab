@@ -99,8 +99,8 @@ MonoBehaviour:
   AttackMax: 5
   AttackMin: 8
   Attack: 0
-  SpeedMax: 60
-  SpeedMin: 120
+  SpeedMax: 3
+  SpeedMin: 2
   Speed: 1
   Charity: 50
   Gratitude: 50
@@ -140,7 +140,6 @@ MonoBehaviour:
   BegM: {fileID: 2100000, guid: f2f0ba6f9b3cd4bd69fdc4102854d7aa, type: 2}
   BaseM: {fileID: 2100000, guid: 56dc771fd7b4f4eaa8ed07f62b7b53df, type: 2}
   TargetHouse: {fileID: 0}
-  OwnHouse: {fileID: 0}
   TargetDest: {x: 0, y: 0, z: 0}
   TargetFoodDest: {fileID: 0}
   TargetHuman: {fileID: 0}

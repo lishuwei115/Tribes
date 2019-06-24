@@ -98,15 +98,13 @@ public class HumanBeingScript : MonoBehaviour
     public Material BaseM;
     //Not visible in Inspector
     [HideInInspector]
-    public Transform TargetHouse;
-    [HideInInspector]
-    public HouseScript OwnHouse;
+    public HouseScript TargetHouse;
     [HideInInspector]
     public Vector3 TargetDest;
     [HideInInspector]
-	public Transform TargetFoodDest;
-	[HideInInspector]
-	public Transform TargetHuman;
+    public Transform TargetFoodDest;
+    [HideInInspector]
+    public Transform TargetHuman;
     [HideInInspector]
     public bool IsStarted = false;
     [HideInInspector]
@@ -122,7 +120,7 @@ public class HumanBeingScript : MonoBehaviour
     private IEnumerator FollowCo;
     private IEnumerator MoveCo;
     private MeshRenderer MR;
-
+    private float OffsetTimer = 0;
     private void Awake()
     {
         MR = GetComponent<MeshRenderer>();
@@ -132,7 +130,6 @@ public class HumanBeingScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //NewLive();
         //StartCoroutine(Live());
         Speed = UnityEngine.Random.Range(SpeedMin, SpeedMax) / 10;
         Hp = UnityEngine.Random.Range(HpMin, HpMax);
@@ -144,7 +141,7 @@ public class HumanBeingScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //eat when starving
         if (Hp < 0)
         {
             if (Food == 0)
@@ -172,6 +169,22 @@ public class HumanBeingScript : MonoBehaviour
                  Hate > Charity && Hate > Gratitude ? HumanType.Hate :
                  Gratitude > Hate && Charity < Gratitude ? HumanType.Gratitude : HumanType.None;
         //Debug.Log(Vector3.Distance(transform.position, TargetDest) + "   " + name);
+
+
+
+        //going back home if the safety time is finished
+        if (Time.time - OffsetTimer ==TargetHouse.SafetyTimer && (CurrentState != StateType.Home && CurrentAction != ActionState.Fight && CurrentState != StateType.ComingBackHome))
+        {
+            GoToPosition(TargetHouse.transform.position);
+            CurrentState = StateType.ComingBackHome;
+            CanIgetFood = false;
+        }
+        //lose health when outside the house
+        if( CurrentState != StateType.Home)
+        {
+            Hp -= Hunger*Time.deltaTime;
+        }
+
     }
 
 
@@ -210,40 +223,42 @@ public class HumanBeingScript : MonoBehaviour
 
     public void HomeSweetHome()
     {
-        if (Hp < BaseHp)
+        /*if (Hp < BaseHp)
         {
             if (Food > 0)
             {
                 Hp += Food;
                 if (Hp > BaseHp)
                 {
-                    OwnHouse.FoodStore += Hp - BaseHp;
+                    TargetHouse.FoodStore += Hp - BaseHp;
                     Hp = BaseHp;
                 }
                 else
                 {
-                    Hp += OwnHouse.FoodStore;
+                    Hp += TargetHouse.FoodStore;
                     if (Hp > BaseHp)
                     {
-                        OwnHouse.FoodStore = Hp - BaseHp;
+                        TargetHouse.FoodStore = Hp - BaseHp;
                         Hp = BaseHp;
                     }
                 }
             }
             else
             {
-                Hp += OwnHouse.FoodStore;
+                Hp += TargetHouse.FoodStore;
                 if (Hp > BaseHp)
                 {
-                    OwnHouse.FoodStore = Hp - BaseHp;
+                    TargetHouse.FoodStore = Hp - BaseHp;
                     Hp = BaseHp;
                 }
             }
         }
         else
         {
-            OwnHouse.FoodStore += Food;
-        }
+                    TargetHouse.FoodStore += Food;
+
+        }*/
+        TargetHouse.FoodStore += Food;
         Food = 0;
         FinallyBackHome();
         //Reproduce();
@@ -304,11 +319,11 @@ public class HumanBeingScript : MonoBehaviour
 		}*/
     }
 
-    private List<RaycastHit> LookAround(int layer)
+    private List<RaycastHit> LookAround(string layer)
     {
-
+        LayerMask layerMask = 1 << LayerMask.NameToLayer(layer);
         List<RaycastHit> ElementHitted = new List<RaycastHit>();
-		RaycastHit[] hits = Physics.SphereCastAll(transform.position, Radius, transform.forward, Radius, layer);
+        RaycastHit[] hits = Physics.SphereCastAll(transform.position, Radius, transform.forward, Radius, layerMask);
 
         ElementHitted.AddRange(hits.ToList());
 
@@ -317,33 +332,11 @@ public class HumanBeingScript : MonoBehaviour
 
 
 
-    private IEnumerator Live()
-    {
-        int i = 0;
-        while (true)
-        {
-            if (i == 13 && (CurrentState != StateType.Home && CurrentAction != ActionState.Fight && CurrentState != StateType.ComingBackHome))
-            {
-                GoToPosition(TargetHouse.position);
-                CurrentState = StateType.ComingBackHome;
-                CanIgetFood = false;
-            }
 
-            while (CurrentState == StateType.Home)
-            {
-                yield return new WaitForEndOfFrame();
-            }
-
-            Hp -= Hunger;
-
-            yield return new WaitForSecondsRealtime(1);
-
-            i++;
-        }
-    }
 
     void Instance_DayStarted()
     {
+        OffsetTimer = Time.time;
         GoToRandomPos();
         CurrentState = StateType.LookingForFood;
     }
@@ -520,14 +513,14 @@ public class HumanBeingScript : MonoBehaviour
         float timeCount = 0;
         while (timeCount < 1)
         {
-            List<RaycastHit> Humancollisions = LookAround(9);
-            List<RaycastHit> Foodcollisions = LookAround(8);
-
-            if (Humancollisions.Count > 0 && TargetFoodDest == null && TargetHuman == null)
+            List<RaycastHit> Humancollisions = LookAround("Enemy");
+            List<RaycastHit> Foodcollisions = LookAround("Food");
+            //Debug.Log(Foodcollisions.Count);
+            /*if (Humancollisions.Count > 0 && TargetFoodDest == null && TargetHuman == null)
             {
                 TargetHuman = Humancollisions[0].collider.transform;
-            }
-            if (Foodcollisions.Count > 0 && TargetFoodDest && TargetHuman == null)
+            }*/
+            if (Foodcollisions.Count > 0 && TargetFoodDest == null && TargetHuman == null)
             {
                 TargetFoodDest = Foodcollisions[0].collider.transform;
                 CurrentState = StateType.FoodFound;
@@ -536,22 +529,22 @@ public class HumanBeingScript : MonoBehaviour
 
             yield return new WaitForFixedUpdate();
             transform.position = Vector3.Lerp(offset, dest, timeCount);
-            //timeCount = timeCount + Time.deltaTime * 2;
-            timeCount = timeCount + Time.deltaTime * Speed*.1f*((math.abs(.5f- math.abs(timeCount-.5f)) + 0.5f)/2);
+            timeCount = timeCount + Time.deltaTime * Speed;
+            //timeCount = timeCount + Time.deltaTime * Speed * .1f * ((math.abs(.5f - math.abs(timeCount - .5f)) + 0.5f) / 2);
 
         }
         if (CurrentState == StateType.ComingBackHome)
         {
             CurrentState = StateType.Home;
             HomeSweetHome();
-            Instance_DayStarted();
+            //Instance_DayStarted();
         }
         else if (CurrentState == StateType.LookingForFood)
         {
             CurrentState = StateType.ComingBackHome;
-            GoToPosition(TargetHouse.position);
+            GoToPosition(TargetHouse.transform.position);
         }
-        else if(CurrentState == StateType.FoodFound)
+        else if (CurrentState == StateType.FoodFound)
         {
             if (TargetFoodDest.gameObject.activeInHierarchy)
             {
@@ -560,7 +553,7 @@ public class HumanBeingScript : MonoBehaviour
                 DidIFindFood = true;
                 CurrentState = StateType.ComingBackHome;
                 TargetFoodDest = null;
-                GoToPosition(TargetHouse.position);
+                GoToPosition(TargetHouse.transform.position);
             }
             else
             {
@@ -569,16 +562,16 @@ public class HumanBeingScript : MonoBehaviour
                 GoToPosition(TargetDest);
             }
         }
-        CurrentState = StateType.ComingBackHome;
-        GoToPosition(TargetHouse.position);
-        
-		MoveCo = null;
+        //CurrentState = StateType.ComingBackHome;
+        //GoToPosition(TargetHouse.transform.position);
+
+        MoveCo = null;
     }
 
     private void CheckSurroundings()
     {
         //checking collisions and grouping them by category
-        List<RaycastHit> collisions = LookAround(8);
+        List<RaycastHit> collisions = LookAround("Food");
         List<RaycastHit> Food = collisions.Where(a => a.collider.tag == "Food").ToList();
         List<RaycastHit> Enemy = collisions.Where(a => a.collider.tag == "Human" && a.collider.GetComponent<HumanBeingScript>().HouseType != HouseType).ToList();
         List<RaycastHit> Allies = collisions.Where(a => a.collider.tag == "Human" && a.collider.GetComponent<HumanBeingScript>().HouseType == HouseType).ToList();
@@ -626,7 +619,7 @@ public class HumanBeingScript : MonoBehaviour
         }
 
         CurrentState = StateType.ComingBackHome;
-        GoToPosition(TargetHouse.position);
+        GoToPosition(TargetHouse.transform.position);
     }
 
 

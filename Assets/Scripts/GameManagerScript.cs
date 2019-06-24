@@ -92,23 +92,26 @@ public class GameManagerScript : MonoBehaviour {
 
     public void StartGame()
 	{
-
+        //Initialize all the humans in all houses
 		foreach (HouseScript house in Houses)
 		{
+            //assign all the humans of one house
 			for (int i = 0; i < Humans; i++)
             {
                 GameObject human = Instantiate(Human, house.transform.position, Quaternion.identity, HumansContainer);
                 HumanBeingScript hbs = human.GetComponent<HumanBeingScript>();
                 human.GetComponent<MeshFilter>().sharedMesh = HumanMesh;
                 HumansList.Add(hbs);
-				hbs.HouseType = house.HouseType;
-                hbs.TargetHouse = house.transform;
+                
+                hbs.HouseType = house.HouseType;
+                hbs.TargetHouse = house;
                 hbs.FinallyBackHome += Hbs_FinallyBackHome;
-                hbs.OwnHouse = house.GetComponent<HouseScript>();
+                hbs.TargetHouse = house.GetComponent<HouseScript>();
+                house.Humans.Add(hbs);
             }
 		}
 
-
+        //creating the food resources based on the editable FoodPerDay parameter
 		for (int i = 0; i < FoodPerDay; i++)
         {
 			GameObject food = Instantiate(Food, FoodContainer);
@@ -138,16 +141,16 @@ public class GameManagerScript : MonoBehaviour {
 		return res;
 	}
 
-	public void Reproduction(Transform home)
+	public void Reproduction(HouseScript home)
 	{
 		for (int i = 0; i < MaxNumChildren; i++)
 		{
-			GameObject human = Instantiate(Human, home.position, Quaternion.identity, HumansContainer);
+			GameObject human = Instantiate(Human, home.transform.position, Quaternion.identity, HumansContainer);
             HumanBeingScript hbs = human.GetComponent<HumanBeingScript>();
             HumansList.Add(hbs);
             hbs.TargetHouse = home;
             hbs.FinallyBackHome += Hbs_FinallyBackHome;
-			hbs.OwnHouse = home.GetComponent<HouseScript>();
+			
 			ReproducedLastDay++;
 		}
 	}
@@ -186,16 +189,26 @@ public class GameManagerScript : MonoBehaviour {
 			yield return new WaitForSecondsRealtime(1);
 			i--;
 		}
+        //the time of today is ended, start a new day
 		GameStatus = GameStateType.EndOfDay;
+        foreach (HouseScript house in Houses)
+        {
+            house.DistributeFood();
+        }
 		Invoke("DayStarting", 1);
 	}
 
 	void Hbs_FinallyBackHome()
 	{
 		HumansAtHome++;
+        //All humans are home, start a new day
 		if(HumansAtHome == HumansList.Where(r=> r.gameObject.activeInHierarchy).ToList().Count)
 		{
-			Invoke("DayStarting", 1);
+            foreach (HouseScript house in Houses)
+            {
+                house.DistributeFood();
+            }
+            Invoke("DayStarting", 1);
 		}
 	}
 
