@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class GameManagerScript : MonoBehaviour {
 
 	public delegate void StartDay();
 	public event StartDay DayStarted;
-
+    public HousesTypes PlayerHouse = HousesTypes.East;
 
 	public Mesh HumanMesh;
 	public Mesh FoodMesh;
@@ -38,7 +39,18 @@ public class GameManagerScript : MonoBehaviour {
 
 	public Transform HumansContainer;
 
-	public Transform FoodContainer;
+    internal void MoveTribeTo(Vector3 transform)
+    {
+        foreach (HouseScript house in Houses)
+        {
+            if(house.HouseType == PlayerHouse)
+            {
+                house.MoveTribeTo(transform);
+            }
+        }
+    }
+
+    public Transform FoodContainer;
 
 	[Header("info")]
 	public int HumansAtHome = 0;
@@ -107,6 +119,8 @@ public class GameManagerScript : MonoBehaviour {
                 hbs.TargetHouse = house;
                 hbs.FinallyBackHome += Hbs_FinallyBackHome;
                 hbs.TargetHouse = house.GetComponent<HouseScript>();
+                hbs.WearSkin();
+                //hbs.gameObject.tag = "" + house.tag;
                 house.Humans.Add(hbs);
             }
 		}
@@ -136,23 +150,27 @@ public class GameManagerScript : MonoBehaviour {
 
 	public Vector3 GetFreeSpaceOnGround(float y)
 	{
-		Vector3 res = new Vector3(Random.Range(-GroundSizeWidth,GroundSizeWidth),y, Random.Range(-GroundSizeWidth, GroundSizeWidth));
+		Vector3 res = new Vector3(UnityEngine.Random.Range(-GroundSizeWidth,GroundSizeWidth),y, UnityEngine.Random.Range(-GroundSizeWidth, GroundSizeWidth));
 
 		return res;
 	}
 
 	public void Reproduction(HouseScript home)
 	{
-		for (int i = 0; i < MaxNumChildren; i++)
+        int childNumber = UnityEngine.Random.Range(1, MaxNumChildren + 1);
+		for (int i = 0; i < childNumber; i++)
 		{
 			GameObject human = Instantiate(Human, home.transform.position, Quaternion.identity, HumansContainer);
             HumanBeingScript hbs = human.GetComponent<HumanBeingScript>();
             HumansList.Add(hbs);
             hbs.TargetHouse = home;
+            hbs.HouseType = home.HouseType;
             hbs.FinallyBackHome += Hbs_FinallyBackHome;
-			
-			ReproducedLastDay++;
-		}
+            home.Humans.Add(hbs);
+            hbs.WearSkin();
+            ReproducedLastDay++;
+            HumansAtHome++;
+        }
 	}
 
     public void HumanBeingDied()
@@ -231,3 +249,15 @@ public enum HousesTypes
     East,
     West
 }
+
+/*public class ResetableEnumerator<T> : IEnumerator<T>
+{
+    public IEnumerator<T> Enumerator { get; set; }
+    public Func<IEnumerator<T>> ResetFunc { get; set; }
+
+    public T Current { get { return Enumerator.Current; } }
+    public void Dispose() { Enumerator.Dispose(); }
+    object IEnumerator.Current { get { return Current; } }
+    public bool MoveNext() { return Enumerator.MoveNext(); }
+    public void Reset() { Enumerator = ResetFunc(); }
+}*/

@@ -5,9 +5,10 @@ using System.Linq;
 using UnityEngine;
 
 
-public class HouseScript : MonoBehaviour {
+public class HouseScript : MonoBehaviour
+{
 
-	public float FoodStore;
+    public float FoodStore;
     public int SafetyTimer = 13;
     [Range(0, 100)]
     public int TargetAutocracyHealth = 50;
@@ -15,9 +16,13 @@ public class HouseScript : MonoBehaviour {
     public GovernmentBehaviour Government;
     public List<HumanBeingScript> Humans = new List<HumanBeingScript>();
 
+    private void Start()
+    {
+        UIManagerScript.Instance.UpdateFood();
+    }
     internal void DistributeFood()
     {
-        switch (Government)
+        /*switch (Government)
         {
             case GovernmentBehaviour.Democracy:
                 CureByHealth();
@@ -30,6 +35,50 @@ public class HouseScript : MonoBehaviour {
                 break;
             default:
                 break;
+        }*/
+        List<HumanBeingScript> living = Humans.Where(x => x.Hp>0).ToList();
+        if (FoodStore > living.Count)
+        {
+            foreach (HumanBeingScript human in living)
+            {
+                human.Hp = human.BaseHp;
+                FoodStore--;
+            }
+        }
+        else
+        {
+            for (int i = living.Count-1; i >=0 ; i--)
+            {
+                HumanBeingScript human = living[i];
+                if (FoodStore > 0)
+                {
+                    FoodStore--;
+                    human.Hp = human.BaseHp;
+                }
+                else
+                {
+                    human.Hp = 0;
+                    GameManagerScript.Instance.HumanBeingDied();
+                    human.gameObject.SetActive(false);
+                }
+            }
+        }
+        UIManagerScript.Instance.UpdateFood();
+
+    }
+
+    internal void MoveTribeTo(Vector3 transform)
+    {
+        foreach (HumanBeingScript human in Humans)
+        {
+            if (human.gameObject.activeInHierarchy)
+            {
+                human.CurrentState = StateType.FollowInstruction;
+                human.TargetFoodDest = null;
+                human.TargetHuman = null;
+                human.TargetDest = transform;
+                human.GoToPosition(transform);
+            }
         }
     }
 
@@ -44,16 +93,20 @@ public class HouseScript : MonoBehaviour {
         for (int i = 0; i < Humans.Count; i++)
         {
             hpTarget = Humans[i].BaseHp * TargetAutocracyHealth / 100;
-            if (FoodStore >= hpTarget - Humans[i].Hp)
+            if (hpTarget - Humans[i].Hp > 0 && Humans[i].Hp > 0)
             {
-                FoodStore -= hpTarget - Humans[i].Hp;
-                Humans[i].Hp = hpTarget;
+                if (FoodStore >= hpTarget - Humans[i].Hp)
+                {
+                    FoodStore -= hpTarget - Humans[i].Hp;
+                    Humans[i].Hp = hpTarget;
+                }
+                else
+                {
+                    Humans[i].Hp += FoodStore;
+                    FoodStore = 0;
+                }
             }
-            else
-            {
-                Humans[i].Hp += FoodStore;
-                FoodStore = 0;
-            }
+
         }
     }
     /// <summary>
@@ -64,16 +117,20 @@ public class HouseScript : MonoBehaviour {
         Humans = Humans.OrderBy(x => x.Hp).ToList();
         for (int i = 0; i < Humans.Count; i++)
         {
-            if (FoodStore >= Humans[i].BaseHp - Humans[i].Hp)
+            if (Humans[i].Hp > 0)
             {
-                FoodStore -= Humans[i].BaseHp - Humans[i].Hp;
-                Humans[i].Hp = Humans[i].BaseHp;
+                if (FoodStore >= Humans[i].BaseHp - Humans[i].Hp)
+                {
+                    FoodStore -= Humans[i].BaseHp - Humans[i].Hp;
+                    Humans[i].Hp = Humans[i].BaseHp;
+                }
+                else
+                {
+                    Humans[i].Hp += FoodStore;
+                    FoodStore = 0;
+                }
             }
-            else
-            {
-                Humans[i].Hp += FoodStore;
-                FoodStore = 0;
-            }
+
         }
     }
 
@@ -82,19 +139,24 @@ public class HouseScript : MonoBehaviour {
     /// </summary>
     public void CureBySpeed()
     {
-        Humans = Humans.OrderBy(x => x.Speed).ToList();
+        Humans = Humans.OrderByDescending(x => x.Speed).ToList();
         for (int i = 0; i < Humans.Count; i++)
         {
-            if (FoodStore >= Humans[i].BaseHp - Humans[i].Hp)
+            if (Humans[i].Hp > 0)
             {
-                FoodStore -= Humans[i].BaseHp - Humans[i].Hp;
-                Humans[i].Hp = Humans[i].BaseHp;
+                if (FoodStore >= Humans[i].BaseHp - Humans[i].Hp)
+                {
+                    FoodStore -= Humans[i].BaseHp - Humans[i].Hp;
+                    Humans[i].Hp = Humans[i].BaseHp;
+                }
+                else
+                {
+                    Humans[i].Hp += FoodStore;
+                    FoodStore = 0;
+                }
             }
-            else
-            {
-                Humans[i].Hp += FoodStore;
-                FoodStore = 0;
-            }
+
+
         }
     }
 }

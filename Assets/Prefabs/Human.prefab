@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601211067918478}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -96,17 +96,17 @@ MonoBehaviour:
   HpMin: 30
   Hp: 0
   BaseHp: 0
-  AttackMax: 5
-  AttackMin: 8
+  AttackMax: 3
+  AttackMin: 6
   Attack: 0
-  SpeedMax: 3
-  SpeedMin: 2
+  SpeedMax: 16
+  SpeedMin: 10
   Speed: 1
   Charity: 50
   Gratitude: 50
   Hate: 50
   Hunger: 1
-  ReproductionPerc: 90.6
+  ReproductionPerc: 24
   GivingPerc: 20
   Food: 0
   GratitiudeFoodPerc: 10
@@ -148,6 +148,7 @@ MonoBehaviour:
   DidIFindFood: 0
   CanIgetFood: 1
   CanIAttack: 1
+  FoodStealed: 0
   AmIActing: 0
 --- !u!135 &135251763841391622
 SphereCollider:

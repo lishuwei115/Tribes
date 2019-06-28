@@ -15,6 +15,10 @@ public class UIManagerScript : MonoBehaviour {
 	public TextMeshProUGUI Charity;
     public TextMeshProUGUI Gratitude;
     public TextMeshProUGUI Hate;
+    public TextMeshProUGUI HouseFoodUpperLeft;
+    public TextMeshProUGUI HouseFoodUpperRight;
+    public TextMeshProUGUI HouseFoodDownwardLeft;
+    public TextMeshProUGUI HouseFoodDownwardRight;
 
 	public int DayNumIterator = 0;
 
@@ -37,7 +41,8 @@ public class UIManagerScript : MonoBehaviour {
     public void TimerUpdate(int timer)
 	{
 		Timer.text = "Day Timer:" + timer;
-	}
+
+    }
 
     public void InfoDailyUpdate(string bld, string dld)
 	{
@@ -51,7 +56,13 @@ public class UIManagerScript : MonoBehaviour {
 		Gratitude.text = "Gratitude:" + g;
 		Hate.text = "Hate:" + h;
     }
-
+    public void UpdateFood()
+    {
+        HouseFoodUpperLeft.text = "Food: " + GameManagerScript.Instance.Houses[0].FoodStore;
+        HouseFoodUpperRight.text = "Food: " + GameManagerScript.Instance.Houses[1].FoodStore;
+        HouseFoodDownwardLeft.text = "Food: " + GameManagerScript.Instance.Houses[2].FoodStore;
+        HouseFoodDownwardRight.text = "Food: " + GameManagerScript.Instance.Houses[3].FoodStore;
+    }
     public void AddDay()
 	{
 		DayNumIterator++;
