@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1601211067918478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.33, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -92,21 +92,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Radius: 2
-  HpMax: 40
-  HpMin: 30
+  HpMax: 60
+  HpMin: 50
   Hp: 0
   BaseHp: 0
-  AttackMax: 3
-  AttackMin: 6
+  AttackMax: 4
+  AttackMin: 2
   Attack: 0
-  SpeedMax: 16
-  SpeedMin: 10
+  SpeedMax: 12
+  SpeedMin: 9
   Speed: 1
   Charity: 50
   Gratitude: 50
   Hate: 50
-  Hunger: 1
-  ReproductionPerc: 24
+  Hunger: 2
+  ReproductionPerc: 50
   GivingPerc: 20
   Food: 0
   GratitiudeFoodPerc: 10

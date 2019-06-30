@@ -40,14 +40,14 @@ public class UIManagerScript : MonoBehaviour {
 
     public void TimerUpdate(int timer)
 	{
-		Timer.text = "Day Timer:" + timer;
+		Timer.text = "Day Timer: " + timer;
 
     }
 
     public void InfoDailyUpdate(string bld, string dld)
 	{
-		BirthLastDay.text = "Birth last Day:" + bld;
-		DeathLastDay.text = "Death last Day:" + dld;
+		BirthLastDay.text = "Birth last Day: " + bld;
+		DeathLastDay.text = "Death last Day: " + dld;
 	}
 
 	public void InfoUpdate(string c, string g, string h)

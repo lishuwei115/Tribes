@@ -1,19 +1,7 @@
 fileFormatVersion: 2
-guid: 9839ff2b57efe0b44920ff01e41afc97
+guid: 6fc410906ea078c4cb0b2f8bcae2a8d7
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -681405380483026551
-    second: Land_Skin_01_0
-  - first:
-      213: 8262111966949886878
-    second: Land_Skin_01_1
-  - first:
-      213: -5320754708840118103
-    second: Land_Skin_01_2
-  - first:
-      213: 6256368465591533668
-    second: Land_Skin_01_3
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -52,7 +40,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -93,6 +81,17 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -116,95 +115,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Land_Skin_01_0
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 572
-        width: 414
-        height: 448
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 95619a32f5457b44483efeffc1299cb7
-      internalID: -681405380483026551
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Land_Skin_01_1
-      rect:
-        serializedVersion: 2
-        x: 541
-        y: 571
-        width: 455
-        height: 452
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c967a9db84724f840a83feab1375e2bc
-      internalID: 8262111966949886878
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Land_Skin_01_2
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 66
-        width: 434
-        height: 415
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 63289740a794e994dbf3befa37c3b113
-      internalID: -5320754708840118103
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Land_Skin_01_3
-      rect:
-        serializedVersion: 2
-        x: 530
-        y: 23
-        width: 477
-        height: 489
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9293fb928e2644e4daecff3ee34fc34a
-      internalID: 6256368465591533668
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 509694fc1eaa2454d9e4be9fae5fbe3a
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
