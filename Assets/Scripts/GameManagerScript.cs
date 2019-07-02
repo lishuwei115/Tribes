@@ -188,9 +188,10 @@ public class GameManagerScript : MonoBehaviour {
 		if(DayTimeCoroutine != null)
 		{
 			StopCoroutine(DayTimeCoroutine);
-
 		}
-		DayTimeCoroutine = DayTimerCo();
+        StopAllCoroutines();
+
+        DayTimeCoroutine = DayTimerCo();
 		StartCoroutine(DayTimeCoroutine);
 	}
 

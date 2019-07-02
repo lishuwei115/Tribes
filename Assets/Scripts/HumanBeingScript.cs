@@ -168,15 +168,15 @@ public class HumanBeingScript : MonoBehaviour
         }
 
      
-        HType = Charity > Hate && Charity > Gratitude ? HumanType.Charity :
+        /*HType = Charity > Hate && Charity > Gratitude ? HumanType.Charity :
                  Hate > Charity && Hate > Gratitude ? HumanType.Hate :
-                 Gratitude > Hate && Charity < Gratitude ? HumanType.Gratitude : HumanType.None;
+                 Gratitude > Hate && Charity < Gratitude ? HumanType.Gratitude : HumanType.None;*/
         //Debug.Log(Vector3.Distance(transform.position, TargetDest) + "   " + name);
 
 
 
         //going back home if the safety time is finished
-        if (Time.time - OffsetTimer >= TargetHouse.SafetyTimer && (CurrentState != StateType.Home && CurrentAction != ActionState.Fight && CurrentState != StateType.ComingBackHome))
+        if (Time.time - OffsetTimer >= TargetHouse.SafetyTimer && (CurrentState != StateType.Home /*&& CurrentAction != ActionState.Fight*/ && CurrentState != StateType.ComingBackHome))
         {
             FollowCo = null;
             CanIgetFood = false;
@@ -184,10 +184,10 @@ public class HumanBeingScript : MonoBehaviour
             GoToPosition(TargetHouse.transform.position);
         }
         //lose health when outside the house
-        if (CurrentState != StateType.Home)
+        /*if (CurrentState != StateType.Home)
         {
             //Hp -= Hunger*Time.deltaTime;
-        }
+        }*/
 
     }
 

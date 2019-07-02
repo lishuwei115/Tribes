@@ -71,7 +71,7 @@ public class HouseScript : MonoBehaviour
     {
         foreach (HumanBeingScript human in Humans)
         {
-            if (human.gameObject.activeInHierarchy)
+            if (human.gameObject.activeInHierarchy&& (human.CurrentState != StateType.ComingBackHome && human.CurrentState != StateType.Home))
             {
                 human.CurrentState = StateType.FollowInstruction;
                 human.TargetFoodDest = null;
