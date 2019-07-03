@@ -16,7 +16,21 @@ public class HumanBeingScript : MonoBehaviour
     public delegate void Reproduced();
     public event Reproduced ReproducedEvent;
 
+    [Header("Controll parameters")]
+    [Range(.1f, .9f)]
+    [Tooltip("If 0.9 is Warrior, if 0.1 is Farmer, it will distribute the attack accordingly")]
+    public float Specialization = 0.5f;
+    public float InitialHP = 0;
+    public float HPBonus = 0;
+    public float PhisicalAttack;
+    public float HarvestAttack;
+    public float Attack;
+    public float Speed;
+    public float Food;
+    [Tooltip("The life of the food attacked")]
+    public float FoodLife = 0;
 
+    [Header("Twickable parameters")]
     [Range(0, 1000)]
     public float HpMax;
     [Range(0, 1000)]
@@ -26,18 +40,26 @@ public class HumanBeingScript : MonoBehaviour
     public float BaseHp;
 
     [Range(0, 1000)]
-    public float AttackMax;
-    [Range(0, 1000)]
-    public float AttackMin;
-
-    public float Attack;
-
-    [Range(0, 1000)]
     public float SpeedMax;
     [Range(0, 1000)]
     public float SpeedMin;
+    [Range(0, 1000)]
+    public float AttackMax;
+    [Range(0, 1000)]
+    public float AttackMin;
+    [Range(1, 100)]
+    public float ReproductionPerc = 5;
 
-    public float Speed;
+    public float AttackFrequency = 1;
+    [Header("Harvest/warrior increments")]
+    [Range(0.001f,0.1f)]
+    public float HarvestIncrement = 0.01f;
+    [Range(0.001f, 0.1f)]
+    public float WarriorIncrement = 0.01f;
+
+
+
+    [Header("AdvancedParameters")]
 
     [Range(0, 1000)]
     public float Charity;
@@ -50,13 +72,12 @@ public class HumanBeingScript : MonoBehaviour
     [Range(1, 100)]
     public float Hunger = 1;
 
-    [Range(1, 100)]
-    public float ReproductionPerc = 5;
+    
     [Range(1, 100)]
     public float GivingPerc = 20;
 
-    public float Food;
 
+    
     public float GratitiudeFoodPerc = 10;
     public float CharityFoodPerc = 10;
     public float HateGratitutePerc = 10;
@@ -120,6 +141,9 @@ public class HumanBeingScript : MonoBehaviour
     private IEnumerator MoveCo;
     private MeshRenderer MR;
     private float OffsetTimer = 0;
+    
+    bool AttackDecision = false;
+    Animator AnimController = null;
     private void Awake()
     {
         MR = GetComponent<MeshRenderer>();
@@ -127,7 +151,12 @@ public class HumanBeingScript : MonoBehaviour
 
     internal void WearSkin()
     {
-        Instantiate(SkinManager.Instance.GetSkinFromHouse(HouseType), transform);
+        Transform gO = Instantiate(SkinManager.Instance.GetSkinFromHouse(HouseType), transform);
+        if (gO.GetComponentInChildren<Animator>())
+        {
+            AnimController = gO.GetComponentInChildren<Animator>();
+            AnimController.SetInteger("UIState", 0);
+        }
     }
 
 
@@ -137,6 +166,7 @@ public class HumanBeingScript : MonoBehaviour
         //StartCoroutine(Live());
         Speed = UnityEngine.Random.Range(SpeedMin, SpeedMax) / 10;
         Hp = UnityEngine.Random.Range(HpMin, HpMax);
+        InitialHP = Hp;
         BaseHp = Hp;
         Attack = UnityEngine.Random.Range(AttackMin, AttackMax);
         GameManagerScript.Instance.DayStarted += Instance_DayStarted;
@@ -145,6 +175,8 @@ public class HumanBeingScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckBonusHealth();
+
         //eat when starving
         if (Hp < 0)
         {
@@ -183,6 +215,11 @@ public class HumanBeingScript : MonoBehaviour
             CurrentState = StateType.ComingBackHome;
             GoToPosition(TargetHouse.transform.position);
         }
+
+
+
+
+
         //lose health when outside the house
         /*if (CurrentState != StateType.Home)
         {
@@ -200,11 +237,32 @@ public class HumanBeingScript : MonoBehaviour
             GoToPosition(TargetDest);
         }
     }
-
+    public void MineFood(FoodScript food)
+    {
+        if (gameObject.activeInHierarchy)
+        {
+            StartCoroutine(Harvest(food));
+        }
+    }
     public void GoToPosition(Vector3 nextPos)
     {
         if (gameObject.activeInHierarchy)
         {
+            if (FoodLife > 0)
+            {
+                FoodLife = 0;
+                if (Specialization > 0.1f)
+                {
+                    //Specialization -= 0.005f;
+                }
+                else
+                {
+                    Specialization = 0.1f;
+                }
+                CheckBonusHealth();
+
+            }
+
             //to do implement a proper coroutine managing
             StopAllCoroutines();
             IsStarted = true;
@@ -216,6 +274,11 @@ public class HumanBeingScript : MonoBehaviour
             //MoveCo = StartCoroutine(PublicMove(nextPos));
             MoveCo = Move(nextPos);
             StartCoroutine(MoveCo);
+            if (AnimController != null)
+            {
+                //Walk animation if there is an animator
+                AnimController.SetInteger("UIState", 0);
+            }
         }
     }
     /// <summary>
@@ -244,7 +307,7 @@ public class HumanBeingScript : MonoBehaviour
 
         Food = 0;
         FinallyBackHome();
-        Reproduce();
+        //Reproduce();
         CanIgetFood = true;
         ResetAction();
     }
@@ -489,13 +552,15 @@ public class HumanBeingScript : MonoBehaviour
             List<RaycastHit> Housecollisions = LookAround("House");
             //Debug.Log(Foodcollisions.Count);
             //Debug.Log(iD);
+            AttackOrFood(EnemiesCollision, Foodcollisions);
+
             if (CurrentState != StateType.FollowInstruction && !FoodStealed && CurrentState == StateType.LookingForFood && TargetFoodDest == null && TargetHuman == null && Housecollisions.Count > 0 && Housecollisions[0].collider.GetComponent<HouseScript>().FoodStore > 0 && Housecollisions[0].collider.GetComponent<HouseScript>().HouseType != HouseType)
             {
                 TargetFoodDest = Housecollisions[0].collider.transform;
                 CurrentState = StateType.FoodFound;
                 GoToPosition(TargetFoodDest.position);
             }
-            
+
             if (CurrentState != StateType.FollowInstruction && CurrentState == StateType.LookingForFood && Foodcollisions.Count > 0 && TargetFoodDest == null && TargetHuman == null)
             {
                 TargetFoodDest = Foodcollisions[0].collider.transform;
@@ -517,7 +582,7 @@ public class HumanBeingScript : MonoBehaviour
             //timeCount = timeCount + Time.deltaTime * Speed * .1f * ((math.abs(.5f - math.abs(timeCount - .5f)) + 0.5f) / 2);
 
         }
-        if(CurrentState == StateType.FollowInstruction)
+        if (CurrentState == StateType.FollowInstruction)
         {
             Debug.Log("arrived destination");
         }
@@ -553,11 +618,12 @@ public class HumanBeingScript : MonoBehaviour
             {
                 if (TargetFoodDest.gameObject.activeInHierarchy)
                 {
-                    Food += TargetFoodDest.GetComponent<FoodScript>().Food;
-                    TargetFoodDest.gameObject.SetActive(false);
+                    /*Food += TargetFoodDest.GetComponent<FoodScript>().Food;
+                    TargetFoodDest.gameObject.SetActive(false);*/
                     DidIFindFood = true;
-                    CurrentState = StateType.LookingForFood;
-                    GoToRandomPos();
+                    MineFood(TargetFoodDest.GetComponent<FoodScript>());
+                    /*CurrentState = StateType.LookingForFood;
+                    GoToRandomPos();*/
                 }
                 else
                 {
@@ -574,7 +640,36 @@ public class HumanBeingScript : MonoBehaviour
         MoveCo = null;
     }
 
+    private void AttackOrFood(List<RaycastHit> EnemiesCollision, List<RaycastHit> Foodcollisions)
+    {
+        if (EnemiesCollision.Count > 0 && Foodcollisions.Count > 0 && TargetFoodDest == null && TargetHuman == null)
+        {
 
+            int chance = UnityEngine.Random.Range(0, 100);
+            if (chance > Specialization * 100)
+            {
+                //attack
+                AttackDecision = true;
+            }
+            else
+            {
+                AttackDecision = false;
+                //farm
+            }
+            if (CurrentState != StateType.FollowInstruction && CurrentState == StateType.LookingForFood && !AttackDecision)
+            {
+                TargetFoodDest = Foodcollisions[0].collider.transform;
+                CurrentState = StateType.FoodFound;
+
+                GoToPosition(TargetFoodDest.position);
+            }
+            if (CurrentState != StateType.FollowInstruction && CurrentState != StateType.ComingBackHome && AttackDecision)
+            {
+                TargetHuman = EnemiesCollision[0].collider.transform;
+                AttackEnemy(TargetHuman);
+            }
+        }
+    }
 
     public void AttackEnemy(Transform humanT)
     {
@@ -591,8 +686,64 @@ public class HumanBeingScript : MonoBehaviour
     public void UnderAttack(float damage)
     {
         Hp -= damage;
+        List<RaycastHit> EnemiesCollision = LookAroundForEnemies();
+        //Counterattack
+        if (Time.time - OffsetTimer < TargetHouse.SafetyTimer && EnemiesCollision.Count >0 )
+        {
+            AttackEnemy(EnemiesCollision[0].collider.transform);
+        }
     }
+    private IEnumerator Harvest(FoodScript food)
+    {
+        bool ResourceAvaiable = true;
+        if (FoodLife <= 0)
+        {
+            FoodLife = food.Hardness;
+        }
 
+        while (ResourceAvaiable)
+        {
+            //move towars target
+            while (FoodLife > 0)
+            {
+                FoodLife -= HarvestAttack;
+                yield return new WaitForSeconds(AttackFrequency);
+            }
+            if (Specialization > 0.1f)
+            {
+                Specialization-=HarvestIncrement;
+
+            }
+            else
+            {
+                Specialization = 0.1f;
+            }
+            CheckBonusHealth();
+
+            //Attack
+            if (FoodLife <= 0 && food.Food > 0)
+            {
+                FoodLife = food.Hardness;
+                food.Food -= 1;
+                Food += 1;
+                ResourceAvaiable = food.Food > 0;
+                if (!ResourceAvaiable)
+                {
+                    DidIFindFood = true;
+                    food.gameObject.SetActive(false);
+                    CurrentState = StateType.LookingForFood;
+                    GoToRandomPos();
+                }
+            }
+            ResourceAvaiable = food.Food > 0;
+            
+            yield return new WaitForEndOfFrame();
+        }
+
+        CurrentState = StateType.LookingForFood;
+        GoToRandomPos();
+        FollowCo = null;
+    }
     private IEnumerator FollowEnemy(Transform humanT)
     {
         bool EnemyAlive = true;
@@ -620,8 +771,13 @@ public class HumanBeingScript : MonoBehaviour
             if (Dist < 2f && CanIAttack)
             {
                 CanIAttack = false;
-                Invoke("AttackAction", 1f);
-                Enemy.UnderAttack(Attack);
+                Invoke("AttackAction", AttackFrequency);
+                Enemy.UnderAttack(PhisicalAttack);
+                if (AnimController != null)
+                {
+                    //AttackAnimation if there is an animator
+                    AnimController.SetInteger("UIState", 2);
+                }
                 if (Enemy.Hp <= 0)
                 {
                     Food += Enemy.Food;
@@ -644,10 +800,20 @@ public class HumanBeingScript : MonoBehaviour
             //won?
             if (!Enemy.gameObject.activeInHierarchy || Enemy.CurrentState == StateType.Home)
             {
+                if (Specialization < 0.9f)
+                {
+                    Specialization += WarriorIncrement;
+
+                }
+                else
+                {
+                    Specialization = 0.9f;
+                }
+                CheckBonusHealth();
                 EnemyAlive = false;
 
             }
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(AttackFrequency);
         }
 
         CurrentState = StateType.LookingForFood;
@@ -655,6 +821,16 @@ public class HumanBeingScript : MonoBehaviour
         FollowCo = null;
     }
 
+    private void CheckBonusHealth()
+    {
+        if(Math.Abs( (Specialization*100-50)/2)+InitialHP > BaseHp)
+        {
+            BaseHp = Math.Abs((Specialization * 100 - 50) / 2) + InitialHP;
+            HPBonus = (Specialization * 100 - 50) / 2;
+        }
+        PhisicalAttack = Specialization * Attack;
+        HarvestAttack = (1 - Specialization) * Attack;
+    }
 
     private void AttackAction()
     {

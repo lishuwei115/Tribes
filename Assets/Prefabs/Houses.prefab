@@ -140,11 +140,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FoodStore: 0
-  SafetyTimer: 65
+  SafetyTimer: 40
+  TimeAttackMin: 80
+  TimeAttackMax: 250
+  Humans: []
+  HumansAlive: []
+  IsPlayer: 0
   TargetAutocracyHealth: 30
   HouseType: 4
   Government: 2
-  Humans: []
 --- !u!1 &1503730709445686
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,11 +254,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FoodStore: 0
-  SafetyTimer: 65
+  SafetyTimer: 40
+  TimeAttackMin: 80
+  TimeAttackMax: 250
+  Humans: []
+  HumansAlive: []
+  IsPlayer: 0
   TargetAutocracyHealth: 50
   HouseType: 0
   Government: 1
-  Humans: []
 --- !u!1 &1593607100391772
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,11 +368,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FoodStore: 0
-  SafetyTimer: 65
+  SafetyTimer: 40
+  TimeAttackMin: 80
+  TimeAttackMax: 250
+  Humans: []
+  HumansAlive: []
+  IsPlayer: 0
   TargetAutocracyHealth: 50
   HouseType: 2
   Government: 1
-  Humans: []
 --- !u!1 &1742194017509010
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,11 +482,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FoodStore: 0
-  SafetyTimer: 65
+  SafetyTimer: 40
+  TimeAttackMin: 80
+  TimeAttackMax: 250
+  Humans: []
+  HumansAlive: []
+  IsPlayer: 0
   TargetAutocracyHealth: 50
   HouseType: 3
   Government: 2
-  Humans: []
 --- !u!1 &6629128185296314743
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,7 +597,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FoodStore: 0
   SafetyTimer: 20
+  TimeAttackMin: 60
+  TimeAttackMax: 180
+  Humans: []
+  HumansAlive: []
+  IsPlayer: 0
   TargetAutocracyHealth: 50
   HouseType: 1
   Government: 0
-  Humans: []

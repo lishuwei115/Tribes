@@ -39,11 +39,11 @@ public class GameManagerScript : MonoBehaviour {
 
 	public Transform HumansContainer;
 
-    internal void MoveTribeTo(Vector3 transform)
+    internal void MoveTribeTo(Vector3 transform, HousesTypes tribe)
     {
         foreach (HouseScript house in Houses)
         {
-            if(house.HouseType == PlayerHouse)
+            if(house.HouseType == tribe)
             {
                 house.MoveTribeTo(transform);
             }
@@ -73,7 +73,8 @@ public class GameManagerScript : MonoBehaviour {
 	private int ReproducedLastDay;
 	[HideInInspector]
     private int DiedLastDay;
-
+    [HideInInspector]
+    public int currentDayTime = 0;
 
 
 	private void Awake()
@@ -107,6 +108,10 @@ public class GameManagerScript : MonoBehaviour {
         //Initialize all the humans in all houses
 		foreach (HouseScript house in Houses)
 		{
+            if (house.HouseType == PlayerHouse)
+            {
+                house.IsPlayer = true;
+            }
             //assign all the humans of one house
 			for (int i = 0; i < Humans; i++)
             {
@@ -175,7 +180,8 @@ public class GameManagerScript : MonoBehaviour {
 
     public void HumanBeingDied()
 	{
-		DiedLastDay++;
+        UIManagerScript.Instance.UpdatePeople();
+        DiedLastDay++;
 	}
 
 
@@ -193,9 +199,11 @@ public class GameManagerScript : MonoBehaviour {
 
         DayTimeCoroutine = DayTimerCo();
 		StartCoroutine(DayTimeCoroutine);
-	}
+        UIManagerScript.Instance.UpdatePeople();
 
-	public IEnumerator DayTimerCo()
+    }
+
+    public IEnumerator DayTimerCo()
 	{
 		SetFood();
 		DayStarted();
@@ -204,7 +212,8 @@ public class GameManagerScript : MonoBehaviour {
 		int i = DayTime;
 		while(i > 0)
 		{
-			UIManagerScript.Instance.TimerUpdate(i);
+            currentDayTime = i;
+            UIManagerScript.Instance.TimerUpdate(i);
 			yield return new WaitForSecondsRealtime(1);
 			i--;
 		}

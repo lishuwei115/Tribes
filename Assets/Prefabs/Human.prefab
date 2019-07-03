@@ -92,23 +92,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Radius: 2
+  Specialization: 0.5
+  InitialHP: 0
+  HPBonus: 0
+  PhisicalAttack: 0
+  HarvestAttack: 0
+  Attack: 0
+  Speed: 1
+  Food: 0
+  FoodLife: 0
   HpMax: 60
   HpMin: 50
   Hp: 0
   BaseHp: 0
-  AttackMax: 4
-  AttackMin: 2
-  Attack: 0
   SpeedMax: 12
   SpeedMin: 9
-  Speed: 1
+  AttackMax: 4
+  AttackMin: 3
+  ReproductionPerc: 50
+  AttackFrequency: 0.1
+  HarvestIncrement: 0.01
+  WarriorIncrement: 0.01
   Charity: 50
   Gratitude: 50
   Hate: 50
   Hunger: 2
-  ReproductionPerc: 50
   GivingPerc: 20
-  Food: 0
   GratitiudeFoodPerc: 10
   CharityFoodPerc: 10
   HateGratitutePerc: 10

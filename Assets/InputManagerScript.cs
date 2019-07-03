@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class InputManagerScript : MonoBehaviour
 {
-
+    public static InputManagerScript Instance;
 
     public Transform Prefab;
+    public bool Moving = false;
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +22,7 @@ public class InputManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && !Moving)
         {
             LayerMask layerMask = 1 << LayerMask.NameToLayer("Ground");
 
@@ -30,7 +36,7 @@ public class InputManagerScript : MonoBehaviour
             bool found = Physics.Raycast(ray, out hit, 10000, layerMask);
             if (found)
             {
-                GameManagerScript.Instance.MoveTribeTo(hit.point);
+                GameManagerScript.Instance.MoveTribeTo(hit.point, GameManagerScript.Instance.PlayerHouse);
                 Instantiate(Prefab,  hit.point,Prefab.rotation);
             }
         }
@@ -40,4 +46,5 @@ public class InputManagerScript : MonoBehaviour
 
 
     }
+
 }

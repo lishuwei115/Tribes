@@ -10,19 +10,94 @@ public class HouseScript : MonoBehaviour
 
     public float FoodStore;
     public int SafetyTimer = 13;
+    [Range(0, 1000)]
+    public float TimeAttackMin = 60;
+    [Range(0, 1000)]
+    public float TimeAttackMax = 180;
+
+    public List<HumanBeingScript> Humans = new List<HumanBeingScript>();
+    public List<HumanBeingScript> HumansAlive = new List<HumanBeingScript>();
+    [HideInInspector]
+    public bool IsPlayer = false;
+
+    [Header("Government parameters")]
     [Range(0, 100)]
     public int TargetAutocracyHealth = 50;
     public HousesTypes HouseType;
     public GovernmentBehaviour Government;
-    public List<HumanBeingScript> Humans = new List<HumanBeingScript>();
 
+    float TimeAttack;
     private void Start()
     {
         UIManagerScript.Instance.UpdateFood();
+
+        TimeAttack = Time.time + UnityEngine.Random.Range(TimeAttackMin, TimeAttackMax);
+
     }
+
+    private void Update()
+    {
+        if (!IsPlayer)
+        {
+            if (Time.time >= TimeAttack && GameManagerScript.Instance.currentDayTime >45)
+            {
+                TimeAttack = Time.time + UnityEngine.Random.Range(TimeAttackMin, TimeAttackMax);
+                Transform target = null;
+                while(target == null)
+                {
+                    int i = UnityEngine.Random.Range(0,GameManagerScript.Instance.Houses.Count*100)/100; // /100*100 is to increase randomness
+                    if(GameManagerScript.Instance.Houses[i].HouseType != HouseType)
+                    {
+                        target = GameManagerScript.Instance.Houses[i].transform;
+                    }
+                }
+                MoveTribeTo(target.position);
+            }
+        }
+        HumansAlive = Humans.Where(x => x.Hp > 0).ToList();
+
+    }
+
+
     internal void DistributeFood()
     {
-        /*switch (Government)
+        //GovernmentManaging();
+        List<HumanBeingScript> living = Humans.Where(x => x.Hp > 0).ToList();
+        if (FoodStore > living.Count)
+        {
+            foreach (HumanBeingScript human in living)
+            {
+                human.Hp = human.BaseHp;
+                FoodStore--;
+                human.Reproduce();
+            }
+        }
+        else
+        {
+            for (int i = living.Count - 1; i >= 0; i--)
+            {
+                HumanBeingScript human = living[i];
+                if (FoodStore > 0)
+                {
+                    FoodStore--;
+                    human.Hp = human.BaseHp;
+                    human.Reproduce();
+                }
+                else
+                {
+                    human.Hp = 0;
+                    GameManagerScript.Instance.HumanBeingDied();
+                    human.gameObject.SetActive(false);
+                }
+            }
+        }
+        UIManagerScript.Instance.UpdateFood();
+
+    }
+
+    private void GovernmentManaging()
+    {
+        switch (Government)
         {
             case GovernmentBehaviour.Democracy:
                 CureByHealth();
@@ -35,36 +110,7 @@ public class HouseScript : MonoBehaviour
                 break;
             default:
                 break;
-        }*/
-        List<HumanBeingScript> living = Humans.Where(x => x.Hp>0).ToList();
-        if (FoodStore > living.Count)
-        {
-            foreach (HumanBeingScript human in living)
-            {
-                human.Hp = human.BaseHp;
-                FoodStore--;
-            }
         }
-        else
-        {
-            for (int i = living.Count-1; i >=0 ; i--)
-            {
-                HumanBeingScript human = living[i];
-                if (FoodStore > 0)
-                {
-                    FoodStore--;
-                    human.Hp = human.BaseHp;
-                }
-                else
-                {
-                    human.Hp = 0;
-                    GameManagerScript.Instance.HumanBeingDied();
-                    human.gameObject.SetActive(false);
-                }
-            }
-        }
-        UIManagerScript.Instance.UpdateFood();
-
     }
 
     internal void MoveTribeTo(Vector3 transform)

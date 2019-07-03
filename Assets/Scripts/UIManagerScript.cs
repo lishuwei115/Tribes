@@ -19,6 +19,10 @@ public class UIManagerScript : MonoBehaviour {
     public TextMeshProUGUI HouseFoodUpperRight;
     public TextMeshProUGUI HouseFoodDownwardLeft;
     public TextMeshProUGUI HouseFoodDownwardRight;
+    public TextMeshProUGUI HousePeopleUpperLeft;
+    public TextMeshProUGUI HousePeopleUpperRight;
+    public TextMeshProUGUI HousePeopleDownwardLeft;
+    public TextMeshProUGUI HousePeopleDownwardRight;
 
 	public int DayNumIterator = 0;
 
@@ -30,13 +34,13 @@ public class UIManagerScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+    }
 
     public void TimerUpdate(int timer)
 	{
@@ -62,6 +66,16 @@ public class UIManagerScript : MonoBehaviour {
         HouseFoodUpperRight.text = "Food: " + GameManagerScript.Instance.Houses[1].FoodStore;
         HouseFoodDownwardLeft.text = "Food: " + GameManagerScript.Instance.Houses[2].FoodStore;
         HouseFoodDownwardRight.text = "Food: " + GameManagerScript.Instance.Houses[3].FoodStore;
+        UpdatePeople();
+
+
+}
+    public void UpdatePeople()
+    {
+        HousePeopleUpperLeft.text = "People: " + GameManagerScript.Instance.Houses[0].HumansAlive.Count;
+        HousePeopleUpperRight.text = "People: " + GameManagerScript.Instance.Houses[1].HumansAlive.Count;
+        HousePeopleDownwardLeft.text = "People: " + GameManagerScript.Instance.Houses[2].HumansAlive.Count;
+        HousePeopleDownwardRight.text = "People: " + GameManagerScript.Instance.Houses[3].HumansAlive.Count;
     }
     public void AddDay()
 	{
