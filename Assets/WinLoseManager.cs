@@ -9,6 +9,7 @@ public class WinLoseManager : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         controller = GetComponent<Animator>();
     }
 

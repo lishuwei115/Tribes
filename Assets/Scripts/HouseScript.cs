@@ -55,13 +55,18 @@ public class HouseScript : MonoBehaviour
             }
         }
         HumansAlive = Humans.Where(x => x.Hp > 0).ToList();
-        if (HumansAlive.Count < 0)
+        if (HumansAlive.Count <= 0 && !Defeated)
         {
-            Defeated = true;
             if (IsPlayer)
             {
                 GameManagerScript.Instance.Lost();
             }
+            if(GameManagerScript.Instance.StateOfGame == GameState.Playing)
+            {
+                GameManagerScript.Instance.EnemyDefeated();
+            }
+            Defeated = true;
+
         }
     }
 

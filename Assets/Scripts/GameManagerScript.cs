@@ -11,7 +11,7 @@ public class GameManagerScript : MonoBehaviour {
 	public delegate void StartDay();
 	public event StartDay DayStarted;
     public HousesTypes PlayerHouse = HousesTypes.East;
-
+    public int enemyDefeated = 0;
 	public Mesh HumanMesh;
 	public Mesh FoodMesh;
 	public Material FoodMaterial;
@@ -96,6 +96,22 @@ public class GameManagerScript : MonoBehaviour {
     {
         UIManagerScript.Instance.WinLoseState(1);
         StateOfGame = GameState.Won;
+    }
+
+    internal void EnemyDefeated()
+    {
+        if(StateOfGame != GameState.Lost && StateOfGame != GameState.Won)
+        {
+            enemyDefeated++;
+            if(enemyDefeated == Houses.Count - 2)
+            {
+                Won();
+
+            }
+
+
+        }
+
     }
 
     internal void Lost()
