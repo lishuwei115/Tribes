@@ -315,8 +315,8 @@ MonoBehaviour:
   HpMin: 50
   Hp: 0
   BaseHp: 0
-  SpeedMax: 12
-  SpeedMin: 9
+  SpeedMax: 8
+  SpeedMin: 6
   AttackMax: 6
   AttackMin: 4
   ReproductionPerc: 50

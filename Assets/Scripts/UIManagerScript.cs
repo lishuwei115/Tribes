@@ -44,7 +44,7 @@ public class UIManagerScript : MonoBehaviour {
 
     public void TimerUpdate(int timer)
 	{
-		Timer.text = "Day Timer: " + timer;
+		Timer.text = "" + timer;
 
     }
 
@@ -62,20 +62,20 @@ public class UIManagerScript : MonoBehaviour {
     }
     public void UpdateFood()
     {
-        HouseFoodUpperLeft.text = "Food: " + GameManagerScript.Instance.Houses[0].FoodStore;
-        HouseFoodUpperRight.text = "Food: " + GameManagerScript.Instance.Houses[1].FoodStore;
-        HouseFoodDownwardLeft.text = "Food: " + GameManagerScript.Instance.Houses[2].FoodStore;
-        HouseFoodDownwardRight.text = "Food: " + GameManagerScript.Instance.Houses[3].FoodStore;
+        HouseFoodUpperLeft.text = "" + GameManagerScript.Instance.Houses[0].FoodStore;
+        HouseFoodUpperRight.text = "" + GameManagerScript.Instance.Houses[1].FoodStore;
+        HouseFoodDownwardLeft.text = "" + GameManagerScript.Instance.Houses[2].FoodStore;
+        HouseFoodDownwardRight.text = "" + GameManagerScript.Instance.Houses[3].FoodStore;
         UpdatePeople();
 
 
 }
     public void UpdatePeople()
     {
-        HousePeopleUpperLeft.text = "People: " + GameManagerScript.Instance.Houses[0].HumansAlive.Count;
-        HousePeopleUpperRight.text = "People: " + GameManagerScript.Instance.Houses[1].HumansAlive.Count;
-        HousePeopleDownwardLeft.text = "People: " + GameManagerScript.Instance.Houses[2].HumansAlive.Count;
-        HousePeopleDownwardRight.text = "People: " + GameManagerScript.Instance.Houses[3].HumansAlive.Count;
+        HousePeopleUpperLeft.text = "" + GameManagerScript.Instance.Houses[0].HumansAlive.Count;
+        HousePeopleUpperRight.text = "" + GameManagerScript.Instance.Houses[1].HumansAlive.Count;
+        HousePeopleDownwardLeft.text = "" + GameManagerScript.Instance.Houses[2].HumansAlive.Count;
+        HousePeopleDownwardRight.text = "" + GameManagerScript.Instance.Houses[3].HumansAlive.Count;
     }
     public void AddDay()
 	{
