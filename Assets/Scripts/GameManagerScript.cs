@@ -219,10 +219,10 @@ public class GameManagerScript : MonoBehaviour {
 		}
         //the time of today is ended, start a new day
 		GameStatus = GameStateType.EndOfDay;
-        foreach (HouseScript house in Houses)
+        /*foreach (HouseScript house in Houses)
         {
             house.DistributeFood();
-        }
+        }*/
 		Invoke("DayStarting", 1);
 	}
 

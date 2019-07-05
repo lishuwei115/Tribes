@@ -67,10 +67,10 @@ public class WorldmapCamera : MonoBehaviour
     {
         //HandleMouse();
 #if UNITY_ANDROID
-        //HandleTouch();
+        HandleTouch();
 #endif
 #if UNITY_EDITOR
-        HandleMouse();
+        //HandleMouse();
 
 #endif
 
@@ -107,18 +107,19 @@ public class WorldmapCamera : MonoBehaviour
             lastPanPosition = Input.mousePosition;
             OffsetTime = Time.time;
         }
+        else if (Input.GetMouseButtonUp(0) && Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (Input.mousePosition.x + Input.mousePosition.y)) < 100)
+        {
+            TribeToPoint();
+        }
         else if (Input.GetMouseButton(0) && (Time.time - OffsetTime) > 0.5f)
         {
             PanCameraWithoutTween(Input.mousePosition);
         }
-        else if (Input.GetMouseButtonUp(0)&& Mathf.Abs((lastPanPosition.x + lastPanPosition.y) -(Input.mousePosition.x + Input.mousePosition.y))> .1f)
+        else if (Input.GetMouseButtonUp(0)&& Mathf.Abs((lastPanPosition.x + lastPanPosition.y) -(Input.mousePosition.x + Input.mousePosition.y))> 5f)
         {
             PanCameraWithTween(Input.mousePosition);
         }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            TribeToPoint();
-        }
+        
 
         // Check for scrolling to zoom the camera
         float scroll = Input.GetAxis("Mouse ScrollWheel");
@@ -228,12 +229,12 @@ public class WorldmapCamera : MonoBehaviour
                 }
                 else if (touch.phase == TouchPhase.Ended && !PanningWitouthTween && !wasZoomingLastFrame )
                 {
-                    if( Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (touch.position.x + touch.position.y)) > .1f)
+                    if( Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (touch.position.x + touch.position.y)) > 100)
                     {
                         touchPhase = touchPhase.EndePad;
                         PanCameraWithTween(touch.position);
                     }
-                    else
+                    else if( Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (Input.mousePosition.x + Input.mousePosition.y)) < 100)
                     {
                         touchPhase = touchPhase.EndePad;
                         TribeToPoint();

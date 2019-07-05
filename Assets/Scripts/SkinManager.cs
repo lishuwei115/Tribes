@@ -20,7 +20,11 @@ public class SkinManager : MonoBehaviour
         //return the prefab found in the list of skins corrisponding only to the house type
         return HousesSkin.Where(a =>a.House == house).ToList()[0].SkinPrefab;
     }
-
+    public Skin GetSkinInfo(HousesTypes house)
+    {
+        //return the prefab found in the list of skins corrisponding only to the house type
+        return HousesSkin.Where(a => a.House == house).ToList()[0];
+    }
 
 }
 
@@ -29,4 +33,5 @@ public class Skin
 {
     public HousesTypes House = HousesTypes.East;
     public Transform SkinPrefab;
+    public Color TribeColor = Color.red;
 }

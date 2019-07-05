@@ -156,7 +156,7 @@ MonoBehaviour:
   FoodMaterial: {fileID: 2100000, guid: e601015e84489446e930439e8157fd1b, type: 2}
   GameStatus: 0
   DayTime: 60
-  Humans: 3
+  Humans: 10
   FoodPerDay: 20
   MaxNumChildren: 2
   Houses:
@@ -204,15 +204,19 @@ MonoBehaviour:
   - House: 0
     SkinPrefab: {fileID: 4085973818741542, guid: 51a4f340725edec439eb76464b487b13,
       type: 3}
+    TribeColor: {r: 0, g: 0.735849, b: 0.19628903, a: 1}
   - House: 2
     SkinPrefab: {fileID: 8955598621932473859, guid: a0c217097bfed2943aa0fb9e9baca54c,
       type: 3}
+    TribeColor: {r: 0.7372549, g: 0, b: 0.43532926, a: 1}
   - House: 3
     SkinPrefab: {fileID: 7423829036801790840, guid: 2e1364a3bdaede843a842174eea5b409,
       type: 3}
+    TribeColor: {r: 0, g: 0.45269147, b: 0.7372549, a: 1}
   - House: 4
     SkinPrefab: {fileID: 3743889277897589981, guid: 77fefa06e81e5e0499ef29e0121af5a0,
       type: 3}
+    TribeColor: {r: 0.8301887, g: 0.7558862, b: 0, a: 1}
 --- !u!1 &519514966
 GameObject:
   m_ObjectHideFlags: 0
@@ -1293,16 +1297,6 @@ PrefabInstance:
     - target: {fileID: 4049368512746456, guid: a31ada27f20cc4e01ac704e5ae7b1e41, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114339723918809714, guid: a31ada27f20cc4e01ac704e5ae7b1e41,
-        type: 3}
-      propertyPath: AttackMax
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114339723918809714, guid: a31ada27f20cc4e01ac704e5ae7b1e41,
-        type: 3}
-      propertyPath: AttackMin
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a31ada27f20cc4e01ac704e5ae7b1e41, type: 3}
