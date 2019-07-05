@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class HouseScript : MonoBehaviour
 {
-
+    public bool Defeated = false;
     public float FoodStore;
     public int SafetyTimer = 13;
     [Range(0, 1000)]
@@ -55,7 +55,14 @@ public class HouseScript : MonoBehaviour
             }
         }
         HumansAlive = Humans.Where(x => x.Hp > 0).ToList();
-
+        if (HumansAlive.Count < 0)
+        {
+            Defeated = true;
+            if (IsPlayer)
+            {
+                GameManagerScript.Instance.Lost();
+            }
+        }
     }
 
 

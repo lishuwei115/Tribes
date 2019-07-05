@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour {
 
+    public GameState StateOfGame = GameState.Playing;
 	public delegate void StartDay();
 	public event StartDay DayStarted;
     public HousesTypes PlayerHouse = HousesTypes.East;
@@ -14,8 +15,9 @@ public class GameManagerScript : MonoBehaviour {
 	public Mesh HumanMesh;
 	public Mesh FoodMesh;
 	public Material FoodMaterial;
-
-	public static GameManagerScript Instance;
+    public BlockInput[] UIButtons;
+    public bool UIButtonOver;
+    public static GameManagerScript Instance;
 
 	public GameStateType GameStatus = GameStateType.Intro;
 
@@ -86,10 +88,24 @@ public class GameManagerScript : MonoBehaviour {
 	void Start () {
 		StartGame();
 		Invoke("DayStarting", 3);
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        UIButtons = UnityEngine.Object.FindObjectsOfType<BlockInput>();
+
+    }
+
+    internal void Won()
+    {
+        UIManagerScript.Instance.WinLoseState(1);
+        StateOfGame = GameState.Won;
+    }
+
+    internal void Lost()
+    {
+        UIManagerScript.Instance.WinLoseState(2);
+        StateOfGame = GameState.Lost;
+    }
+
+    // Update is called once per frame
+    void Update () {
 		if(Input.GetKeyUp(KeyCode.A))
 		{
 			SceneManager.LoadScene(0);
@@ -100,8 +116,17 @@ public class GameManagerScript : MonoBehaviour {
 		                                    HumansList.Where(r =>r.gameObject.activeInHierarchy &&  r.HType == HumanType.Hate).ToList().Count.ToString());
 
 		UIManagerScript.Instance.NumberOfEntity.text = HumansList.Where(r => r.gameObject.activeInHierarchy).ToList().Count.ToString();
+        foreach (BlockInput item in UIButtons)
+        {
+            if (item.UIButtonOver)
+            {
+                UIButtonOver = true;
+                return;
+            }
+        }
+        UIButtonOver = false;
 
-	}
+    }
 
     public void StartGame()
 	{
@@ -258,6 +283,13 @@ public enum HousesTypes
     South,
     East,
     West
+}
+
+public enum GameState
+{
+    Playing,
+    Won,
+    Lost
 }
 
 /*public class ResetableEnumerator<T> : IEnumerator<T>

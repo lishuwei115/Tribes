@@ -36,6 +36,7 @@ public class WorldmapCamera : MonoBehaviour
     private float LastTimeTouch;
     touchPhase touchPhase = touchPhase.none;
     public bool OnExplainMode = false;
+    LayerMask layerMask;
     //public Transform PointOfLightTransform;
     //public Light DirLight;
     //float DirLightOffset;
@@ -51,6 +52,7 @@ public class WorldmapCamera : MonoBehaviour
 
     void Start()
     {
+        layerMask = LayerMask.GetMask("Ground", "BlockTouch");
         cam = GetComponent<Camera>();
         ResetCam();
 
@@ -67,10 +69,10 @@ public class WorldmapCamera : MonoBehaviour
     {
         //HandleMouse();
 #if UNITY_ANDROID
-        HandleTouch();
+        //HandleTouch();
 #endif
 #if UNITY_EDITOR
-        //HandleMouse();
+        HandleMouse();
 
 #endif
 
@@ -100,36 +102,45 @@ public class WorldmapCamera : MonoBehaviour
 
     void HandleMouse()
     {
-        // On mouse down, capture it's position.
-        // Otherwise, if the mouse is still down, pan the camera.
-        if (Input.GetMouseButtonDown(0))
+        
+        if (GameManagerScript.Instance.UIButtonOver)
         {
-            lastPanPosition = Input.mousePosition;
-            OffsetTime = Time.time;
+            Debug.Log("there'a a button");
         }
-        else if (Input.GetMouseButtonUp(0) && Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (Input.mousePosition.x + Input.mousePosition.y)) < 100)
+        if (!GameManagerScript.Instance.UIButtonOver)
         {
-            TribeToPoint();
-        }
-        else if (Input.GetMouseButton(0) && (Time.time - OffsetTime) > 0.5f)
-        {
-            PanCameraWithoutTween(Input.mousePosition);
-        }
-        else if (Input.GetMouseButtonUp(0)&& Mathf.Abs((lastPanPosition.x + lastPanPosition.y) -(Input.mousePosition.x + Input.mousePosition.y))> 5f)
-        {
-            PanCameraWithTween(Input.mousePosition);
+            // On mouse down, capture it's position.
+            // Otherwise, if the mouse is still down, pan the camera.
+            if (Input.GetMouseButtonDown(0))
+            {
+                lastPanPosition = Input.mousePosition;
+                OffsetTime = Time.time;
+            }
+            else if (Input.GetMouseButtonUp(0) && Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (Input.mousePosition.x + Input.mousePosition.y)) < 100)
+            {
+                TribeToPoint();
+            }
+            else if (Input.GetMouseButton(0) && (Time.time - OffsetTime) > 0.5f)
+            {
+                PanCameraWithoutTween(Input.mousePosition);
+            }
+            else if (Input.GetMouseButtonUp(0) && Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (Input.mousePosition.x + Input.mousePosition.y)) > 100f)
+            {
+                PanCameraWithTween(Input.mousePosition);
+            }
+
+
+            // Check for scrolling to zoom the camera
+            float scroll = Input.GetAxis("Mouse ScrollWheel");
+            ZoomCamera(scroll, ZoomSpeedMouse);
         }
         
-
-        // Check for scrolling to zoom the camera
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-        ZoomCamera(scroll, ZoomSpeedMouse);
     }
 
     public void TribeToPoint()
     {
 
-        LayerMask layerMask = 1 << LayerMask.NameToLayer("Ground");
+          
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane p = new Plane(Vector3.up, Vector3.zero);

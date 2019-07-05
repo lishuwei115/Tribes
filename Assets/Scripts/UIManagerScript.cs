@@ -82,4 +82,8 @@ public class UIManagerScript : MonoBehaviour {
 		DayNumIterator++;
 		DayNum.text = "Day Num:" + DayNumIterator;
 	}
+    public void WinLoseState(int state)
+    {
+        WinLoseManager.Instance.WinLoseState(state);
+    }
 }
