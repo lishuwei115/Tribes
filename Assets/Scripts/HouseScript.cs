@@ -107,6 +107,22 @@ public class HouseScript : MonoBehaviour
 
     }
 
+    internal void Cultivate()
+    {
+        foreach (HumanBeingScript human in Humans)
+        {
+            float distance = Vector3.Distance(human.transform.position, transform.position);
+            if (distance > 2 && distance<7 && human.gameObject.activeInHierarchy && (human.CurrentState != StateType.ComingBackHome && human.CurrentState != StateType.Home))
+            {
+                human.CurrentState = StateType.FollowInstruction;
+                human.TargetFoodDest = null;
+                human.TargetHuman = null;
+                human.TargetDest = transform;
+                human.GoToPosition(transform);
+            }
+        }
+    }
+
     private void GovernmentManaging()
     {
         switch (Government)

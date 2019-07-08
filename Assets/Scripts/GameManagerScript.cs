@@ -12,7 +12,10 @@ public class GameManagerScript : MonoBehaviour {
 	public event StartDay DayStarted;
     public HousesTypes PlayerHouse = HousesTypes.East;
     public int enemyDefeated = 0;
-	public Mesh HumanMesh;
+
+
+
+    public Mesh HumanMesh;
 	public Mesh FoodMesh;
 	public Material FoodMaterial;
     public BlockInput[] UIButtons;
@@ -113,7 +116,20 @@ public class GameManagerScript : MonoBehaviour {
         }
 
     }
-
+    /// <summary>
+    /// make all human of the player to cultivate
+    /// </summary>
+    public void Cultivate()
+    {
+        foreach (HouseScript house in Houses)
+        {
+            if (house.HouseType == PlayerHouse)
+            {
+                house.Cultivate();
+            }
+        }
+        
+    }
     internal void Lost()
     {
         UIManagerScript.Instance.WinLoseState(2);

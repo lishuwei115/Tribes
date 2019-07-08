@@ -40,7 +40,7 @@ public class WorldmapCamera : MonoBehaviour
     //public Transform PointOfLightTransform;
     //public Light DirLight;
     //float DirLightOffset;
-
+    public bool IsTouch = false;
     //public Image logo;
     public delegate void CameraOnStartPos();
     public event CameraOnStartPos CameraOnStartPosEvent;
@@ -55,6 +55,13 @@ public class WorldmapCamera : MonoBehaviour
         layerMask = LayerMask.GetMask("Ground", "BlockTouch");
         cam = GetComponent<Camera>();
         ResetCam();
+#if UNITY_ANDROID
+        IsTouch = true;
+#endif
+#if UNITY_EDITOR
+        IsTouch = false;
+
+#endif
 
     }
 
@@ -64,32 +71,19 @@ public class WorldmapCamera : MonoBehaviour
         //MoveToPos(new Vector3(0, 10, -23), 1.5f);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        //HandleMouse();
-#if UNITY_ANDROID
-        //HandleTouch();
-#endif
-#if UNITY_EDITOR
-        HandleMouse();
+        if (IsTouch)
+        {
+            HandleTouch();
 
-#endif
+        }
+        else
+        {
+            HandleMouse();
 
-        /*
-            if (Input.touchSupported && !OnExplainMode)
-            {
-                HandleTouch();
-            }
-            else if (!Input.touchSupported && !OnExplainMode)
-            {
-                HandleMouse();
-            }
-            if (Time.time - LastTimeTouch > 5 && !isMoving && transform.position != new Vector3(0, 10, -23) && !OnExplainMode)
-            {
-                //cam.fieldOfView = 60;
-                //MoveToPos(new Vector3(0, 10, -23),2);
-            }*/
+        }
+        
 
 
         // Ensure the camera remains within bounds.
@@ -97,6 +91,11 @@ public class WorldmapCamera : MonoBehaviour
         pos.x = Mathf.Clamp(transform.position.x, ProportionalBoundsX[0], ProportionalBoundsX[1]);
         pos.z = Mathf.Clamp(transform.position.z, ProportionalBoundsZ[0], ProportionalBoundsZ[1]);
         transform.position = pos;
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 
 
@@ -116,18 +115,20 @@ public class WorldmapCamera : MonoBehaviour
                 lastPanPosition = Input.mousePosition;
                 OffsetTime = Time.time;
             }
-            else if (Input.GetMouseButtonUp(0) && Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (Input.mousePosition.x + Input.mousePosition.y)) < 100)
+            else if (!isMoving && Input.GetMouseButtonUp(0) && Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (Input.mousePosition.x + Input.mousePosition.y)) < 100)
             {
                 TribeToPoint();
             }
-            else if (Input.GetMouseButton(0) && (Time.time - OffsetTime) > 0.5f)
+            else if (Input.GetMouseButton(0) /*&& (Time.time - OffsetTime) > 0.5f*/)
             {
                 PanCameraWithoutTween(Input.mousePosition);
             }
-            else if (Input.GetMouseButtonUp(0) && Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (Input.mousePosition.x + Input.mousePosition.y)) > 100f)
+            /*else if (Input.GetMouseButtonUp(0) && Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (Input.mousePosition.x + Input.mousePosition.y)) > 100f)
             {
-                PanCameraWithTween(Input.mousePosition);
-            }
+                PanCameraWithoutTween(Input.mousePosition);
+
+                //PanCameraWithTween(Input.mousePosition);
+            }*/
 
 
             // Check for scrolling to zoom the camera
@@ -159,25 +160,37 @@ public class WorldmapCamera : MonoBehaviour
     }
     public void PanCameraWithoutTween(Vector3 newPanPosition)
     {
-        // Determine how much to move the camera
-        Vector3 offset = cam.ScreenToViewportPoint(lastPanPosition - newPanPosition);
-        Vector3 move = new Vector3(offset.x * PanSpeed, offset.y, offset.z * PanSpeed);
+        if (!isMoving)
+        {
+            isMoving = true;
+            // Determine how much to move the camera
+            Vector3 offset = cam.ScreenToViewportPoint(lastPanPosition - newPanPosition);
+            Vector3 move = new Vector3(transform.position.x + offset.x * (PanSpeed ), transform.position.y,transform.position.z + offset.y * (PanSpeed));
 
-        // Perform the movement
-        transform.Translate(move, Space.World);
+            // Perform the movement
+            //transform.Translate(move, Space.World);
+            transform.position = move;
 
-        // Ensure the camera remains within bounds.
-        Vector3 pos = transform.position;
-        pos.x = Mathf.Clamp(transform.position.x, ProportionalBoundsX[0], ProportionalBoundsX[1]);
-        pos.z = Mathf.Clamp(transform.position.z, ProportionalBoundsZ[0], ProportionalBoundsZ[1]);
-        transform.position = pos;
+            // Ensure the camera remains within bounds.
+            Vector3 pos = transform.position;
+            pos.x = Mathf.Clamp(transform.position.x, ProportionalBoundsX[0], ProportionalBoundsX[1]);
+            pos.z = Mathf.Clamp(transform.position.z, ProportionalBoundsZ[0], ProportionalBoundsZ[1]);
+            transform.position = pos;
 
-        // Cache the position
-        lastPanPosition = newPanPosition;
-        LastTimeTouch = Time.time;
+            // Cache the position
+            lastPanPosition = newPanPosition;
+            LastTimeTouch = Time.time;
+            Invoke("EnableMovement", 0.05f);
+
+        }
+
     }
 
+    public void EnableMovement()
+    {
+        isMoving = false;
 
+    }
 
 
 
@@ -231,26 +244,28 @@ public class WorldmapCamera : MonoBehaviour
                     lastPanPosition = touch.position;
                     panFingerId = touch.fingerId;
                 }
-                else if (touch.fingerId == panFingerId && touch.phase == TouchPhase.Moved && (Time.time - OffsetTime) > 0.15f && !wasZoomingLastFrame &&
+                else if (touch.phase == TouchPhase.Ended /*&& !PanningWitouthTween*/ && !wasZoomingLastFrame)
+                {
+                    /*if( Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (touch.position.x + touch.position.y)) > 100)
+                    {
+                        touchPhase = touchPhase.EndePad;
+                        PanCameraWithTween(touch.position);
+                    }
+                    else*/
+                    if (Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (Input.mousePosition.x + Input.mousePosition.y)) < 0.2f)
+                    {
+                        touchPhase = touchPhase.EndePad;
+                        TribeToPoint();
+                    }
+                }
+                else if (touch.fingerId == panFingerId && touch.phase == TouchPhase.Moved && (Time.time - OffsetTime) > 0.01f && !wasZoomingLastFrame &&
                          (touchPhase == touchPhase.BeganPad || touchPhase == touchPhase.MovePad))
                 {
                     touchPhase = touchPhase.MovePad;
                     PanningWitouthTween = true;
                     PanCameraWithoutTween(touch.position);
                 }
-                else if (touch.phase == TouchPhase.Ended && !PanningWitouthTween && !wasZoomingLastFrame )
-                {
-                    if( Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (touch.position.x + touch.position.y)) > 100)
-                    {
-                        touchPhase = touchPhase.EndePad;
-                        PanCameraWithTween(touch.position);
-                    }
-                    else if( Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (Input.mousePosition.x + Input.mousePosition.y)) < 100)
-                    {
-                        touchPhase = touchPhase.EndePad;
-                        TribeToPoint();
-                    }
-                }
+                
                 break;
 
             case 2: // Zooming

@@ -137,6 +137,8 @@ public class HumanBeingScript : MonoBehaviour
     public bool CanIgetFood = true;
     [HideInInspector]
     public bool CanIAttack = true;
+
+
     [HideInInspector]
     public bool FoodStealed = false;
     [HideInInspector]
@@ -279,6 +281,20 @@ public class HumanBeingScript : MonoBehaviour
         {
             StartCoroutine(Harvest(food));
         }
+    }
+
+    internal void Cultivate()
+    {
+        if (gameObject.activeInHierarchy)
+        {
+            StartCoroutine(CultivateCo());
+        }
+
+        /*human.CurrentState = StateType.FollowInstruction;
+                        human.TargetFoodDest = null;
+                        human.TargetHuman = null;
+                        human.TargetDest = transform;
+                        human.GoToPosition(transform);*/
     }
     public void GoToPosition(Vector3 nextPos)
     {
@@ -766,6 +782,63 @@ public class HumanBeingScript : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
+        HarvestBar.gameObject.SetActive(false);
+        CurrentState = StateType.LookingForFood;
+        GoToRandomPos();
+        FollowCo = null;
+    }
+    private IEnumerator CultivateCo()
+    {
+        yield return new WaitForEndOfFrame();
+        //bool ResourceAvaiable = true;
+        float CultivationProgress = 0;
+
+        /*if (FoodLife <= 0)
+        {
+            FoodLife = food.Hardness;
+        }*/
+
+       /* while (ResourceAvaiable)
+        {
+            yield return new WaitForEndOfFrame();
+            //move towars target
+            while (FoodLife > 0)
+            {
+                HarvestBar.gameObject.SetActive(true);
+                HarvestBar.UpdateHarvest(FoodLife, food.Hardness, HouseType);
+                FoodLife -= HarvestAttack;
+                yield return new WaitForSeconds(AttackFrequency);
+            }
+            if (Specialization > 0.1f)
+            {
+                Specialization -= HarvestIncrement;
+
+            }
+            else
+            {
+                Specialization = 0.1f;
+            }
+            CheckBonusHealth();
+
+            //Attack
+            if (FoodLife <= 0 && food.Food > 0)
+            {
+                FoodLife = food.Hardness;
+                food.Food -= 1;
+                Food += 1;
+                ResourceAvaiable = food.Food > 0;
+                if (!ResourceAvaiable)
+                {
+                    DidIFindFood = true;
+                    food.gameObject.SetActive(false);
+                    CurrentState = StateType.LookingForFood;
+                    GoToRandomPos();
+                }
+            }
+            ResourceAvaiable = food.Food > 0;
+
+            yield return new WaitForEndOfFrame();
+        }*/
         HarvestBar.gameObject.SetActive(false);
         CurrentState = StateType.LookingForFood;
         GoToRandomPos();
