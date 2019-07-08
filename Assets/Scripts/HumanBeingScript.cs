@@ -204,7 +204,7 @@ public class HumanBeingScript : MonoBehaviour
         //get the time required to go home
         TimeToGoBack = (Vector3.Distance(transform.position, TargetHouse.transform.position)) / (Speed) / 10;
         //going back home if the safety time is finished
-        if (Time.time - OffsetTimer >= GameManagerScript.Instance.DayTime - (TimeToGoBack + SafetyTime) && (CurrentState != StateType.Home /*&& CurrentAction != ActionState.Fight*/ && CurrentState != StateType.ComingBackHome))
+        if (!TargetHouse.IsPlayer && Time.time - OffsetTimer >= GameManagerScript.Instance.DayTime - (TimeToGoBack + TargetHouse.SafetyTimer) && (CurrentState != StateType.Home /*&& CurrentAction != ActionState.Fight*/ && CurrentState != StateType.ComingBackHome))
         {
             FollowCo = null;
             CanIgetFood = false;
@@ -215,7 +215,17 @@ public class HumanBeingScript : MonoBehaviour
             HarvestBar.gameObject.SetActive(false);
             CultivationField.gameObject.SetActive(false);
         }
-
+        if (TargetHouse.IsPlayer && Time.time - OffsetTimer >= GameManagerScript.Instance.DayTime - (TimeToGoBack + SafetyTime) && (CurrentState != StateType.Home /*&& CurrentAction != ActionState.Fight*/ && CurrentState != StateType.ComingBackHome))
+        {
+            FollowCo = null;
+            CanIgetFood = false;
+            CurrentState = StateType.ComingBackHome;
+            GoToPosition(TargetHouse.transform.position);
+            //update HP Bar
+            HPBar.gameObject.SetActive(false);
+            HarvestBar.gameObject.SetActive(false);
+            CultivationField.gameObject.SetActive(false);
+        }
 
         //lose health when outside the house
         //HealthDecreasingOutside();
@@ -735,7 +745,11 @@ public class HumanBeingScript : MonoBehaviour
         List<RaycastHit> EnemiesCollision = LookAroundForEnemies();
         HarvestBar.gameObject.SetActive(false);
         //Counterattack
-        if (Time.time - OffsetTimer < TargetHouse.SafetyTimer && EnemiesCollision.Count > 0)
+        if (!TargetHouse.IsPlayer && Time.time - OffsetTimer >= GameManagerScript.Instance.DayTime - (TimeToGoBack + TargetHouse.SafetyTimer) && EnemiesCollision.Count > 0)
+        {
+            AttackEnemy(EnemiesCollision[0].collider.transform);
+        }
+        else if (TargetHouse.IsPlayer && Time.time - OffsetTimer >= GameManagerScript.Instance.DayTime - (TimeToGoBack + SafetyTime) && EnemiesCollision.Count > 0)
         {
             AttackEnemy(EnemiesCollision[0].collider.transform);
         }

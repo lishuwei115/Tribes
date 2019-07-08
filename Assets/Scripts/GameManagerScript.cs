@@ -24,10 +24,13 @@ public class GameManagerScript : MonoBehaviour {
 
 	public GameStateType GameStatus = GameStateType.Intro;
 
-    [Range(0,100)]
+    [Range(0,300)]
 	public int DayTime = 30;
 
-	[Range(1,500)]
+    [Range(0, 300)]
+    public int DayLightTime = 60;
+
+    [Range(1,500)]
 	public int Humans = 10;
 
 	[Range(1, 500)]
@@ -271,7 +274,11 @@ public class GameManagerScript : MonoBehaviour {
 		{
             currentDayTime = i;
             UIManagerScript.Instance.TimerUpdate(i);
-			yield return new WaitForSecondsRealtime(1);
+            if (i >= DayLightTime)
+            {
+                GameStatus = GameStateType.NightTime;
+            }
+            yield return new WaitForSecondsRealtime(1);
 			i--;
 		}
         //the time of today is ended, start a new day
@@ -287,7 +294,7 @@ public class GameManagerScript : MonoBehaviour {
 	{
 		HumansAtHome++;
         //All humans are home, start a new day
-		if(HumansAtHome == HumansList.Where(r=> r.gameObject.activeInHierarchy).ToList().Count)
+		if(HumansAtHome == HumansList.Where(r=> r.gameObject.activeInHierarchy).ToList().Count && currentDayTime>= DayTime)
 		{
             foreach (HouseScript house in Houses)
             {
@@ -304,7 +311,8 @@ public enum GameStateType
 {
 	Intro,
     DayStarted,
-    EndOfDay
+    EndOfDay,
+    NightTime
 }
 
 

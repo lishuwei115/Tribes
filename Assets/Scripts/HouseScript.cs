@@ -11,10 +11,20 @@ public class HouseScript : MonoBehaviour
     public float FoodStore;
     public int SafetyTimer = 13;
     [Range(0, 1000)]
+    public int SafetyTimerMin = 60;
+    [Range(0, 1000)]
+    public int SafetyTimerMax = 100;
+    [Range(0, 1000)]
     public float TimeAttackMin = 60;
     [Range(0, 1000)]
     public float TimeAttackMax = 180;
-
+    [Range(0, 1000)]
+    public float CultivateRadiusMax = 40;
+    public Transform CultivateRadiusMaxCircle;
+    [Range(0, 1000)]
+    public float CultivateRadiusMin = 7;
+    public Transform CultivateCircle;
+    public Transform CultivateRadiusMinCircle;
     public List<HumanBeingScript> Humans = new List<HumanBeingScript>();
     public List<HumanBeingScript> HumansAlive = new List<HumanBeingScript>();
     [HideInInspector]
@@ -32,6 +42,8 @@ public class HouseScript : MonoBehaviour
         UIManagerScript.Instance.UpdateFood();
 
         TimeAttack = Time.time + UnityEngine.Random.Range(TimeAttackMin, TimeAttackMax);
+        SetCultivateCircle(false);
+        SafetyTimer = UnityEngine.Random.Range(SafetyTimerMin, SafetyTimerMax);
 
     }
 
@@ -112,7 +124,8 @@ public class HouseScript : MonoBehaviour
         foreach (HumanBeingScript human in Humans)
         {
             float distance = Vector3.Distance(human.transform.position, transform.position);
-            if (distance > 2 && distance<40 && human.gameObject.activeInHierarchy && (human.CurrentState != StateType.ComingBackHome && human.CurrentState != StateType.Home))
+            SetCultivateCircle(true);
+            if (distance > CultivateRadiusMin && distance < CultivateRadiusMax && human.gameObject.activeInHierarchy && (human.CurrentState != StateType.ComingBackHome && human.CurrentState != StateType.Home))
             {
                 human.Cultivate();
                 /*human.CurrentState = StateType.FollowInstruction;
@@ -122,6 +135,15 @@ public class HouseScript : MonoBehaviour
                 human.GoToPosition(transform);*/
             }
         }
+    }
+
+    private void SetCultivateCircle(bool a)
+    {
+        CultivateCircle.gameObject.SetActive(false);
+
+        CultivateCircle.gameObject.SetActive(a);
+        CultivateRadiusMaxCircle.localScale = new Vector3(CultivateRadiusMax/3.5f, CultivateRadiusMax / 3.5f, CultivateRadiusMax / 3.5f);
+        CultivateRadiusMinCircle.localScale = new Vector3(CultivateRadiusMin / 3.5f, CultivateRadiusMin / 3.5f, CultivateRadiusMin / 3.5f);
     }
 
     private void GovernmentManaging()

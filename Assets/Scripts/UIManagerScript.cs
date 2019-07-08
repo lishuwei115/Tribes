@@ -6,7 +6,8 @@ using TMPro;
 public class UIManagerScript : MonoBehaviour {
 
 	public static UIManagerScript Instance;
-    
+
+    public Animator DayNightWheel;
 	public TextMeshProUGUI Timer;
 	public TextMeshProUGUI DayNum;
 	public TextMeshProUGUI NumberOfEntity;
@@ -34,18 +35,18 @@ public class UIManagerScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        DayNightWheel.speed = 0;
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 
     }
 
     public void TimerUpdate(int timer)
 	{
 		Timer.text = "" + timer;
-
     }
 
     public void InfoDailyUpdate(string bld, string dld)
@@ -81,7 +82,9 @@ public class UIManagerScript : MonoBehaviour {
 	{
 		DayNumIterator++;
 		DayNum.text = "Day: " + DayNumIterator;
-	}
+        DayNightWheel.speed = 1f / GameManagerScript.Instance.DayTime;
+        DayNightWheel.SetTrigger("ResetDay");
+    }
     public void WinLoseState(int state)
     {
         WinLoseManager.Instance.WinLoseState(state);
