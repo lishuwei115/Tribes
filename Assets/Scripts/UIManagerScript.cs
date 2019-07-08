@@ -80,7 +80,7 @@ public class UIManagerScript : MonoBehaviour {
     public void AddDay()
 	{
 		DayNumIterator++;
-		DayNum.text = "Day Num:" + DayNumIterator;
+		DayNum.text = "Day: " + DayNumIterator;
 	}
     public void WinLoseState(int state)
     {

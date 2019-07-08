@@ -11,6 +11,18 @@ TextureImporter:
   - first:
       213: 1228205545575829881
     second: Atlas-Icons-PROTOTYPE-20190705_Fight
+  - first:
+      213: 2337590859512903998
+    second: Atlas-Icons-PROTOTYPE-20190705_ClockSun
+  - first:
+      213: 3648909964975812683
+    second: Atlas-Icons-PROTOTYPE-20190705_ClockMoon
+  - first:
+      213: -7776010168844182728
+    second: Atlas-Icons-PROTOTYPE-20190705_TimeWheel
+  - first:
+      213: 454327161519360177
+    second: Atlas-Icons-PROTOTYPE-20190705_FoodGround
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -130,11 +142,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 904
-        width: 103
-        height: 120
+        y: 909
+        width: 100
+        height: 114
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,7 +167,7 @@ TextureImporter:
         width: 91
         height: 123
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,7 +188,7 @@ TextureImporter:
         width: 125
         height: 125
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,6 +196,90 @@ TextureImporter:
       bones: []
       spriteID: e9235f8d9dec84d469fa721725955295
       internalID: 1228205545575829881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas-Icons-PROTOTYPE-20190705_ClockSun
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 645
+        width: 292
+        height: 253
+      alignment: 9
+      pivot: {x: 0.5, y: 0.58683515}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3644a223fa1f88347a599d379bd008ce
+      internalID: 2337590859512903998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas-Icons-PROTOTYPE-20190705_ClockMoon
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 681
+        width: 180
+        height: 208
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be048633ff8ae7a43aaa32f5006b0e03
+      internalID: 3648909964975812683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas-Icons-PROTOTYPE-20190705_TimeWheel
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 250
+        width: 389
+        height: 389
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caf744eb3fe656141a931c3c6dcf4e44
+      internalID: -7776010168844182728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas-Icons-PROTOTYPE-20190705_FoodGround
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 901
+        width: 94
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f60125758f7a8df41941417ac6712e5b
+      internalID: 454327161519360177
       vertices: []
       indices: 
       edges: []
