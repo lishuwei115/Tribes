@@ -24,6 +24,7 @@ public class HumanBeingScript : MonoBehaviour
     public float HPBonus = 0;
     public float PhisicalAttack;
     public float HarvestAttack;
+    public float CultivationProgress = 0;
     public float Attack;
     public float Speed;
     public float TimeToGoBack;
@@ -33,6 +34,10 @@ public class HumanBeingScript : MonoBehaviour
     public float FoodLife = 0;
 
     [Header("Twickable parameters")]
+    [Range(0, 1000)]
+    public float CultivationTarget = 300;
+    public List<float> CultivationPercentage = new List<float> { 70, 90, 100 };
+    public float RandomFoodGained;
     [Range(0, 1000)]
     public float HpMax;
     [Range(0, 1000)]
@@ -122,6 +127,7 @@ public class HumanBeingScript : MonoBehaviour
     public Material BaseM;
     public HealthBarSprite HPBar;
     public HarvestingBarSprite HarvestBar;
+    public Transform CultivationField;
     //Not visible in Inspector
     public HouseScript TargetHouse;
     public Vector3 TargetDest;
@@ -159,7 +165,7 @@ public class HumanBeingScript : MonoBehaviour
         MR = GetComponent<MeshRenderer>();
     }
 
-    
+
 
 
     // Use this for initialization
@@ -198,7 +204,7 @@ public class HumanBeingScript : MonoBehaviour
         //get the time required to go home
         TimeToGoBack = (Vector3.Distance(transform.position, TargetHouse.transform.position)) / (Speed) / 10;
         //going back home if the safety time is finished
-        if (Time.time - OffsetTimer >= GameManagerScript.Instance.DayTime - (TimeToGoBack +  SafetyTime) && (CurrentState != StateType.Home /*&& CurrentAction != ActionState.Fight*/ && CurrentState != StateType.ComingBackHome))
+        if (Time.time - OffsetTimer >= GameManagerScript.Instance.DayTime - (TimeToGoBack + SafetyTime) && (CurrentState != StateType.Home /*&& CurrentAction != ActionState.Fight*/ && CurrentState != StateType.ComingBackHome))
         {
             FollowCo = null;
             CanIgetFood = false;
@@ -207,6 +213,7 @@ public class HumanBeingScript : MonoBehaviour
             //update HP Bar
             HPBar.gameObject.SetActive(false);
             HarvestBar.gameObject.SetActive(false);
+            CultivationField.gameObject.SetActive(false);
         }
 
 
@@ -257,7 +264,7 @@ public class HumanBeingScript : MonoBehaviour
         }
     }
 
-    
+
 
     private void HealthDecreasingOutside()
     {
@@ -287,6 +294,7 @@ public class HumanBeingScript : MonoBehaviour
     {
         if (gameObject.activeInHierarchy)
         {
+            StopAllCoroutines();
             StartCoroutine(CultivateCo());
         }
 
@@ -321,6 +329,7 @@ public class HumanBeingScript : MonoBehaviour
 
             //to do implement a proper coroutine managing
             IsStarted = true;
+            CultivationField.gameObject.SetActive(false);
             MoveCo = Move(nextPos);
             StopAllCoroutines();
             StartCoroutine(MoveCo);
@@ -356,7 +365,7 @@ public class HumanBeingScript : MonoBehaviour
 
     private List<RaycastHit> LookAround(string layer)
     {
-        LayerMask layerMask = 1 << LayerMask.NameToLayer(layer);
+        LayerMask layerMask = LayerMask.GetMask(layer);
         List<RaycastHit> ElementHitted = new List<RaycastHit>();
         /*quaternion initialRot = transform.rotation;
         for (int i = 0; i < 360; i += 20)
@@ -373,7 +382,7 @@ public class HumanBeingScript : MonoBehaviour
         }
         transform.rotation = initialRot;*/
 
-        ElementHitted = Physics.SphereCastAll( transform.position, Radius, transform.forward, Radius, layerMask).ToList<RaycastHit>() ;
+        ElementHitted = Physics.SphereCastAll(transform.position, Radius, transform.forward, Radius, layerMask).ToList<RaycastHit>();
         return ElementHitted;
     }
 
@@ -735,7 +744,7 @@ public class HumanBeingScript : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         bool ResourceAvaiable = true;
-        
+
         if (FoodLife <= 0)
         {
             FoodLife = food.Hardness;
@@ -790,23 +799,18 @@ public class HumanBeingScript : MonoBehaviour
     private IEnumerator CultivateCo()
     {
         yield return new WaitForEndOfFrame();
-        //bool ResourceAvaiable = true;
-        float CultivationProgress = 0;
-
-        /*if (FoodLife <= 0)
-        {
-            FoodLife = food.Hardness;
-        }*/
-
-       /* while (ResourceAvaiable)
+        CurrentState = StateType.Cultivating;
+        CultivationField.gameObject.SetActive(true);
+        CultivationProgress = 0;
+        while (CurrentState == StateType.Cultivating)
         {
             yield return new WaitForEndOfFrame();
             //move towars target
-            while (FoodLife > 0)
+            while (CultivationProgress < CultivationTarget * Specialization*2)
             {
                 HarvestBar.gameObject.SetActive(true);
-                HarvestBar.UpdateHarvest(FoodLife, food.Hardness, HouseType);
-                FoodLife -= HarvestAttack;
+                HarvestBar.UpdateHarvest(CultivationProgress, CultivationTarget * Specialization*2, HouseType);
+                CultivationProgress += HarvestAttack;
                 yield return new WaitForSeconds(AttackFrequency);
             }
             if (Specialization > 0.1f)
@@ -819,30 +823,20 @@ public class HumanBeingScript : MonoBehaviour
                 Specialization = 0.1f;
             }
             CheckBonusHealth();
-
-            //Attack
-            if (FoodLife <= 0 && food.Food > 0)
+            CultivationProgress = 0;
+            RandomFoodGained = UnityEngine.Random.Range(0f, CultivationPercentage[CultivationPercentage.Count-1]+1);
+            for (int i = 0; i < CultivationPercentage.Count; i++)
             {
-                FoodLife = food.Hardness;
-                food.Food -= 1;
-                Food += 1;
-                ResourceAvaiable = food.Food > 0;
-                if (!ResourceAvaiable)
+                if (RandomFoodGained < CultivationPercentage[i])
                 {
-                    DidIFindFood = true;
-                    food.gameObject.SetActive(false);
-                    CurrentState = StateType.LookingForFood;
-                    GoToRandomPos();
+                    Food += i;
+                    break;
                 }
-            }
-            ResourceAvaiable = food.Food > 0;
 
+            }
             yield return new WaitForEndOfFrame();
-        }*/
-        HarvestBar.gameObject.SetActive(false);
-        CurrentState = StateType.LookingForFood;
-        GoToRandomPos();
-        FollowCo = null;
+        }
+        
     }
     private IEnumerator FollowEnemy(Transform humanT)
     {
@@ -953,7 +947,8 @@ public enum StateType
     LookingForFood = 1,
     FoodFound = 2,
     ComingBackHome = 3,
-    FollowInstruction = 4
+    FollowInstruction = 4,
+    Cultivating = 5
 }
 
 

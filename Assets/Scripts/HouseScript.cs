@@ -112,13 +112,14 @@ public class HouseScript : MonoBehaviour
         foreach (HumanBeingScript human in Humans)
         {
             float distance = Vector3.Distance(human.transform.position, transform.position);
-            if (distance > 2 && distance<7 && human.gameObject.activeInHierarchy && (human.CurrentState != StateType.ComingBackHome && human.CurrentState != StateType.Home))
+            if (distance > 2 && distance<40 && human.gameObject.activeInHierarchy && (human.CurrentState != StateType.ComingBackHome && human.CurrentState != StateType.Home))
             {
-                human.CurrentState = StateType.FollowInstruction;
+                human.Cultivate();
+                /*human.CurrentState = StateType.FollowInstruction;
                 human.TargetFoodDest = null;
                 human.TargetHuman = null;
                 human.TargetDest = transform;
-                human.GoToPosition(transform);
+                human.GoToPosition(transform);*/
             }
         }
     }

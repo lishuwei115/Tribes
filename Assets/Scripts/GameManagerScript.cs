@@ -16,7 +16,7 @@ public class GameManagerScript : MonoBehaviour {
 
 
     public Mesh HumanMesh;
-	public Mesh FoodMesh;
+	//public Mesh FoodMesh;
 	public Material FoodMaterial;
     public BlockInput[] UIButtons;
     public bool UIButtonOver;
@@ -44,13 +44,13 @@ public class GameManagerScript : MonoBehaviour {
 
 	public Transform HumansContainer;
 
-    internal void MoveTribeTo(Vector3 transform, HousesTypes tribe)
+    internal void MoveTribeTo(Vector3 pos, HousesTypes tribe)
     {
         foreach (HouseScript house in Houses)
         {
             if(house.HouseType == tribe)
             {
-                house.MoveTribeTo(transform);
+                house.MoveTribeTo(pos);
             }
         }
     }
@@ -191,7 +191,7 @@ public class GameManagerScript : MonoBehaviour {
 		for (int i = 0; i < FoodPerDay; i++)
         {
 			GameObject food = Instantiate(Food, FoodContainer);
-			food.GetComponent<MeshFilter>().sharedMesh = FoodMesh;
+			//food.GetComponent<MeshFilter>().sharedMesh = FoodMesh;
 			food.GetComponent<MeshRenderer>().sharedMaterial = FoodMaterial;
 			food.SetActive(false);
 			FoodsList.Add(food.GetComponent<FoodScript>());
