@@ -1981,6 +1981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69af0e20eae774a2ca1a26def755e24f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DayNightWheel: {fileID: 3810334823415465469}
   Timer: {fileID: 114277960735203918}
   DayNum: {fileID: 114036473255506668}
   NumberOfEntity: {fileID: 114476428287134554}

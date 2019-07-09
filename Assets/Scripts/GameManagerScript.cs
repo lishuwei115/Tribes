@@ -13,15 +13,12 @@ public class GameManagerScript : MonoBehaviour {
     public HousesTypes PlayerHouse = HousesTypes.East;
     public int enemyDefeated = 0;
 
-
-
     public Mesh HumanMesh;
 	//public Mesh FoodMesh;
 	public Material FoodMaterial;
     public BlockInput[] UIButtons;
     public bool UIButtonOver;
     public static GameManagerScript Instance;
-
 	public GameStateType GameStatus = GameStateType.Intro;
 
     [Range(0,300)]
@@ -72,9 +69,9 @@ public class GameManagerScript : MonoBehaviour {
 
 	private IEnumerator DayTimeCoroutine;
 
-    [Range(0,100)]
+    [Range(0,1000)]
 	public float GroundSizeWidth = 40;
-	[Range(0, 100)]
+	[Range(0, 1000)]
     public float GroundSizeHeight = 40;
 
 	[HideInInspector]
@@ -83,9 +80,10 @@ public class GameManagerScript : MonoBehaviour {
     private int DiedLastDay;
     [HideInInspector]
     public int currentDayTime = 0;
+    public bool AddingPlayerHouse = false;
 
 
-	private void Awake()
+    private void Awake()
 	{
 		Instance = this;
 	}
@@ -202,7 +200,23 @@ public class GameManagerScript : MonoBehaviour {
         }
 
 	}
-    
+
+
+    public void AddHouse(HousesTypes house)
+    {
+        if(house == PlayerHouse)
+        {
+            foreach (HouseScript h in Houses)
+            {
+                if(h.HouseType == PlayerHouse && h.HumansAlive.Count>0)
+                {
+                    h.OpenBuildingCircle();
+                    AddingPlayerHouse = true;
+                }
+            }
+        }
+    }
+
     public void SetFood()
 	{
 		for (int i = 0; i < FoodsList.Count; i++)

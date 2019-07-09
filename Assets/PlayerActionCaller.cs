@@ -19,4 +19,9 @@ public class PlayerActionCaller : MonoBehaviour
     {
         GameManagerScript.Instance.Cultivate();
     }
+
+    public void AddHouse()
+    {
+        GameManagerScript.Instance.AddHouse(GameManagerScript.Instance.PlayerHouse);
+    }
 }

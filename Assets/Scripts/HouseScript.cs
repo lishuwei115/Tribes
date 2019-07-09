@@ -179,6 +179,11 @@ public class HouseScript : MonoBehaviour
         }
     }
 
+    internal void OpenBuildingCircle()
+    {
+        throw new NotImplementedException();
+    }
+
 
     /// <summary>
     /// Order and cure by heath the people only up to the percentage decided beforehand
