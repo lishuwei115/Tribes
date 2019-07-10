@@ -7,12 +7,14 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour {
 
+    public Transform HousePrefab;
+    public Transform HousesHolder;
     public GameState StateOfGame = GameState.Playing;
 	public delegate void StartDay();
 	public event StartDay DayStarted;
     public HousesTypes PlayerHouse = HousesTypes.East;
     public int enemyDefeated = 0;
-
+    public float FoodPlayer = 0;
     public Mesh HumanMesh;
 	//public Mesh FoodMesh;
 	public Material FoodMaterial;
@@ -64,7 +66,9 @@ public class GameManagerScript : MonoBehaviour {
 	[HideInInspector]
 	public List<HumanBeingScript> HumansList = new List<HumanBeingScript>();
 
-	[HideInInspector]
+    
+
+    [HideInInspector]
 	public List<FoodScript> FoodsList = new List<FoodScript>();
 
 	private IEnumerator DayTimeCoroutine;
@@ -101,13 +105,43 @@ public class GameManagerScript : MonoBehaviour {
         UIManagerScript.Instance.WinLoseState(1);
         StateOfGame = GameState.Won;
     }
+    internal void SpawnNewHouse(HousesTypes h, Vector3 position)
+    {
+        HouseScript house = Instantiate(HousePrefab, position,new Quaternion(0,0,0,0)  ,HousesHolder).GetComponent<HouseScript>();
+        house.HouseType = h;
+        house.IsPlayer = h == PlayerHouse ? true : false;
+        Houses.Add(house);
+        for (int i = 0; i < 2; i++)
+        {
+            GameObject human = Instantiate(Human, house.transform.position, Quaternion.identity, HumansContainer);
+            HumanBeingScript hbs = human.GetComponent<HumanBeingScript>();
+            human.GetComponent<MeshFilter>().sharedMesh = HumanMesh;
+            HumansList.Add(hbs);
 
+            hbs.HouseType = house.HouseType;
+            hbs.TargetHouse = house;
+            hbs.FinallyBackHome += Hbs_FinallyBackHome;
+            hbs.TargetHouse = house.GetComponent<HouseScript>();
+            hbs.WearSkin();
+            //hbs.gameObject.tag = "" + house.tag;
+            house.Humans.Add(hbs);
+        }
+        foreach (HouseScript ho in Houses)
+        {
+            if (ho.HouseType == PlayerHouse )
+            {
+                ho.CloseBuildingCircle();
+                AddingPlayerHouse = true;
+            }
+        }
+    }
     internal void EnemyDefeated()
     {
         if(StateOfGame != GameState.Lost && StateOfGame != GameState.Won)
         {
             enemyDefeated++;
-            if(enemyDefeated == Houses.Count - 2)
+            List<HouseScript> houses = Houses.Where(r => !r.IsPlayer && r.HumansAlive.Count > 0).ToList();
+            if(houses.Count == 0)
             {
                 Won();
 
@@ -133,8 +167,13 @@ public class GameManagerScript : MonoBehaviour {
     }
     internal void Lost()
     {
-        UIManagerScript.Instance.WinLoseState(2);
-        StateOfGame = GameState.Lost;
+        List<HouseScript> houses = Houses.Where(r => r.IsPlayer && r.HumansAlive.Count>0).ToList();
+        if(houses.Count == 0)
+        {
+            UIManagerScript.Instance.WinLoseState(2);
+            StateOfGame = GameState.Lost;
+        }
+        
     }
 
     // Update is called once per frame
@@ -149,7 +188,7 @@ public class GameManagerScript : MonoBehaviour {
 		                                    HumansList.Where(r =>r.gameObject.activeInHierarchy &&  r.HType == HumanType.Hate).ToList().Count.ToString());
 
 		UIManagerScript.Instance.NumberOfEntity.text = HumansList.Where(r => r.gameObject.activeInHierarchy).ToList().Count.ToString();
-        foreach (BlockInput item in UIButtons)
+        foreach (BlockInput item in UIButtons.Where(r=>r.isActiveAndEnabled))
         {
             if (item.UIButtonOver)
             {
@@ -274,6 +313,7 @@ public class GameManagerScript : MonoBehaviour {
         DayTimeCoroutine = DayTimerCo();
 		StartCoroutine(DayTimeCoroutine);
         UIManagerScript.Instance.UpdatePeople();
+        AudioManager.Instance.StartDay();
 
     }
 
@@ -318,6 +358,42 @@ public class GameManagerScript : MonoBehaviour {
 		}
 	}
 
+     
+    public bool UseFood(int food)
+    {
+        if(FoodPlayer> food)
+        {
+            while (food > 0)
+            {
+                foreach (HouseScript ho in Houses)
+                {
+                    if (ho.HouseType == PlayerHouse && ho.FoodStore>0)
+                    {
+                        ho.FoodStore--;
+                        food--;
+                    }
+                }
+            }
+            UpdatePlayerFood();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void UpdatePlayerFood()
+    {
+        FoodPlayer = 0;
+        foreach (HouseScript ho in Houses)
+        {
+            if (ho.HouseType == PlayerHouse)
+            {
+                FoodPlayer += ho.FoodStore;
+            }
+        }
+    }
 }
 
 

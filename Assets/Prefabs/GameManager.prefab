@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3393260075159848003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3393260075159848029}
+  - component: {fileID: 3393260075159848028}
+  - component: {fileID: 3393260075159848030}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3393260075159848029
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3393260075159848003}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3393260075159848028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3393260075159848003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a40ed3aed852640ce97beeb8c916a51a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HousePrefab: {fileID: 608249987739570934, guid: 78180909e2e32da4081f9136a9522f78,
+    type: 3}
+  HousesHolder: {fileID: 0}
+  StateOfGame: 0
+  PlayerHouse: 0
+  enemyDefeated: 0
+  HumanMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  FoodMaterial: {fileID: 2100000, guid: e601015e84489446e930439e8157fd1b, type: 2}
+  UIButtons: []
+  UIButtonOver: 0
+  GameStatus: 0
+  DayTime: 120
+  DayLightTime: 60
+  Humans: 3
+  FoodPerDay: 20
+  MaxNumChildren: 2
+  Houses:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Human: {fileID: 1601211067918478, guid: a31ada27f20cc4e01ac704e5ae7b1e41, type: 3}
+  Food: {fileID: 1117377009214392, guid: a91af74e5d3194f0ebb4824e1beaad74, type: 3}
+  HumansContainer: {fileID: 0}
+  FoodContainer: {fileID: 0}
+  HumansAtHome: 0
+  HumansList: []
+  FoodsList: []
+  GroundSizeWidth: 270
+  GroundSizeHeight: 270
+  currentDayTime: 0
+  AddingPlayerHouse: 0
+--- !u!114 &3393260075159848030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3393260075159848003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f589e25f7bbefd942b83ee503cf7b5d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HousesSkin:
+  - House: 0
+    SkinPrefab: {fileID: 4085973818741542, guid: 51a4f340725edec439eb76464b487b13,
+      type: 3}
+    TribeColor: {r: 0, g: 0.735849, b: 0.19628903, a: 1}
+    HousePrefab: {fileID: 7697778713606853072, guid: 3d737876fe5008148b00b7c31aa810f0,
+      type: 3}
+  - House: 2
+    SkinPrefab: {fileID: 8955598621932473859, guid: a0c217097bfed2943aa0fb9e9baca54c,
+      type: 3}
+    TribeColor: {r: 0.7372549, g: 0, b: 0.43532926, a: 1}
+    HousePrefab: {fileID: 7697778713606853072, guid: 73d87cd5db7ebc3418ba208ce834ba2c,
+      type: 3}
+  - House: 3
+    SkinPrefab: {fileID: 7423829036801790840, guid: 2e1364a3bdaede843a842174eea5b409,
+      type: 3}
+    TribeColor: {r: 0, g: 0.45269147, b: 0.7372549, a: 1}
+    HousePrefab: {fileID: 7697778713606853072, guid: 3b58fe29c4773264888267d473256ea8,
+      type: 3}
+  - House: 4
+    SkinPrefab: {fileID: 3743889277897589981, guid: 77fefa06e81e5e0499ef29e0121af5a0,
+      type: 3}
+    TribeColor: {r: 0.8301887, g: 0.7558862, b: 0, a: 1}
+    HousePrefab: {fileID: 7697778713606853072, guid: 8fd15577b62051d44b16a02dfbc02a28,
+      type: 3}

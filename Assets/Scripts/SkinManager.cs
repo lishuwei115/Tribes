@@ -34,4 +34,5 @@ public class Skin
     public HousesTypes House = HousesTypes.East;
     public Transform SkinPrefab;
     public Color TribeColor = Color.red;
+    public Transform HousePrefab;
 }

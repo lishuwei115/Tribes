@@ -24,4 +24,5 @@ public class PlayerActionCaller : MonoBehaviour
     {
         GameManagerScript.Instance.AddHouse(GameManagerScript.Instance.PlayerHouse);
     }
+
 }

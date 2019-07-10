@@ -63,12 +63,14 @@ public class UIManagerScript : MonoBehaviour {
     }
     public void UpdateFood()
     {
-        HouseFoodUpperLeft.text = "" + GameManagerScript.Instance.Houses[0].FoodStore;
+        GameManagerScript.Instance.UpdatePlayerFood();
+
+        HouseFoodUpperLeft.text = "" + GameManagerScript.Instance.FoodPlayer;
+        //HouseFoodUpperLeft.text = "" + GameManagerScript.Instance.Houses[0].FoodStore;
         HouseFoodUpperRight.text = "" + GameManagerScript.Instance.Houses[1].FoodStore;
         HouseFoodDownwardLeft.text = "" + GameManagerScript.Instance.Houses[2].FoodStore;
         HouseFoodDownwardRight.text = "" + GameManagerScript.Instance.Houses[3].FoodStore;
         UpdatePeople();
-
 
 }
     public void UpdatePeople()

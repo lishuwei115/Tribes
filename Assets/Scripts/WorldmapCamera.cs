@@ -44,10 +44,12 @@ public class WorldmapCamera : MonoBehaviour
     //public Image logo;
     public delegate void CameraOnStartPos();
     public event CameraOnStartPos CameraOnStartPosEvent;
+    public BuildHouseManager BuildManager;
 
     private void Awake()
     {
         Instance = this;
+        BuildManager = UnityEngine.Object.FindObjectOfType < BuildHouseManager>();
     }
 
     void Start()
@@ -115,7 +117,7 @@ public class WorldmapCamera : MonoBehaviour
                 lastPanPosition = Input.mousePosition;
                 OffsetTime = Time.time;
             }
-            else if (!isMoving && Input.GetMouseButtonUp(0) && Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (Input.mousePosition.x + Input.mousePosition.y)) < .1f*(cam.orthographicSize/ZoomBounds[1]))
+            else if (!BuildManager.isActiveAndEnabled && !isMoving && Input.GetMouseButtonUp(0) && Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (Input.mousePosition.x + Input.mousePosition.y)) < .1f*(cam.orthographicSize/ZoomBounds[1]))
             {
                 TribeToPoint();
             }
@@ -254,7 +256,7 @@ public class WorldmapCamera : MonoBehaviour
                         PanCameraWithTween(touch.position);
                     }
                     else*/
-                    if (Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (Input.mousePosition.x + Input.mousePosition.y)) < .1f*(cam.orthographicSize/ZoomBounds[1]))
+                    if (!BuildManager.isActiveAndEnabled && Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (Input.mousePosition.x + Input.mousePosition.y)) < .1f*(cam.orthographicSize/ZoomBounds[1]))
                     {
                         touchPhase = touchPhase.EndePad;
                         TribeToPoint();

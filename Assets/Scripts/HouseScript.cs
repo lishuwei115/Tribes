@@ -21,14 +21,20 @@ public class HouseScript : MonoBehaviour
     [Range(0, 1000)]
     public float CultivateRadiusMax = 40;
     public Transform CultivateRadiusMaxCircle;
+    
     [Range(0, 1000)]
     public float CultivateRadiusMin = 7;
     public Transform CultivateCircle;
     public Transform CultivateRadiusMinCircle;
+    [Range(0, 1000)]
+    public float BuildingRadiusMin = 10;
+    [Range(0, 1000)]
+    public float BuildingRadiusMax = 80;
+    public BuildingCircleScript BuildingCircle;
     public List<HumanBeingScript> Humans = new List<HumanBeingScript>();
     public List<HumanBeingScript> HumansAlive = new List<HumanBeingScript>();
-    [HideInInspector]
     public bool IsPlayer = false;
+    public Transform HouseSkin ;
 
     [Header("Government parameters")]
     [Range(0, 100)]
@@ -37,10 +43,17 @@ public class HouseScript : MonoBehaviour
     public GovernmentBehaviour Government;
 
     float TimeAttack;
+    private void Awake()
+    {
+        HouseSkin = transform;
+        BuildingCircle = transform.GetComponentInChildren<BuildingCircleScript>();
+        BuildingCircle.Initialize(BuildingRadiusMin,BuildingRadiusMax);
+    }
     private void Start()
     {
+        CloseBuildingCircle();
         UIManagerScript.Instance.UpdateFood();
-
+        HouseSkin = Instantiate(SkinManager.Instance.GetSkinInfo(HouseType).HousePrefab,transform);
         TimeAttack = Time.time + UnityEngine.Random.Range(TimeAttackMin, TimeAttackMax);
         SetCultivateCircle(false);
         SafetyTimer = UnityEngine.Random.Range(SafetyTimerMin, SafetyTimerMax);
@@ -119,6 +132,8 @@ public class HouseScript : MonoBehaviour
 
     }
 
+    
+
     internal void Cultivate()
     {
         foreach (HumanBeingScript human in Humans)
@@ -181,9 +196,12 @@ public class HouseScript : MonoBehaviour
 
     internal void OpenBuildingCircle()
     {
-        throw new NotImplementedException();
+        BuildingCircle.OpenBuildingCircle();
     }
-
+    internal void CloseBuildingCircle()
+    {
+        BuildingCircle.CloseBuildingCircle();
+    }
 
     /// <summary>
     /// Order and cure by heath the people only up to the percentage decided beforehand

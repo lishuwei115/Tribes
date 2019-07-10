@@ -9,6 +9,7 @@ public class BuildHouseManager : MonoBehaviour
     public bool BuildableArea = false;
     public List<HouseScript> Houses;
     bool initialized = false;
+    public int FoodRequired = 30;
     private void Awake()
     {
         Instance = this;
@@ -29,6 +30,7 @@ public class BuildHouseManager : MonoBehaviour
     }
     public void Update()
     {
+        Houses = GameManagerScript.Instance.Houses;
         Houses = Houses.Where(r => r.IsPlayer).ToList();
 
         Vector3 mPos =  Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -44,8 +46,17 @@ public class BuildHouseManager : MonoBehaviour
 
             if (Vector3.Distance(mPos, house.transform.position) < 80 && Vector3.Distance(mPos, house.transform.position) > 20)
             {
-                BuildHouseManager.Instance.BuildableArea = true;
+                BuildableArea = true;
             }
+            if(Vector3.Distance(mPos, house.transform.position) < 20)
+            {
+                BuildableArea = false;
+                break;
+            }
+        }
+        if (Input.GetMouseButtonUp(0) && BuildableArea && GameManagerScript.Instance.UseFood(FoodRequired))
+        {
+            GameManagerScript.Instance.SpawnNewHouse(GameManagerScript.Instance.PlayerHouse,mPos);
         }
     }
 

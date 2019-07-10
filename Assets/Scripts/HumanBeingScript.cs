@@ -9,6 +9,8 @@ using System;
 
 public class HumanBeingScript : MonoBehaviour
 {
+    public HousesTypes HouseType = HousesTypes.Center;
+    public StateType CurrentState = StateType.Home;
     public float Radius = 2;
     public delegate void BackHome();
     public event BackHome FinallyBackHome;
@@ -117,8 +119,7 @@ public class HumanBeingScript : MonoBehaviour
 
 
     public HumanType HType = HumanType.None;
-    public HousesTypes HouseType = HousesTypes.Center;
-    public StateType CurrentState = StateType.Home;
+    
     public ActionState CurrentAction = ActionState.None;
 
     public Material CharityM;
