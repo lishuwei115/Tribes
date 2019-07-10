@@ -134,9 +134,10 @@ public class HouseScript : MonoBehaviour
 
     
 
-    internal void Cultivate()
+    internal void Cultivate(List<HumanBeingScript> humans)
     {
-        foreach (HumanBeingScript human in Humans)
+
+        foreach (HumanBeingScript human in humans)
         {
             float distance = Vector3.Distance(human.transform.position, transform.position);
             SetCultivateCircle(true);

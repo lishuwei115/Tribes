@@ -135,6 +135,16 @@ public class GameManagerScript : MonoBehaviour {
             }
         }
     }
+    public void CloseBuildMenu()
+    {
+        foreach (HouseScript ho in Houses)
+        {
+            if (ho.HouseType == PlayerHouse)
+            {
+                ho.CloseBuildingCircle();
+            }
+        }
+    }
     internal void EnemyDefeated()
     {
         if(StateOfGame != GameState.Lost && StateOfGame != GameState.Won)
@@ -156,11 +166,12 @@ public class GameManagerScript : MonoBehaviour {
     /// </summary>
     public void Cultivate()
     {
+        List<HumanBeingScript> playerHumans = HumansList.Where(r => r.HouseType == PlayerHouse && r.isActiveAndEnabled).ToList();
         foreach (HouseScript house in Houses)
         {
             if (house.HouseType == PlayerHouse)
             {
-                house.Cultivate();
+                house.Cultivate(playerHumans);
             }
         }
         

@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
+
 
 public class UIManagerScript : MonoBehaviour {
 
@@ -24,7 +26,7 @@ public class UIManagerScript : MonoBehaviour {
     public TextMeshProUGUI HousePeopleUpperRight;
     public TextMeshProUGUI HousePeopleDownwardLeft;
     public TextMeshProUGUI HousePeopleDownwardRight;
-
+    public Button AddHouse;
 	public int DayNumIterator = 0;
 
 	private void Awake()
@@ -64,7 +66,15 @@ public class UIManagerScript : MonoBehaviour {
     public void UpdateFood()
     {
         GameManagerScript.Instance.UpdatePlayerFood();
-
+        if (GameManagerScript.Instance.FoodPlayer <= BuildHouseManager.Instance.FoodRequired)
+        {
+            AddHouse.interactable = false;
+            GameManagerScript.Instance.CloseBuildMenu();
+        }
+        else
+        {
+            AddHouse.interactable = true;
+        }
         HouseFoodUpperLeft.text = "" + GameManagerScript.Instance.FoodPlayer;
         //HouseFoodUpperLeft.text = "" + GameManagerScript.Instance.Houses[0].FoodStore;
         HouseFoodUpperRight.text = "" + GameManagerScript.Instance.Houses[1].FoodStore;
