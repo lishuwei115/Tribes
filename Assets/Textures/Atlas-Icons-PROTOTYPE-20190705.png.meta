@@ -23,6 +23,21 @@ TextureImporter:
   - first:
       213: 454327161519360177
     second: Atlas-Icons-PROTOTYPE-20190705_FoodGround
+  - first:
+      213: 2599834210108193073
+    second: Atlas-Icons-PROTOTYPE-20190705_Farm
+  - first:
+      213: -4025475859014631107
+    second: Atlas-Icons-PROTOTYPE-20190705_Build
+  - first:
+      213: 77372457143808860
+    second: Atlas-Icons-PROTOTYPE-20190705_Offspring
+  - first:
+      213: 6444775409634238688
+    second: Atlas-Icons-PROTOTYPE-20190705_Reset
+  - first:
+      213: 4582492583932780542
+    second: Atlas-Icons-PROTOTYPE-20190705_0
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -227,8 +242,8 @@ TextureImporter:
         serializedVersion: 2
         x: 297
         y: 681
-        width: 180
-        height: 208
+        width: 168
+        height: 206
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -272,7 +287,7 @@ TextureImporter:
         width: 94
         height: 122
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -280,6 +295,111 @@ TextureImporter:
       bones: []
       spriteID: f60125758f7a8df41941417ac6712e5b
       internalID: 454327161519360177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas-Icons-PROTOTYPE-20190705_Farm
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 901
+        width: 125
+        height: 123
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32985f8105433e94c803d5d1c2465779
+      internalID: 2599834210108193073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas-Icons-PROTOTYPE-20190705_Build
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 905
+        width: 101
+        height: 119
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cba0bc793be79da48a8ea9d4324bf9a3
+      internalID: -4025475859014631107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas-Icons-PROTOTYPE-20190705_Offspring
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 931
+        width: 96
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 379d504c799ffec4a9ff1db086e09a55
+      internalID: 77372457143808860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas-Icons-PROTOTYPE-20190705_Reset
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 905
+        width: 139
+        height: 119
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19428ca28fefeae4080971784ed9162f
+      internalID: 6444775409634238688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas-Icons-PROTOTYPE-20190705_0
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 716
+        width: 166
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01fee2f7613fbdb4c9288b578d131245
+      internalID: 4582492583932780542
       vertices: []
       indices: 
       edges: []
