@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 8373874502690405019}
   - component: {fileID: 3420074723914256872}
   m_Layer: 0
-  m_Name: Asia_Mask
+  m_Name: Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 4129537978202548985}
   - component: {fileID: 969805968268454272}
   m_Layer: 0
-  m_Name: Asia_Left_UpArm
+  m_Name: Left_UpArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 2775954920522329331}
   - component: {fileID: 3118978773462623354}
   m_Layer: 0
-  m_Name: Asia_Left_Arm
+  m_Name: Left_Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 3612318983786130115}
   - component: {fileID: 7402516767314910294}
   m_Layer: 0
-  m_Name: Asia_Spear
+  m_Name: Spear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -419,7 +419,7 @@ GameObject:
   - component: {fileID: 1550566092975786541}
   - component: {fileID: 5544945296030197479}
   m_Layer: 0
-  m_Name: Asia_Left_Leg
+  m_Name: Left_Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -499,7 +499,7 @@ GameObject:
   - component: {fileID: 1997675210395145980}
   - component: {fileID: 1179606781416746142}
   m_Layer: 0
-  m_Name: Asia_Right_UpArm
+  m_Name: Right_UpArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -580,7 +580,7 @@ GameObject:
   - component: {fileID: 8130218732931341716}
   - component: {fileID: 8864720555998156001}
   m_Layer: 0
-  m_Name: Asia_Right_Leg
+  m_Name: Right_Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -660,7 +660,7 @@ GameObject:
   - component: {fileID: 5081117479873624739}
   - component: {fileID: 3539436495579528228}
   m_Layer: 0
-  m_Name: Asia_Left_UpLeg
+  m_Name: Left_UpLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -741,7 +741,7 @@ GameObject:
   - component: {fileID: 7648097046046556480}
   - component: {fileID: 1669216247210691160}
   m_Layer: 0
-  m_Name: Asian_Right_UpLeg
+  m_Name: Right_UpLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -821,7 +821,7 @@ GameObject:
   - component: {fileID: 3616104251870095663}
   - component: {fileID: 9181786534030963212}
   m_Layer: 0
-  m_Name: Asia_Right_Arm
+  m_Name: Right_Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4843727606421772}
   - component: {fileID: 212944876497745140}
   m_Layer: 0
-  m_Name: African_Spear
+  m_Name: Spear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 4616498587960260}
   - component: {fileID: 212503284443510972}
   m_Layer: 0
-  m_Name: African_Right_Leg
+  m_Name: Right_Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 4370061702898386}
   - component: {fileID: 212743333671498738}
   m_Layer: 0
-  m_Name: African_Right_Upper_Arm
+  m_Name: Right_UpArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 4917974876721200}
   - component: {fileID: 212204748310912384}
   m_Layer: 0
-  m_Name: African_Right_Arm
+  m_Name: Right_Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 4617268699805148}
   - component: {fileID: 212399153364434454}
   m_Layer: 0
-  m_Name: African_Left_Upper_Arm
+  m_Name: Left_UpArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 4463078689482098}
   - component: {fileID: 212119724439282776}
   m_Layer: 0
-  m_Name: African_Head
+  m_Name: Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 4557687689262614}
   - component: {fileID: 212723196702090010}
   m_Layer: 0
-  m_Name: African_Right_UpLeg
+  m_Name: Right_UpLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -663,7 +663,7 @@ GameObject:
   - component: {fileID: 4180358414166930}
   - component: {fileID: 212791596976665438}
   m_Layer: 0
-  m_Name: African_Left_Leg
+  m_Name: Left_Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -743,7 +743,7 @@ GameObject:
   - component: {fileID: 4767133187920320}
   - component: {fileID: 212882352319464924}
   m_Layer: 0
-  m_Name: African_Mask
+  m_Name: Accessories
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -822,7 +822,7 @@ GameObject:
   - component: {fileID: 4920557062725098}
   - component: {fileID: 212965965213153938}
   m_Layer: 0
-  m_Name: African_Left_UpLeg
+  m_Name: Left_UpLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -903,7 +903,7 @@ GameObject:
   - component: {fileID: 4209159618347698}
   - component: {fileID: 212855941657014820}
   m_Layer: 0
-  m_Name: African_Left_Arm
+  m_Name: Left_Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -983,7 +983,7 @@ GameObject:
   - component: {fileID: 4737181606230216}
   - component: {fileID: 212642077553083562}
   m_Layer: 0
-  m_Name: African_Feather
+  m_Name: Hat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

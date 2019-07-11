@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: American_walk
+  m_Name: walk
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -56,7 +56,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/America_Left_UpArm
+    path: Root/Left_UpArm
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -99,7 +99,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/America_Right_UpArm
+    path: Root/Right_UpArm
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -142,7 +142,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/America_Left_UpLeg
+    path: Root/Left_UpLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -185,7 +185,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/America_Right_UpLeg
+    path: Root/Right_UpLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -228,7 +228,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/America_Left_UpLeg/America_Left_Leg
+    path: Root/Left_UpLeg/Left_Leg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -271,7 +271,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/America_Right_UpLeg/America_Right_Leg
+    path: Root/Right_UpLeg/Right_Leg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -332,7 +332,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/America_Right_UpArm/America_Right_Arm
+    path: Root/Right_UpArm/Right_Arm
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -384,7 +384,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/America_Left_UpArm/America_Left_Arm
+    path: Root/Left_UpArm/Left_Arm
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -427,7 +427,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/America_Mask/America_Beak
+    path: Root/Mask/Beak
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -479,7 +479,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/America_Mask
+    path: Root/Mask
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -513,7 +513,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/America_Spear
+    path: Root/Spear
   m_PositionCurves:
   - curve:
       serializedVersion: 2
@@ -557,7 +557,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/America_Mask
+    path: Root/Mask
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -591,7 +591,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/America_Left_UpArm
+    path: Root/Left_UpArm
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -625,7 +625,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/America_Right_UpArm
+    path: Root/Right_UpArm
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -659,7 +659,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/America_Left_UpLeg
+    path: Root/Left_UpLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -693,7 +693,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/America_Right_UpLeg
+    path: Root/Right_UpLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -727,7 +727,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/America_Mask/America_Beak
+    path: Root/Mask/Beak
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -761,7 +761,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/America_Spear
+    path: Root/Spear
   m_ScaleCurves:
   - curve:
       serializedVersion: 2
@@ -805,7 +805,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/America_Mask/America_Feather
+    path: Root/Mask/Feather
   m_FloatCurves: []
   m_PPtrCurves: []
   m_SampleRate: 60
@@ -1013,7 +1013,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Root/America_Mask
+    path: Root/Mask
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1059,7 +1059,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Root/America_Mask
+    path: Root/Mask
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1105,7 +1105,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Root/America_Mask
+    path: Root/Mask
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1142,7 +1142,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Root/America_Left_UpArm
+    path: Root/Left_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1179,7 +1179,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Root/America_Left_UpArm
+    path: Root/Left_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1216,7 +1216,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Root/America_Left_UpArm
+    path: Root/Left_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1262,7 +1262,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/America_Left_UpArm
+    path: Root/Left_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1308,7 +1308,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/America_Left_UpArm
+    path: Root/Left_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1354,7 +1354,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/America_Left_UpArm
+    path: Root/Left_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1391,7 +1391,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Root/America_Right_UpArm
+    path: Root/Right_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1428,7 +1428,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Root/America_Right_UpArm
+    path: Root/Right_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1465,7 +1465,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Root/America_Right_UpArm
+    path: Root/Right_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1511,7 +1511,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/America_Right_UpArm
+    path: Root/Right_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1557,7 +1557,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/America_Right_UpArm
+    path: Root/Right_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1603,7 +1603,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/America_Right_UpArm
+    path: Root/Right_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1640,7 +1640,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Root/America_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1677,7 +1677,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Root/America_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1714,7 +1714,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Root/America_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1760,7 +1760,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/America_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1806,7 +1806,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/America_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1852,7 +1852,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/America_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1889,7 +1889,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Root/America_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1926,7 +1926,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Root/America_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1963,7 +1963,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Root/America_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2009,7 +2009,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/America_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2055,7 +2055,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/America_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2101,7 +2101,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/America_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2147,7 +2147,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/America_Left_UpLeg/America_Left_Leg
+    path: Root/Left_UpLeg/Left_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2193,7 +2193,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/America_Left_UpLeg/America_Left_Leg
+    path: Root/Left_UpLeg/Left_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2239,7 +2239,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/America_Left_UpLeg/America_Left_Leg
+    path: Root/Left_UpLeg/Left_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2285,7 +2285,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/America_Right_UpLeg/America_Right_Leg
+    path: Root/Right_UpLeg/Right_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2331,7 +2331,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/America_Right_UpLeg/America_Right_Leg
+    path: Root/Right_UpLeg/Right_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2377,7 +2377,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/America_Right_UpLeg/America_Right_Leg
+    path: Root/Right_UpLeg/Right_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2441,7 +2441,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/America_Right_UpArm/America_Right_Arm
+    path: Root/Right_UpArm/Right_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2505,7 +2505,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/America_Right_UpArm/America_Right_Arm
+    path: Root/Right_UpArm/Right_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2569,7 +2569,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/America_Right_UpArm/America_Right_Arm
+    path: Root/Right_UpArm/Right_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2624,7 +2624,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/America_Left_UpArm/America_Left_Arm
+    path: Root/Left_UpArm/Left_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2679,7 +2679,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/America_Left_UpArm/America_Left_Arm
+    path: Root/Left_UpArm/Left_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2734,7 +2734,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/America_Left_UpArm/America_Left_Arm
+    path: Root/Left_UpArm/Left_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2771,7 +2771,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Root/America_Mask/America_Beak
+    path: Root/Mask/Beak
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2808,7 +2808,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Root/America_Mask/America_Beak
+    path: Root/Mask/Beak
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2845,7 +2845,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Root/America_Mask/America_Beak
+    path: Root/Mask/Beak
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2891,7 +2891,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/America_Mask/America_Beak
+    path: Root/Mask/Beak
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2937,7 +2937,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/America_Mask/America_Beak
+    path: Root/Mask/Beak
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2983,7 +2983,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/America_Mask/America_Beak
+    path: Root/Mask/Beak
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3029,7 +3029,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: Root/America_Mask/America_Feather
+    path: Root/Mask/Feather
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3075,7 +3075,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: Root/America_Mask/America_Feather
+    path: Root/Mask/Feather
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3121,7 +3121,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: Root/America_Mask/America_Feather
+    path: Root/Mask/Feather
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3176,7 +3176,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/America_Mask
+    path: Root/Mask
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3231,7 +3231,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/America_Mask
+    path: Root/Mask
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3286,7 +3286,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/America_Mask
+    path: Root/Mask
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3323,7 +3323,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Root/America_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3360,7 +3360,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Root/America_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3397,7 +3397,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Root/America_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3434,7 +3434,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/America_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3471,7 +3471,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/America_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3508,7 +3508,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/America_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -3519,7 +3519,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/America_Right_UpLeg/America_Right_Leg
+    path: Root/Right_UpLeg/Right_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3529,7 +3529,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/America_Right_UpLeg/America_Right_Leg
+    path: Root/Right_UpLeg/Right_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3539,7 +3539,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/America_Right_UpLeg/America_Right_Leg
+    path: Root/Right_UpLeg/Right_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3549,7 +3549,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/America_Left_UpLeg/America_Left_Leg
+    path: Root/Left_UpLeg/Left_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3559,7 +3559,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/America_Left_UpLeg/America_Left_Leg
+    path: Root/Left_UpLeg/Left_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3569,7 +3569,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/America_Left_UpLeg/America_Left_Leg
+    path: Root/Left_UpLeg/Left_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3579,7 +3579,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/America_Mask/America_Beak
+    path: Root/Mask/Beak
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3589,7 +3589,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/America_Mask/America_Beak
+    path: Root/Mask/Beak
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3599,7 +3599,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/America_Mask/America_Beak
+    path: Root/Mask/Beak
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3609,7 +3609,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/America_Mask
+    path: Root/Mask
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3619,7 +3619,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/America_Mask
+    path: Root/Mask
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3629,7 +3629,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/America_Mask
+    path: Root/Mask
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3639,7 +3639,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/America_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3649,7 +3649,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/America_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3659,7 +3659,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/America_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3669,7 +3669,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/America_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3679,7 +3679,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/America_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3689,7 +3689,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/America_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3699,7 +3699,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/America_Left_UpArm/America_Left_Arm
+    path: Root/Left_UpArm/Left_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3709,7 +3709,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/America_Left_UpArm/America_Left_Arm
+    path: Root/Left_UpArm/Left_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3719,7 +3719,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/America_Left_UpArm/America_Left_Arm
+    path: Root/Left_UpArm/Left_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3729,7 +3729,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/America_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3739,7 +3739,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/America_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3749,7 +3749,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/America_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3759,7 +3759,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/America_Left_UpArm
+    path: Root/Left_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3769,7 +3769,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/America_Left_UpArm
+    path: Root/Left_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3779,7 +3779,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/America_Left_UpArm
+    path: Root/Left_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3789,7 +3789,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/America_Right_UpArm
+    path: Root/Right_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3799,7 +3799,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/America_Right_UpArm
+    path: Root/Right_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3809,7 +3809,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/America_Right_UpArm
+    path: Root/Right_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3819,7 +3819,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/America_Right_UpArm/America_Right_Arm
+    path: Root/Right_UpArm/Right_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3829,7 +3829,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/America_Right_UpArm/America_Right_Arm
+    path: Root/Right_UpArm/Right_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3839,7 +3839,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/America_Right_UpArm/America_Right_Arm
+    path: Root/Right_UpArm/Right_Arm
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0

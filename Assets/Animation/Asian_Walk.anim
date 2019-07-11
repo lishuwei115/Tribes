@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Asian_Walk
+  m_Name: Walk
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -92,7 +92,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/Asia_Left_UpArm
+    path: Root/Left_UpArm
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -171,7 +171,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/Asia_Left_UpArm/Asia_Left_Arm
+    path: Root/Left_UpArm/Left_Arm
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -250,7 +250,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/Asia_Right_UpArm
+    path: Root/Right_UpArm
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -329,7 +329,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/Asia_Right_UpArm/Asia_Right_Arm
+    path: Root/Right_UpArm/Right_Arm
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -399,7 +399,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/Asia_Left_UpLeg
+    path: Root/Left_UpLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -469,7 +469,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/Asian_Right_UpLeg
+    path: Root/Right_UpLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -539,7 +539,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/Asia_Left_UpLeg/Asia_Left_Leg
+    path: Root/Left_UpLeg/Left_Leg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -609,7 +609,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/Asian_Right_UpLeg/Asia_Right_Leg
+    path: Root/Right_UpLeg/Right_Leg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -670,7 +670,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/Asia_Spear
+    path: Root/Spear
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -749,7 +749,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/Asia_Mask
+    path: Root/Mask
   m_PositionCurves:
   - curve:
       serializedVersion: 2
@@ -838,7 +838,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/Asia_Left_UpArm
+    path: Root/Left_UpArm
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -872,7 +872,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/Asia_Left_UpArm/Asia_Left_Arm
+    path: Root/Left_UpArm/Left_Arm
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -960,7 +960,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/Asia_Right_UpArm
+    path: Root/Right_UpArm
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -994,7 +994,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/Asia_Right_UpArm/Asia_Right_Arm
+    path: Root/Right_UpArm/Right_Arm
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1091,7 +1091,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/Asia_Mask
+    path: Root/Mask
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1179,7 +1179,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/Asia_Left_UpLeg
+    path: Root/Left_UpLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1267,7 +1267,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/Asian_Right_UpLeg
+    path: Root/Right_UpLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1355,7 +1355,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/Asia_Spear
+    path: Root/Spear
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves: []
@@ -1602,7 +1602,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Root/Asia_Left_UpArm
+    path: Root/Left_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1693,7 +1693,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Root/Asia_Left_UpArm
+    path: Root/Left_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1784,7 +1784,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Root/Asia_Left_UpArm
+    path: Root/Left_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1821,7 +1821,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Root/Asia_Left_UpArm/Asia_Left_Arm
+    path: Root/Left_UpArm/Left_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1858,7 +1858,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Root/Asia_Left_UpArm/Asia_Left_Arm
+    path: Root/Left_UpArm/Left_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1895,7 +1895,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Root/Asia_Left_UpArm/Asia_Left_Arm
+    path: Root/Left_UpArm/Left_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1986,7 +1986,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Root/Asia_Right_UpArm
+    path: Root/Right_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2077,7 +2077,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Root/Asia_Right_UpArm
+    path: Root/Right_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2168,7 +2168,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Root/Asia_Right_UpArm
+    path: Root/Right_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2205,7 +2205,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Root/Asia_Right_UpArm/Asia_Right_Arm
+    path: Root/Right_UpArm/Right_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2242,7 +2242,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Root/Asia_Right_UpArm/Asia_Right_Arm
+    path: Root/Right_UpArm/Right_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2279,7 +2279,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Root/Asia_Right_UpArm/Asia_Right_Arm
+    path: Root/Right_UpArm/Right_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2361,7 +2361,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/Asia_Left_UpArm
+    path: Root/Left_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2443,7 +2443,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/Asia_Left_UpArm
+    path: Root/Left_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2525,7 +2525,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/Asia_Left_UpArm
+    path: Root/Left_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2607,7 +2607,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/Asia_Left_UpArm/Asia_Left_Arm
+    path: Root/Left_UpArm/Left_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2689,7 +2689,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/Asia_Left_UpArm/Asia_Left_Arm
+    path: Root/Left_UpArm/Left_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2771,7 +2771,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/Asia_Left_UpArm/Asia_Left_Arm
+    path: Root/Left_UpArm/Left_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2871,7 +2871,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Root/Asia_Mask
+    path: Root/Mask
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2971,7 +2971,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Root/Asia_Mask
+    path: Root/Mask
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3071,7 +3071,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Root/Asia_Mask
+    path: Root/Mask
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3153,7 +3153,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/Asia_Right_UpArm
+    path: Root/Right_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3235,7 +3235,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/Asia_Right_UpArm
+    path: Root/Right_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3317,7 +3317,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/Asia_Right_UpArm
+    path: Root/Right_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3399,7 +3399,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/Asia_Right_UpArm/Asia_Right_Arm
+    path: Root/Right_UpArm/Right_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3481,7 +3481,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/Asia_Right_UpArm/Asia_Right_Arm
+    path: Root/Right_UpArm/Right_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3563,7 +3563,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/Asia_Right_UpArm/Asia_Right_Arm
+    path: Root/Right_UpArm/Right_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3654,7 +3654,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Root/Asia_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3745,7 +3745,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Root/Asia_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3836,7 +3836,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Root/Asia_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3909,7 +3909,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/Asia_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3982,7 +3982,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/Asia_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4055,7 +4055,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/Asia_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4146,7 +4146,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Root/Asian_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4237,7 +4237,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Root/Asian_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4328,7 +4328,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Root/Asian_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4401,7 +4401,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/Asian_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4474,7 +4474,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/Asian_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4547,7 +4547,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/Asian_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4620,7 +4620,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/Asia_Left_UpLeg/Asia_Left_Leg
+    path: Root/Left_UpLeg/Left_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4693,7 +4693,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/Asia_Left_UpLeg/Asia_Left_Leg
+    path: Root/Left_UpLeg/Left_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4766,7 +4766,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/Asia_Left_UpLeg/Asia_Left_Leg
+    path: Root/Left_UpLeg/Left_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4839,7 +4839,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/Asian_Right_UpLeg/Asia_Right_Leg
+    path: Root/Right_UpLeg/Right_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4912,7 +4912,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/Asian_Right_UpLeg/Asia_Right_Leg
+    path: Root/Right_UpLeg/Right_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4985,7 +4985,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/Asian_Right_UpLeg/Asia_Right_Leg
+    path: Root/Right_UpLeg/Right_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5076,7 +5076,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Root/Asia_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5167,7 +5167,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Root/Asia_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5258,7 +5258,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Root/Asia_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5322,7 +5322,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/Asia_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5386,7 +5386,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/Asia_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5450,7 +5450,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/Asia_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5532,7 +5532,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/Asia_Mask
+    path: Root/Mask
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5614,7 +5614,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/Asia_Mask
+    path: Root/Mask
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5696,7 +5696,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/Asia_Mask
+    path: Root/Mask
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -5707,7 +5707,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/Asia_Left_UpArm/Asia_Left_Arm
+    path: Root/Left_UpArm/Left_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5717,7 +5717,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/Asia_Left_UpArm/Asia_Left_Arm
+    path: Root/Left_UpArm/Left_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5727,7 +5727,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/Asia_Left_UpArm/Asia_Left_Arm
+    path: Root/Left_UpArm/Left_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5737,7 +5737,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/Asia_Left_UpLeg/Asia_Left_Leg
+    path: Root/Left_UpLeg/Left_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5747,7 +5747,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/Asia_Left_UpLeg/Asia_Left_Leg
+    path: Root/Left_UpLeg/Left_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5757,7 +5757,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/Asia_Left_UpLeg/Asia_Left_Leg
+    path: Root/Left_UpLeg/Left_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5767,7 +5767,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/Asian_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5777,7 +5777,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/Asian_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5787,7 +5787,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/Asian_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5797,7 +5797,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/Asian_Right_UpLeg/Asia_Right_Leg
+    path: Root/Right_UpLeg/Right_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5807,7 +5807,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/Asian_Right_UpLeg/Asia_Right_Leg
+    path: Root/Right_UpLeg/Right_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5817,7 +5817,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/Asian_Right_UpLeg/Asia_Right_Leg
+    path: Root/Right_UpLeg/Right_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5827,7 +5827,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/Asia_Left_UpArm
+    path: Root/Left_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5837,7 +5837,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/Asia_Left_UpArm
+    path: Root/Left_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5847,7 +5847,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/Asia_Left_UpArm
+    path: Root/Left_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5857,7 +5857,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/Asia_Right_UpArm
+    path: Root/Right_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5867,7 +5867,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/Asia_Right_UpArm
+    path: Root/Right_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5877,7 +5877,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/Asia_Right_UpArm
+    path: Root/Right_UpArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5887,7 +5887,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/Asia_Mask
+    path: Root/Mask
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5897,7 +5897,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/Asia_Mask
+    path: Root/Mask
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5907,7 +5907,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/Asia_Mask
+    path: Root/Mask
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5917,7 +5917,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/Asia_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5927,7 +5927,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/Asia_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5937,7 +5937,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/Asia_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5947,7 +5947,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/Asia_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5957,7 +5957,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/Asia_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5967,7 +5967,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/Asia_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5977,7 +5977,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/Asia_Right_UpArm/Asia_Right_Arm
+    path: Root/Right_UpArm/Right_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5987,7 +5987,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/Asia_Right_UpArm/Asia_Right_Arm
+    path: Root/Right_UpArm/Right_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5997,7 +5997,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/Asia_Right_UpArm/Asia_Right_Arm
+    path: Root/Right_UpArm/Right_Arm
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0

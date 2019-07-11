@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3798111730097633036}
   - component: {fileID: 5208297049591381422}
   m_Layer: 0
-  m_Name: America_Right_Leg
+  m_Name: Right_Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 543940993678781205}
   - component: {fileID: 8211469234979467973}
   m_Layer: 0
-  m_Name: America_Spear
+  m_Name: Spear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 8107798345516028715}
   - component: {fileID: 6906682623677824726}
   m_Layer: 0
-  m_Name: America_Feather
+  m_Name: Hat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 1580259600504659715}
   - component: {fileID: 1078906750318988587}
   m_Layer: 0
-  m_Name: America_Left_UpLeg
+  m_Name: Left_UpLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 9026378301931739597}
   - component: {fileID: 1765347059408169464}
   m_Layer: 0
-  m_Name: America_Right_UpLeg
+  m_Name: Right_UpLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 8294847407503129068}
   - component: {fileID: 7014444104104474433}
   m_Layer: 0
-  m_Name: America_Left_UpArm
+  m_Name: Left_UpArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -530,7 +530,7 @@ GameObject:
   - component: {fileID: 507524462678209189}
   - component: {fileID: 8219077403146852820}
   m_Layer: 0
-  m_Name: America_Left_Leg
+  m_Name: Left_Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -610,7 +610,7 @@ GameObject:
   - component: {fileID: 4432128674457433084}
   - component: {fileID: 4045373255766276104}
   m_Layer: 0
-  m_Name: America_Right_Arm
+  m_Name: Right_Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -690,7 +690,7 @@ GameObject:
   - component: {fileID: 5375664378190580701}
   - component: {fileID: 9195048515689637786}
   m_Layer: 0
-  m_Name: America_Mask
+  m_Name: Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -772,7 +772,7 @@ GameObject:
   - component: {fileID: 4385681955582251190}
   - component: {fileID: 2879781143404951361}
   m_Layer: 0
-  m_Name: America_Beak
+  m_Name: Acessories
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -852,7 +852,7 @@ GameObject:
   - component: {fileID: 708659505789453489}
   - component: {fileID: 376855808122386011}
   m_Layer: 0
-  m_Name: America_Right_UpArm
+  m_Name: Right_UpArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -984,7 +984,7 @@ GameObject:
   - component: {fileID: 2922024911080301750}
   - component: {fileID: 6047536425235544692}
   m_Layer: 0
-  m_Name: America_Left_Arm
+  m_Name: Left_Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

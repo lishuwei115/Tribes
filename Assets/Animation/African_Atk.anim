@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: African_Atk
+  m_Name: Atk
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -65,7 +65,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/African_Head
+    path: Root/Head
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -117,7 +117,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/African_Head/African_Feather
+    path: Root/Head/Feather
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -160,7 +160,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/African_Right_Upper_Arm
+    path: Root/Right_Upper_Arm
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -212,7 +212,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/African_Right_Upper_Arm/African_Right_Arm
+    path: Root/Right_Upper_Arm/Right_Arm
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -264,7 +264,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/African_Left_Upper_Arm
+    path: Root/Left_Upper_Arm
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -316,7 +316,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/African_Left_Upper_Arm/African_Left_Arm
+    path: Root/Left_Upper_Arm/Left_Arm
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -359,7 +359,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/African_Right_UpLeg
+    path: Root/Right_UpLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -402,7 +402,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/African_Right_UpLeg/African_Right_Leg
+    path: Root/Right_UpLeg/Right_Leg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -445,7 +445,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/African_Left_UpLeg
+    path: Root/Left_UpLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -488,7 +488,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/African_Left_UpLeg/African_Left_Leg
+    path: Root/Left_UpLeg/Left_Leg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -540,7 +540,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/African_Spear
+    path: Root/Spear
   m_PositionCurves:
   - curve:
       serializedVersion: 2
@@ -584,7 +584,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/African_Head
+    path: Root/Head
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -627,7 +627,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/African_Right_UpLeg
+    path: Root/Right_UpLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -670,7 +670,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/African_Left_Upper_Arm
+    path: Root/Left_Upper_Arm
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -722,7 +722,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/African_Spear
+    path: Root/Spear
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -765,7 +765,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/African_Right_Upper_Arm
+    path: Root/Right_Upper_Arm
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -808,7 +808,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/African_Left_UpLeg
+    path: Root/Left_UpLeg
   m_ScaleCurves:
   - curve:
       serializedVersion: 2
@@ -861,7 +861,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Root/African_Head
+    path: Root/Head
   m_FloatCurves: []
   m_PPtrCurves: []
   m_SampleRate: 60
@@ -1071,7 +1071,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/African_Head
+    path: Root/Head
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1126,7 +1126,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/African_Head
+    path: Root/Head
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1181,7 +1181,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/African_Head
+    path: Root/Head
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1236,7 +1236,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/African_Head/African_Feather
+    path: Root/Head/Feather
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1291,7 +1291,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/African_Head/African_Feather
+    path: Root/Head/Feather
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1346,7 +1346,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/African_Head/African_Feather
+    path: Root/Head/Feather
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1392,7 +1392,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/African_Right_Upper_Arm
+    path: Root/Right_Upper_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1438,7 +1438,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/African_Right_Upper_Arm
+    path: Root/Right_Upper_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1484,7 +1484,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/African_Right_Upper_Arm
+    path: Root/Right_Upper_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1539,7 +1539,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/African_Right_Upper_Arm/African_Right_Arm
+    path: Root/Right_Upper_Arm/Right_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1594,7 +1594,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/African_Right_Upper_Arm/African_Right_Arm
+    path: Root/Right_Upper_Arm/Right_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1640,7 +1640,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/African_Right_Upper_Arm/African_Right_Arm
+    path: Root/Right_Upper_Arm/Right_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1695,7 +1695,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/African_Left_Upper_Arm
+    path: Root/Left_Upper_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1750,7 +1750,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/African_Left_Upper_Arm
+    path: Root/Left_Upper_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1805,7 +1805,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/African_Left_Upper_Arm
+    path: Root/Left_Upper_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1860,7 +1860,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/African_Left_Upper_Arm/African_Left_Arm
+    path: Root/Left_Upper_Arm/Left_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1915,7 +1915,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/African_Left_Upper_Arm/African_Left_Arm
+    path: Root/Left_Upper_Arm/Left_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1970,7 +1970,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/African_Left_Upper_Arm/African_Left_Arm
+    path: Root/Left_Upper_Arm/Left_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2016,7 +2016,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/African_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2062,7 +2062,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/African_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2108,7 +2108,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/African_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2154,7 +2154,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/African_Right_UpLeg/African_Right_Leg
+    path: Root/Right_UpLeg/Right_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2200,7 +2200,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/African_Right_UpLeg/African_Right_Leg
+    path: Root/Right_UpLeg/Right_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2246,7 +2246,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/African_Right_UpLeg/African_Right_Leg
+    path: Root/Right_UpLeg/Right_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2292,7 +2292,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/African_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2338,7 +2338,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/African_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2384,7 +2384,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/African_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2430,7 +2430,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/African_Left_UpLeg/African_Left_Leg
+    path: Root/Left_UpLeg/Left_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2476,7 +2476,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/African_Left_UpLeg/African_Left_Leg
+    path: Root/Left_UpLeg/Left_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2522,7 +2522,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/African_Left_UpLeg/African_Left_Leg
+    path: Root/Left_UpLeg/Left_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2568,7 +2568,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Root/African_Head
+    path: Root/Head
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2614,7 +2614,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Root/African_Head
+    path: Root/Head
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2660,7 +2660,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Root/African_Head
+    path: Root/Head
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2706,7 +2706,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Root/African_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2752,7 +2752,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Root/African_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2798,7 +2798,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Root/African_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2844,7 +2844,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Root/African_Left_Upper_Arm
+    path: Root/Left_Upper_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2890,7 +2890,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Root/African_Left_Upper_Arm
+    path: Root/Left_Upper_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2936,7 +2936,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Root/African_Left_Upper_Arm
+    path: Root/Left_Upper_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2982,7 +2982,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Root/African_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3028,7 +3028,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Root/African_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3074,7 +3074,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Root/African_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3120,7 +3120,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Root/African_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3166,7 +3166,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Root/African_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3212,7 +3212,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Root/African_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3258,7 +3258,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Root/African_Right_Upper_Arm
+    path: Root/Right_Upper_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3304,7 +3304,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Root/African_Right_Upper_Arm
+    path: Root/Right_Upper_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3350,7 +3350,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Root/African_Right_Upper_Arm
+    path: Root/Right_Upper_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3396,7 +3396,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Root/African_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3442,7 +3442,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Root/African_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3488,7 +3488,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Root/African_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3543,7 +3543,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: Root/African_Head
+    path: Root/Head
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3598,7 +3598,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: Root/African_Head
+    path: Root/Head
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3653,7 +3653,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: Root/African_Head
+    path: Root/Head
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -3664,7 +3664,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/African_Right_UpLeg/African_Right_Leg
+    path: Root/Right_UpLeg/Right_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3674,7 +3674,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/African_Right_UpLeg/African_Right_Leg
+    path: Root/Right_UpLeg/Right_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3684,7 +3684,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/African_Right_UpLeg/African_Right_Leg
+    path: Root/Right_UpLeg/Right_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3694,7 +3694,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/African_Right_Upper_Arm
+    path: Root/Right_Upper_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3704,7 +3704,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/African_Right_Upper_Arm
+    path: Root/Right_Upper_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3714,7 +3714,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/African_Right_Upper_Arm
+    path: Root/Right_Upper_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3724,7 +3724,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/African_Left_Upper_Arm
+    path: Root/Left_Upper_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3734,7 +3734,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/African_Left_Upper_Arm
+    path: Root/Left_Upper_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3744,7 +3744,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/African_Left_Upper_Arm
+    path: Root/Left_Upper_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3754,7 +3754,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/African_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3764,7 +3764,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/African_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3774,7 +3774,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/African_Right_UpLeg
+    path: Root/Right_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3784,7 +3784,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/African_Left_UpLeg/African_Left_Leg
+    path: Root/Left_UpLeg/Left_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3794,7 +3794,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/African_Left_UpLeg/African_Left_Leg
+    path: Root/Left_UpLeg/Left_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3804,7 +3804,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/African_Left_UpLeg/African_Left_Leg
+    path: Root/Left_UpLeg/Left_Leg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3814,7 +3814,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/African_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3824,7 +3824,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/African_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3834,7 +3834,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/African_Left_UpLeg
+    path: Root/Left_UpLeg
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3844,7 +3844,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/African_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3854,7 +3854,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/African_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3864,7 +3864,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/African_Spear
+    path: Root/Spear
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3874,7 +3874,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/African_Left_Upper_Arm/African_Left_Arm
+    path: Root/Left_Upper_Arm/Left_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3884,7 +3884,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/African_Left_Upper_Arm/African_Left_Arm
+    path: Root/Left_Upper_Arm/Left_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3894,7 +3894,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/African_Left_Upper_Arm/African_Left_Arm
+    path: Root/Left_Upper_Arm/Left_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3904,7 +3904,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/African_Head
+    path: Root/Head
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3914,7 +3914,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/African_Head
+    path: Root/Head
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3924,7 +3924,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/African_Head
+    path: Root/Head
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3934,7 +3934,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/African_Right_Upper_Arm/African_Right_Arm
+    path: Root/Right_Upper_Arm/Right_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3944,7 +3944,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/African_Right_Upper_Arm/African_Right_Arm
+    path: Root/Right_Upper_Arm/Right_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3954,7 +3954,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/African_Right_Upper_Arm/African_Right_Arm
+    path: Root/Right_Upper_Arm/Right_Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3964,7 +3964,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/African_Head/African_Feather
+    path: Root/Head/Feather
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3974,7 +3974,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/African_Head/African_Feather
+    path: Root/Head/Feather
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3984,7 +3984,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/African_Head/African_Feather
+    path: Root/Head/Feather
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
