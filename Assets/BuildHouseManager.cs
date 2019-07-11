@@ -10,6 +10,7 @@ public class BuildHouseManager : MonoBehaviour
     public List<HouseScript> Houses;
     bool initialized = false;
     public int FoodRequired = 30;
+    Vector2 Offset;
     private void Awake()
     {
         Instance = this;
@@ -54,7 +55,11 @@ public class BuildHouseManager : MonoBehaviour
                 break;
             }
         }
-        if (Input.GetMouseButtonUp(0) && BuildableArea && GameManagerScript.Instance.UsePlayerFood(FoodRequired))
+        if (Input.GetMouseButtonDown(0))
+        {
+            Offset = Input.mousePosition;
+        }
+        if (Input.GetMouseButtonUp(0) && BuildableArea && GameManagerScript.Instance.UsePlayerFood(FoodRequired) && Vector2.Distance(Offset,Input.mousePosition)<30)
         {
             GameManagerScript.Instance.SpawnNewHouse(GameManagerScript.Instance.PlayerHouse,mPos);
         }

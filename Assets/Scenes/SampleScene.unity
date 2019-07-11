@@ -616,6 +616,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrefabPointer: {fileID: 3497863233429765967, guid: 767ba97f6fc6d54418f4681729b7e27e,
     type: 3}
+  IsBuilding: 0
   PanSpeed: 40
   ZoomSpeedTouch: 0.1
   ZoomSpeedMouse: 20
@@ -1748,21 +1749,6 @@ PrefabInstance:
       propertyPath: FoodContainer
       value: 
       objectReference: {fileID: 1316630376}
-    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
-        type: 3}
-      propertyPath: PlayerHouse
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
-        type: 3}
-      propertyPath: DayTime
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
-        type: 3}
-      propertyPath: DayLightTime
-      value: 60
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c744b904de862c49b734530cf5539f9, type: 3}
 --- !u!1001 &4486709925381344857

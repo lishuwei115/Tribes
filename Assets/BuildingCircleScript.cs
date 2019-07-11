@@ -23,15 +23,18 @@ public class BuildingCircleScript : MonoBehaviour
         BuildingSpriteMin.gameObject.SetActive(true);
 
         BuildHouseManager.Instance.gameObject.SetActive(true);
-
+        WorldmapCamera.Instance.IsBuilding = true;
     }
     public void CloseBuildingCircle()
     {
         BuildingSpriteMax.gameObject.SetActive(false);
         BuildingSpriteMin.gameObject.SetActive(false);
         BuildHouseManager.Instance.gameObject.SetActive(false);
+        WorldmapCamera.Instance.FinishBuilding();
 
     }
+
+
 
     internal void Initialize(float buildingRadiusMin, float buildingRadiusMax)
     {

@@ -11,7 +11,7 @@ public class WorldmapCamera : MonoBehaviour
 
     public static WorldmapCamera Instance;
     public Transform PrefabPointer;
-
+    public bool IsBuilding = false;
     public float PanSpeed = 20f;
     public float ZoomSpeedTouch = 0.1f;
     public float ZoomSpeedMouse = 0.5f;
@@ -97,10 +97,16 @@ public class WorldmapCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
-
+    public void FinishBuilding()
+    {
+        Invoke("IsNotBuilding", 0.1f);
+    }
+    public void IsNotBuilding()
+    {
+        IsBuilding = false;
+    }
     void HandleMouse()
     {
         
@@ -121,20 +127,20 @@ public class WorldmapCamera : MonoBehaviour
 
             }
             else
-            if (MovState == MovementState.none && !BuildManager.isActiveAndEnabled && Input.GetMouseButtonUp(0) && Time.time - OffsetTime < .1f && (Mathf.Abs(lastPanPosition.x - Input.mousePosition.x) < 300 || Mathf.Abs(lastPanPosition.y - Input.mousePosition.y )<300))
+            if (MovState == MovementState.none && Input.GetMouseButtonUp(0)&&!IsBuilding && Vector2.Distance(lastPanPosition, Input.mousePosition) < 30)//&& Input.GetMouseButtonUp(0) && Time.time - OffsetTime < .1f
             {
                 TribeToPoint();
                 MovState = MovementState.none;
                 lastPanPosition = Input.mousePosition;
                 OffsetTime = Time.time;
             }
-            else if (!Input.GetMouseButtonDown(0) && Input.GetMouseButton(0) && Time.time - OffsetTime > .1f)// - (Input.mousePosition.x + Input.mousePosition.y)) > 30 * (Screen.width / 1920)) 
+            else if (!Input.GetMouseButtonDown(0) && Input.GetMouseButton(0) && Vector2.Distance(lastPanPosition, Input.mousePosition) > 30)// - (Input.mousePosition.x + Input.mousePosition.y)) > 30 * (Screen.width / 1920)) 
             {
                 PanCameraWithTween(Input.mousePosition);
                 //PanCameraWithoutTween(Input.mousePosition);
             }
             
-
+            else
             if (!Input.GetMouseButton(0))
             
             {
