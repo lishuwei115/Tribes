@@ -45,7 +45,7 @@ public class WorldmapCamera : MonoBehaviour
     public delegate void CameraOnStartPos();
     public event CameraOnStartPos CameraOnStartPosEvent;
     public BuildHouseManager BuildManager;
-
+    public MovementState MovState = MovementState.none;
     private void Awake()
     {
         Instance = this;
@@ -110,22 +110,39 @@ public class WorldmapCamera : MonoBehaviour
         }
         if (!GameManagerScript.Instance.UIButtonOver)
         {
+
             // On mouse down, capture it's position.
             // Otherwise, if the mouse is still down, pan the camera.
             if (Input.GetMouseButtonDown(0))
             {
                 lastPanPosition = Input.mousePosition;
                 OffsetTime = Time.time;
+                MovState = MovementState.none;
+
             }
-            else if (!BuildManager.isActiveAndEnabled && !isMoving && Input.GetMouseButtonUp(0) && Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (Input.mousePosition.x + Input.mousePosition.y)) < .1f*(cam.orthographicSize/ZoomBounds[1]))
+            else
+            if (MovState == MovementState.none && !BuildManager.isActiveAndEnabled && Input.GetMouseButtonUp(0) && Time.time - OffsetTime < .1f && (Mathf.Abs(lastPanPosition.x - Input.mousePosition.x) < 300 || Mathf.Abs(lastPanPosition.y - Input.mousePosition.y )<300))
             {
                 TribeToPoint();
+                MovState = MovementState.none;
+                lastPanPosition = Input.mousePosition;
+                OffsetTime = Time.time;
             }
-            else if (Input.GetMouseButton(0) /*&& (Time.time - OffsetTime) > 0.5f*/)
+            else if (!Input.GetMouseButtonDown(0) && Input.GetMouseButton(0) && Time.time - OffsetTime > .1f)// - (Input.mousePosition.x + Input.mousePosition.y)) > 30 * (Screen.width / 1920)) 
             {
                 PanCameraWithTween(Input.mousePosition);
                 //PanCameraWithoutTween(Input.mousePosition);
             }
+            
+
+            if (!Input.GetMouseButton(0))
+            
+            {
+                lastPanPosition = Input.mousePosition;
+                OffsetTime = Time.time;
+                MovState = MovementState.none;
+            }
+
             /*else if (Input.GetMouseButtonUp(0) && Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (Input.mousePosition.x + Input.mousePosition.y)) > 100f)
             {
                 PanCameraWithoutTween(Input.mousePosition);
@@ -135,8 +152,12 @@ public class WorldmapCamera : MonoBehaviour
 
 
             // Check for scrolling to zoom the camera
-            float scroll = Input.GetAxis("Mouse ScrollWheel");
-            ZoomCamera(scroll, ZoomSpeedMouse);
+            if (MovState == MovementState.none)
+            {
+                float scroll = Input.GetAxis("Mouse ScrollWheel");
+                ZoomCamera(scroll, ZoomSpeedMouse);
+            }
+            
         }
         
     }
@@ -202,6 +223,7 @@ public class WorldmapCamera : MonoBehaviour
     {
         if (!isMoving)
         {
+            MovState = MovementState.Drag;
             isMoving = true;
             // Determine how much to move the camera
             Vector3 offset = cam.ScreenToViewportPoint(lastPanPosition - newPanPosition);
@@ -222,11 +244,14 @@ public class WorldmapCamera : MonoBehaviour
         {
             return;
         }*/
+        MovState = MovementState.Zoom;
+
         LastTimeTouch = Time.time;
         cam.orthographicSize = Mathf.Clamp(cam.orthographicSize - (offset * speed), ZoomBounds[0], ZoomBounds[1]);
         cam.fieldOfView = Mathf.Clamp(cam.fieldOfView - (offset * speed), ZoomBounds[0], ZoomBounds[1]);
         ProportionalBoundsX = new float[] { -(ZoomBounds[1] - cam.orthographicSize) + BoundsX[0], (ZoomBounds[1] - cam.orthographicSize) + BoundsX[1] };
         ProportionalBoundsZ = new float[] { -(ZoomBounds[1] - cam.orthographicSize) + BoundsZ[0], (ZoomBounds[1] - cam.orthographicSize) + BoundsZ[1] };
+        MovState = MovementState.none;
 
     }
 
@@ -364,7 +389,12 @@ public class WorldmapCamera : MonoBehaviour
 
 
 
-
+public enum MovementState
+{
+    none,
+    Zoom,
+    Drag
+}
 
 
 public enum touchPhase

@@ -48,8 +48,9 @@ MonoBehaviour:
     type: 3}
   HousesHolder: {fileID: 0}
   StateOfGame: 0
-  PlayerHouse: 0
+  PlayerHouse: 3
   enemyDefeated: 0
+  FoodPlayer: 0
   HumanMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   FoodMaterial: {fileID: 2100000, guid: e601015e84489446e930439e8157fd1b, type: 2}
   UIButtons: []

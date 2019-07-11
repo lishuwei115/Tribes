@@ -43,7 +43,8 @@ public class UIManagerScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-
+        UpdatePeople();
+        UpdateFood();
     }
 
     public void TimerUpdate(int timer)
@@ -75,10 +76,9 @@ public class UIManagerScript : MonoBehaviour {
         {
             AddHouse.interactable = true;
         }
-        HouseFoodUpperLeft.text = "" + GameManagerScript.Instance.FoodPlayer;
-        //HouseFoodUpperLeft.text = "" + GameManagerScript.Instance.Houses[0].FoodStore;
+        HouseFoodUpperLeft.text = "" + GameManagerScript.Instance.Houses[0].FoodStore;
         HouseFoodUpperRight.text = "" + GameManagerScript.Instance.Houses[1].FoodStore;
-        HouseFoodDownwardLeft.text = "" + GameManagerScript.Instance.Houses[2].FoodStore;
+        HouseFoodDownwardLeft.text = "" + GameManagerScript.Instance.FoodPlayer;
         HouseFoodDownwardRight.text = "" + GameManagerScript.Instance.Houses[3].FoodStore;
         UpdatePeople();
 

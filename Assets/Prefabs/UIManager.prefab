@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 796476038}
   - component: {fileID: 796476037}
   m_Layer: 0
-  m_Name: HouseFood_DownwardRight
+  m_Name: HouseFood_Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -605,6 +605,7 @@ RectTransform:
   - {fileID: 224304347240313336}
   - {fileID: 7941287644932200281}
   - {fileID: 5694299769492170951}
+  - {fileID: 9096320560181713759}
   - {fileID: 5366115493787887476}
   m_Father: {fileID: 224776045018876338}
   m_RootOrder: 1
@@ -1988,13 +1989,13 @@ MonoBehaviour:
   Charity: {fileID: 114452129603238022}
   Gratitude: {fileID: 114689989674831424}
   Hate: {fileID: 114177485471925564}
-  HouseFoodUpperLeft: {fileID: 8660470361356910690}
+  HouseFoodUpperLeft: {fileID: 5875248142042110963}
   HouseFoodUpperRight: {fileID: 6108087238093739688}
-  HouseFoodDownwardLeft: {fileID: 5875248142042110963}
+  HouseFoodDownwardLeft: {fileID: 8660470361356910690}
   HouseFoodDownwardRight: {fileID: 796476037}
-  HousePeopleUpperLeft: {fileID: 6408328816895631486}
+  HousePeopleUpperLeft: {fileID: 3174445509725097911}
   HousePeopleUpperRight: {fileID: 4578818289609253143}
-  HousePeopleDownwardLeft: {fileID: 3174445509725097911}
+  HousePeopleDownwardLeft: {fileID: 6408328816895631486}
   HousePeopleDownwardRight: {fileID: 4263675984830903007}
   AddHouse: {fileID: 0}
   DayNumIterator: 0
@@ -2662,7 +2663,7 @@ GameObject:
   - component: {fileID: 7833935722036035150}
   - component: {fileID: 8660470361356910690}
   m_Layer: 0
-  m_Name: HouseFood_DownwardRight
+  m_Name: HouseFood_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3086,7 +3087,7 @@ RectTransform:
   - {fileID: 1173484655929727563}
   - {fileID: 6768873406548131992}
   m_Father: {fileID: 224917756977893680}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -3154,7 +3155,7 @@ GameObject:
   - component: {fileID: 5350289241585855865}
   - component: {fileID: 4578818289609253143}
   m_Layer: 0
-  m_Name: HousePeople_DownwardRight (1)
+  m_Name: HousePeople_Yellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3471,7 +3472,7 @@ GameObject:
   - component: {fileID: 8383510808385725582}
   - component: {fileID: 6408328816895631486}
   m_Layer: 0
-  m_Name: HousePeople_DownwardRight (1)
+  m_Name: HousePeople_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3788,7 +3789,7 @@ GameObject:
   - component: {fileID: 7893365204158222182}
   - component: {fileID: 3174445509725097911}
   m_Layer: 0
-  m_Name: HousePeople_DownwardRight (1)
+  m_Name: HousePeople_Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5245,7 +5246,7 @@ RectTransform:
   m_GameObject: {fileID: 3439256211442868544}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
   m_Children:
   - {fileID: 6920513666345974995}
   - {fileID: 3485180738257774983}
@@ -5261,12 +5262,12 @@ RectTransform:
   - {fileID: 7088942863733467924}
   - {fileID: 6027237640677019960}
   - {fileID: 835031407171597312}
-  m_Father: {fileID: 5694299769492170951}
-  m_RootOrder: 14
+  m_Father: {fileID: 224917756977893680}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 102.49998, y: 311.7647}
+  m_AnchoredPosition: {x: 101.99998, y: 132}
   m_SizeDelta: {x: 205, y: 275}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1332062587614289267
@@ -6533,7 +6534,6 @@ RectTransform:
   - {fileID: 2802296883924110349}
   - {fileID: 5817053829378662629}
   - {fileID: 705583705849823896}
-  - {fileID: 9096320560181713759}
   m_Father: {fileID: 224917756977893680}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7206,7 +7206,7 @@ GameObject:
   - component: {fileID: 7398432766899971650}
   - component: {fileID: 4263675984830903007}
   m_Layer: 0
-  m_Name: HousePeople_DownwardRight (1)
+  m_Name: HousePeople_Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7894,7 +7894,7 @@ GameObject:
   - component: {fileID: 7544727760199898053}
   - component: {fileID: 6108087238093739688}
   m_Layer: 0
-  m_Name: HouseFood_DownwardRight
+  m_Name: HouseFood_Yellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8434,7 +8434,7 @@ GameObject:
   - component: {fileID: 5093835767351131311}
   - component: {fileID: 5875248142042110963}
   m_Layer: 0
-  m_Name: HouseFood_DownwardRight
+  m_Name: HouseFood_Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

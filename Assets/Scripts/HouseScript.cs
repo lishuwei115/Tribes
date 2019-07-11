@@ -21,7 +21,7 @@ public class HouseScript : MonoBehaviour
     [Range(0, 1000)]
     public float CultivateRadiusMax = 40;
     public Transform CultivateRadiusMaxCircle;
-    
+    public bool NewHouse = true;
     [Range(0, 1000)]
     public float CultivateRadiusMin = 7;
     public Transform CultivateCircle;
@@ -86,7 +86,7 @@ public class HouseScript : MonoBehaviour
             {
                 GameManagerScript.Instance.Lost();
             }
-            if(GameManagerScript.Instance.StateOfGame == GameState.Playing)
+            if (GameManagerScript.Instance.StateOfGame == GameState.Playing)
             {
                 GameManagerScript.Instance.EnemyDefeated();
             }
@@ -99,35 +99,43 @@ public class HouseScript : MonoBehaviour
     internal void DistributeFood()
     {
         //GovernmentManaging();
-        List<HumanBeingScript> living = Humans.Where(x => x.Hp > 0).ToList();
-        if (FoodStore > living.Count)
+        if (NewHouse)
         {
-            foreach (HumanBeingScript human in living)
-            {
-                human.Hp = human.BaseHp;
-                FoodStore--;
-                human.Reproduce();
-            }
+            NewHouse = false;
         }
         else
         {
-            for (int i = living.Count - 1; i >= 0; i--)
+            List<HumanBeingScript> living = Humans.Where(x => x.Hp > 0).ToList();
+            if (FoodStore > living.Count)
             {
-                HumanBeingScript human = living[i];
-                if (FoodStore > 0)
+                foreach (HumanBeingScript human in living)
                 {
-                    FoodStore--;
                     human.Hp = human.BaseHp;
+                    FoodStore--;
                     human.Reproduce();
                 }
-                else
+            }
+            else
+            {
+                for (int i = living.Count - 1; i >= 0; i--)
                 {
-                    human.Hp = 0;
-                    GameManagerScript.Instance.HumanBeingDied();
-                    human.gameObject.SetActive(false);
+                    HumanBeingScript human = living[i];
+                    if (FoodStore > 0)
+                    {
+                        FoodStore--;
+                        human.Hp = human.BaseHp;
+                        human.Reproduce();
+                    }
+                    else
+                    {
+                        human.Hp = 0;
+                        GameManagerScript.Instance.HumanBeingDied();
+                        human.gameObject.SetActive(false);
+                    }
                 }
             }
         }
+        
         UIManagerScript.Instance.UpdateFood();
 
     }

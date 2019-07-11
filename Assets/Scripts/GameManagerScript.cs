@@ -198,7 +198,7 @@ public class GameManagerScript : MonoBehaviour {
 		                                    HumansList.Where(r =>r.gameObject.activeInHierarchy &&  r.HType == HumanType.Gratitude).ToList().Count.ToString(),
 		                                    HumansList.Where(r =>r.gameObject.activeInHierarchy &&  r.HType == HumanType.Hate).ToList().Count.ToString());
 
-		UIManagerScript.Instance.NumberOfEntity.text = HumansList.Where(r => r.gameObject.activeInHierarchy).ToList().Count.ToString();
+		UIManagerScript.Instance.NumberOfEntity.text ="POPULATION: " +HumansList.Where(r => r.gameObject.activeInHierarchy).ToList().Count.ToString();
         foreach (BlockInput item in UIButtons.Where(r=>r.isActiveAndEnabled))
         {
             if (item.UIButtonOver)
@@ -294,7 +294,7 @@ public class GameManagerScript : MonoBehaviour {
             HumansList.Add(hbs);
             hbs.TargetHouse = home;
             hbs.HouseType = home.HouseType;
-            hbs.FinallyBackHome += Hbs_FinallyBackHome;
+            //hbs.FinallyBackHome += Hbs_FinallyBackHome;
             home.Humans.Add(hbs);
             hbs.WearSkin();
             ReproducedLastDay++;
@@ -311,7 +311,11 @@ public class GameManagerScript : MonoBehaviour {
 
     public void DayStarting()
 	{
-		UIManagerScript.Instance.InfoDailyUpdate(ReproducedLastDay.ToString(), DiedLastDay.ToString());
+        foreach (HouseScript house in Houses)
+        {
+            house.DistributeFood();
+        }
+        UIManagerScript.Instance.InfoDailyUpdate(ReproducedLastDay.ToString(), DiedLastDay.ToString());
 		ReproducedLastDay = 0;
 		DiedLastDay = 0;
 		HumansAtHome = 0;
@@ -348,11 +352,10 @@ public class GameManagerScript : MonoBehaviour {
 		}
         //the time of today is ended, start a new day
 		GameStatus = GameStateType.EndOfDay;
-        /*foreach (HouseScript house in Houses)
-        {
-            house.DistributeFood();
-        }*/
-		Invoke("DayStarting", 1);
+        
+
+
+        Invoke("DayStarting", 1);
 	}
 
 	void Hbs_FinallyBackHome()
@@ -370,7 +373,7 @@ public class GameManagerScript : MonoBehaviour {
 	}
 
      
-    public bool UseFood(int food)
+    public bool UsePlayerFood(int food)
     {
         if(FoodPlayer> food)
         {

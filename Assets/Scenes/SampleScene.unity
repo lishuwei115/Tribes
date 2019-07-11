@@ -636,6 +636,7 @@ MonoBehaviour:
   OnExplainMode: 0
   IsTouch: 0
   BuildManager: {fileID: 0}
+  MovState: 0
 --- !u!1001 &1159509631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -751,30 +752,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 430032560, guid: 39d5715ccbea248df907be3014b7efd2, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 430032560, guid: 39d5715ccbea248df907be3014b7efd2, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1906861236, guid: 39d5715ccbea248df907be3014b7efd2, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1906861236, guid: 39d5715ccbea248df907be3014b7efd2, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 36648002, guid: 39d5715ccbea248df907be3014b7efd2, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 36648002, guid: 39d5715ccbea248df907be3014b7efd2, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114771240163488284, guid: 39d5715ccbea248df907be3014b7efd2,
         type: 3}
@@ -1775,6 +1752,16 @@ PrefabInstance:
         type: 3}
       propertyPath: PlayerHouse
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
+        type: 3}
+      propertyPath: DayTime
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
+        type: 3}
+      propertyPath: DayLightTime
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c744b904de862c49b734530cf5539f9, type: 3}

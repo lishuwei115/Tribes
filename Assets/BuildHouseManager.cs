@@ -54,7 +54,7 @@ public class BuildHouseManager : MonoBehaviour
                 break;
             }
         }
-        if (Input.GetMouseButtonUp(0) && BuildableArea && GameManagerScript.Instance.UseFood(FoodRequired))
+        if (Input.GetMouseButtonUp(0) && BuildableArea && GameManagerScript.Instance.UsePlayerFood(FoodRequired))
         {
             GameManagerScript.Instance.SpawnNewHouse(GameManagerScript.Instance.PlayerHouse,mPos);
         }
