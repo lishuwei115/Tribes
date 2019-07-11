@@ -53,8 +53,8 @@ public class UIManagerScript : MonoBehaviour {
 
     public void InfoDailyUpdate(string bld, string dld)
 	{
-		BirthLastDay.text = "Birth last Day: " + bld;
-		DeathLastDay.text = "Death last Day: " + dld;
+		BirthLastDay.text = "Births: " + bld;
+		DeathLastDay.text = "Deaths: " + dld;
 	}
 
 	public void InfoUpdate(string c, string g, string h)
