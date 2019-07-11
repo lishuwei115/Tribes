@@ -192,6 +192,12 @@ public class HumanBeingScript : MonoBehaviour
         //eat when starving
         if (Hp < 0)
         {
+            if (AnimController != null)
+            {
+                //AttackAnimation if there is an animator
+                AnimController.transform.SetParent(GameManagerScript.Instance.HumansContainer);
+                AnimController.SetInteger("UIState", 3);
+            }
             GameManagerScript.Instance.HumanBeingDied();
             gameObject.SetActive(false);
         }
@@ -774,6 +780,11 @@ public class HumanBeingScript : MonoBehaviour
                 HarvestBar.gameObject.SetActive(true);
                 HarvestBar.UpdateHarvest(FoodLife, food.Hardness, HouseType);
                 FoodLife -= HarvestAttack;
+                if (AnimController != null)
+                {
+                    //AttackAnimation if there is an animator
+                    AnimController.SetInteger("UIState", 1);
+                }
                 yield return new WaitForSeconds(AttackFrequency);
             }
             if (Specialization > 0.1f)
@@ -826,6 +837,11 @@ public class HumanBeingScript : MonoBehaviour
                 HarvestBar.gameObject.SetActive(true);
                 HarvestBar.UpdateHarvest(CultivationProgress, CultivationTarget * Specialization*2, HouseType);
                 CultivationProgress += HarvestAttack;
+                if (AnimController != null)
+                {
+                    //AttackAnimation if there is an animator
+                    AnimController.SetInteger("UIState", 1);
+                }
                 yield return new WaitForSeconds(AttackFrequency);
             }
             if (Specialization > 0.1f)

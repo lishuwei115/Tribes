@@ -1749,6 +1749,24 @@ PrefabInstance:
       propertyPath: FoodContainer
       value: 
       objectReference: {fileID: 1316630376}
+    - target: {fileID: 3393260075159848030, guid: 4c744b904de862c49b734530cf5539f9,
+        type: 3}
+      propertyPath: HousesSkin.Array.data[1].SkinPrefab
+      value: 
+      objectReference: {fileID: 2774551131370630588, guid: 48d67ef5a06868248bc4338bd5d0e5f3,
+        type: 3}
+    - target: {fileID: 3393260075159848030, guid: 4c744b904de862c49b734530cf5539f9,
+        type: 3}
+      propertyPath: HousesSkin.Array.data[2].SkinPrefab
+      value: 
+      objectReference: {fileID: 6510393532586212114, guid: 762a58ddae71f6e42a7efa85ad6331ec,
+        type: 3}
+    - target: {fileID: 3393260075159848030, guid: 4c744b904de862c49b734530cf5539f9,
+        type: 3}
+      propertyPath: HousesSkin.Array.data[3].SkinPrefab
+      value: 
+      objectReference: {fileID: 8671424906640433870, guid: 6221da89ac7336747af819dfe65c1eca,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c744b904de862c49b734530cf5539f9, type: 3}
 --- !u!1001 &4486709925381344857
