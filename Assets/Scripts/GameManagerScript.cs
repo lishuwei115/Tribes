@@ -379,7 +379,7 @@ public class GameManagerScript : MonoBehaviour {
     }
     private void KillMonsters()
     {
-        for (int i = 1; i < Monsters.Count; i++)
+        for (int i = 0; i < Monsters.Count; i++)
         {
             Destroy(Monsters[i].gameObject);
         }
