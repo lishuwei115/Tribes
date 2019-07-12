@@ -4,6 +4,7 @@ using UnityEngine;
 using DigitalRuby.Tween;
 using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
+using System.Linq;
 
 public class WorldmapCamera : MonoBehaviour
 {
@@ -70,7 +71,11 @@ public class WorldmapCamera : MonoBehaviour
 
     public void ResetCam()
     {
-        MoveToPos(new Vector3(-254, 90, -260), .1f);
+        ZoomCamera(40, ZoomSpeedTouch);
+
+        Transform playerHouse = GameManagerScript.Instance.Houses.Where(r => r.IsPlayer).ToList()[0].transform; 
+        //MoveToPos(new Vector3(-254, 90, -260), .1f);
+        MoveToPos(new Vector3(playerHouse.position.x, 90, playerHouse.position.z), .1f);
     }
 
     private void FixedUpdate()
@@ -127,14 +132,14 @@ public class WorldmapCamera : MonoBehaviour
 
             }
             else
-            if (MovState == MovementState.none && Input.GetMouseButtonUp(0)&&!IsBuilding && Vector2.Distance(lastPanPosition, Input.mousePosition) < 30)//&& Input.GetMouseButtonUp(0) && Time.time - OffsetTime < .1f
+            if (MovState == MovementState.none && Input.GetMouseButtonUp(0)&&!IsBuilding && Vector2.Distance(lastPanPosition, Input.mousePosition) < 40 * (Screen.width / 1920))//&& Input.GetMouseButtonUp(0) && Time.time - OffsetTime < .1f
             {
                 TribeToPoint();
                 MovState = MovementState.none;
                 lastPanPosition = Input.mousePosition;
                 OffsetTime = Time.time;
             }
-            else if (!Input.GetMouseButtonDown(0) && Input.GetMouseButton(0) && Vector2.Distance(lastPanPosition, Input.mousePosition) > 30)// - (Input.mousePosition.x + Input.mousePosition.y)) > 30 * (Screen.width / 1920)) 
+            else if (!Input.GetMouseButtonDown(0) && Input.GetMouseButton(0) && Vector2.Distance(lastPanPosition, Input.mousePosition) > 40 * (Screen.width / 1920))// - (Input.mousePosition.x + Input.mousePosition.y)) > 30 * (Screen.width / 1920)) 
             {
                 PanCameraWithTween(Input.mousePosition);
                 //PanCameraWithoutTween(Input.mousePosition);
@@ -167,7 +172,80 @@ public class WorldmapCamera : MonoBehaviour
         }
         
     }
+    void HandleTouch()
+    {
+        Touch touch;
+        switch (Input.touchCount)
+        {
+            case 1: // Panning
+                // If the touch began, capture its position and its finger ID.
+                // Otherwise, if the finger ID of the touch doesn't match, skip it.
+                touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Began && !wasZoomingLastFrame)
+                {
+                    touchPhase = touchPhase.BeganPad;
+                    PanningWitouthTween = false;
+                    MovState = MovementState.none;
+                    OffsetTime = Time.time;
+                    lastPanPosition = touch.position;
+                    panFingerId = touch.fingerId;
+                }
+                else if (MovState == MovementState.none && touch.phase == TouchPhase.Ended /*&& !PanningWitouthTween*/ &&
+                    !wasZoomingLastFrame && !IsBuilding && Vector2.Distance(lastPanPosition, touch.position) < 30 * (Screen.width / 1920))
+                {
+                        touchPhase = touchPhase.EndePad;
+                        MovState = MovementState.none;
+                        lastPanPosition = touch.position;
+                        OffsetTime = Time.time;
+                        TribeToPoint();                    
+                }
+                else if (touch.fingerId == panFingerId && Vector2.Distance(lastPanPosition, touch.position) > 30*(Screen.width/1920) && !wasZoomingLastFrame &&
+                         (touchPhase == touchPhase.BeganPad || touchPhase == touchPhase.MovePad))
+                {
+                    touchPhase = touchPhase.MovePad;
+                    PanningWitouthTween = false;
+                    PanCameraWithTween(touch.position);
+                }
+                
 
+                break;
+
+            case 2: // Zooming
+                touchPhase = touchPhase.Zoom;
+                Vector2[] newPositions = new Vector2[] { Input.GetTouch(0).position, Input.GetTouch(1).position };
+                if (!wasZoomingLastFrame)
+                {
+                    lastZoomPositions = newPositions;
+                    wasZoomingLastFrame = true;
+                    MovState = MovementState.Zoom;
+
+                }
+                else
+                {
+
+                    touch = Input.GetTouch(0);
+                    if (touch.fingerId == panFingerId)
+                    {
+                        panFingerId = -1;
+                    }
+                    // Zoom based on the distance between the new positions compared to the 
+                    // distance between the previous positions.
+                    float newDistance = Vector2.Distance(newPositions[0], newPositions[1]);
+                    float oldDistance = Vector2.Distance(lastZoomPositions[0], lastZoomPositions[1]);
+                    float offset = newDistance - oldDistance;
+
+                    ZoomCamera(offset, ZoomSpeedTouch);
+
+                    lastZoomPositions = newPositions;
+                }
+                break;
+
+            default:
+                lastPanPosition = transform.position;
+                Invoke("SetZoomToFalse", 0.1f);
+                break;
+        }
+    }
     public void TribeToPoint()
     {
 
@@ -262,80 +340,7 @@ public class WorldmapCamera : MonoBehaviour
     }
 
 
-    void HandleTouch()
-    {
-        Touch touch;
-        switch (Input.touchCount)
-        {
-            case 1: // Panning
-                // If the touch began, capture its position and its finger ID.
-                // Otherwise, if the finger ID of the touch doesn't match, skip it.
-                touch = Input.GetTouch(0);
-                if (touch.phase == TouchPhase.Began && !wasZoomingLastFrame)
-                {
-                    touchPhase = touchPhase.BeganPad;
-                    PanningWitouthTween = false;
-                    OffsetTime = Time.time;
-                    lastPanPosition = touch.position;
-                    panFingerId = touch.fingerId;
-                }
-                else if (touch.phase == TouchPhase.Ended /*&& !PanningWitouthTween*/ && !wasZoomingLastFrame)
-                {
-                    /*if( Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (touch.position.x + touch.position.y)) > 100)
-                    {
-                        touchPhase = touchPhase.EndePad;
-                        PanCameraWithTween(touch.position);
-                    }
-                    else*/
-                    if (!BuildManager.isActiveAndEnabled && Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (Input.mousePosition.x + Input.mousePosition.y)) < .1f*(cam.orthographicSize/ZoomBounds[1]))
-                    {
-                        touchPhase = touchPhase.EndePad;
-                        TribeToPoint();
-                    }
-                }
-                else if (touch.fingerId == panFingerId && touch.phase == TouchPhase.Moved && Mathf.Abs((lastPanPosition.x + lastPanPosition.y) - (touch.position.x + touch.position.y)) > 0.1f* (float)(cam.orthographicSize / ZoomBounds[1])/*(Time.time - OffsetTime) > 0.01f*/ && !wasZoomingLastFrame &&
-                         (touchPhase == touchPhase.BeganPad || touchPhase == touchPhase.MovePad))
-                {
-                    touchPhase = touchPhase.MovePad;
-                    PanningWitouthTween = false;
-                    PanCameraWithTween(touch.position);
-                }
-                
-                break;
-
-            case 2: // Zooming
-                touchPhase = touchPhase.Zoom;
-                Vector2[] newPositions = new Vector2[] { Input.GetTouch(0).position, Input.GetTouch(1).position };
-                if (!wasZoomingLastFrame)
-                {
-                    lastZoomPositions = newPositions;
-                    wasZoomingLastFrame = true;
-                }
-                else
-                {
-                    touch = Input.GetTouch(0);
-                    if (touch.fingerId == panFingerId)
-                    {
-                        panFingerId = -1;
-                    }
-                    // Zoom based on the distance between the new positions compared to the 
-                    // distance between the previous positions.
-                    float newDistance = Vector2.Distance(newPositions[0], newPositions[1]);
-                    float oldDistance = Vector2.Distance(lastZoomPositions[0], lastZoomPositions[1]);
-                    float offset = newDistance - oldDistance;
-
-                    ZoomCamera(offset, ZoomSpeedTouch);
-
-                    lastZoomPositions = newPositions;
-                }
-                break;
-
-            default:
-                lastPanPosition = transform.position;
-                Invoke("SetZoomToFalse", 0.1f);
-                break;
-        }
-    }
+    
     private void SetZoomToFalse()
     {
         wasZoomingLastFrame = false;

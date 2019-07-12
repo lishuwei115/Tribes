@@ -46,17 +46,6 @@ public class GameManagerScript : MonoBehaviour {
 
 	public Transform HumansContainer;
 
-    internal void MoveTribeTo(Vector3 pos, HousesTypes tribe)
-    {
-        foreach (HouseScript house in Houses)
-        {
-            if(house.HouseType == tribe)
-            {
-                house.MoveTribeTo(pos);
-            }
-        }
-    }
-
     public Transform FoodContainer;
 
 	[Header("info")]
@@ -84,6 +73,7 @@ public class GameManagerScript : MonoBehaviour {
     private int DiedLastDay;
     [HideInInspector]
     public int currentDayTime = 0;
+    public float CurrentTimeMS = 0;
     public bool AddingPlayerHouse = false;
 
 
@@ -186,14 +176,22 @@ public class GameManagerScript : MonoBehaviour {
         }
         
     }
-
+    internal void MoveTribeTo(Vector3 pos, HousesTypes tribe)
+    {
+        foreach (HouseScript house in Houses)
+        {
+            if (house.HouseType == tribe)
+            {
+                house.MoveTribeTo(pos);
+            }
+        }
+    }
     // Update is called once per frame
     void Update () {
 		if(Input.GetKeyUp(KeyCode.A))
 		{
 			SceneManager.LoadScene(0);
 		}
-
 		UIManagerScript.Instance.InfoUpdate(HumansList.Where(r=>r.gameObject.activeInHierarchy && r.HType == HumanType.Charity).ToList().Count.ToString(),
 		                                    HumansList.Where(r =>r.gameObject.activeInHierarchy &&  r.HType == HumanType.Gratitude).ToList().Count.ToString(),
 		                                    HumansList.Where(r =>r.gameObject.activeInHierarchy &&  r.HType == HumanType.Hate).ToList().Count.ToString());
@@ -311,10 +309,7 @@ public class GameManagerScript : MonoBehaviour {
 
     public void DayStarting()
 	{
-        foreach (HouseScript house in Houses)
-        {
-            house.DistributeFood();
-        }
+        
         UIManagerScript.Instance.InfoDailyUpdate(ReproducedLastDay.ToString(), DiedLastDay.ToString());
 		ReproducedLastDay = 0;
 		DiedLastDay = 0;
@@ -339,7 +334,9 @@ public class GameManagerScript : MonoBehaviour {
 		UIManagerScript.Instance.AddDay();
 		GameStatus = GameStateType.DayStarted;
 		int i = DayTime;
-		while(i > 0)
+        CurrentTimeMS = 0;
+
+        while (i > 0)
 		{
             currentDayTime = i;
             UIManagerScript.Instance.TimerUpdate(i);
@@ -347,14 +344,19 @@ public class GameManagerScript : MonoBehaviour {
             {
                 GameStatus = GameStateType.NightTime;
             }
+            yield return new WaitForSecondsRealtime(.01f);
+            CurrentTimeMS += .01f;
             yield return new WaitForSecondsRealtime(1);
 			i--;
 		}
         //the time of today is ended, start a new day
 		GameStatus = GameStateType.EndOfDay;
-        
 
 
+        foreach (HouseScript house in Houses)
+        {
+            house.DistributeFood();
+        }
         Invoke("DayStarting", 1);
 	}
 

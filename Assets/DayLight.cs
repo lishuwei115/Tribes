@@ -21,6 +21,6 @@ public class DayLight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Filter.color = light.Evaluate((float)(60f - GameManagerScript.Instance.currentDayTime) / 60);
+        Filter.color = light.Evaluate((float)(GameManagerScript.Instance.CurrentTimeMS) / GameManagerScript.Instance.DayTime);
     }
 }
