@@ -1,0 +1,374 @@
+fileFormatVersion: 2
+guid: e71ae2ec65d4a394fa013d3ee00cead2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7897085060271605555
+    second: Atlas_PROTOTYPE-trees_2
+  - first:
+      213: -6495965346851508254
+    second: Atlas_PROTOTYPE-trees_3
+  - first:
+      213: -8939462687141512270
+    second: Atlas_PROTOTYPE-trees_4
+  - first:
+      213: 7994450319214077111
+    second: Atlas_PROTOTYPE-trees_8
+  - first:
+      213: 252179758537307286
+    second: Atlas_PROTOTYPE-trees_12
+  - first:
+      213: -1657445219498982795
+    second: Atlas_PROTOTYPE-trees_13
+  - first:
+      213: 2920576667340390634
+    second: Atlas_PROTOTYPE-trees_14
+  - first:
+      213: 6219653065830011957
+    second: Atlas_PROTOTYPE-trees_15
+  - first:
+      213: 7001098474240630591
+    second: Atlas_PROTOTYPE-trees_16
+  - first:
+      213: 907615360864289725
+    second: Atlas_PROTOTYPE-trees_17
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Atlas_PROTOTYPE-trees_2
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 715
+        width: 185
+        height: 305
+      alignment: 9
+      pivot: {x: 0.5133992, y: 0.052999727}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 394d00154f1ee6b42825b73d2f66373d
+      internalID: -7897085060271605555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_PROTOTYPE-trees_3
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 705
+        width: 232
+        height: 275
+      alignment: 9
+      pivot: {x: 0.46260414, y: 0.10338889}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6044a5b6b875d2a48a38cbdc33ddbf35
+      internalID: -6495965346851508254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_PROTOTYPE-trees_4
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 709
+        width: 330
+        height: 279
+      alignment: 9
+      pivot: {x: 0.5375581, y: 0.086863525}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c245debbc7758d74484af83d88ddd08f
+      internalID: -8939462687141512270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_PROTOTYPE-trees_8
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 701
+        width: 160
+        height: 227
+      alignment: 9
+      pivot: {x: 0.6084483, y: 0.07412357}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2966325d2c7bf14d98f8afeb8695178
+      internalID: 7994450319214077111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_PROTOTYPE-trees_12
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 359
+        width: 286
+        height: 283
+      alignment: 9
+      pivot: {x: 0.5606703, y: 0.075184636}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d61e3f6a3b737b4409d273e0b4fac491
+      internalID: 252179758537307286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_PROTOTYPE-trees_13
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 346
+        width: 312
+        height: 294
+      alignment: 9
+      pivot: {x: 0.551642, y: 0.086863406}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33c97ce5a49f4284b9c8a001f6dcc7c8
+      internalID: -1657445219498982795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_PROTOTYPE-trees_14
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 350
+        width: 239
+        height: 334
+      alignment: 9
+      pivot: {x: 0.5103714, y: 0.069546364}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe62a787343d9d74fa104b1497b4e06d
+      internalID: 2920576667340390634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_PROTOTYPE-trees_15
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 18
+        width: 297
+        height: 326
+      alignment: 9
+      pivot: {x: 0.36646083, y: 0.06658678}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd5a85a6dd122df44a437fba431b1e63
+      internalID: 6219653065830011957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_PROTOTYPE-trees_16
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 22
+        width: 163
+        height: 278
+      alignment: 9
+      pivot: {x: 0.5076036, y: 0.04525253}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99a794b5614942744b23c5e8fa848613
+      internalID: 7001098474240630591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_PROTOTYPE-trees_17
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 31
+        width: 236
+        height: 307
+      alignment: 9
+      pivot: {x: 0.4789928, y: 0.05591177}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6df779128276bf459bb4bc265e35df3
+      internalID: 907615360864289725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: e99a41e624746e548862c7f3708fb0cb
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

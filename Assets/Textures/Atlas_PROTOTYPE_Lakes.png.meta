@@ -1,19 +1,13 @@
 fileFormatVersion: 2
-guid: 17913104bd6fc524ea92154873b37d91
+guid: 698abce23e60b194786a3a8ac7438f78
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7582748649499795186
-    second: Atlas_PROTOTYPE_Tile_biotexture_0
+      213: 4798927869520957505
+    second: Atlas_PROTOTYPE_Lakes_0
   - first:
-      213: -6778692581441766453
-    second: Atlas_PROTOTYPE_Tile_biotexture_1
-  - first:
-      213: 7687912924389687411
-    second: Atlas_PROTOTYPE_Tile_biotexture_2
-  - first:
-      213: -4481777829612134120
-    second: Atlas_PROTOTYPE_Tile_biotexture_3
+      213: -6773545691353868532
+    second: Atlas_PROTOTYPE_Lakes_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -46,15 +40,15 @@ TextureImporter:
     filterMode: -1
     aniso: -1
     mipBias: -100
-    wrapU: 0
-    wrapV: 0
-    wrapW: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -129,85 +123,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Atlas_PROTOTYPE_Tile_biotexture_0
+      name: Atlas_PROTOTYPE_Lakes_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 256
-        width: 256
-        height: 256
+        x: 29
+        y: 382
+        width: 452
+        height: 130
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a6c657904b894f4596788cf54a2d42d
-      internalID: 7582748649499795186
+      spriteID: 04b1228cf020851478a75b41fdcd6a50
+      internalID: 4798927869520957505
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_PROTOTYPE_Tile_biotexture_1
+      name: Atlas_PROTOTYPE_Lakes_1
       rect:
         serializedVersion: 2
-        x: 256
-        y: 256
-        width: 256
-        height: 256
+        x: 15
+        y: 196
+        width: 472
+        height: 166
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d095314efac1a6945a482a059434dc70
-      internalID: -6778692581441766453
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_PROTOTYPE_Tile_biotexture_2
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 144176ac80a1be943929d01b9516c480
-      internalID: 7687912924389687411
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_PROTOTYPE_Tile_biotexture_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e53e7864c44368b4ab44b14dc456ca3f
-      internalID: -4481777829612134120
+      spriteID: 7e7670622c274c54da5d6c331ca4e5d8
+      internalID: -6773545691353868532
       vertices: []
       indices: 
       edges: []
@@ -215,7 +167,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: e2b8eaa9654bb7b4093d1e99216024af
+    spriteID: fde4a2a1d7f3bea49a4b588034661fed
     internalID: 0
     vertices: []
     indices: 
