@@ -47,6 +47,7 @@ public class WorldmapCamera : MonoBehaviour
     public event CameraOnStartPos CameraOnStartPosEvent;
     public BuildHouseManager BuildManager;
     public MovementState MovState = MovementState.none;
+    bool Initialized = false;
     private void Awake()
     {
         Instance = this;
@@ -57,7 +58,6 @@ public class WorldmapCamera : MonoBehaviour
     {
         layerMask = LayerMask.GetMask("Ground", "BlockTouch");
         cam = GetComponent<Camera>();
-        ResetCam();
 #if UNITY_ANDROID
         IsTouch = true;
 #endif
@@ -83,6 +83,11 @@ public class WorldmapCamera : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!Initialized)
+        {
+            ResetCam();
+            Initialized = true;
+        }
         if (IsTouch)
         {
             HandleTouch();

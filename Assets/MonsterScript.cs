@@ -65,10 +65,11 @@ public class MonsterScript : MonoBehaviour
         HPBar = GetComponentInChildren<HealthBarSprite>();
         HPBar.gameObject.SetActive(false);
         InitializeRandomParameters();
-        StartMoving();
         //Set Layer of allies and enemies
         SetLayers();
         Food = 30;
+        StartMoving();
+
     }
 
     // Update is called once per frame

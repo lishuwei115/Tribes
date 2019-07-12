@@ -381,7 +381,7 @@ public class GameManagerScript : MonoBehaviour {
     {
         for (int i = 1; i < Monsters.Count; i++)
         {
-            Destroy(Monsters[i]);
+            Destroy(Monsters[i].gameObject);
         }
         Monsters = new List<MonsterScript>();
     }
