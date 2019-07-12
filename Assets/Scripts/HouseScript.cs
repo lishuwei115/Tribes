@@ -51,7 +51,7 @@ public class HouseScript : MonoBehaviour
     }
     private void Start()
     {
-        CloseBuildingCircle();
+        CloseBuildingCircle(false);
         UIManagerScript.Instance.UpdateFood();
         HouseSkin = Instantiate(SkinManager.Instance.GetSkinInfo(HouseType).HousePrefab,transform);
         TimeAttack = Time.time + UnityEngine.Random.Range(TimeAttackMin, TimeAttackMax);
@@ -207,9 +207,18 @@ public class HouseScript : MonoBehaviour
     {
         BuildingCircle.OpenBuildingCircle();
     }
-    internal void CloseBuildingCircle()
+    internal void CloseBuildingCircle(bool create)
     {
-        BuildingCircle.CloseBuildingCircle();
+        if (create)
+        {
+            BuildingCircle.CreateHouse();
+
+        }
+        else
+        {
+            BuildingCircle.CloseBuildingCircle();
+
+        }
     }
 
     /// <summary>

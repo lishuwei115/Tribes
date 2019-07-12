@@ -264,19 +264,19 @@ public class HumanBeingScript : MonoBehaviour
         {
             case HousesTypes.North:
                 gameObject.layer = LayerMask.NameToLayer("North");
-                EnemyLayer = LayerMask.GetMask("West", "South", "East");
+                EnemyLayer = LayerMask.GetMask("West", "South", "East","Monster");
                 break;
             case HousesTypes.South:
                 gameObject.layer = LayerMask.NameToLayer("South");
-                EnemyLayer = LayerMask.GetMask("West", "North", "East");
+                EnemyLayer = LayerMask.GetMask("West", "North", "East", "Monster");
                 break;
             case HousesTypes.East:
                 gameObject.layer = LayerMask.NameToLayer("East");
-                EnemyLayer = LayerMask.GetMask("West", "South", "North");
+                EnemyLayer = LayerMask.GetMask("West", "South", "North", "Monster");
                 break;
             case HousesTypes.West:
                 gameObject.layer = LayerMask.NameToLayer("West");
-                EnemyLayer = LayerMask.GetMask("North", "South", "East");
+                EnemyLayer = LayerMask.GetMask("North", "South", "East", "Monster");
                 break;
         }
     }
@@ -876,7 +876,19 @@ public class HumanBeingScript : MonoBehaviour
         Vector3 offset = transform.position;
         float distance = Vector3.Distance(offset, humanT.position);
         float timeCount = 0;
-        HumanBeingScript Enemy = humanT.GetComponent<HumanBeingScript>();
+        bool humanEnemy = true;
+        HumanBeingScript Enemy = new HumanBeingScript();
+        MonsterScript EnemyMonster = new MonsterScript();
+        if (humanT.GetComponent<HumanBeingScript>())
+        {
+            humanEnemy = true;
+            Enemy = humanT.GetComponent<HumanBeingScript>();
+        }
+        else if (humanT.GetComponent<MonsterScript>())
+        {
+            humanEnemy = false;
+            EnemyMonster = humanT.GetComponent<MonsterScript>();
+        }
         while (EnemyAlive)
         {
             //move towars target
@@ -902,16 +914,37 @@ public class HumanBeingScript : MonoBehaviour
 
                 CanIAttack = false;
                 Invoke("AttackAction", AttackFrequency);
-                Enemy.UnderAttack(PhisicalAttack);
-                if (AnimController != null)
+                if (humanEnemy)
                 {
-                    //AttackAnimation if there is an animator
-                    AnimController.SetInteger("UIState", 2);
+                    Enemy.UnderAttack(PhisicalAttack);
+                    if (AnimController != null)
+                    {
+                        //AttackAnimation if there is an animator
+                        AnimController.SetInteger("UIState", 2);
+                    }
+                    if (Enemy.Hp <= 0)
+                    {
+                        Food += Enemy.Food;
+                        Enemy.Food = 0;
+                        EnemyAlive = false;
+                        HPBar.gameObject.SetActive(false);
+                    }
                 }
-                if (Enemy.Hp <= 0)
+                else
                 {
-                    Food += Enemy.Food;
-                    Enemy.Food = 0;
+                    EnemyMonster.UnderAttack(PhisicalAttack);
+                    if (AnimController != null)
+                    {
+                        //AttackAnimation if there is an animator
+                        AnimController.SetInteger("UIState", 2);
+                    }
+                    if (EnemyMonster.Hp <= 0)
+                    {
+                        Food += EnemyMonster.Food;
+                        EnemyMonster.Food = 0;
+                        EnemyAlive = false;
+                        HPBar.gameObject.SetActive(false);
+                    }
                 }
             }
             /*if(Dist>2 && Enemy.gameObject.activeInHierarchy)
@@ -928,7 +961,7 @@ public class HumanBeingScript : MonoBehaviour
                 GoToRandomPos();
             }
             //won?
-            if (!Enemy.gameObject.activeInHierarchy || Enemy.CurrentState == StateType.Home)
+            if (!EnemyAlive)
             {
                 if (Specialization < 0.9f)
                 {
@@ -940,9 +973,7 @@ public class HumanBeingScript : MonoBehaviour
                     Specialization = 0.9f;
                 }
                 CheckBonusHealth();
-                EnemyAlive = false;
                 //update HP Bar
-                HPBar.gameObject.SetActive(false);
 
             }
             yield return new WaitForEndOfFrame();

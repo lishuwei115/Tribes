@@ -32,6 +32,9 @@ public class GameManagerScript : MonoBehaviour {
     [Range(1,500)]
 	public int Humans = 10;
 
+    [Range(1,500)]
+	public int NumberOfMonsters = 6;
+
 	[Range(1, 500)]
     public int FoodPerDay = 10;
 
@@ -40,6 +43,9 @@ public class GameManagerScript : MonoBehaviour {
 
 	[Header("GameElements")]
 	public List<HouseScript> Houses = new List<HouseScript>();
+    public MonsterScript MonsterPrefab;
+	public List<MonsterScript> Monsters = new List<MonsterScript>();
+    //public Transform MonsterContainer; TO DO
 	public GameObject Human;
 
     public GameObject Food;
@@ -120,7 +126,7 @@ public class GameManagerScript : MonoBehaviour {
         {
             if (ho.HouseType == PlayerHouse )
             {
-                ho.CloseBuildingCircle();
+                ho.CloseBuildingCircle(true);
                 AddingPlayerHouse = true;
             }
         }
@@ -131,7 +137,7 @@ public class GameManagerScript : MonoBehaviour {
         {
             if (ho.HouseType == PlayerHouse)
             {
-                ho.CloseBuildingCircle();
+                ho.CloseBuildingCircle(false);
             }
         }
     }
@@ -340,14 +346,18 @@ public class GameManagerScript : MonoBehaviour {
 		{
             currentDayTime = i;
             UIManagerScript.Instance.TimerUpdate(i);
-            if (i >= DayLightTime)
+            if (i <= DayLightTime)
             {
+                if (GameStatus != GameStateType.NightTime)
+                    SpawnMonsters();
                 GameStatus = GameStateType.NightTime;
+                
             }
             yield return new WaitForSecondsRealtime(.01f);
             CurrentTimeMS += .01f;
             yield return new WaitForSecondsRealtime(1);
-			i--;
+            KillMonsters();
+            i--;
 		}
         //the time of today is ended, start a new day
 		GameStatus = GameStateType.EndOfDay;
@@ -360,7 +370,23 @@ public class GameManagerScript : MonoBehaviour {
         Invoke("DayStarting", 1);
 	}
 
-	void Hbs_FinallyBackHome()
+    private void SpawnMonsters()
+    {
+        for (int i = 1; i < NumberOfMonsters; i++)
+        {
+            Monsters.Add(Instantiate(MonsterPrefab, GetFreeSpaceOnGround(1.5f), new Quaternion(0, 0, 0, 0)));
+        }
+    }
+    private void KillMonsters()
+    {
+        for (int i = 1; i < Monsters.Count; i++)
+        {
+            Destroy(Monsters[i]);
+        }
+        Monsters = new List<MonsterScript>();
+    }
+
+    void Hbs_FinallyBackHome()
 	{
 		HumansAtHome++;
         //All humans are home, start a new day

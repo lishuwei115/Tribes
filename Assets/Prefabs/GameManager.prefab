@@ -58,14 +58,18 @@ MonoBehaviour:
   GameStatus: 0
   DayTime: 120
   DayLightTime: 60
-  Humans: 3
-  FoodPerDay: 20
+  Humans: 50
+  NumberOfMonsters: 6
+  FoodPerDay: 100
   MaxNumChildren: 2
   Houses:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  MonsterPrefab: {fileID: 4114835160951089905, guid: ca39d3b10a89a8148834796a3fcad0e7,
+    type: 3}
+  Monsters: []
   Human: {fileID: 1601211067918478, guid: a31ada27f20cc4e01ac704e5ae7b1e41, type: 3}
   Food: {fileID: 1117377009214392, guid: a91af74e5d3194f0ebb4824e1beaad74, type: 3}
   HumansContainer: {fileID: 0}
@@ -76,6 +80,7 @@ MonoBehaviour:
   GroundSizeWidth: 270
   GroundSizeHeight: 270
   currentDayTime: 0
+  CurrentTimeMS: 0
   AddingPlayerHouse: 0
 --- !u!114 &3393260075159848030
 MonoBehaviour:
@@ -97,19 +102,19 @@ MonoBehaviour:
     HousePrefab: {fileID: 7697778713606853072, guid: 3d737876fe5008148b00b7c31aa810f0,
       type: 3}
   - House: 2
-    SkinPrefab: {fileID: 8955598621932473859, guid: a0c217097bfed2943aa0fb9e9baca54c,
+    SkinPrefab: {fileID: 2774551131370630588, guid: 48d67ef5a06868248bc4338bd5d0e5f3,
       type: 3}
     TribeColor: {r: 0.7372549, g: 0, b: 0.43532926, a: 1}
     HousePrefab: {fileID: 7697778713606853072, guid: 73d87cd5db7ebc3418ba208ce834ba2c,
       type: 3}
   - House: 3
-    SkinPrefab: {fileID: 7423829036801790840, guid: 2e1364a3bdaede843a842174eea5b409,
+    SkinPrefab: {fileID: 6510393532586212114, guid: 762a58ddae71f6e42a7efa85ad6331ec,
       type: 3}
     TribeColor: {r: 0, g: 0.45269147, b: 0.7372549, a: 1}
     HousePrefab: {fileID: 7697778713606853072, guid: 3b58fe29c4773264888267d473256ea8,
       type: 3}
   - House: 4
-    SkinPrefab: {fileID: 3743889277897589981, guid: 77fefa06e81e5e0499ef29e0121af5a0,
+    SkinPrefab: {fileID: 8671424906640433870, guid: 6221da89ac7336747af819dfe65c1eca,
       type: 3}
     TribeColor: {r: 0.8301887, g: 0.7558862, b: 0, a: 1}
     HousePrefab: {fileID: 7697778713606853072, guid: 8fd15577b62051d44b16a02dfbc02a28,

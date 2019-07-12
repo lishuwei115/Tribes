@@ -26,4 +26,10 @@ public class HealthBarSprite : MonoBehaviour
         HPBar.transform.localScale =new Vector3( HPCurrent / HPBase, HPBar.transform.localScale.y, HPBar.transform.localScale.z);
         HPBar.color = SkinManager.Instance.GetSkinInfo(house).TribeColor;
     }
+    public void UpdateHP(float hp, float baseHp)
+    {
+        HPBase = baseHp;
+        HPCurrent = hp;
+        HPBar.transform.localScale = new Vector3(HPCurrent / HPBase, HPBar.transform.localScale.y, HPBar.transform.localScale.z);
+    }
 }

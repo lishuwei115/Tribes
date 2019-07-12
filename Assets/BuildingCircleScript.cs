@@ -30,10 +30,16 @@ public class BuildingCircleScript : MonoBehaviour
         BuildingSpriteMax.gameObject.SetActive(false);
         BuildingSpriteMin.gameObject.SetActive(false);
         BuildHouseManager.Instance.gameObject.SetActive(false);
+
+    }
+    public void CreateHouse()
+    {
+        BuildingSpriteMax.gameObject.SetActive(false);
+        BuildingSpriteMin.gameObject.SetActive(false);
+        BuildHouseManager.Instance.gameObject.SetActive(false);
         WorldmapCamera.Instance.FinishBuilding();
 
     }
-
 
 
     internal void Initialize(float buildingRadiusMin, float buildingRadiusMax)
