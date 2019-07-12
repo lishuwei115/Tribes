@@ -61,6 +61,9 @@ public class WorldmapCamera : MonoBehaviour
 #if UNITY_ANDROID
         IsTouch = true;
 #endif
+#if UNITY_IOS
+        isTouch = true;
+#endif
 #if UNITY_EDITOR
         IsTouch = false;
 
