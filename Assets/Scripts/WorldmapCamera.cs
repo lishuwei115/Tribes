@@ -62,7 +62,7 @@ public class WorldmapCamera : MonoBehaviour
         IsTouch = true;
 #endif
 #if UNITY_IOS
-        isTouch = true;
+        IsTouch = true;
 #endif
 #if UNITY_EDITOR
         IsTouch = false;
