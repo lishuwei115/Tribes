@@ -300,6 +300,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd20d9f592b0490f85b4303061742de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HouseType: 1
+  CurrentState: 0
   Radius: 2
   Specialization: 0.5
   InitialHP: 0
@@ -323,8 +325,8 @@ MonoBehaviour:
   HpMin: 50
   Hp: 0
   BaseHp: 0
-  SpeedMax: 8
-  SpeedMin: 6
+  SpeedMax: 50
+  SpeedMin: 45
   AttackMax: 6
   AttackMin: 4
   ReproductionPerc: 50
@@ -359,8 +361,6 @@ MonoBehaviour:
   HModifierSpeed: -0.5
   HModifierAttack: 1
   HType: 0
-  HouseType: 1
-  CurrentState: 0
   CurrentAction: 0
   CharityM: {fileID: 2100000, guid: a5ad18c0cf56a457fac9166c00b66fc5, type: 2}
   AttackM: {fileID: 2100000, guid: 188e63c8195e7414ea55824d38ff540d, type: 2}

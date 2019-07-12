@@ -1,0 +1,398 @@
+fileFormatVersion: 2
+guid: ce32640ee58da7c4c8d2b4b52a0d8025
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6977020787772243122
+    second: Atlas_PROTOTYPE-Watercolor_brush_0
+  - first:
+      213: -5199506589618033407
+    second: Atlas_PROTOTYPE-Watercolor_brush_1
+  - first:
+      213: 2274107351292299058
+    second: Atlas_PROTOTYPE-Watercolor_brush_2
+  - first:
+      213: 6589563958185188262
+    second: Atlas_PROTOTYPE-Watercolor_brush_3
+  - first:
+      213: -3778680250752544645
+    second: Atlas_PROTOTYPE-Watercolor_brush_4
+  - first:
+      213: -4568178009077437589
+    second: Atlas_PROTOTYPE-Watercolor_brush_6
+  - first:
+      213: 7852872874152680965
+    second: Atlas_PROTOTYPE-Watercolor_brush_7
+  - first:
+      213: 8453041099453091619
+    second: Atlas_PROTOTYPE-Watercolor_brush_8
+  - first:
+      213: 2952309661122776875
+    second: Atlas_PROTOTYPE-Watercolor_brush_9
+  - first:
+      213: 3370410842047852062
+    second: Atlas_PROTOTYPE-Watercolor_brush_10
+  - first:
+      213: -6336605923543293268
+    second: Atlas_PROTOTYPE-Watercolor_brush_11
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Atlas_PROTOTYPE-Watercolor_brush_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 661
+        width: 219
+        height: 311
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14961a44fc8f10d4c917a093f7153fc1
+      internalID: 6977020787772243122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_PROTOTYPE-Watercolor_brush_1
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 656
+        width: 335
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c855faafeaca9a46b456ca998f54b4c
+      internalID: -5199506589618033407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_PROTOTYPE-Watercolor_brush_2
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 642
+        width: 338
+        height: 354
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 215ec61ed35207c45924b95bc921b397
+      internalID: 2274107351292299058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_PROTOTYPE-Watercolor_brush_3
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 297
+        width: 231
+        height: 327
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc1300c3909f86e4fb2a96b3c29b5433
+      internalID: 6589563958185188262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_PROTOTYPE-Watercolor_brush_4
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 320
+        width: 312
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df484c5ce3cf2864ebcdfa021741c360
+      internalID: -3778680250752544645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_PROTOTYPE-Watercolor_brush_6
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 274
+        width: 372
+        height: 354
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14db97bd52984b84bb3da1b475aec191
+      internalID: -4568178009077437589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_PROTOTYPE-Watercolor_brush_7
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 40
+        width: 339
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea5a0d29db10c304ea37e27e1e70b6af
+      internalID: 7852872874152680965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_PROTOTYPE-Watercolor_brush_8
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 180
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f8fa9ae512d38b4d9ee1cb21e286f38
+      internalID: 8453041099453091619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_PROTOTYPE-Watercolor_brush_9
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 40
+        width: 280
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bac64bc0221ca449925df3b8cea059c
+      internalID: 2952309661122776875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_PROTOTYPE-Watercolor_brush_10
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 8
+        width: 211
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ac421bff4dc4ac43a0797d335b4eff1
+      internalID: 3370410842047852062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_PROTOTYPE-Watercolor_brush_11
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 144
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a16bf8ab0785a894e9038ca656fa1e84
+      internalID: -6336605923543293268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 32708b9fab41a6b4facfbd90217f5459
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
