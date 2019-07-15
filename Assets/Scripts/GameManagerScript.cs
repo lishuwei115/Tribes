@@ -367,11 +367,11 @@ public class GameManagerScript : MonoBehaviour
             yield return new WaitForSecondsRealtime(.01f);
             CurrentTimeMS += .01f;
             yield return new WaitForSecondsRealtime(1);
-            KillMonsters();
             i--;
         }
         //the time of today is ended, start a new day
         GameStatus = GameStateType.EndOfDay;
+        KillMonsters();
 
 
         foreach (HouseScript house in Houses)
