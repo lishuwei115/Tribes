@@ -26,9 +26,9 @@ TagManager:
   - East
   - West
   - BlockTouch
-  - 
+  - MapMask
   - Monster
-  - 
+  - MiniMap
   - 
   - 
   - 
