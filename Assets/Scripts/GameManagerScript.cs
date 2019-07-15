@@ -35,7 +35,7 @@ public class GameManagerScript : MonoBehaviour
     [Range(1, 500)]
     public int Humans = 10;
 
-    [Range(1, 500)]
+    [Range(0, 500)]
     public int NumberOfMonsters = 6;
 
     [Range(1, 500)]
