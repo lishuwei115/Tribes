@@ -227,7 +227,15 @@ public class MonsterScript : MonoBehaviour
             humanEnemy = false;
             EnemyMonster = humanT.GetComponent<MonsterScript>();
         }
-  
+        if (humanEnemy)
+        {
+            if(Enemy.CurrentState == StateType.Home)
+            {
+                CurrentState = MonsterState.Patroll;
+                GoToRandomPos();
+                FollowCo = null;
+            }
+        }
         while (EnemyAlive)
         {
             //move towars target
