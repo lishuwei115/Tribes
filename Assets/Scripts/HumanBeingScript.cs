@@ -39,6 +39,8 @@ public class HumanBeingScript : MonoBehaviour
     [Range(0, 1000)]
     public float CultivationTarget = 300;
     public List<float> CultivationPercentage = new List<float> { 70, 90, 100 };
+    [Range(0, 100)]
+    public float FoodRandomPointDistance = 4;
     public float RandomFoodGained;
     [Range(0, 1000)]
     public float HpMax;
@@ -612,21 +614,22 @@ public class HumanBeingScript : MonoBehaviour
             //Debug.Log(EnemiesCollision.Count);
             //Debug.Log(iD);
             AttackOrFood(EnemiesCollision, Foodcollisions);
-
+            //found enemy house
             if (CurrentState != StateType.FollowInstruction && !FoodStealed && CurrentState == StateType.LookingForFood && TargetFoodDest == null && TargetHuman == null && Housecollisions.Count > 0 && Housecollisions[0].collider.GetComponent<HouseScript>().FoodStore > 0 && Housecollisions[0].collider.GetComponent<HouseScript>().HouseType != HouseType)
             {
                 TargetFoodDest = Housecollisions[0].collider.transform;
                 CurrentState = StateType.FoodFound;
                 GoToPosition(TargetFoodDest.position);
             }
-
+            //found food
             if (CurrentState != StateType.FollowInstruction && CurrentState == StateType.LookingForFood && Foodcollisions.Count > 0 && TargetFoodDest == null && TargetHuman == null)
             {
                 TargetFoodDest = Foodcollisions[0].collider.transform;
                 CurrentState = StateType.FoodFound;
+                Vector3 randomPos = TargetFoodDest.position + new Vector3(UnityEngine.Random.Range(-FoodRandomPointDistance, FoodRandomPointDistance), 0, UnityEngine.Random.Range(-FoodRandomPointDistance, FoodRandomPointDistance));
+                GoToPosition(randomPos);
+            }//found enemy
 
-                GoToPosition(TargetFoodDest.position);
-            }
             if (CurrentState != StateType.FollowInstruction && CurrentState != StateType.ComingBackHome && EnemiesCollision.Count > 0 /*&& TargetFoodDest == null*/ && TargetHuman == null)
             {
                 TargetHuman = EnemiesCollision[0].collider.transform;

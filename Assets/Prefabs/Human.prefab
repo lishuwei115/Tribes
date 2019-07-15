@@ -320,6 +320,7 @@ MonoBehaviour:
   - 70
   - 90
   - 100
+  FoodRandomPointDistance: 10
   RandomFoodGained: 0
   HpMax: 60
   HpMin: 50
