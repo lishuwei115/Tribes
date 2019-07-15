@@ -376,10 +376,15 @@ public class HumanBeingScript : MonoBehaviour
 
     public void Reproduce()
     {
-        if (UnityEngine.Random.Range(0, 100) < ReproductionPerc)
+        //if breeding is abilitated for the player
+        if(GameManagerScript.Instance.Breeding == true || TargetHouse.IsPlayer == false)
         {
-            GameManagerScript.Instance.Reproduction(TargetHouse);
+            if (UnityEngine.Random.Range(0, 100) < ReproductionPerc)
+            {
+                GameManagerScript.Instance.Reproduction(TargetHouse);
+            }
         }
+        
     }
 
     private List<RaycastHit> LookAround(string layer)
@@ -621,6 +626,13 @@ public class HumanBeingScript : MonoBehaviour
                 CurrentState = StateType.FoodFound;
                 GoToPosition(TargetFoodDest.position);
             }
+            //found enemy
+
+            if (CurrentState != StateType.FollowInstruction && CurrentState != StateType.ComingBackHome && EnemiesCollision.Count > 0 /*&& TargetFoodDest == null*/ && TargetHuman == null)
+            {
+                TargetHuman = EnemiesCollision[0].collider.transform;
+                AttackEnemy(TargetHuman);
+            }
             //found food
             if (CurrentState != StateType.FollowInstruction && CurrentState == StateType.LookingForFood && Foodcollisions.Count > 0 && TargetFoodDest == null && TargetHuman == null)
             {
@@ -628,12 +640,6 @@ public class HumanBeingScript : MonoBehaviour
                 CurrentState = StateType.FoodFound;
                 Vector3 randomPos = TargetFoodDest.position + new Vector3(UnityEngine.Random.Range(-FoodRandomPointDistance, FoodRandomPointDistance), 0, UnityEngine.Random.Range(-FoodRandomPointDistance, FoodRandomPointDistance));
                 GoToPosition(randomPos);
-            }//found enemy
-
-            if (CurrentState != StateType.FollowInstruction && CurrentState != StateType.ComingBackHome && EnemiesCollision.Count > 0 /*&& TargetFoodDest == null*/ && TargetHuman == null)
-            {
-                TargetHuman = EnemiesCollision[0].collider.transform;
-                AttackEnemy(TargetHuman);
             }
             yield return new WaitForEndOfFrame();
             Vector3 nextpos = Vector3.Lerp(offset, dest, timeCount);
@@ -907,80 +913,84 @@ public class HumanBeingScript : MonoBehaviour
             }
             //start another coroutine, not compatible with current system
             //GoToPosition(humanT.position);
-            float Dist = Vector3.Distance(transform.position, humanT.position);
-            //Attack
-            if (Dist < 2f && CanIAttack)
+            if(humanT != null)
             {
-                //update HP Bar
-                HPBar.gameObject.SetActive(true);
-                HPBar.UpdateHP(Hp, BaseHp, HouseType);
-
-                CanIAttack = false;
-                Invoke("AttackAction", AttackFrequency);
-                if (humanEnemy)
+                float Dist = Vector3.Distance(transform.position, humanT.position);
+                //Attack
+                if (Dist < 2f && CanIAttack)
                 {
-                    Enemy.UnderAttack(PhisicalAttack);
-                    if (AnimController != null)
+                    //update HP Bar
+                    HPBar.gameObject.SetActive(true);
+                    HPBar.UpdateHP(Hp, BaseHp, HouseType);
+
+                    CanIAttack = false;
+                    Invoke("AttackAction", AttackFrequency);
+                    if (humanEnemy)
                     {
-                        //AttackAnimation if there is an animator
-                        AnimController.SetInteger("UIState", 2);
+                        Enemy.UnderAttack(PhisicalAttack);
+                        if (AnimController != null)
+                        {
+                            //AttackAnimation if there is an animator
+                            AnimController.SetInteger("UIState", 2);
+                        }
+                        if (Enemy.Hp <= 0)
+                        {
+                            Food += Enemy.Food;
+                            Enemy.Food = 0;
+                            EnemyAlive = false;
+                            HPBar.gameObject.SetActive(false);
+                        }
                     }
-                    if (Enemy.Hp <= 0)
+                    else
                     {
-                        Food += Enemy.Food;
-                        Enemy.Food = 0;
-                        EnemyAlive = false;
-                        HPBar.gameObject.SetActive(false);
+                        EnemyMonster.UnderAttack(PhisicalAttack);
+                        if (AnimController != null)
+                        {
+                            //AttackAnimation if there is an animator
+                            AnimController.SetInteger("UIState", 2);
+                        }
+                        if (EnemyMonster.Hp <= 0)
+                        {
+                            Food += EnemyMonster.Food;
+                            EnemyMonster.Food = 0;
+                            EnemyAlive = false;
+                            HPBar.gameObject.SetActive(false);
+                        }
                     }
                 }
-                else
+                /*if(Dist>2 && Enemy.gameObject.activeInHierarchy)
                 {
-                    EnemyMonster.UnderAttack(PhisicalAttack);
-                    if (AnimController != null)
+                    FollowCo = null;
+                    AttackEnemy(Enemy.transform);
+                }
+                else*/
+                if (Dist > 2)
+                {
+                    FollowCo = null;
+
+                    CurrentState = StateType.LookingForFood;
+                    GoToRandomPos();
+                }
+                //won?
+                if (!EnemyAlive)
+                {
+                    if (Specialization < 0.9f)
                     {
-                        //AttackAnimation if there is an animator
-                        AnimController.SetInteger("UIState", 2);
+                        Specialization += WarriorIncrement;
+
                     }
-                    if (EnemyMonster.Hp <= 0)
+                    else
                     {
-                        Food += EnemyMonster.Food;
-                        EnemyMonster.Food = 0;
-                        EnemyAlive = false;
-                        HPBar.gameObject.SetActive(false);
+                        Specialization = 0.9f;
                     }
-                }
-            }
-            /*if(Dist>2 && Enemy.gameObject.activeInHierarchy)
-            {
-                FollowCo = null;
-                AttackEnemy(Enemy.transform);
-            }
-            else*/
-            if (Dist > 2)
-            {
-                FollowCo = null;
-
-                CurrentState = StateType.LookingForFood;
-                GoToRandomPos();
-            }
-            //won?
-            if (!EnemyAlive)
-            {
-                if (Specialization < 0.9f)
-                {
-                    Specialization += WarriorIncrement;
+                    CheckBonusHealth();
+                    //update HP Bar
 
                 }
-                else
-                {
-                    Specialization = 0.9f;
-                }
-                CheckBonusHealth();
-                //update HP Bar
-
+                yield return new WaitForEndOfFrame();
             }
-            yield return new WaitForEndOfFrame();
         }
+            
 
         CurrentState = StateType.LookingForFood;
         GoToRandomPos();

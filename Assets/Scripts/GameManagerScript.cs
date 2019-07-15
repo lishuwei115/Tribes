@@ -35,8 +35,8 @@ public class GameManagerScript : MonoBehaviour
     [Range(1, 500)]
     public int Humans = 10;
 
-    [Range(0, 500)]
-    public int NumberOfMonsters = 6;
+    //[Range(0, 500)]
+    //public int NumberOfMonsters = 6;
 
     [Range(1, 500)]
     public int FoodPerDay = 10;
@@ -46,6 +46,7 @@ public class GameManagerScript : MonoBehaviour
 
     [Header("GameElements")]
     public List<HouseScript> Houses = new List<HouseScript>();
+    public List<MonsterHouse> MonsterHouses;
     public MonsterScript MonsterPrefab;
     public List<MonsterScript> Monsters = new List<MonsterScript>();
     //public Transform MonsterContainer; TO DO
@@ -84,11 +85,12 @@ public class GameManagerScript : MonoBehaviour
     public int currentDayTime = 0;
     public float CurrentTimeMS = 0;
     public bool AddingPlayerHouse = false;
-    bool Breeding = true;
+    public bool Breeding = true;
 
     private void Awake()
     {
         Instance = this;
+        MonsterHouses = UnityEngine.Object.FindObjectsOfType<MonsterHouse>().ToList<MonsterHouse>();
     }
 
     // Use this for initialization
@@ -231,6 +233,7 @@ public class GameManagerScript : MonoBehaviour
         //Initialize all the humans in all houses
         foreach (HouseScript house in Houses)
         {
+            house.NewHouse = false;
             if (house.HouseType == PlayerHouse)
             {
                 house.IsPlayer = true;
@@ -309,7 +312,7 @@ public class GameManagerScript : MonoBehaviour
             HumansList.Add(hbs);
             hbs.TargetHouse = home;
             hbs.HouseType = home.HouseType;
-            //hbs.FinallyBackHome += Hbs_FinallyBackHome;
+            hbs.FinallyBackHome += Hbs_FinallyBackHome;
             home.Humans.Add(hbs);
             hbs.WearSkin();
             ReproducedLastDay++;
@@ -357,7 +360,7 @@ public class GameManagerScript : MonoBehaviour
         {
             currentDayTime = i;
             UIManagerScript.Instance.TimerUpdate(i);
-            if (i <= DayLightTime)
+            if (i <=DayTime- DayLightTime)
             {
                 if (GameStatus != GameStateType.NightTime)
                     SpawnMonsters();
@@ -383,9 +386,12 @@ public class GameManagerScript : MonoBehaviour
 
     private void SpawnMonsters()
     {
-        for (int i = 1; i < NumberOfMonsters; i++)
+        foreach (MonsterHouse monsterHouse in MonsterHouses)
         {
-            Monsters.Add(Instantiate(MonsterPrefab, GetFreeSpaceOnGround(1.5f), new Quaternion(0, 0, 0, 0)));
+            MonsterScript m = Instantiate(MonsterPrefab, monsterHouse.transform);
+            Monsters.Add(m);
+            m.House = monsterHouse;
+            m.RadiusOfExploration = monsterHouse.RangeOfMovement;
         }
     }
     private void KillMonsters()

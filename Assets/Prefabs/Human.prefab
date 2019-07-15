@@ -302,7 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HouseType: 1
   CurrentState: 0
-  Radius: 2
+  Radius: 5
   Specialization: 0.5
   InitialHP: 0
   HPBonus: 0

@@ -50,7 +50,8 @@ public class MonsterScript : MonoBehaviour
     bool AttackDecision = false;
     Animator AnimController = null;
     LayerMask EnemyLayer;
-
+    public float RadiusOfExploration;
+    public MonsterHouse House;
 
     private void Awake()
     {
@@ -116,8 +117,8 @@ public class MonsterScript : MonoBehaviour
         {
             TargetDest = new Vector3(UnityEngine.Random.Range(transform.position.x - Radius * 4, transform.position.x + Radius*4),transform.position.y, UnityEngine.Random.Range(transform.position.z - Radius * 4, transform.position.z + Radius * 4));
             //check the borders
-            TargetDest.x = Mathf.Clamp(TargetDest.x, -GameManagerScript.Instance.GroundSizeWidth,GameManagerScript.Instance.GroundSizeWidth);
-            TargetDest.z = Mathf.Clamp(TargetDest.z, -GameManagerScript.Instance.GroundSizeHeight, GameManagerScript.Instance.GroundSizeHeight);
+            TargetDest.x = Mathf.Clamp(TargetDest.x, House.transform.position.x-RadiusOfExploration, House.transform.position.x+RadiusOfExploration);
+            TargetDest.z = Mathf.Clamp(TargetDest.z, House.transform.position.z-RadiusOfExploration, House.transform.position.z+RadiusOfExploration);
             GoToPosition(TargetDest);
         }
     }
@@ -247,7 +248,16 @@ public class MonsterScript : MonoBehaviour
                 yield return new WaitForEndOfFrame();
                 timeCount = timeCount + Time.deltaTime * Speed / distance * 10;
                 Vector3 nextpos = Vector3.Lerp(transform.position, humanT.position, timeCount);
+                nextpos.x = Mathf.Clamp(nextpos.x, House.transform.position.x - RadiusOfExploration, House.transform.position.x + RadiusOfExploration);
+                nextpos.z = Mathf.Clamp(nextpos.z, House.transform.position.z - RadiusOfExploration, House.transform.position.z + RadiusOfExploration);
                 transform.position = nextpos;
+                if(Enemy.transform.position.x< House.transform.position.x - RadiusOfExploration || Enemy.transform.position.x > House.transform.position.x + RadiusOfExploration || Enemy.transform.position.z < House.transform.position.x - RadiusOfExploration || Enemy.transform.position.x > House.transform.position.x + RadiusOfExploration )
+                {
+                    FollowCo = null;
+
+                    CurrentState = MonsterState.Patroll;
+                    GoToRandomPos();
+                }
             }
             //start another coroutine, not compatible with current system
             float Dist = Vector3.Distance(transform.position, humanT.position);
