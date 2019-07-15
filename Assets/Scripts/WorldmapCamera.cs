@@ -140,7 +140,7 @@ public class WorldmapCamera : MonoBehaviour
 
             }
             else
-            if (MovState == MovementState.none && Input.GetMouseButtonUp(0)&&!IsBuilding && Vector2.Distance(lastPanPosition, Input.mousePosition) < 40 * (Screen.width / 1920))//&& Input.GetMouseButtonUp(0) && Time.time - OffsetTime < .1f
+            if (MovState == MovementState.none && Input.GetMouseButtonUp(1)&&!IsBuilding /*&& Vector2.Distance(lastPanPosition, Input.mousePosition) < 40 * (Screen.width / 1920)*/)//&& Input.GetMouseButtonUp(0) && Time.time - OffsetTime < .1f
             {
                 TribeToPoint();
                 MovState = MovementState.none;
