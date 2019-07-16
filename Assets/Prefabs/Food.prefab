@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23366667654016898}
   - component: {fileID: 114293401580142426}
   - component: {fileID: 135897408745985892}
+  - component: {fileID: 2806710585124598772}
   m_Layer: 10
   m_Name: Food
   m_TagString: Food
@@ -113,6 +114,25 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &2806710585124598772
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117377009214392}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7e61484be3707a04385428ff45904bc0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2091591961525075720
 GameObject:
   m_ObjectHideFlags: 0
