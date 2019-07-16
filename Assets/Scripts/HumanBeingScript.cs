@@ -673,8 +673,12 @@ public class HumanBeingScript : MonoBehaviour
                 CurrentState = StateType.FoodFound;
                 Vector3 randomPos = TargetFoodDest.position + new Vector3(UnityEngine.Random.Range(-FoodRandomPointDistance, FoodRandomPointDistance), 0, UnityEngine.Random.Range(-FoodRandomPointDistance, FoodRandomPointDistance));
                 GoToPosition(randomPos);
+            }else
+            {
+                CurrentState = StateType.LookingForFood;
+                GoToRandomPos();
             }
-            
+           
         }
         else
         if (CurrentState == StateType.ComingBackHome)
@@ -840,7 +844,7 @@ public class HumanBeingScript : MonoBehaviour
                 if (!ResourceAvaiable)
                 {
                     DidIFindFood = true;
-                    food.gameObject.SetActive(false);
+                    food.Deactivate(); ;
                     CurrentState = StateType.LookingForFood;
                     GoToRandomPos();
                 }

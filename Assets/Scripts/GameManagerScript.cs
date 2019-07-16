@@ -54,6 +54,7 @@ public class GameManagerScript : MonoBehaviour
     public GameObject Human;
 
     public GameObject Food;
+    public GameObject Flower;
 
     public Transform HumansContainer;
 
@@ -68,6 +69,7 @@ public class GameManagerScript : MonoBehaviour
     [HideInInspector]
     public List<HumanBeingScript> HumansList = new List<HumanBeingScript>();
     public List<Animator> DeadList = new List<Animator>();
+    public List<Animator> FlowerList = new List<Animator>();
 
 
 
@@ -300,19 +302,34 @@ public class GameManagerScript : MonoBehaviour
         for (int i = 0; i < FoodPerDay-1; i++)
         {
             FoodsList[i].gameObject.SetActive(true);
-            FoodsList[i].transform.position = GetFreeSpaceOnGround(0);
+            FoodsList[i].GetComponent<Animator>().SetBool("UIState", false);
+            Invoke("RandomizeFoodPosition", 0.3f);
         }
         foreach (Animator dead in DeadList)
         {
-            GameObject food = Instantiate(Food, FoodContainer);
+            
+            GameObject flower = Instantiate(Flower, DeadContainer);
+            flower.SetActive(true);
+            flower.transform.position = dead.transform.position + new Vector3(UnityEngine.Random.Range(-3,3),0, UnityEngine.Random.Range(-3, 3));
+            FlowerList.Add(flower.GetComponent<Animator>());
+            flower.GetComponent<SpriteRenderer>().color = dead.GetComponentInChildren<SpriteRenderer>().color;
+            /*GameObject food = Instantiate(Food, FoodContainer);
             food.SetActive(true);
             food.transform.position = dead.transform.position;
-            FoodsList.Add(food.GetComponent<FoodScript>());
+            //FoodsList.Add(food.GetComponent<FoodScript>());*/
             Destroy(dead.gameObject);
         }
         DeadList = new List<Animator>();
     }
-
+    public void RandomizeFoodPosition()
+    {
+        for (int i = 0; i < FoodPerDay - 1; i++)
+        {
+            FoodsList[i].gameObject.SetActive(true);
+            FoodsList[i].GetComponent<Animator>().SetBool("UIState", true);
+            FoodsList[i].transform.position = GetFreeSpaceOnGround(0);
+        }
+    }
 
     public Vector3 GetFreeSpaceOnGround(float y)
     {

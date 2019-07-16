@@ -52,9 +52,9 @@ public class MonsterScript : MonoBehaviour
     LayerMask EnemyLayer;
     public float RadiusOfExploration;
     public MonsterHouse House;
-
     private void Awake()
     {
+        AnimController = GetComponentInChildren<Animator>();
     }
 
 
@@ -81,9 +81,9 @@ public class MonsterScript : MonoBehaviour
         {
             if (AnimController != null)
             {
-                //AttackAnimation if there is an animator
+                //Death animation if there is an animator
                 AnimController.transform.SetParent(GameManagerScript.Instance.HumansContainer);
-                AnimController.SetInteger("UIState", 3);
+                AnimController.SetInteger("UIState", 2);
             }
             //To do         //GameManagerScript.Instance.MonsterDied();
             gameObject.SetActive(false);
@@ -298,7 +298,7 @@ public class MonsterScript : MonoBehaviour
                     if (AnimController != null)
                     {
                         //AttackAnimation if there is an animator
-                        AnimController.SetInteger("UIState", 2);
+                        AnimController.SetInteger("UIState", 1);
                     }
                     if (Enemy.Hp <= 0)
                     {
@@ -314,7 +314,7 @@ public class MonsterScript : MonoBehaviour
                     if (AnimController != null)
                     {
                         //AttackAnimation if there is an animator
-                        AnimController.SetInteger("UIState", 2);
+                        AnimController.SetInteger("UIState", 1);
                     }
                     if (EnemyMonster.Hp <= 0)
                     {
