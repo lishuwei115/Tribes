@@ -41,6 +41,7 @@ public class GameManagerScript : MonoBehaviour
     [Range(1, 500)]
     public int FoodPerDay = 10;
 
+
     [Range(0, 10)]
     public int MaxNumChildren = 3;
 
@@ -58,12 +59,15 @@ public class GameManagerScript : MonoBehaviour
 
     public Transform FoodContainer;
 
+    public Transform DeadContainer;
+
     [Header("info")]
     public int HumansAtHome = 0;
 
     //Not visible in Inspector
     [HideInInspector]
     public List<HumanBeingScript> HumansList = new List<HumanBeingScript>();
+    public List<Animator> DeadList = new List<Animator>();
 
 
 
@@ -86,7 +90,7 @@ public class GameManagerScript : MonoBehaviour
     public float CurrentTimeMS = 0;
     public bool AddingPlayerHouse = false;
     public bool Breeding = true;
-
+    public bool AttackIsEnable = true;
     private void Awake()
     {
         Instance = this;
@@ -151,6 +155,12 @@ public class GameManagerScript : MonoBehaviour
     {
         Breeding = !Breeding;
         return Breeding;
+    }
+
+    internal bool ToogleAttack()
+    {
+        AttackIsEnable = !AttackIsEnable;
+        return AttackIsEnable;
     }
 
     internal void EnemyDefeated()
@@ -287,11 +297,20 @@ public class GameManagerScript : MonoBehaviour
 
     public void SetFood()
     {
-        for (int i = 0; i < FoodsList.Count; i++)
+        for (int i = 0; i < FoodPerDay-1; i++)
         {
             FoodsList[i].gameObject.SetActive(true);
-            FoodsList[i].transform.position = GetFreeSpaceOnGround(1.5f);
+            FoodsList[i].transform.position = GetFreeSpaceOnGround(0);
         }
+        foreach (Animator dead in DeadList)
+        {
+            GameObject food = Instantiate(Food, FoodContainer);
+            food.SetActive(true);
+            food.transform.position = dead.transform.position;
+            FoodsList.Add(food.GetComponent<FoodScript>());
+            Destroy(dead.gameObject);
+        }
+        DeadList = new List<Animator>();
     }
 
 

@@ -44,3 +44,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: InfluenceAreas
+    uniqueID: 2847502579
+    locked: 0

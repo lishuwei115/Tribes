@@ -117,8 +117,17 @@ public class MonsterScript : MonoBehaviour
         {
             TargetDest = new Vector3(UnityEngine.Random.Range(transform.position.x - Radius * 4, transform.position.x + Radius*4),transform.position.y, UnityEngine.Random.Range(transform.position.z - Radius * 4, transform.position.z + Radius * 4));
             //check the borders
-            TargetDest.x = Mathf.Clamp(TargetDest.x, House.transform.position.x-RadiusOfExploration, House.transform.position.x+RadiusOfExploration);
-            TargetDest.z = Mathf.Clamp(TargetDest.z, House.transform.position.z-RadiusOfExploration, House.transform.position.z+RadiusOfExploration);
+            //TargetDest.x = Mathf.Clamp(TargetDest.x, House.transform.position.x-RadiusOfExploration, House.transform.position.x+RadiusOfExploration);
+            //TargetDest.z = Mathf.Clamp(TargetDest.z, House.transform.position.z-RadiusOfExploration, House.transform.position.z+RadiusOfExploration);
+            Vector3 centerPosition = House.transform.position; //center of *black circle*
+            float distance2 = Vector3.Distance(TargetDest, centerPosition); //distance from ~green object~ to *black circle*
+
+            if (distance2 > RadiusOfExploration) //If the distance is less than the radius, it is already within the circle.
+            {
+                Vector3 fromOriginToObject = TargetDest - centerPosition; //~GreenPosition~ - *BlackCenter*
+                fromOriginToObject *= RadiusOfExploration / distance2; //Multiply by radius //Divide by Distance
+                TargetDest = centerPosition + fromOriginToObject; //*BlackCenter* + all that Math
+            }
             GoToPosition(TargetDest);
         }
     }
@@ -248,10 +257,23 @@ public class MonsterScript : MonoBehaviour
                 yield return new WaitForEndOfFrame();
                 timeCount = timeCount + Time.deltaTime * Speed / distance * 10;
                 Vector3 nextpos = Vector3.Lerp(transform.position, humanT.position, timeCount);
-                nextpos.x = Mathf.Clamp(nextpos.x, House.transform.position.x - RadiusOfExploration, House.transform.position.x + RadiusOfExploration);
-                nextpos.z = Mathf.Clamp(nextpos.z, House.transform.position.z - RadiusOfExploration, House.transform.position.z + RadiusOfExploration);
+                //nextpos.x = Mathf.Clamp(nextpos.x, House.transform.position.x - RadiusOfExploration, House.transform.position.x + RadiusOfExploration);
+                //nextpos.z = Mathf.Clamp(nextpos.z, House.transform.position.z - RadiusOfExploration, House.transform.position.z + RadiusOfExploration);
+
+                //float radius = 400; //radius of *black circle*
+                Vector3 centerPosition = House.transform.position; //center of *black circle*
+                float distance2 = Vector3.Distance(nextpos, centerPosition); //distance from ~green object~ to *black circle*
+
+                if (distance2 > RadiusOfExploration) //If the distance is less than the radius, it is already within the circle.
+                {
+                    Vector3 fromOriginToObject = nextpos - centerPosition; //~GreenPosition~ - *BlackCenter*
+                    fromOriginToObject *= RadiusOfExploration / distance2; //Multiply by radius //Divide by Distance
+                    nextpos = centerPosition + fromOriginToObject; //*BlackCenter* + all that Math
+                }
+
+
                 transform.position = nextpos;
-                if(Enemy.transform.position.x< House.transform.position.x - RadiusOfExploration || Enemy.transform.position.x > House.transform.position.x + RadiusOfExploration || Enemy.transform.position.z < House.transform.position.x - RadiusOfExploration || Enemy.transform.position.x > House.transform.position.x + RadiusOfExploration )
+                if(Vector3.Distance(Enemy.transform.position,House.transform.position)>RadiusOfExploration)
                 {
                     FollowCo = null;
 

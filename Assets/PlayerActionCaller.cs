@@ -9,6 +9,9 @@ public class PlayerActionCaller : MonoBehaviour
     public Color BreedOn = Color.white;
     public Color BreedOff = Color.white;
     public TextMeshProUGUI BreedOnOffText;
+    public TextMeshProUGUI AttackOnOffText;
+    public Color AttackOn;
+    public Color AttackOff;
 
     // Start is called before the first frame update
     void Start()
@@ -36,5 +39,10 @@ public class PlayerActionCaller : MonoBehaviour
         GetComponent<Image>().color = breeding ? BreedOn : BreedOff;
         BreedOnOffText.text = breeding ? "is ON" : "is OFF";
     }
-
+    public void ToogleAttack()
+    {
+        bool attacking = GameManagerScript.Instance.ToogleAttack();
+        GetComponent<Image>().color = attacking ? AttackOn : AttackOff;
+        AttackOnOffText.text = attacking ? "is ON" : "is OFF";
+    }
 }
