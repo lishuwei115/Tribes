@@ -326,8 +326,8 @@ MonoBehaviour:
   HpMin: 50
   Hp: 0
   BaseHp: 0
-  SpeedMax: 50
-  SpeedMin: 45
+  SpeedMax: 20
+  SpeedMin: 17
   AttackMax: 6
   AttackMin: 4
   ReproductionPerc: 50
@@ -704,7 +704,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7764266484319327326}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.202, z: -0}
+  m_LocalPosition: {x: 0, y: 0.202, z: -0.001}
   m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_Children: []
   m_Father: {fileID: 6232382446766258647}

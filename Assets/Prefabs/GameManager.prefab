@@ -54,34 +54,42 @@ MonoBehaviour:
   HumanMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   FoodMaterial: {fileID: 2100000, guid: e601015e84489446e930439e8157fd1b, type: 2}
   UIButtons: []
+  GuardiansSummonable: 0
   UIButtonOver: 0
   GameStatus: 0
   DayTime: 120
   DayLightTime: 60
-  Humans: 50
-  NumberOfMonsters: 6
-  FoodPerDay: 100
+  Humans: 4
+  FoodPerDay: 30
   MaxNumChildren: 2
   Houses:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  MonsterHouses: []
   MonsterPrefab: {fileID: 4114835160951089905, guid: ca39d3b10a89a8148834796a3fcad0e7,
     type: 3}
   Monsters: []
+  Guardians: []
   Human: {fileID: 1601211067918478, guid: a31ada27f20cc4e01ac704e5ae7b1e41, type: 3}
   Food: {fileID: 1117377009214392, guid: a91af74e5d3194f0ebb4824e1beaad74, type: 3}
+  Flower: {fileID: 8170173770947902010, guid: 83cfe42acfeaf7f47ae3dabae5543575, type: 3}
   HumansContainer: {fileID: 0}
   FoodContainer: {fileID: 0}
+  DeadContainer: {fileID: 0}
   HumansAtHome: 0
   HumansList: []
+  DeadList: []
+  FlowerList: []
   FoodsList: []
-  GroundSizeWidth: 270
-  GroundSizeHeight: 270
+  GroundSizeWidth: 110
+  GroundSizeHeight: 100
   currentDayTime: 0
   CurrentTimeMS: 0
   AddingPlayerHouse: 0
+  Breeding: 1
+  AttackIsEnable: 1
 --- !u!114 &3393260075159848030
 MonoBehaviour:
   m_ObjectHideFlags: 0
