@@ -20,7 +20,7 @@ public class GameManagerScript : MonoBehaviour
     //public Mesh FoodMesh;
     public Material FoodMaterial;
     public BlockInput[] UIButtons;
-
+    public int GuardiansSummonable = 0;
 
     public bool UIButtonOver;
     public static GameManagerScript Instance;
@@ -50,6 +50,7 @@ public class GameManagerScript : MonoBehaviour
     public List<MonsterHouse> MonsterHouses;
     public MonsterScript MonsterPrefab;
     public List<MonsterScript> Monsters = new List<MonsterScript>();
+    public List<MonsterScript> Guardians = new List<MonsterScript>();
     //public Transform MonsterContainer; TO DO
     public GameObject Human;
 
@@ -346,6 +347,7 @@ public class GameManagerScript : MonoBehaviour
             GameObject human = Instantiate(Human, home.transform.position, Quaternion.identity, HumansContainer);
             HumanBeingScript hbs = human.GetComponent<HumanBeingScript>();
             HumansList.Add(hbs);
+            human.GetComponent<HumanBeingScript>().Hp = 60;
             hbs.TargetHouse = home;
             hbs.HouseType = home.HouseType;
             hbs.FinallyBackHome += Hbs_FinallyBackHome;
@@ -396,7 +398,7 @@ public class GameManagerScript : MonoBehaviour
         {
             currentDayTime = i;
             UIManagerScript.Instance.TimerUpdate(i);
-            if (i <=DayTime- DayLightTime)
+            if (i <= DayTime - DayLightTime)
             {
                 if (GameStatus != GameStateType.NightTime)
                     SpawnMonsters();
@@ -415,9 +417,41 @@ public class GameManagerScript : MonoBehaviour
 
         foreach (HouseScript house in Houses)
         {
+            house.Breed();
+
+        }
+        ShareFoodIfNeeded();
+
+        foreach (HouseScript house in Houses)
+        {
             house.DistributeFood();
         }
         Invoke("DayStarting", 1);
+    }
+
+    private void ShareFoodIfNeeded()
+    {
+        foreach (HouseScript house in Houses)
+        {
+            if (house.FoodStore < house.HumansAlive.Count)
+            {
+                float foodRequest = house.HumansAlive.Count - house.FoodStore;
+                foreach (HouseScript friendHouse in Houses)
+                {
+                    //if the house is a friend and has more food than required
+                    if (friendHouse.HouseType == house.HouseType && friendHouse.FoodStore > friendHouse.HumansAlive.Count)
+                    {
+                        float foodTargetNumber = friendHouse.FoodStore - foodRequest;
+                        //distribuisci il cibo necessario uno alla volta
+                        while (friendHouse.FoodStore > friendHouse.HumansAlive.Count && friendHouse.FoodStore > foodTargetNumber)
+                        {
+                            friendHouse.FoodStore--;
+                            house.FoodStore++;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private void SpawnMonsters()
@@ -426,7 +460,7 @@ public class GameManagerScript : MonoBehaviour
         {
             MonsterScript m = Instantiate(MonsterPrefab, monsterHouse.transform);
             Monsters.Add(m);
-            m.House = monsterHouse;
+            m.House = monsterHouse.transform;
             m.RadiusOfExploration = monsterHouse.RangeOfMovement;
         }
     }
@@ -443,14 +477,14 @@ public class GameManagerScript : MonoBehaviour
     {
         HumansAtHome++;
         //All humans are home, start a new day
-        if (HumansAtHome == HumansList.Where(r => r.gameObject.activeInHierarchy).ToList().Count && currentDayTime >= DayTime)
+        /*if (HumansAtHome == HumansList.Where(r => r.gameObject.activeInHierarchy).ToList().Count && currentDayTime >= DayTime)
         {
             foreach (HouseScript house in Houses)
             {
                 house.DistributeFood();
             }
             Invoke("DayStarting", 1);
-        }
+        }*/
     }
 
 
@@ -489,6 +523,42 @@ public class GameManagerScript : MonoBehaviour
             }
         }
     }
+
+    public void AddGuardian(HousesTypes h)
+    {
+        if(h == PlayerHouse)
+        {
+            GuardiansSummonable++;
+            foreach (HouseScript house in Houses)
+            {
+                if (house.HouseType == h)
+                {
+                    MonsterScript m = Instantiate(MonsterPrefab);
+                    m.transform.position = house.transform.position;
+                    m.HouseHuman = house;
+                    m.House = house.transform;
+                    m.RadiusOfExploration = 15;
+                }
+            }
+        }
+        else
+        {
+            foreach (HouseScript house in Houses)
+            {
+                if (house.HouseType == h)
+                {
+                    MonsterScript m = Instantiate(MonsterPrefab);
+                    m.transform.position = house.transform.position;
+                    Monsters.Add(m);
+                    m.HouseHuman = house;
+                    m.House = house.transform;
+                    m.RadiusOfExploration = 15;
+                }
+            }
+        }
+
+
+    }
 }
 
 
@@ -504,7 +574,6 @@ public enum GameStateType
 public enum HousesTypes
 {
     North,
-    Center,
     South,
     East,
     West
