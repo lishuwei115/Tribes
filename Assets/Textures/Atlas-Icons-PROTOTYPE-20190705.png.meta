@@ -38,6 +38,12 @@ TextureImporter:
   - first:
       213: 4582492583932780542
     second: Atlas-Icons-PROTOTYPE-20190705_0
+  - first:
+      213: 8121196376755861158
+    second: Atlas-Icons-PROTOTYPE-20190705_Speech
+  - first:
+      213: -2364548887134832530
+    second: Atlas-Icons-PROTOTYPE-20190705_Guardian
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -367,9 +373,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 765
-        y: 905
+        y: 903
         width: 139
-        height: 119
+        height: 121
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -392,7 +398,7 @@ TextureImporter:
         width: 166
         height: 166
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -400,6 +406,48 @@ TextureImporter:
       bones: []
       spriteID: 01fee2f7613fbdb4c9288b578d131245
       internalID: 4582492583932780542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas-Icons-PROTOTYPE-20190705_Speech
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 774
+        width: 74
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 309d3cefea7fab84fa3a87855d742834
+      internalID: 8121196376755861158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas-Icons-PROTOTYPE-20190705_Guardian
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 898
+        width: 97
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7a3a1aa6aa4f6c46bfc1f3411d91e7e
+      internalID: -2364548887134832530
       vertices: []
       indices: 
       edges: []

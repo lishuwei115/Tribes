@@ -10,8 +10,19 @@ PrefabInstance:
     - target: {fileID: 915690784044909785, guid: f19f7a8740ece1f4c836542a714ed8a7,
         type: 3}
       propertyPath: m_Name
-      value: biome-Water-02
+      value: biome-Water-02 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 915690784044909787, guid: f19f7a8740ece1f4c836542a714ed8a7,
+        type: 3}
+      propertyPath: m_MaskAlphaCutoff
+      value: 0.268
+      objectReference: {fileID: 0}
+    - target: {fileID: 915690784044909787, guid: f19f7a8740ece1f4c836542a714ed8a7,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7852872874152680965, guid: ce32640ee58da7c4c8d2b4b52a0d8025,
+        type: 3}
     - target: {fileID: 915690784044909784, guid: f19f7a8740ece1f4c836542a714ed8a7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,17 +78,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 915690784044909787, guid: f19f7a8740ece1f4c836542a714ed8a7,
-        type: 3}
-      propertyPath: m_MaskAlphaCutoff
-      value: 0.268
-      objectReference: {fileID: 0}
-    - target: {fileID: 915690784044909787, guid: f19f7a8740ece1f4c836542a714ed8a7,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 7852872874152680965, guid: ce32640ee58da7c4c8d2b4b52a0d8025,
-        type: 3}
     - target: {fileID: 915690783675582070, guid: f19f7a8740ece1f4c836542a714ed8a7,
         type: 3}
       propertyPath: m_Sprite
@@ -87,12 +87,12 @@ PrefabInstance:
     - target: {fileID: 915690784321536041, guid: f19f7a8740ece1f4c836542a714ed8a7,
         type: 3}
       propertyPath: m_Size.x
-      value: 90
+      value: 17.01
       objectReference: {fileID: 0}
     - target: {fileID: 915690784321536041, guid: f19f7a8740ece1f4c836542a714ed8a7,
         type: 3}
       propertyPath: m_Size.y
-      value: 8
+      value: 8.8
       objectReference: {fileID: 0}
     - target: {fileID: 915690784321536041, guid: f19f7a8740ece1f4c836542a714ed8a7,
         type: 3}

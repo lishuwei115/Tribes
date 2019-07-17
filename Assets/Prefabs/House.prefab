@@ -109,12 +109,13 @@ MonoBehaviour:
   Defeated: 0
   FoodStore: 0
   SafetyTimer: 40
-  SafetyTimerMin: 0
+  SafetyTimerMin: 1
   SafetyTimerMax: 40
   TimeAttackMin: 80
   TimeAttackMax: 250
   CultivateRadiusMax: 40
   CultivateRadiusMaxCircle: {fileID: 612059202977119026}
+  NewHouse: 1
   CultivateRadiusMin: 10
   CultivateCircle: {fileID: 612059203096437394}
   CultivateRadiusMinCircle: {fileID: 612059204156121839}
