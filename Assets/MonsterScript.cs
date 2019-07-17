@@ -19,6 +19,7 @@ public class MonsterScript : MonoBehaviour
     public float BaseHP;
     [Tooltip("The life of the food attacked")]
     public float FoodLife = 0;
+    public bool Alive = true;
 
     [Header("Twickable parameters")]
     [Range(0, 1000)]
@@ -50,8 +51,9 @@ public class MonsterScript : MonoBehaviour
     bool AttackDecision = false;
     Animator AnimController = null;
     LayerMask EnemyLayer;
-    public float RadiusOfExploration;
-    public MonsterHouse House;
+    public float RadiusOfExploration = 15;
+    public Transform House;
+    public HouseScript HouseHuman = null;
     private void Awake()
     {
         AnimController = GetComponentInChildren<Animator>();
@@ -82,7 +84,8 @@ public class MonsterScript : MonoBehaviour
             if (AnimController != null)
             {
                 //Death animation if there is an animator
-                AnimController.transform.SetParent(GameManagerScript.Instance.HumansContainer);
+                //AnimController.transform.SetParent(GameManagerScript.Instance.HumansContainer);
+
                 AnimController.SetInteger("UIState", 2);
             }
             //To do         //GameManagerScript.Instance.MonsterDied();
@@ -90,7 +93,7 @@ public class MonsterScript : MonoBehaviour
             //Destroy(gameObject);
 
         }
-        if (Time.time - OffsetTimer >= GameManagerScript.Instance.DayTime)
+        if (Time.time - OffsetTimer >= GameManagerScript.Instance.DayTime && HouseHuman == null)
         {
             //Destroy(gameObject);
             gameObject.SetActive(false);
@@ -108,14 +111,39 @@ public class MonsterScript : MonoBehaviour
     }
     private void SetLayers()
     {
-                gameObject.layer = LayerMask.NameToLayer("Monster");
-                EnemyLayer = LayerMask.GetMask("West", "South", "East", "North");
+        gameObject.layer = LayerMask.NameToLayer("Monster");
+        if (HouseHuman == null)
+        {
+            EnemyLayer = LayerMask.GetMask("West", "South", "East", "North");
+        }
+        else
+        {
+            switch (HouseHuman.HouseType)
+            {
+                case HousesTypes.North:
+                    gameObject.layer = LayerMask.NameToLayer("North");
+                    EnemyLayer = LayerMask.GetMask("West", "South", "East");
+                    break;
+                case HousesTypes.South:
+                    gameObject.layer = LayerMask.NameToLayer("South");
+                    EnemyLayer = LayerMask.GetMask("West", "North", "East");
+                    break;
+                case HousesTypes.East:
+                    gameObject.layer = LayerMask.NameToLayer("East");
+                    EnemyLayer = LayerMask.GetMask("West", "South", "North");
+                    break;
+                case HousesTypes.West:
+                    gameObject.layer = LayerMask.NameToLayer("West");
+                    EnemyLayer = LayerMask.GetMask("North", "South", "East");
+                    break;
+            }
+        }
     }
     public void GoToRandomPos()
     {
         if (gameObject.activeInHierarchy)
         {
-            TargetDest = new Vector3(UnityEngine.Random.Range(transform.position.x - Radius * 4, transform.position.x + Radius*4),transform.position.y, UnityEngine.Random.Range(transform.position.z - Radius * 4, transform.position.z + Radius * 4));
+            TargetDest = new Vector3(UnityEngine.Random.Range(transform.position.x - Radius * 4, transform.position.x + Radius * 4), transform.position.y, UnityEngine.Random.Range(transform.position.z - Radius * 4, transform.position.z + Radius * 4));
             //check the borders
             //TargetDest.x = Mathf.Clamp(TargetDest.x, House.transform.position.x-RadiusOfExploration, House.transform.position.x+RadiusOfExploration);
             //TargetDest.z = Mathf.Clamp(TargetDest.z, House.transform.position.z-RadiusOfExploration, House.transform.position.z+RadiusOfExploration);
@@ -178,7 +206,7 @@ public class MonsterScript : MonoBehaviour
         while (timeCount < 1)
         {
             List<RaycastHit> EnemiesCollision = LookAroundForEnemies();
-            if ( CurrentState != MonsterState.Dead && EnemiesCollision.Count > 0  && TargetHuman == null)
+            if (CurrentState != MonsterState.Dead && EnemiesCollision.Count > 0 && TargetHuman == null)
             {
                 TargetHuman = EnemiesCollision[0].collider.transform;
                 AttackEnemy(TargetHuman);
@@ -239,7 +267,7 @@ public class MonsterScript : MonoBehaviour
         }
         if (humanEnemy)
         {
-            if(Enemy.CurrentState == StateType.Home)
+            if (Enemy.CurrentState == StateType.Home)
             {
                 CurrentState = MonsterState.Patroll;
                 GoToRandomPos();
@@ -273,7 +301,7 @@ public class MonsterScript : MonoBehaviour
 
 
                 transform.position = nextpos;
-                if(Vector3.Distance(Enemy.transform.position,House.transform.position)>RadiusOfExploration)
+                if (Vector3.Distance(Enemy.transform.position, House.transform.position) > RadiusOfExploration)
                 {
                     FollowCo = null;
 
@@ -302,8 +330,8 @@ public class MonsterScript : MonoBehaviour
                     }
                     if (Enemy.Hp <= 0)
                     {
-                        Food += Enemy.Food;
-                        Enemy.Food = 0;
+                        //Food += Enemy.Food;
+                        //Enemy.Food = 0;
                         EnemyAlive = false;
                         HPBar.gameObject.SetActive(false);
                     }
@@ -318,8 +346,8 @@ public class MonsterScript : MonoBehaviour
                     }
                     if (EnemyMonster.Hp <= 0)
                     {
-                        Food += EnemyMonster.Food;
-                        EnemyMonster.Food = 0;
+                        //Food += EnemyMonster.Food;
+                        //EnemyMonster.Food = 0;
                         EnemyAlive = false;
                         HPBar.gameObject.SetActive(false);
                     }

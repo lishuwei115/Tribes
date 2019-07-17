@@ -9,9 +9,10 @@ using System;
 
 public class HumanBeingScript : MonoBehaviour
 {
-    public HousesTypes HouseType = HousesTypes.Center;
+    public HousesTypes HouseType = HousesTypes.East;
     public StateType CurrentState = StateType.Home;
     public float Radius = 2;
+
     public delegate void BackHome();
     public event BackHome FinallyBackHome;
 
@@ -913,7 +914,8 @@ public class HumanBeingScript : MonoBehaviour
         float distance = Vector3.Distance(offset, humanT.position);
         float timeCount = 0;
         bool humanEnemy = true;
-        HumanBeingScript Enemy = new HumanBeingScript();
+
+    HumanBeingScript Enemy = new HumanBeingScript();
         MonsterScript EnemyMonster = new MonsterScript();
         if (humanT.GetComponent<HumanBeingScript>())
         {
@@ -962,6 +964,7 @@ public class HumanBeingScript : MonoBehaviour
                         }
                         if (Enemy.Hp <= 0)
                         {
+
                             Food += Enemy.Food;
                             Enemy.Food = 0;
                             EnemyAlive = false;
@@ -976,12 +979,17 @@ public class HumanBeingScript : MonoBehaviour
                             //AttackAnimation if there is an animator
                             AnimController.SetInteger("UIState", 2);
                         }
-                        if (EnemyMonster.Hp <= 0)
+                        if (EnemyMonster.Hp <= 0 && EnemyMonster.Alive)
                         {
-                            Food += EnemyMonster.Food;
-                            EnemyMonster.Food = 0;
+                            //Food += EnemyMonster.Food;
+                            //EnemyMonster.Food = 0;
+                            EnemyMonster.Alive = false;
                             EnemyAlive = false;
                             HPBar.gameObject.SetActive(false);
+                            if (EnemyMonster.HouseHuman == null)
+                            {
+                                GameManagerScript.Instance.AddGuardian(HouseType);
+                            }
                         }
                     }
                 }

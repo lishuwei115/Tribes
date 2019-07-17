@@ -82,6 +82,7 @@ public class HouseScript : MonoBehaviour
         HumansAlive = Humans.Where(x => x.Hp > 0).ToList();
         if (HumansAlive.Count <= 0 && !Defeated)
         {
+            gameObject.SetActive(false);
             if (IsPlayer)
             {
                 GameManagerScript.Instance.Lost();
@@ -112,7 +113,7 @@ public class HouseScript : MonoBehaviour
                 {
                     human.Hp = human.BaseHp;
                     FoodStore--;
-                    human.Reproduce();
+                    //human.Reproduce();
                 }
             }
             else
@@ -124,7 +125,7 @@ public class HouseScript : MonoBehaviour
                     {
                         FoodStore--;
                         human.Hp = human.BaseHp;
-                        human.Reproduce();
+                        //human.Reproduce();
                     }
                     else
                     {
@@ -140,7 +141,23 @@ public class HouseScript : MonoBehaviour
 
     }
 
-    
+    public void Breed()
+    {
+        if (NewHouse)
+        {
+            NewHouse = false;
+        }
+        else
+        {
+            List<HumanBeingScript> living = Humans.Where(x => x.Hp > 0).ToList();
+
+            foreach (HumanBeingScript human in living)
+            {
+                human.Reproduce();
+            }
+
+        }
+    }
 
     internal void Cultivate(List<HumanBeingScript> humans)
     {
