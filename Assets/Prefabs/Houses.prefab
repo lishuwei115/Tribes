@@ -675,7 +675,7 @@ GameObject:
   - component: {fileID: 65371657657216394}
   - component: {fileID: 114286294649974682}
   m_Layer: 11
-  m_Name: House_West
+  m_Name: House_East
   m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -770,8 +770,8 @@ MonoBehaviour:
   Defeated: 0
   FoodStore: 0
   SafetyTimer: 40
-  SafetyTimerMin: 0
-  SafetyTimerMax: 40
+  SafetyTimerMin: 2
+  SafetyTimerMax: 6
   TimeAttackMin: 80
   TimeAttackMax: 250
   CultivateRadiusMax: 40
@@ -788,7 +788,7 @@ MonoBehaviour:
   IsPlayer: 0
   HouseSkin: {fileID: 0}
   TargetAutocracyHealth: 30
-  HouseType: 4
+  HouseType: 1
   Government: 2
 --- !u!1 &1503730709445686
 GameObject:
@@ -899,8 +899,8 @@ MonoBehaviour:
   Defeated: 0
   FoodStore: 0
   SafetyTimer: 40
-  SafetyTimerMin: 0
-  SafetyTimerMax: 40
+  SafetyTimerMin: 2
+  SafetyTimerMax: 6
   TimeAttackMin: 80
   TimeAttackMax: 250
   CultivateRadiusMax: 40
@@ -1028,8 +1028,8 @@ MonoBehaviour:
   Defeated: 0
   FoodStore: 0
   SafetyTimer: 40
-  SafetyTimerMin: 0
-  SafetyTimerMax: 40
+  SafetyTimerMin: 2
+  SafetyTimerMax: 6
   TimeAttackMin: 80
   TimeAttackMax: 250
   CultivateRadiusMax: 40
@@ -1676,7 +1676,7 @@ PrefabInstance:
     - target: {fileID: 610317045298309704, guid: 78180909e2e32da4081f9136a9522f78,
         type: 3}
       propertyPath: m_Name
-      value: House_East
+      value: House_Weast
       objectReference: {fileID: 0}
     - target: {fileID: 608249987739570934, guid: 78180909e2e32da4081f9136a9522f78,
         type: 3}
@@ -1732,6 +1732,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 714311457110639962, guid: 78180909e2e32da4081f9136a9522f78,
+        type: 3}
+      propertyPath: SafetyTimerMin
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 714311457110639962, guid: 78180909e2e32da4081f9136a9522f78,
+        type: 3}
+      propertyPath: SafetyTimerMax
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 714311457110639962, guid: 78180909e2e32da4081f9136a9522f78,
+        type: 3}
+      propertyPath: IsPlayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 612059204156121836, guid: 78180909e2e32da4081f9136a9522f78,
         type: 3}

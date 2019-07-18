@@ -69,10 +69,12 @@ public class GameManagerScript : MonoBehaviour
     //Not visible in Inspector
     [HideInInspector]
     public List<HumanBeingScript> HumansList = new List<HumanBeingScript>();
+
+    
+
     public List<Animator> DeadList = new List<Animator>();
     public List<Animator> FlowerList = new List<Animator>();
-
-
+    
 
     [HideInInspector]
     public List<FoodScript> FoodsList = new List<FoodScript>();
@@ -523,24 +525,31 @@ public class GameManagerScript : MonoBehaviour
             }
         }
     }
+    internal void SpawnGuardian(HouseScript h)
+    {
 
+        if (GuardiansSummonable>0)
+        {
+            MonsterScript m = Instantiate(MonsterPrefab);
+            m.transform.position = h.transform.position;
+            m.HouseHuman = h;
+            m.House = h.transform;
+            m.RadiusOfExploration = 15;
+            GuardiansSummonable--;
+        }
+    }
+    internal void CloseGuardianMenu()
+    {
+        throw new NotImplementedException();
+    }
     public void AddGuardian(HousesTypes h)
     {
         if(h == PlayerHouse)
         {
             GuardiansSummonable++;
-            foreach (HouseScript house in Houses)
-            {
-                if (house.HouseType == h)
-                {
-                    MonsterScript m = Instantiate(MonsterPrefab);
-                    m.transform.position = house.transform.position;
-                    m.HouseHuman = house;
-                    m.House = house.transform;
-                    m.RadiusOfExploration = 15;
-                }
-            }
+            
         }
+
         else
         {
             foreach (HouseScript house in Houses)

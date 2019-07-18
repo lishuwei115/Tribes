@@ -314,7 +314,6 @@ GameObject:
   m_Component:
   - component: {fileID: 595993144}
   - component: {fileID: 595993143}
-  - component: {fileID: 595993142}
   m_Layer: 18
   m_Name: Camera (1)
   m_TagString: Untagged
@@ -322,14 +321,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &595993142
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 595993141}
-  m_Enabled: 1
 --- !u!20 &595993143
 Camera:
   m_ObjectHideFlags: 0
@@ -1144,7 +1135,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1464401891}
   - component: {fileID: 1464401890}
-  - component: {fileID: 1464401889}
   m_Layer: 20
   m_Name: Camera
   m_TagString: Untagged
@@ -1152,14 +1142,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1464401889
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464401888}
-  m_Enabled: 1
 --- !u!20 &1464401890
 Camera:
   m_ObjectHideFlags: 0
@@ -1945,11 +1927,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
         type: 3}
-      propertyPath: Monsters.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
-        type: 3}
       propertyPath: HousesHolder
       value: 
       objectReference: {fileID: 1210403945}
@@ -1983,42 +1960,6 @@ PrefabInstance:
       propertyPath: FoodContainer
       value: 
       objectReference: {fileID: 1316630376}
-    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
-        type: 3}
-      propertyPath: GroundSizeWidth
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
-        type: 3}
-      propertyPath: GroundSizeHeight
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
-        type: 3}
-      propertyPath: FoodPerDay
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
-        type: 3}
-      propertyPath: Humans
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
-        type: 3}
-      propertyPath: DayTime
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
-        type: 3}
-      propertyPath: DayLightTime
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
-        type: 3}
-      propertyPath: Flower
-      value: 
-      objectReference: {fileID: 8170173770947902010, guid: 83cfe42acfeaf7f47ae3dabae5543575,
-        type: 3}
     - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
         type: 3}
       propertyPath: DeadContainer

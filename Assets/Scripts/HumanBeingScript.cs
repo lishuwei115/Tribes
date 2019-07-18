@@ -419,7 +419,7 @@ public class HumanBeingScript : MonoBehaviour
         //Id++;
         //Debug.Log(Id +""+ HouseType);
         List<RaycastHit> Enemy = new List<RaycastHit>();
-        List<RaycastHit> hits = new List<RaycastHit>();
+        //List<RaycastHit> hits = new List<RaycastHit>();
         /*quaternion initialRot = transform.rotation;
         RaycastHit rayout;
 

@@ -83,7 +83,7 @@ MonoBehaviour:
   DeadList: []
   FlowerList: []
   FoodsList: []
-  GroundSizeWidth: 110
+  GroundSizeWidth: 100
   GroundSizeHeight: 100
   currentDayTime: 0
   CurrentTimeMS: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
     TribeColor: {r: 0, g: 0.45269147, b: 0.7372549, a: 1}
     HousePrefab: {fileID: 7697778713606853072, guid: 3b58fe29c4773264888267d473256ea8,
       type: 3}
-  - House: 4
+  - House: 1
     SkinPrefab: {fileID: 8671424906640433870, guid: 6221da89ac7336747af819dfe65c1eca,
       type: 3}
     TribeColor: {r: 0.8301887, g: 0.7558862, b: 0, a: 1}
