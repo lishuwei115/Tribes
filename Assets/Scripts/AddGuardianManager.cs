@@ -31,6 +31,8 @@ public class AddGuardianManager : MonoBehaviour
     }
     public void Update()
     {
+        //SpawnableArea = false;
+
         Houses = GameManagerScript.Instance.Houses;
         Houses = Houses.Where(r => r.IsPlayer).ToList();
 
@@ -50,11 +52,7 @@ public class AddGuardianManager : MonoBehaviour
             {
                 SpawnableArea = true;
             }
-            if (Vector3.Distance(mPos, house.transform.position) >   20)
-            {
-                SpawnableArea = false;
-                break;
-            }
+            
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -72,9 +70,10 @@ public class AddGuardianManager : MonoBehaviour
 
                 }
             }
+
                 GameManagerScript.Instance.SpawnGuardian(SpawnHouse);
         }
-        else if (Input.GetMouseButtonUp(0) && !SpawnableArea && GameManagerScript.Instance.UsePlayerFood(FoodRequired) && Vector2.Distance(Offset, Input.mousePosition) < 30)
+        else if (Input.GetMouseButtonUp(0) && !SpawnableArea &&  Vector2.Distance(Offset, Input.mousePosition) < 30)
         {
             GameManagerScript.Instance.CloseGuardianMenu();
         }

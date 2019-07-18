@@ -10,6 +10,7 @@ public class GameManagerScript : MonoBehaviour
 
     public Transform HousePrefab;
     public Transform HousesHolder;
+    public Transform MapBorder;
     public GameState StateOfGame = GameState.Playing;
     public delegate void StartDay();
     public event StartDay DayStarted;
@@ -58,6 +59,8 @@ public class GameManagerScript : MonoBehaviour
     public GameObject Flower;
 
     public Transform HumansContainer;
+
+    
 
     public Transform FoodContainer;
 
@@ -142,6 +145,8 @@ public class GameManagerScript : MonoBehaviour
             if (ho.HouseType == PlayerHouse)
             {
                 ho.CloseBuildingCircle(true);
+                WorldmapCamera.Instance.FinishBuilding();
+
                 AddingPlayerHouse = true;
             }
         }
@@ -198,6 +203,17 @@ public class GameManagerScript : MonoBehaviour
             }
         }
 
+    }
+    public bool IsInBoundary(Vector3 mPos)
+    {
+        if (mPos.x < -GroundSizeWidth || mPos.x > GroundSizeWidth  || mPos.z < -GroundSizeHeight  || mPos.z > GroundSizeHeight )
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
     internal void Lost()
     {
@@ -299,12 +315,25 @@ public class GameManagerScript : MonoBehaviour
             }
         }
     }
-
+    public void AddMonsterMenu(HousesTypes house)
+    {
+        if (house == PlayerHouse)
+        {
+            foreach (HouseScript h in Houses)
+            {
+                if (h.HouseType == PlayerHouse && h.HumansAlive.Count > 0)
+                {
+                    h.OpenGuardianCircle();
+                    AddingPlayerHouse = true;
+                }
+            }
+        }
+    }
     public void SetFood()
     {
         for (int i = 0; i < FoodPerDay-1; i++)
         {
-            FoodsList[i].gameObject.SetActive(true);
+            
             FoodsList[i].GetComponent<Animator>().SetBool("UIState", false);
             Invoke("RandomizeFoodPosition", 0.3f);
         }
@@ -328,6 +357,7 @@ public class GameManagerScript : MonoBehaviour
     {
         for (int i = 0; i < FoodPerDay - 1; i++)
         {
+
             FoodsList[i].gameObject.SetActive(true);
             FoodsList[i].GetComponent<Animator>().SetBool("UIState", true);
             FoodsList[i].transform.position = GetFreeSpaceOnGround(0);
@@ -492,7 +522,7 @@ public class GameManagerScript : MonoBehaviour
 
     public bool UsePlayerFood(int food)
     {
-        if (FoodPlayer > food)
+        if (FoodPlayer >= food)
         {
             while (food > 0)
             {
@@ -536,11 +566,15 @@ public class GameManagerScript : MonoBehaviour
             m.House = h.transform;
             m.RadiusOfExploration = 15;
             GuardiansSummonable--;
+            h.CloseGuardianCircle(false);
         }
     }
     internal void CloseGuardianMenu()
     {
-        throw new NotImplementedException();
+        foreach(HouseScript h in Houses)
+        {
+            h.CloseGuardianCircle(false);
+        }
     }
     public void AddGuardian(HousesTypes h)
     {
@@ -558,7 +592,6 @@ public class GameManagerScript : MonoBehaviour
                 {
                     MonsterScript m = Instantiate(MonsterPrefab);
                     m.transform.position = house.transform.position;
-                    Monsters.Add(m);
                     m.HouseHuman = house;
                     m.House = house.transform;
                     m.RadiusOfExploration = 15;

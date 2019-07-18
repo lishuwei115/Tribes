@@ -80,7 +80,7 @@ public class WorldmapCamera : MonoBehaviour
         //MoveToPos(new Vector3(-254, 90, -260), .1f);
         MoveToPos(new Vector3(playerHouse.position.x, 90, playerHouse.position.z), .1f);
     }
-
+    
     private void FixedUpdate()
     {
         if (!Initialized)
@@ -147,7 +147,7 @@ public class WorldmapCamera : MonoBehaviour
                 lastPanPosition = Input.mousePosition;
                 OffsetTime = Time.time;
             }
-            else if (!Input.GetMouseButtonDown(0) && Input.GetMouseButton(0) && Vector2.Distance(lastPanPosition, Input.mousePosition) > 40 * (Screen.width / 1920))// - (Input.mousePosition.x + Input.mousePosition.y)) > 30 * (Screen.width / 1920)) 
+            else if (!Input.GetMouseButtonDown(0) && Input.GetMouseButton(0) && Vector2.Distance(lastPanPosition, Input.mousePosition) > 1 * (Screen.width / 1920))// - (Input.mousePosition.x + Input.mousePosition.y)) > 30 * (Screen.width / 1920)) 
             {
                 PanCameraWithTween(Input.mousePosition);
                 //PanCameraWithoutTween(Input.mousePosition);
@@ -199,7 +199,7 @@ public class WorldmapCamera : MonoBehaviour
                     panFingerId = touch.fingerId;
                 }
                 else if (MovState == MovementState.none && touch.phase == TouchPhase.Ended /*&& !PanningWitouthTween*/ &&
-                    !wasZoomingLastFrame && !IsBuilding && Vector2.Distance(lastPanPosition, touch.position) < 30 * (Screen.width / 1920))
+                    !wasZoomingLastFrame && !IsBuilding && Vector2.Distance(lastPanPosition, touch.position) < 3 * (Screen.width / 1920))
                 {
                         touchPhase = touchPhase.EndePad;
                         MovState = MovementState.none;
@@ -207,7 +207,7 @@ public class WorldmapCamera : MonoBehaviour
                         OffsetTime = Time.time;
                         TribeToPoint();                    
                 }
-                else if (touch.fingerId == panFingerId && Vector2.Distance(lastPanPosition, touch.position) > 30*(Screen.width/1920) && !wasZoomingLastFrame &&
+                else if (touch.fingerId == panFingerId && Vector2.Distance(lastPanPosition, touch.position) > 3*(Screen.width/1920) && !wasZoomingLastFrame &&
                          (touchPhase == touchPhase.BeganPad || touchPhase == touchPhase.MovePad))
                 {
                     touchPhase = touchPhase.MovePad;
@@ -319,10 +319,11 @@ public class WorldmapCamera : MonoBehaviour
             isMoving = true;
             // Determine how much to move the camera
             Vector3 offset = cam.ScreenToViewportPoint(lastPanPosition - newPanPosition);
-            Vector3 move = new Vector3(transform.position.x + offset.x * Val* (float)(cam.orthographicSize / ZoomBounds[1]), transform.position.y, transform.position.z + offset.y * Val* (float)(cam.orthographicSize / ZoomBounds[1]));
-            MoveToPos(move, 1f/PanSpeed/cam.orthographicSize);
-
-
+            float relativeInc = cam.orthographicSize / ZoomBounds[1] / (ZoomBounds[1] / ZoomBounds[0]) ;
+            Vector3 move = new Vector3(transform.position.x + offset.x * PanSpeed* (float)(relativeInc)*Screen.width/Screen.height, transform.position.y, transform.position.z + offset.y * PanSpeed* (float)(relativeInc)) ;
+            //MoveToPos(move, 1f/PanSpeed/(cam.orthographicSize* relativeInc));
+            transform.position = move;
+            isMoving = false;
             // Cache the position
             lastPanPosition = newPanPosition;
             LastTimeTouch = Time.time;

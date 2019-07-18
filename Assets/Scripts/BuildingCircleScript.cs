@@ -37,7 +37,6 @@ public class BuildingCircleScript : MonoBehaviour
         BuildingSpriteMax.gameObject.SetActive(false);
         BuildingSpriteMin.gameObject.SetActive(false);
         BuildHouseManager.Instance.gameObject.SetActive(false);
-        WorldmapCamera.Instance.FinishBuilding();
 
     }
 

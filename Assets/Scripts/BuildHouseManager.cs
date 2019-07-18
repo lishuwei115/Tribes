@@ -54,16 +54,22 @@ public class BuildHouseManager : MonoBehaviour
                 BuildableArea = false;
                 break;
             }
+            if (!GameManagerScript.Instance.IsInBoundary(mPos))
+            {
+                BuildableArea = false;
+                break;
+            }
         }
         if (Input.GetMouseButtonDown(0))
         {
             Offset = Input.mousePosition;
         }
-        if (Input.GetMouseButtonUp(0) && BuildableArea && GameManagerScript.Instance.UsePlayerFood(FoodRequired) && Vector2.Distance(Offset,Input.mousePosition)<30)
+        if (Input.GetMouseButtonUp(0) && BuildableArea && GameManagerScript.Instance.FoodPlayer>= FoodRequired && Vector2.Distance(Offset,Input.mousePosition)<30)
         {
+            GameManagerScript.Instance.UsePlayerFood(FoodRequired);
             GameManagerScript.Instance.SpawnNewHouse(GameManagerScript.Instance.PlayerHouse,mPos);
         }
-        else if(Input.GetMouseButtonUp(0) && !BuildableArea && GameManagerScript.Instance.UsePlayerFood(FoodRequired) && Vector2.Distance(Offset, Input.mousePosition) < 30)
+        else if(Input.GetMouseButtonUp(0) && !BuildableArea && GameManagerScript.Instance.FoodPlayer >= FoodRequired && Vector2.Distance(Offset, Input.mousePosition) < 30)
         {
             GameManagerScript.Instance.CloseBuildMenu();
         }

@@ -301,6 +301,14 @@ public class MonsterScript : MonoBehaviour
 
 
                 transform.position = nextpos;
+                if(Enemy== null)
+                {
+                    FollowCo = null;
+
+                    CurrentState = MonsterState.Patroll;
+                    GoToRandomPos();
+                }
+                else
                 if (Vector3.Distance(Enemy.transform.position, House.transform.position) > RadiusOfExploration)
                 {
                     FollowCo = null;

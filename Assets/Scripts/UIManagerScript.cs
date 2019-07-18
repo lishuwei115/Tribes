@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using System.Linq;
 
 public class UIManagerScript : MonoBehaviour {
 
@@ -85,12 +85,13 @@ public class UIManagerScript : MonoBehaviour {
 }
     public void UpdatePeople()
     {
-        HousePeopleUpperLeft.text = "" + GameManagerScript.Instance.Houses[0].HumansAlive.Count;
-        HousePeopleUpperRight.text = "" + GameManagerScript.Instance.Houses[1].HumansAlive.Count;
-        HousePeopleDownwardLeft.text = "" + GameManagerScript.Instance.Houses[2].HumansAlive.Count;
-        HousePeopleDownwardRight.text = "" + GameManagerScript.Instance.Houses[3].HumansAlive.Count;
+
+        HousePeopleUpperLeft.text = "" + GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.East && r.isActiveAndEnabled).ToList().Count;
+        HousePeopleUpperRight.text = "" + GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.South && r.isActiveAndEnabled).ToList().Count;
+        HousePeopleDownwardLeft.text = "" + GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.West && r.isActiveAndEnabled).ToList().Count;
+        HousePeopleDownwardRight.text = "" + GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.North && r.isActiveAndEnabled).ToList().Count;
     }
-    public void AddDay()
+        public void AddDay()
 	{
 		DayNumIterator++;
 		DayNum.text = "Day: " + DayNumIterator;

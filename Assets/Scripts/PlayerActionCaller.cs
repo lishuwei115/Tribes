@@ -12,6 +12,8 @@ public class PlayerActionCaller : MonoBehaviour
     public TextMeshProUGUI AttackOnOffText;
     public Color AttackOn;
     public Color AttackOff;
+    public TextMeshProUGUI MonsterNumber = null;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,19 @@ public class PlayerActionCaller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(MonsterNumber != null)
+        {
+            if (GameManagerScript.Instance.GuardiansSummonable > 0)
+            {
+                GetComponent<Button>().interactable = true;
+            }
+            else
+            {
+                GetComponent<Button>().interactable = false;
+
+            }
+            MonsterNumber.text = GameManagerScript.Instance.GuardiansSummonable.ToString();
+        }
         
     }
     public void CultivatePlayer()
@@ -32,6 +47,10 @@ public class PlayerActionCaller : MonoBehaviour
     public void AddHouse()
     {
         GameManagerScript.Instance.AddHouse(GameManagerScript.Instance.PlayerHouse);
+    }
+    public void AddGuardian()
+    {
+        GameManagerScript.Instance.AddMonsterMenu(GameManagerScript.Instance.PlayerHouse);
     }
     public void ToogleBreeding()
     {

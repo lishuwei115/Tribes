@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: 5628349384680431234, guid: 6e7f5b431be3a804db7b18fd3b1ef62e,
     type: 3}
-  m_Color: {r: 0.14971161, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -231,7 +231,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: 1049367009069102192, guid: 6e7f5b431be3a804db7b18fd3b1ef62e,
     type: 3}
-  m_Color: {r: 0.14971161, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -392,7 +392,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: -492718666989960914, guid: 6e7f5b431be3a804db7b18fd3b1ef62e,
     type: 3}
-  m_Color: {r: 0.14971161, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -555,7 +555,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: 6145265411353516212, guid: 6e7f5b431be3a804db7b18fd3b1ef62e,
     type: 3}
-  m_Color: {r: 0.14971161, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -803,7 +803,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 0}
-  m_Color: {r: 0.14971161, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -884,7 +884,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: 8812489820568917745, guid: 6e7f5b431be3a804db7b18fd3b1ef62e,
     type: 3}
-  m_Color: {r: 0.14971161, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1044,7 +1044,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: 4868410495212114330, guid: 6e7f5b431be3a804db7b18fd3b1ef62e,
     type: 3}
-  m_Color: {r: 0.14971161, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1204,7 +1204,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: -506247392341070165, guid: cc4c13bb43c65b74ca46f1297cd9b0c6,
     type: 3}
-  m_Color: {r: 0.14971161, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -31,6 +31,7 @@ public class HouseScript : MonoBehaviour
     [Range(0, 1000)]
     public float BuildingRadiusMax = 80;
     public BuildingCircleScript BuildingCircle;
+    public Transform GuardianCircle;
     public List<HumanBeingScript> Humans = new List<HumanBeingScript>();
     public List<HumanBeingScript> HumansAlive = new List<HumanBeingScript>();
     public bool IsPlayer = false;
@@ -52,6 +53,7 @@ public class HouseScript : MonoBehaviour
     private void Start()
     {
         CloseBuildingCircle(false);
+        CloseGuardianCircle(false);
         UIManagerScript.Instance.UpdateFood();
         HouseSkin = Instantiate(SkinManager.Instance.GetSkinInfo(HouseType).HousePrefab,transform);
         TimeAttack = Time.time + UnityEngine.Random.Range(TimeAttackMin, TimeAttackMax);
@@ -223,6 +225,14 @@ public class HouseScript : MonoBehaviour
     internal void OpenBuildingCircle()
     {
         BuildingCircle.OpenBuildingCircle();
+        GameManagerScript.Instance.MapBorder.gameObject.SetActive(true);
+
+    }
+    internal void OpenGuardianCircle()
+    {
+        GuardianCircle.gameObject.SetActive(true);
+        AddGuardianManager.Instance.gameObject.SetActive(true);
+        WorldmapCamera.Instance.IsBuilding = true;
     }
     internal void CloseBuildingCircle(bool create)
     {
@@ -236,8 +246,24 @@ public class HouseScript : MonoBehaviour
             BuildingCircle.CloseBuildingCircle();
 
         }
-    }
+        GameManagerScript.Instance.MapBorder.gameObject.SetActive(false);
 
+    }
+    internal void CloseGuardianCircle(bool create)
+    {
+        if (create)
+        {
+            GuardianCircle.gameObject.SetActive(false);
+            AddGuardianManager.Instance.gameObject.SetActive(false);
+
+        }
+        else
+        {
+            GuardianCircle.gameObject.SetActive(false);
+            AddGuardianManager.Instance.gameObject.SetActive(false);
+        }
+
+    }
     /// <summary>
     /// Order and cure by heath the people only up to the percentage decided beforehand
     /// </summary>
