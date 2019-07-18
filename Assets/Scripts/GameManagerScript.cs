@@ -566,8 +566,8 @@ public class GameManagerScript : MonoBehaviour
             m.House = h.transform;
             m.RadiusOfExploration = 15;
             GuardiansSummonable--;
-            h.CloseGuardianCircle(false);
         }
+        CloseGuardianMenu();
     }
     internal void CloseGuardianMenu()
     {
@@ -575,6 +575,7 @@ public class GameManagerScript : MonoBehaviour
         {
             h.CloseGuardianCircle(false);
         }
+        WorldmapCamera.Instance.IsBuilding = false;
     }
     public void AddGuardian(HousesTypes h)
     {

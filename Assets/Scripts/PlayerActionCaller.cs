@@ -32,6 +32,7 @@ public class PlayerActionCaller : MonoBehaviour
             }
             else
             {
+                GameManagerScript.Instance.CloseGuardianMenu();
                 GetComponent<Button>().interactable = false;
 
             }
