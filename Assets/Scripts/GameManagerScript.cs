@@ -574,7 +574,7 @@ public class GameManagerScript : MonoBehaviour
             m.transform.position = h.transform.position;
             m.HouseHuman = h;
             m.House = h.transform;
-            m.RadiusOfExploration = 15;
+            m.RadiusOfExploration = 30;
             GuardiansSummonable--;
         }
         CloseGuardianMenu();
