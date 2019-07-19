@@ -35,27 +35,27 @@ public class HouseScript : MonoBehaviour
     public List<HumanBeingScript> Humans = new List<HumanBeingScript>();
     public List<HumanBeingScript> HumansAlive = new List<HumanBeingScript>();
     public bool IsPlayer = false;
-    public Transform HouseSkin ;
+    public Transform HouseSkin;
 
     [Header("Government parameters")]
     [Range(0, 100)]
     public int TargetAutocracyHealth = 50;
     public HousesTypes HouseType;
     public GovernmentBehaviour Government;
-
+    int AttackIterated = 0;
     float TimeAttack;
     private void Awake()
     {
         HouseSkin = transform;
         BuildingCircle = transform.GetComponentInChildren<BuildingCircleScript>();
-        BuildingCircle.Initialize(BuildingRadiusMin,BuildingRadiusMax);
+        BuildingCircle.Initialize(BuildingRadiusMin, BuildingRadiusMax);
     }
     private void Start()
     {
         CloseBuildingCircle(false);
         CloseGuardianCircle(false);
         UIManagerScript.Instance.UpdateFood();
-        HouseSkin = Instantiate(SkinManager.Instance.GetSkinInfo(HouseType).HousePrefab,transform);
+        HouseSkin = Instantiate(SkinManager.Instance.GetSkinInfo(HouseType).HousePrefab, transform);
         TimeAttack = Time.time + UnityEngine.Random.Range(TimeAttackMin, TimeAttackMax);
         SetCultivateCircle(false);
         SafetyTimer = UnityEngine.Random.Range(SafetyTimerMin, SafetyTimerMax);
@@ -64,38 +64,45 @@ public class HouseScript : MonoBehaviour
 
     private void Update()
     {
-        if (!IsPlayer)
+        if (!GameManagerScript.Instance.Pause)
         {
-            if (Time.time >= TimeAttack && GameManagerScript.Instance.currentDayTime >45)
-            {
-                TimeAttack = Time.time + UnityEngine.Random.Range(TimeAttackMin, TimeAttackMax);
-                Transform target = null;
-                while(target == null)
-                {
-                    int i = UnityEngine.Random.Range(0,GameManagerScript.Instance.Houses.Count*100)/100; // /100*100 is to increase randomness
-                    if(GameManagerScript.Instance.Houses[i].HouseType != HouseType)
-                    {
-                        target = GameManagerScript.Instance.Houses[i].transform;
-                    }
-                }
-                MoveTribeTo(target.position);
-            }
-        }
-        HumansAlive = Humans.Where(x => x.Hp > 0).ToList();
-        if (HumansAlive.Count <= 0 && !Defeated)
-        {
-            gameObject.SetActive(false);
-            if (IsPlayer)
-            {
-                GameManagerScript.Instance.Lost();
-            }
-            if (GameManagerScript.Instance.StateOfGame == GameState.Playing)
-            {
-                GameManagerScript.Instance.EnemyDefeated();
-            }
-            Defeated = true;
 
+
+            if (!IsPlayer)
+            {
+                if (UIManagerScript.Instance.DayNumIterator - AttackIterated >= TimeAttack / GameManagerScript.Instance.DayTime && GameManagerScript.Instance.currentDayTime > 45)
+                {
+                    AttackIterated = UIManagerScript.Instance.DayNumIterator;
+                    TimeAttack = Time.time + UnityEngine.Random.Range(TimeAttackMin, TimeAttackMax);
+                    Transform target = null;
+                    while (target == null)
+                    {
+                        int i = UnityEngine.Random.Range(0, GameManagerScript.Instance.Houses.Count * 100) / 100; // /100*100 is to increase randomness
+                        if (GameManagerScript.Instance.Houses[i].HouseType != HouseType)
+                        {
+                            target = GameManagerScript.Instance.Houses[i].transform;
+                        }
+                    }
+                    MoveTribeTo(target.position);
+                }
+            }
+            HumansAlive = Humans.Where(x => x.Hp > 0).ToList();
+            if (HumansAlive.Count <= 0 && !Defeated)
+            {
+                gameObject.SetActive(false);
+                if (IsPlayer)
+                {
+                    GameManagerScript.Instance.Lost();
+                }
+                if (GameManagerScript.Instance.StateOfGame == GameState.Playing)
+                {
+                    GameManagerScript.Instance.EnemyDefeated();
+                }
+                Defeated = true;
+
+            }
         }
+
     }
 
 
@@ -138,7 +145,7 @@ public class HouseScript : MonoBehaviour
                 }
             }
         }
-        
+
         UIManagerScript.Instance.UpdateFood();
 
     }
@@ -185,7 +192,7 @@ public class HouseScript : MonoBehaviour
         CultivateCircle.gameObject.SetActive(false);
 
         CultivateCircle.gameObject.SetActive(a);
-        CultivateRadiusMaxCircle.localScale = new Vector3(CultivateRadiusMax/3.5f, CultivateRadiusMax / 3.5f, CultivateRadiusMax / 3.5f);
+        CultivateRadiusMaxCircle.localScale = new Vector3(CultivateRadiusMax / 3.5f, CultivateRadiusMax / 3.5f, CultivateRadiusMax / 3.5f);
         CultivateRadiusMinCircle.localScale = new Vector3(CultivateRadiusMin / 3.5f, CultivateRadiusMin / 3.5f, CultivateRadiusMin / 3.5f);
     }
 
@@ -211,7 +218,7 @@ public class HouseScript : MonoBehaviour
     {
         foreach (HumanBeingScript human in Humans)
         {
-            if (human.gameObject.activeInHierarchy&& (human.CurrentState != StateType.ComingBackHome && human.CurrentState != StateType.Home))
+            if (human.gameObject.activeInHierarchy && (human.CurrentState != StateType.ComingBackHome && human.CurrentState != StateType.Home))
             {
                 human.CurrentState = StateType.FollowInstruction;
                 human.TargetFoodDest = null;

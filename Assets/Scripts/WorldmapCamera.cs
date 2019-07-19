@@ -51,7 +51,7 @@ public class WorldmapCamera : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        BuildManager = UnityEngine.Object.FindObjectOfType < BuildHouseManager>();
+        BuildManager = UnityEngine.Object.FindObjectOfType<BuildHouseManager>();
     }
 
     void Start()
@@ -76,36 +76,40 @@ public class WorldmapCamera : MonoBehaviour
     {
         ZoomCamera(40, ZoomSpeedTouch);
 
-        Transform playerHouse = GameManagerScript.Instance.Houses.Where(r => r.IsPlayer).ToList()[0].transform; 
+        Transform playerHouse = GameManagerScript.Instance.Houses.Where(r => r.IsPlayer).ToList()[0].transform;
         //MoveToPos(new Vector3(-254, 90, -260), .1f);
         MoveToPos(new Vector3(playerHouse.position.x, 90, playerHouse.position.z), .1f);
     }
-    
+
     private void FixedUpdate()
     {
-        if (!Initialized)
+        if (!GameManagerScript.Instance.Pause)
         {
-            ResetCam();
-            Initialized = true;
+            if (!Initialized)
+            {
+                ResetCam();
+                Initialized = true;
+            }
+            if (IsTouch)
+            {
+                HandleTouch();
+
+            }
+            else
+            {
+                HandleMouse();
+
+            }
+
+
+
+            // Ensure the camera remains within bounds.
+            Vector3 pos = transform.position;
+            pos.x = Mathf.Clamp(transform.position.x, ProportionalBoundsX[0], ProportionalBoundsX[1]);
+            pos.z = Mathf.Clamp(transform.position.z, ProportionalBoundsZ[0], ProportionalBoundsZ[1]);
+            transform.position = pos;
         }
-        if (IsTouch)
-        {
-            HandleTouch();
 
-        }
-        else
-        {
-            HandleMouse();
-
-        }
-        
-
-
-        // Ensure the camera remains within bounds.
-        Vector3 pos = transform.position;
-        pos.x = Mathf.Clamp(transform.position.x, ProportionalBoundsX[0], ProportionalBoundsX[1]);
-        pos.z = Mathf.Clamp(transform.position.z, ProportionalBoundsZ[0], ProportionalBoundsZ[1]);
-        transform.position = pos;
     }
     // Update is called once per frame
     void Update()
@@ -122,7 +126,7 @@ public class WorldmapCamera : MonoBehaviour
     }
     void HandleMouse()
     {
-        
+
         if (GameManagerScript.Instance.UIButtonOver)
         {
             Debug.Log("there'a a button");
@@ -140,7 +144,7 @@ public class WorldmapCamera : MonoBehaviour
 
             }
             else
-            if (MovState == MovementState.none && Input.GetMouseButtonUp(1)&&!IsBuilding /*&& Vector2.Distance(lastPanPosition, Input.mousePosition) < 40 * (Screen.width / 1920)*/)//&& Input.GetMouseButtonUp(0) && Time.time - OffsetTime < .1f
+            if (MovState == MovementState.none && Input.GetMouseButtonUp(1) && !IsBuilding /*&& Vector2.Distance(lastPanPosition, Input.mousePosition) < 40 * (Screen.width / 1920)*/)//&& Input.GetMouseButtonUp(0) && Time.time - OffsetTime < .1f
             {
                 TribeToPoint();
                 MovState = MovementState.none;
@@ -152,10 +156,10 @@ public class WorldmapCamera : MonoBehaviour
                 PanCameraWithTween(Input.mousePosition);
                 //PanCameraWithoutTween(Input.mousePosition);
             }
-            
+
             else
             if (!Input.GetMouseButton(0))
-            
+
             {
                 lastPanPosition = Input.mousePosition;
                 OffsetTime = Time.time;
@@ -176,9 +180,9 @@ public class WorldmapCamera : MonoBehaviour
                 float scroll = Input.GetAxis("Mouse ScrollWheel");
                 ZoomCamera(scroll, ZoomSpeedMouse);
             }
-            
+
         }
-        
+
     }
     void HandleTouch()
     {
@@ -201,20 +205,20 @@ public class WorldmapCamera : MonoBehaviour
                 else if (MovState == MovementState.none && touch.phase == TouchPhase.Ended /*&& !PanningWitouthTween*/ &&
                     !wasZoomingLastFrame && !IsBuilding && Vector2.Distance(lastPanPosition, touch.position) < 3 * (Screen.width / 1920))
                 {
-                        touchPhase = touchPhase.EndePad;
-                        MovState = MovementState.none;
-                        lastPanPosition = touch.position;
-                        OffsetTime = Time.time;
-                        TribeToPoint();                    
+                    touchPhase = touchPhase.EndePad;
+                    MovState = MovementState.none;
+                    lastPanPosition = touch.position;
+                    OffsetTime = Time.time;
+                    TribeToPoint();
                 }
-                else if (touch.fingerId == panFingerId && Vector2.Distance(lastPanPosition, touch.position) > 3*(Screen.width/1920) && !wasZoomingLastFrame &&
+                else if (touch.fingerId == panFingerId && Vector2.Distance(lastPanPosition, touch.position) > 3 * (Screen.width / 1920) && !wasZoomingLastFrame &&
                          (touchPhase == touchPhase.BeganPad || touchPhase == touchPhase.MovePad))
                 {
                     touchPhase = touchPhase.MovePad;
                     PanningWitouthTween = false;
                     PanCameraWithTween(touch.position);
                 }
-                
+
 
                 break;
 
@@ -257,7 +261,7 @@ public class WorldmapCamera : MonoBehaviour
     public void TribeToPoint()
     {
 
-          
+
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane p = new Plane(Vector3.up, Vector3.zero);
@@ -281,7 +285,7 @@ public class WorldmapCamera : MonoBehaviour
             isMoving = true;
             // Determine how much to move the camera
             Vector3 offset = cam.ScreenToViewportPoint(lastPanPosition - newPanPosition);
-            Vector3 move = new Vector3(transform.position.x + offset.x * (PanSpeed ), transform.position.y,transform.position.z + offset.y * (PanSpeed));
+            Vector3 move = new Vector3(transform.position.x + offset.x * (PanSpeed), transform.position.y, transform.position.z + offset.y * (PanSpeed));
 
             // Perform the movement
             //transform.Translate(move, Space.World);
@@ -319,8 +323,8 @@ public class WorldmapCamera : MonoBehaviour
             isMoving = true;
             // Determine how much to move the camera
             Vector3 offset = cam.ScreenToViewportPoint(lastPanPosition - newPanPosition);
-            float relativeInc = cam.orthographicSize / ZoomBounds[1] / (ZoomBounds[1] / ZoomBounds[0]) ;
-            Vector3 move = new Vector3(transform.position.x + offset.x * PanSpeed* (float)(relativeInc)*Screen.width/Screen.height, transform.position.y, transform.position.z + offset.y * PanSpeed* (float)(relativeInc)) ;
+            float relativeInc = cam.orthographicSize / ZoomBounds[1] / (ZoomBounds[1] / ZoomBounds[0]);
+            Vector3 move = new Vector3(transform.position.x + offset.x * PanSpeed * (float)(relativeInc) * Screen.width / Screen.height, transform.position.y, transform.position.z + offset.y * PanSpeed * (float)(relativeInc));
             //MoveToPos(move, 1f/PanSpeed/(cam.orthographicSize* relativeInc));
             transform.position = move;
             isMoving = false;
@@ -349,7 +353,7 @@ public class WorldmapCamera : MonoBehaviour
     }
 
 
-    
+
     private void SetZoomToFalse()
     {
         wasZoomingLastFrame = false;
@@ -362,8 +366,8 @@ public class WorldmapCamera : MonoBehaviour
         isMoving = true;
         this.gameObject.Tween("MoveCircle", transform.position, endPos, time, TweenScaleFunctions.SineEaseInOut, (t) =>
          {
-            // progress
-            Vector3 pos = t.CurrentValue;
+             // progress
+             Vector3 pos = t.CurrentValue;
              pos.x = Mathf.Clamp(t.CurrentValue.x, ProportionalBoundsX[0], ProportionalBoundsX[1]);
              pos.z = Mathf.Clamp(t.CurrentValue.z, ProportionalBoundsZ[0], ProportionalBoundsZ[1]);
              transform.position = pos;

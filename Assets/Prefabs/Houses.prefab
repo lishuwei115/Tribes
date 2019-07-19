@@ -773,8 +773,8 @@ MonoBehaviour:
   SafetyTimer: 40
   SafetyTimerMin: 2
   SafetyTimerMax: 6
-  TimeAttackMin: 80
-  TimeAttackMax: 250
+  TimeAttackMin: 300
+  TimeAttackMax: 600
   CultivateRadiusMax: 40
   CultivateRadiusMaxCircle: {fileID: 73690662}
   NewHouse: 1
@@ -904,8 +904,8 @@ MonoBehaviour:
   SafetyTimer: 40
   SafetyTimerMin: 2
   SafetyTimerMax: 6
-  TimeAttackMin: 80
-  TimeAttackMax: 250
+  TimeAttackMin: 300
+  TimeAttackMax: 600
   CultivateRadiusMax: 40
   CultivateRadiusMaxCircle: {fileID: 122237107}
   NewHouse: 1
@@ -1035,8 +1035,8 @@ MonoBehaviour:
   SafetyTimer: 40
   SafetyTimerMin: 2
   SafetyTimerMax: 6
-  TimeAttackMin: 80
-  TimeAttackMax: 250
+  TimeAttackMin: 300
+  TimeAttackMax: 600
   CultivateRadiusMax: 40
   CultivateRadiusMaxCircle: {fileID: 1875397740}
   NewHouse: 1
@@ -2081,8 +2081,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 714311457110639962, guid: 78180909e2e32da4081f9136a9522f78,
         type: 3}
+      propertyPath: TimeAttackMin
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 714311457110639962, guid: 78180909e2e32da4081f9136a9522f78,
+        type: 3}
+      propertyPath: TimeAttackMax
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 714311457110639962, guid: 78180909e2e32da4081f9136a9522f78,
+        type: 3}
       propertyPath: IsPlayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2095779237554280929, guid: 78180909e2e32da4081f9136a9522f78,
+        type: 3}
+      propertyPath: m_Name
+      value: GuardianCircleHolder
       objectReference: {fileID: 0}
     - target: {fileID: 612059204156121836, guid: 78180909e2e32da4081f9136a9522f78,
         type: 3}
@@ -2183,11 +2198,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsCustomRangeActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2095779237554280929, guid: 78180909e2e32da4081f9136a9522f78,
-        type: 3}
-      propertyPath: m_Name
-      value: GuardianCircleHolder
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78180909e2e32da4081f9136a9522f78, type: 3}

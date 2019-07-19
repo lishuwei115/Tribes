@@ -10,5 +10,9 @@ public class SceneManagingScript : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    public void PauseGame()
+    {
+        GameManagerScript.Instance.Pause = !GameManagerScript.Instance.Pause;
+    }
     
 }

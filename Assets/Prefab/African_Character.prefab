@@ -474,7 +474,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: 5018626474201021512, guid: 6e7f5b431be3a804db7b18fd3b1ef62e,
     type: 3}
-  m_Color: {r: 0.14971161, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -611,6 +611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4085973818741542}
   - component: {fileID: 95787802878289516}
+  - component: {fileID: 8479229255647192177}
   m_Layer: 0
   m_Name: African_Character
   m_TagString: Untagged
@@ -654,6 +655,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8479229255647192177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647545019104480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f931908c1ee16a843be1fa037edb7ae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TribeColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1685283880662416
 GameObject:
   m_ObjectHideFlags: 0

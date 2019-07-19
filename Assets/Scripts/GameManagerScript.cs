@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour
 {
-
+    public bool Pause = false;
     public Transform HousePrefab;
     public Transform HousesHolder;
     public Transform MapBorder;
@@ -225,6 +225,7 @@ public class GameManagerScript : MonoBehaviour
         }
 
     }
+    
     internal void MoveTribeTo(Vector3 pos, HousesTypes tribe)
     {
         foreach (HouseScript house in Houses)
@@ -242,9 +243,9 @@ public class GameManagerScript : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
-        UIManagerScript.Instance.InfoUpdate(HumansList.Where(r => r.gameObject.activeInHierarchy && r.HType == HumanType.Charity).ToList().Count.ToString(),
-                                            HumansList.Where(r => r.gameObject.activeInHierarchy && r.HType == HumanType.Gratitude).ToList().Count.ToString(),
-                                            HumansList.Where(r => r.gameObject.activeInHierarchy && r.HType == HumanType.Hate).ToList().Count.ToString());
+        //UIManagerScript.Instance.InfoUpdate(HumansList.Where(r => r.gameObject.activeInHierarchy && r.HType == HumanType.Charity).ToList().Count.ToString(),
+        //                                    HumansList.Where(r => r.gameObject.activeInHierarchy && r.HType == HumanType.Gratitude).ToList().Count.ToString(),
+        //                                    HumansList.Where(r => r.gameObject.activeInHierarchy && r.HType == HumanType.Hate).ToList().Count.ToString());
 
         UIManagerScript.Instance.NumberOfEntity.text = "POPULATION: " + HumansList.Where(r => r.gameObject.activeInHierarchy).ToList().Count.ToString();
         foreach (BlockInput item in UIButtons.Where(r => r.isActiveAndEnabled))
@@ -342,9 +343,9 @@ public class GameManagerScript : MonoBehaviour
             
             GameObject flower = Instantiate(Flower, DeadContainer);
             flower.SetActive(true);
-            flower.transform.position = dead.transform.position + new Vector3(UnityEngine.Random.Range(-3,3),0, UnityEngine.Random.Range(-3, 3));
+            flower.transform.position =new Vector3(dead.transform.position.x,0, dead.transform.position.z) + new Vector3(UnityEngine.Random.Range(-3,3),0, UnityEngine.Random.Range(-3, 3));
             FlowerList.Add(flower.GetComponent<Animator>());
-            flower.GetComponent<SpriteRenderer>().color = dead.GetComponentInChildren<SpriteRenderer>().color;
+            flower.GetComponent<SpriteRenderer>().color =dead.GetComponent<TribeColorScript>().TribeColor;
             /*GameObject food = Instantiate(Food, FoodContainer);
             food.SetActive(true);
             food.transform.position = dead.transform.position;
@@ -440,7 +441,10 @@ public class GameManagerScript : MonoBehaviour
             yield return new WaitForSecondsRealtime(.01f);
             CurrentTimeMS += .01f;
             yield return new WaitForSecondsRealtime(1);
-            i--;
+            if (!Pause)
+            {
+                i--;
+            }
         }
         //the time of today is ended, start a new day
         GameStatus = GameStateType.EndOfDay;

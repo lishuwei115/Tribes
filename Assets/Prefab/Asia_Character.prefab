@@ -126,6 +126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6510393532586212114}
   - component: {fileID: 4126197839888224378}
+  - component: {fileID: -463704309736322568}
   m_Layer: 0
   m_Name: Asia_Character
   m_TagString: Untagged
@@ -169,6 +170,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-463704309736322568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762572951076863094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f931908c1ee16a843be1fa037edb7ae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TribeColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &796705690125868866
 GameObject:
   m_ObjectHideFlags: 0

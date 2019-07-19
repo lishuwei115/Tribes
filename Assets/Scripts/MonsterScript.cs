@@ -78,26 +78,41 @@ public class MonsterScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //eat when starving
-        if (Hp < 0)
+        if (!GameManagerScript.Instance.Pause)
         {
             if (AnimController != null)
             {
-                //Death animation if there is an animator
-                //AnimController.transform.SetParent(GameManagerScript.Instance.HumansContainer);
-
-                AnimController.SetInteger("UIState", 2);
+                AnimController.speed = 1;
             }
-            //To do         //GameManagerScript.Instance.MonsterDied();
-            gameObject.SetActive(false);
-            //Destroy(gameObject);
+
+            //eat when starving
+            if (Hp < 0)
+            {
+                if (AnimController != null)
+                {
+                    //Death animation if there is an animator
+                    //AnimController.transform.SetParent(GameManagerScript.Instance.HumansContainer);
+                    AnimController.speed = 1;
+
+                    AnimController.SetInteger("UIState", 2);
+                }
+                //To do         //GameManagerScript.Instance.MonsterDied();
+                gameObject.SetActive(false);
+                //Destroy(gameObject);
+
+            }
+            if (GameManagerScript.Instance.DayTime - GameManagerScript.Instance.currentDayTime >= GameManagerScript.Instance.DayTime && HouseHuman == null)
+            {
+                //Destroy(gameObject);
+                gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            AnimController.speed = 0;
 
         }
-        if (Time.time - OffsetTimer >= GameManagerScript.Instance.DayTime && HouseHuman == null)
-        {
-            //Destroy(gameObject);
-            gameObject.SetActive(false);
-        }
+
     }
 
 
@@ -205,6 +220,8 @@ public class MonsterScript : MonoBehaviour
         float timeCount = 0;
         while (timeCount < 1)
         {
+            //stop game
+            yield return new WaitUntil(() => !GameManagerScript.Instance.Pause);
             List<RaycastHit> EnemiesCollision = LookAroundForEnemies();
             if (CurrentState != MonsterState.Dead && EnemiesCollision.Count > 0 && TargetHuman == null)
             {
@@ -276,9 +293,13 @@ public class MonsterScript : MonoBehaviour
         }
         while (EnemyAlive)
         {
+            //stop game
+            yield return new WaitUntil(() => !GameManagerScript.Instance.Pause);
             //move towars target
             while (distance >= 4f)
             {
+                //stop game
+                yield return new WaitUntil(() => !GameManagerScript.Instance.Pause);
                 distance = Vector3.Distance(transform.position, humanT.position);
                 //offset = transform.position;
                 timeCount = 0;
@@ -301,7 +322,7 @@ public class MonsterScript : MonoBehaviour
 
 
                 transform.position = nextpos;
-                if(Enemy== null)
+                if (Enemy == null)
                 {
                     FollowCo = null;
 

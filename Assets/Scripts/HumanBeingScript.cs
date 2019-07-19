@@ -122,7 +122,7 @@ public class HumanBeingScript : MonoBehaviour
 
 
     public HumanType HType = HumanType.None;
-    
+
     public ActionState CurrentAction = ActionState.None;
 
     public Material CharityM;
@@ -190,57 +190,74 @@ public class HumanBeingScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckBonusHealth();
+        if (!GameManagerScript.Instance.Pause)
+        {
+            CheckBonusHealth();
+            if (AnimController != null)
+            {
+                AnimController.speed = 1;
+            }
 
-        //eat when starving
-        if (Hp < 0)
+            //eat when starving
+            if (Hp < 0)
+            {
+                if (AnimController != null)
+                {
+                    AnimController.speed = 1;
+                    //AttackAnimation if there is an animator
+                    AnimController.GetComponent<TribeColorScript>().TribeColor = SkinManager.Instance.GetSkinInfo(HouseType).TribeColor;
+                    AnimController.transform.SetParent(GameManagerScript.Instance.DeadContainer);
+                    GameManagerScript.Instance.DeadList.Add(AnimController);
+                    AnimController.SetInteger("UIState", 3);
+                }
+                GameManagerScript.Instance.HumanBeingDied();
+                gameObject.SetActive(false);
+                //Destroy(gameObject);
+            }
+            //hate management
+            /*HType = Charity > Hate && Charity > Gratitude ? HumanType.Charity :
+                     Hate > Charity && Hate > Gratitude ? HumanType.Hate :
+                     Gratitude > Hate && Charity < Gratitude ? HumanType.Gratitude : HumanType.None;*/
+            //Debug.Log(Vector3.Distance(transform.position, TargetDest) + "   " + name);
+
+
+            //get the time required to go home
+            TimeToGoBack = (Vector3.Distance(transform.position, TargetHouse.transform.position)) / (Speed) / 10;
+            //going back home if the safety time is finished
+            if (!TargetHouse.IsPlayer && GameManagerScript.Instance.DayTime - GameManagerScript.Instance.currentDayTime >= GameManagerScript.Instance.DayTime - (TimeToGoBack + TargetHouse.SafetyTimer) && (CurrentState != StateType.Home /*&& CurrentAction != ActionState.Fight*/ && CurrentState != StateType.ComingBackHome))
+            {
+                FollowCo = null;
+                CanIgetFood = false;
+                CurrentState = StateType.ComingBackHome;
+                GoToPosition(TargetHouse.transform.position);
+                //update HP Bar
+                HPBar.gameObject.SetActive(false);
+                HarvestBar.gameObject.SetActive(false);
+                CultivationField.gameObject.SetActive(false);
+            }
+            if (TargetHouse.IsPlayer && GameManagerScript.Instance.DayTime - GameManagerScript.Instance.currentDayTime >= GameManagerScript.Instance.DayTime - (TimeToGoBack + SafetyTime) && (CurrentState != StateType.Home /*&& CurrentAction != ActionState.Fight*/ && CurrentState != StateType.ComingBackHome))
+            {
+                FollowCo = null;
+                CanIgetFood = false;
+                CurrentState = StateType.ComingBackHome;
+                GoToPosition(TargetHouse.transform.position);
+                //update HP Bar
+                HPBar.gameObject.SetActive(false);
+                HarvestBar.gameObject.SetActive(false);
+                CultivationField.gameObject.SetActive(false);
+            }
+
+            //lose health when outside the house
+            //HealthDecreasingOutside();
+
+        }
+        else
         {
             if (AnimController != null)
             {
-                //AttackAnimation if there is an animator
-                AnimController.transform.SetParent(GameManagerScript.Instance.DeadContainer);
-                GameManagerScript.Instance.DeadList.Add(AnimController);
-                AnimController.SetInteger("UIState", 3);
+                AnimController.speed = 0;
             }
-            GameManagerScript.Instance.HumanBeingDied();
-            gameObject.SetActive(false);
-            //Destroy(gameObject);
         }
-        //hate management
-        /*HType = Charity > Hate && Charity > Gratitude ? HumanType.Charity :
-                 Hate > Charity && Hate > Gratitude ? HumanType.Hate :
-                 Gratitude > Hate && Charity < Gratitude ? HumanType.Gratitude : HumanType.None;*/
-        //Debug.Log(Vector3.Distance(transform.position, TargetDest) + "   " + name);
-
-
-        //get the time required to go home
-        TimeToGoBack = (Vector3.Distance(transform.position, TargetHouse.transform.position)) / (Speed) / 10;
-        //going back home if the safety time is finished
-        if (!TargetHouse.IsPlayer && Time.time - OffsetTimer >= GameManagerScript.Instance.DayTime - (TimeToGoBack + TargetHouse.SafetyTimer) && (CurrentState != StateType.Home /*&& CurrentAction != ActionState.Fight*/ && CurrentState != StateType.ComingBackHome))
-        {
-            FollowCo = null;
-            CanIgetFood = false;
-            CurrentState = StateType.ComingBackHome;
-            GoToPosition(TargetHouse.transform.position);
-            //update HP Bar
-            HPBar.gameObject.SetActive(false);
-            HarvestBar.gameObject.SetActive(false);
-            CultivationField.gameObject.SetActive(false);
-        }
-        if (TargetHouse.IsPlayer && Time.time - OffsetTimer >= GameManagerScript.Instance.DayTime - (TimeToGoBack + SafetyTime) && (CurrentState != StateType.Home /*&& CurrentAction != ActionState.Fight*/ && CurrentState != StateType.ComingBackHome))
-        {
-            FollowCo = null;
-            CanIgetFood = false;
-            CurrentState = StateType.ComingBackHome;
-            GoToPosition(TargetHouse.transform.position);
-            //update HP Bar
-            HPBar.gameObject.SetActive(false);
-            HarvestBar.gameObject.SetActive(false);
-            CultivationField.gameObject.SetActive(false);
-        }
-
-        //lose health when outside the house
-        //HealthDecreasingOutside();
 
     }
 
@@ -269,7 +286,7 @@ public class HumanBeingScript : MonoBehaviour
         {
             case HousesTypes.North:
                 gameObject.layer = LayerMask.NameToLayer("North");
-                EnemyLayer = LayerMask.GetMask("West", "South", "East","Monster");
+                EnemyLayer = LayerMask.GetMask("West", "South", "East", "Monster");
                 break;
             case HousesTypes.South:
                 gameObject.layer = LayerMask.NameToLayer("South");
@@ -380,14 +397,14 @@ public class HumanBeingScript : MonoBehaviour
     public void Reproduce()
     {
         //if breeding is abilitated for the player
-        if(GameManagerScript.Instance.Breeding == true || TargetHouse.IsPlayer == false)
+        if (GameManagerScript.Instance.Breeding == true || TargetHouse.IsPlayer == false)
         {
             if (UnityEngine.Random.Range(0, 100) < ReproductionPerc)
             {
                 GameManagerScript.Instance.Reproduction(TargetHouse);
             }
         }
-        
+
     }
 
     private List<RaycastHit> LookAround(string layer)
@@ -650,8 +667,8 @@ public class HumanBeingScript : MonoBehaviour
             yield return new WaitForEndOfFrame();
             Vector3 nextpos = Vector3.Lerp(offset, dest, timeCount);
             transform.position = nextpos;
-
-            timeCount = timeCount + Time.deltaTime * Speed / distance * 10;
+            if (!GameManagerScript.Instance.Pause)
+                timeCount = timeCount + Time.deltaTime * Speed / distance * 10;
             //timeCount = timeCount + Time.deltaTime * Speed/ distance*10 * ((math.abs(.5f - math.abs(timeCount - .5f)/3) + 1f) ); 
             //timeCount = timeCount + Time.deltaTime * Speed * .1f * ((math.abs(.5f - math.abs(timeCount - .5f)) + 0.5f) / 2);
 
@@ -674,12 +691,13 @@ public class HumanBeingScript : MonoBehaviour
                 CurrentState = StateType.FoodFound;
                 Vector3 randomPos = TargetFoodDest.position + new Vector3(UnityEngine.Random.Range(-FoodRandomPointDistance, FoodRandomPointDistance), 0, UnityEngine.Random.Range(-FoodRandomPointDistance, FoodRandomPointDistance));
                 GoToPosition(randomPos);
-            }else
+            }
+            else
             {
                 CurrentState = StateType.LookingForFood;
                 GoToRandomPos();
             }
-           
+
         }
         else
         if (CurrentState == StateType.ComingBackHome)
@@ -789,11 +807,11 @@ public class HumanBeingScript : MonoBehaviour
         List<RaycastHit> EnemiesCollision = LookAroundForEnemies();
         HarvestBar.gameObject.SetActive(false);
         //Counterattack
-        if (!TargetHouse.IsPlayer && Time.time - OffsetTimer >= GameManagerScript.Instance.DayTime - (TimeToGoBack + TargetHouse.SafetyTimer) && EnemiesCollision.Count > 0)
+        if (!TargetHouse.IsPlayer && GameManagerScript.Instance.DayTime - GameManagerScript.Instance.currentDayTime >= GameManagerScript.Instance.DayTime - (TimeToGoBack + TargetHouse.SafetyTimer) && EnemiesCollision.Count > 0)
         {
             AttackEnemy(EnemiesCollision[0].collider.transform);
         }
-        else if (TargetHouse.IsPlayer && Time.time - OffsetTimer >= GameManagerScript.Instance.DayTime - (TimeToGoBack + SafetyTime) && EnemiesCollision.Count > 0)
+        else if (TargetHouse.IsPlayer && GameManagerScript.Instance.DayTime - GameManagerScript.Instance.currentDayTime >= GameManagerScript.Instance.DayTime - (TimeToGoBack + SafetyTime) && EnemiesCollision.Count > 0)
         {
             AttackEnemy(EnemiesCollision[0].collider.transform);
         }
@@ -816,7 +834,8 @@ public class HumanBeingScript : MonoBehaviour
             {
                 HarvestBar.gameObject.SetActive(true);
                 HarvestBar.UpdateHarvest(FoodLife, food.Hardness, HouseType);
-                FoodLife -= HarvestAttack;
+                if (!GameManagerScript.Instance.Pause)
+                    FoodLife -= HarvestAttack;
                 if (AnimController != null)
                 {
                     //AttackAnimation if there is an animator
@@ -869,11 +888,12 @@ public class HumanBeingScript : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
             //move towars target
-            while (CultivationProgress < CultivationTarget * Specialization*2)
+            while (CultivationProgress < CultivationTarget * Specialization * 2)
             {
                 HarvestBar.gameObject.SetActive(true);
-                HarvestBar.UpdateHarvest(CultivationProgress, CultivationTarget * Specialization*2, HouseType);
-                CultivationProgress += HarvestAttack;
+                HarvestBar.UpdateHarvest(CultivationProgress, CultivationTarget * Specialization * 2, HouseType);
+                if (!GameManagerScript.Instance.Pause)
+                    CultivationProgress += HarvestAttack;
                 if (AnimController != null)
                 {
                     //AttackAnimation if there is an animator
@@ -892,7 +912,7 @@ public class HumanBeingScript : MonoBehaviour
             }
             CheckBonusHealth();
             CultivationProgress = 0;
-            RandomFoodGained = UnityEngine.Random.Range(0f, CultivationPercentage[CultivationPercentage.Count-1]+1);
+            RandomFoodGained = UnityEngine.Random.Range(0f, CultivationPercentage[CultivationPercentage.Count - 1] + 1);
             for (int i = 0; i < CultivationPercentage.Count; i++)
             {
                 if (RandomFoodGained < CultivationPercentage[i])
@@ -904,7 +924,7 @@ public class HumanBeingScript : MonoBehaviour
             }
             yield return new WaitForEndOfFrame();
         }
-        
+
     }
     private IEnumerator FollowEnemy(Transform humanT)
     {
@@ -915,7 +935,7 @@ public class HumanBeingScript : MonoBehaviour
         float timeCount = 0;
         bool humanEnemy = true;
 
-    HumanBeingScript Enemy = new HumanBeingScript();
+        HumanBeingScript Enemy = new HumanBeingScript();
         MonsterScript EnemyMonster = new MonsterScript();
         if (humanT.GetComponent<HumanBeingScript>())
         {
@@ -929,6 +949,8 @@ public class HumanBeingScript : MonoBehaviour
         }
         while (EnemyAlive)
         {
+            //stop game
+            yield return new WaitUntil(() => !GameManagerScript.Instance.Pause);
             //move towars target
             while (distance >= 2f)
             {
@@ -938,11 +960,13 @@ public class HumanBeingScript : MonoBehaviour
                 yield return new WaitForEndOfFrame();
                 timeCount = timeCount + Time.deltaTime * Speed / distance * 10;
                 Vector3 nextpos = Vector3.Lerp(transform.position, humanT.position, timeCount);
-                transform.position = nextpos;
+                if (!GameManagerScript.Instance.Pause)
+                    transform.position = nextpos;
             }
+            bool pause = GameManagerScript.Instance.Pause;
             //start another coroutine, not compatible with current system
             //GoToPosition(humanT.position);
-            if(humanT != null)
+            if (humanT != null)
             {
                 float Dist = Vector3.Distance(transform.position, humanT.position);
                 //Attack
@@ -1025,7 +1049,7 @@ public class HumanBeingScript : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
-            
+
 
         CurrentState = StateType.LookingForFood;
         GoToRandomPos();

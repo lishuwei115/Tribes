@@ -5,17 +5,18 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 
-public class UIManagerScript : MonoBehaviour {
+public class UIManagerScript : MonoBehaviour
+{
 
-	public static UIManagerScript Instance;
+    public static UIManagerScript Instance;
 
     public Animator DayNightWheel;
-	public TextMeshProUGUI Timer;
-	public TextMeshProUGUI DayNum;
-	public TextMeshProUGUI NumberOfEntity;
-	public TextMeshProUGUI BirthLastDay;
-	public TextMeshProUGUI DeathLastDay;
-	public TextMeshProUGUI Charity;
+    public TextMeshProUGUI Timer;
+    public TextMeshProUGUI DayNum;
+    public TextMeshProUGUI NumberOfEntity;
+    public TextMeshProUGUI BirthLastDay;
+    public TextMeshProUGUI DeathLastDay;
+    public TextMeshProUGUI Charity;
     public TextMeshProUGUI Gratitude;
     public TextMeshProUGUI Hate;
     public TextMeshProUGUI HouseFoodUpperLeft;
@@ -27,42 +28,52 @@ public class UIManagerScript : MonoBehaviour {
     public TextMeshProUGUI HousePeopleDownwardLeft;
     public TextMeshProUGUI HousePeopleDownwardRight;
     public Button AddHouse;
-	public int DayNumIterator = 0;
+    public int DayNumIterator = 0;
 
-	private void Awake()
-	{
-		Instance = this;
-	}
+    private void Awake()
+    {
+        Instance = this;
+    }
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         DayNightWheel.speed = 0;
 
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         UpdatePeople();
         UpdateFood();
+        if (GameManagerScript.Instance.Pause)
+        {
+            DayNightWheel.speed = 0;
+        }
+        else if(DayNumIterator>0)
+        {
+            DayNightWheel.speed = 1f / GameManagerScript.Instance.DayTime;
+        }
     }
 
     public void TimerUpdate(int timer)
-	{
-		Timer.text = "" + timer;
+    {
+        Timer.text = "" + timer;
     }
 
     public void InfoDailyUpdate(string bld, string dld)
-	{
-		BirthLastDay.text = "Births: " + bld;
-		DeathLastDay.text = "Deaths: " + dld;
-	}
-
-	public void InfoUpdate(string c, string g, string h)
     {
-		Charity.text = "Charity:" + c;
-		Gratitude.text = "Gratitude:" + g;
-		Hate.text = "Hate:" + h;
+        BirthLastDay.text = "Births: " + bld;
+        DeathLastDay.text = "Deaths: " + dld;
+    }
+
+    public void InfoUpdate(string c, string g, string h)
+    {
+        Charity.text = "Charity:" + c;
+        Gratitude.text = "Gratitude:" + g;
+        Hate.text = "Hate:" + h;
     }
     public void UpdateFood()
     {
@@ -82,7 +93,7 @@ public class UIManagerScript : MonoBehaviour {
         HouseFoodDownwardRight.text = "" + GameManagerScript.Instance.Houses[3].FoodStore;
         UpdatePeople();
 
-}
+    }
     public void UpdatePeople()
     {
 
@@ -91,10 +102,10 @@ public class UIManagerScript : MonoBehaviour {
         HousePeopleDownwardLeft.text = "" + GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.West && r.isActiveAndEnabled).ToList().Count;
         HousePeopleDownwardRight.text = "" + GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.North && r.isActiveAndEnabled).ToList().Count;
     }
-        public void AddDay()
-	{
-		DayNumIterator++;
-		DayNum.text = "Day: " + DayNumIterator;
+    public void AddDay()
+    {
+        DayNumIterator++;
+        DayNum.text = "Day: " + DayNumIterator;
         DayNightWheel.speed = 1f / GameManagerScript.Instance.DayTime;
         DayNightWheel.SetTrigger("ResetDay");
     }
