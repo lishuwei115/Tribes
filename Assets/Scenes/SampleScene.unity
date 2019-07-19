@@ -1953,6 +1953,16 @@ PrefabInstance:
       propertyPath: Pause
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
+        type: 3}
+      propertyPath: PlayerHouse
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
+        type: 3}
+      propertyPath: GuardiansSummonable
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2135510191290255347, guid: 4c744b904de862c49b734530cf5539f9,
         type: 3}
       propertyPath: m_IsActive
@@ -2179,8 +2189,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4694765721180042857, guid: 2902c641872b3fb4cb46b53728f2af23,
         type: 3}
-      propertyPath: PanSpeed
-      value: 23000
+      propertyPath: ZoomBounds.Array.data[1]
+      value: 400
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2902c641872b3fb4cb46b53728f2af23, type: 3}

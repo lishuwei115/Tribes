@@ -15,6 +15,7 @@ public class GameManagerScript : MonoBehaviour
     public delegate void StartDay();
     public event StartDay DayStarted;
     public HousesTypes PlayerHouse = HousesTypes.East;
+    HousesTypes PlayerHouseChake = HousesTypes.East;
     public int enemyDefeated = 0;
     public float FoodPlayer = 0;
     public Mesh HumanMesh;
@@ -60,7 +61,7 @@ public class GameManagerScript : MonoBehaviour
 
     public Transform HumansContainer;
 
-    
+
 
     public Transform FoodContainer;
 
@@ -73,11 +74,11 @@ public class GameManagerScript : MonoBehaviour
     [HideInInspector]
     public List<HumanBeingScript> HumansList = new List<HumanBeingScript>();
 
-    
+
 
     public List<Animator> DeadList = new List<Animator>();
     public List<Animator> FlowerList = new List<Animator>();
-    
+
 
     [HideInInspector]
     public List<FoodScript> FoodsList = new List<FoodScript>();
@@ -113,7 +114,6 @@ public class GameManagerScript : MonoBehaviour
         UIButtons = UnityEngine.Object.FindObjectsOfType<BlockInput>();
 
     }
-
     internal void Won()
     {
         UIManagerScript.Instance.WinLoseState(1);
@@ -206,7 +206,7 @@ public class GameManagerScript : MonoBehaviour
     }
     public bool IsInBoundary(Vector3 mPos)
     {
-        if (mPos.x < -GroundSizeWidth || mPos.x > GroundSizeWidth  || mPos.z < -GroundSizeHeight  || mPos.z > GroundSizeHeight )
+        if (mPos.x < -GroundSizeWidth || mPos.x > GroundSizeWidth || mPos.z < -GroundSizeHeight || mPos.z > GroundSizeHeight)
         {
             return false;
         }
@@ -225,7 +225,7 @@ public class GameManagerScript : MonoBehaviour
         }
 
     }
-    
+
     internal void MoveTribeTo(Vector3 pos, HousesTypes tribe)
     {
         foreach (HouseScript house in Houses)
@@ -248,6 +248,8 @@ public class GameManagerScript : MonoBehaviour
         //                                    HumansList.Where(r => r.gameObject.activeInHierarchy && r.HType == HumanType.Hate).ToList().Count.ToString());
 
         UIManagerScript.Instance.NumberOfEntity.text = "POPULATION: " + HumansList.Where(r => r.gameObject.activeInHierarchy).ToList().Count.ToString();
+        UIButtonOver = false;
+
         foreach (BlockInput item in UIButtons.Where(r => r.isActiveAndEnabled))
         {
             if (item.UIButtonOver)
@@ -256,12 +258,33 @@ public class GameManagerScript : MonoBehaviour
                 return;
             }
         }
-        UIButtonOver = false;
+        //Check if the player has changed
+        if (PlayerHouseChake != PlayerHouse)
+        {
+            PlayerHouseChake = PlayerHouse;
+            foreach (HouseScript house in Houses)
+            {
+                house.NewHouse = false;
+                if (house.HouseType == PlayerHouse)
+                {
+                    house.IsPlayer = true;
+                    UIManagerScript.Instance.ChangePlayer(house.HouseType);
+                }
+                else
+                {
+                    house.IsPlayer = false;
+
+                }
+
+            }
+        }
 
     }
 
     public void StartGame()
     {
+        UIButtonOver = false;
+
         //Initialize all the humans in all houses
         foreach (HouseScript house in Houses)
         {
@@ -338,20 +361,20 @@ public class GameManagerScript : MonoBehaviour
     }
     public void SetFood()
     {
-        for (int i = 0; i < FoodPerDay-1; i++)
+        for (int i = 0; i < FoodPerDay - 1; i++)
         {
-            
+
             FoodsList[i].GetComponent<Animator>().SetBool("UIState", false);
             Invoke("RandomizeFoodPosition", 0.3f);
         }
         foreach (Animator dead in DeadList)
         {
-            
+
             GameObject flower = Instantiate(Flower, DeadContainer);
             flower.SetActive(true);
-            flower.transform.position =new Vector3(dead.transform.position.x,0, dead.transform.position.z) + new Vector3(UnityEngine.Random.Range(-3,3),0, UnityEngine.Random.Range(-3, 3));
+            flower.transform.position = new Vector3(dead.transform.position.x, 0, dead.transform.position.z) + new Vector3(UnityEngine.Random.Range(-3, 3), 0, UnityEngine.Random.Range(-3, 3));
             FlowerList.Add(flower.GetComponent<Animator>());
-            flower.GetComponent<SpriteRenderer>().color =dead.GetComponent<TribeColorScript>().TribeColor;
+            flower.GetComponent<SpriteRenderer>().color = dead.GetComponent<TribeColorScript>().TribeColor;
             /*GameObject food = Instantiate(Food, FoodContainer);
             food.SetActive(true);
             food.transform.position = dead.transform.position;
@@ -568,7 +591,7 @@ public class GameManagerScript : MonoBehaviour
     internal void SpawnGuardian(HouseScript h)
     {
 
-        if (GuardiansSummonable>0)
+        if (GuardiansSummonable > 0)
         {
             MonsterScript m = Instantiate(MonsterPrefab);
             m.transform.position = h.transform.position;
@@ -581,7 +604,7 @@ public class GameManagerScript : MonoBehaviour
     }
     internal void CloseGuardianMenu()
     {
-        foreach(HouseScript h in Houses)
+        foreach (HouseScript h in Houses)
         {
             h.CloseGuardianCircle(false);
         }
@@ -589,10 +612,10 @@ public class GameManagerScript : MonoBehaviour
     }
     public void AddGuardian(HousesTypes h)
     {
-        if(h == PlayerHouse)
+        if (h == PlayerHouse)
         {
             GuardiansSummonable++;
-            
+
         }
 
         else

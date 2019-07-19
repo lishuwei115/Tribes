@@ -953,6 +953,10 @@ public class HumanBeingScript : MonoBehaviour
         }
         while (EnemyAlive)
         {
+            if (Enemy == null)
+            {
+                break;
+            }
             //stop game
             yield return new WaitUntil(() => !GameManagerScript.Instance.Pause);
             //move towars target
