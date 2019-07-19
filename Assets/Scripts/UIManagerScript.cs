@@ -29,7 +29,7 @@ public class UIManagerScript : MonoBehaviour
     public TextMeshProUGUI HousePeopleDownwardRight;
     public Button AddHouse;
     public int DayNumIterator = 0;
-
+    public CardFactionScript[] PlayerCards;
     private void Awake()
     {
         Instance = this;
@@ -52,12 +52,32 @@ public class UIManagerScript : MonoBehaviour
         {
             DayNightWheel.speed = 0;
         }
-        else if(DayNumIterator>0)
+        else if (DayNumIterator > 0)
         {
             DayNightWheel.speed = 1f / GameManagerScript.Instance.DayTime;
         }
     }
-
+    public void ChangePlayer(HousesTypes h)
+    {
+        PlayerCards[0].SetPlayer(false);
+        Vector2 help;
+        foreach (CardFactionScript c in PlayerCards)
+        {
+            if (h == c.house)
+            {
+                c.SetPlayer(true);
+                help = c.transform.position;
+                c.transform.position = PlayerCards[0].transform.position;
+                PlayerCards[0].transform.position = help;
+            }
+            else
+            {
+                c.SetPlayer(false);
+            }
+            
+        }
+        
+    }
     public void TimerUpdate(int timer)
     {
         Timer.text = "" + timer;

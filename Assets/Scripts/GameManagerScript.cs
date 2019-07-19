@@ -269,6 +269,12 @@ public class GameManagerScript : MonoBehaviour
             if (house.HouseType == PlayerHouse)
             {
                 house.IsPlayer = true;
+                UIManagerScript.Instance.ChangePlayer(house.HouseType);
+            }
+            else
+            {
+                house.IsPlayer = false;
+
             }
             //assign all the humans of one house
             for (int i = 0; i < Humans; i++)
