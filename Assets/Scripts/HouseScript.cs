@@ -214,7 +214,7 @@ public class HouseScript : MonoBehaviour
         }
     }
 
-    internal void MoveTribeTo(Vector3 transform)
+    internal void MoveTribeTo(Vector3 t)
     {
         foreach (HumanBeingScript human in Humans)
         {
@@ -223,8 +223,8 @@ public class HouseScript : MonoBehaviour
                 human.CurrentState = StateType.FollowInstruction;
                 human.TargetFoodDest = null;
                 human.TargetHuman = null;
-                human.TargetDest = transform;
-                human.GoToPosition(transform);
+                human.TargetDest = new Vector3(t.x,0, t.z);
+                human.GoToPosition(t);
             }
         }
     }

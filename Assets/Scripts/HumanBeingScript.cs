@@ -369,7 +369,7 @@ public class HumanBeingScript : MonoBehaviour
             //to do implement a proper coroutine managing
             IsStarted = true;
             CultivationField.gameObject.SetActive(false);
-            MoveCo = Move(nextPos);
+            MoveCo = Move(new Vector3(nextPos.x, 0, nextPos.z));
             StopAllCoroutines();
             StartCoroutine(MoveCo);
             if (AnimController != null)
@@ -638,7 +638,7 @@ public class HumanBeingScript : MonoBehaviour
             List<RaycastHit> Housecollisions = LookAround("House");
             //Debug.Log(EnemiesCollision.Count);
             //Debug.Log(iD);
-            if (GameManagerScript.Instance.AttackIsEnable)
+            if ( (GameManagerScript.Instance.AttackIsEnable || !TargetHouse.IsPlayer))
             {
                 AttackOrFood(EnemiesCollision, Foodcollisions);
             }
@@ -651,7 +651,7 @@ public class HumanBeingScript : MonoBehaviour
             }
             //found enemy
 
-            if (GameManagerScript.Instance.AttackIsEnable && CurrentState != StateType.FollowInstruction && CurrentState != StateType.ComingBackHome && EnemiesCollision.Count > 0 /*&& TargetFoodDest == null*/ && TargetHuman == null)
+            if ((GameManagerScript.Instance.AttackIsEnable || !TargetHouse.IsPlayer) && CurrentState != StateType.FollowInstruction && CurrentState != StateType.ComingBackHome && EnemiesCollision.Count > 0 /*&& TargetFoodDest == null*/ && TargetHuman == null)
             {
                 TargetHuman = EnemiesCollision[0].collider.transform;
                 AttackEnemy(TargetHuman);
@@ -677,7 +677,7 @@ public class HumanBeingScript : MonoBehaviour
         {
             List<RaycastHit> EnemiesCollision = LookAroundForEnemies();
             List<RaycastHit> Foodcollisions = LookAround("Food");
-            if (EnemiesCollision.Count > 0 && GameManagerScript.Instance.AttackIsEnable)
+            if (EnemiesCollision.Count > 0 && (GameManagerScript.Instance.AttackIsEnable || !TargetHouse.IsPlayer))
             {
                 TargetHuman = EnemiesCollision[0].collider.transform;
                 FollowCo = null;
@@ -840,6 +840,10 @@ public class HumanBeingScript : MonoBehaviour
                 {
                     //AttackAnimation if there is an animator
                     AnimController.SetInteger("UIState", 1);
+                }
+                if (!food.isActiveAndEnabled)
+                {
+                    break;
                 }
                 yield return new WaitForSeconds(AttackFrequency);
             }
