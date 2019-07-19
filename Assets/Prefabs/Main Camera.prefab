@@ -101,7 +101,7 @@ MonoBehaviour:
   PrefabPointer: {fileID: 3497863233429765967, guid: 767ba97f6fc6d54418f4681729b7e27e,
     type: 3}
   IsBuilding: 0
-  PanSpeed: 40
+  PanSpeed: 23000
   ZoomSpeedTouch: 0.1
   ZoomSpeedMouse: 20
   BoundsX:
