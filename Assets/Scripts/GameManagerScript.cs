@@ -104,6 +104,9 @@ public class GameManagerScript : MonoBehaviour
     {
         Instance = this;
         MonsterHouses = UnityEngine.Object.FindObjectsOfType<MonsterHouse>().ToList<MonsterHouse>();
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+
     }
 
     // Use this for initialization

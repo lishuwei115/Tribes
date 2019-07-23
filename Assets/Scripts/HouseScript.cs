@@ -127,7 +127,18 @@ public class HouseScript : MonoBehaviour
             }
             else
             {
-                for (int i = living.Count - 1; i >= 0; i--)
+                float percentage = FoodStore / living.Count;
+                if (percentage < 0.1f)
+                    percentage = 0.1f;
+
+                //Distribute equally
+                foreach (HumanBeingScript human in living)
+                {
+                    human.Hp = human.BaseHp*percentage;
+                }
+                FoodStore = 0;
+                //distribute untill finishing resources
+                /*for (int i = living.Count - 1; i >= 0; i--)
                 {
                     HumanBeingScript human = living[i];
                     if (FoodStore > 0)
@@ -142,7 +153,7 @@ public class HouseScript : MonoBehaviour
                         GameManagerScript.Instance.HumanBeingDied();
                         human.gameObject.SetActive(false);
                     }
-                }
+                }*/
             }
         }
 

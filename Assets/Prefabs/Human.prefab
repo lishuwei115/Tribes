@@ -315,6 +315,7 @@ MonoBehaviour:
   SafetyTime: 0
   Food: 0
   FoodLife: 0
+  TransparentDistanceFromHome: 40
   CultivationTarget: 200
   CultivationPercentage:
   - 70

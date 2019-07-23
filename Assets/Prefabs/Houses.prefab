@@ -670,10 +670,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4484324188332496}
-  - component: {fileID: 33868695782980088}
   - component: {fileID: 23352228965521796}
-  - component: {fileID: 65371657657216394}
   - component: {fileID: 114286294649974682}
+  - component: {fileID: 6215781543915186233}
   m_Layer: 11
   m_Name: House_East
   m_TagString: House
@@ -698,14 +697,6 @@ Transform:
   m_Father: {fileID: 4011182224726068}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &33868695782980088
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1357921561474070}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &23352228965521796
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -743,19 +734,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &65371657657216394
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1357921561474070}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114286294649974682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -792,6 +770,20 @@ MonoBehaviour:
   TargetAutocracyHealth: 30
   HouseType: 1
   Government: 2
+--- !u!136 &6215781543915186233
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357921561474070}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 10.78
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1503730709445686
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,10 +793,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4083762052626554}
-  - component: {fileID: 33316059545718924}
   - component: {fileID: 23573961480979686}
-  - component: {fileID: 65777301707585784}
   - component: {fileID: 114998252768261560}
+  - component: {fileID: 2680874901868007142}
   m_Layer: 11
   m_Name: House_North
   m_TagString: House
@@ -829,14 +820,6 @@ Transform:
   m_Father: {fileID: 4011182224726068}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &33316059545718924
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1503730709445686}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &23573961480979686
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -874,19 +857,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &65777301707585784
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1503730709445686}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114998252768261560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -923,6 +893,20 @@ MonoBehaviour:
   TargetAutocracyHealth: 50
   HouseType: 0
   Government: 1
+--- !u!136 &2680874901868007142
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503730709445686}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 10.78
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1593607100391772
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,10 +916,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4981591768799494}
-  - component: {fileID: 33472266906878900}
   - component: {fileID: 23770788011176448}
-  - component: {fileID: 65938993128655872}
   - component: {fileID: 114043367307668044}
+  - component: {fileID: 7992945611359280401}
   m_Layer: 11
   m_Name: House_South
   m_TagString: House
@@ -960,14 +943,6 @@ Transform:
   m_Father: {fileID: 4011182224726068}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &33472266906878900
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1593607100391772}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &23770788011176448
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1005,19 +980,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &65938993128655872
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1593607100391772}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114043367307668044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1054,6 +1016,34 @@ MonoBehaviour:
   TargetAutocracyHealth: 50
   HouseType: 2
   Government: 1
+--- !u!136 &7992945611359280401
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593607100391772}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 10.78
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &8037638252583633474
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742194017509010}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 10.78
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &843222063477349823
 GameObject:
   m_ObjectHideFlags: 0
@@ -2194,11 +2184,19 @@ PrefabInstance:
       propertyPath: m_IsCustomRangeActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 578166943856072704, guid: 78180909e2e32da4081f9136a9522f78, type: 3}
+    - {fileID: 618248438330864412, guid: 78180909e2e32da4081f9136a9522f78, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 78180909e2e32da4081f9136a9522f78, type: 3}
 --- !u!4 &4091001430763052 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 608249987739570934, guid: 78180909e2e32da4081f9136a9522f78,
+    type: 3}
+  m_PrefabInstance: {fileID: 612059203713119450}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1742194017509010 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 610317045298309704, guid: 78180909e2e32da4081f9136a9522f78,
     type: 3}
   m_PrefabInstance: {fileID: 612059203713119450}
   m_PrefabAsset: {fileID: 0}
