@@ -1101,6 +1101,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8037638252583633474, guid: b6b1b49e6e04b419d8dac10ecc3d2d94,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7992945611359280401, guid: b6b1b49e6e04b419d8dac10ecc3d2d94,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6215781543915186233, guid: b6b1b49e6e04b419d8dac10ecc3d2d94,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680874901868007142, guid: b6b1b49e6e04b419d8dac10ecc3d2d94,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6b1b49e6e04b419d8dac10ecc3d2d94, type: 3}
 --- !u!1 &1464401888
@@ -1946,7 +1966,7 @@ PrefabInstance:
     - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
         type: 3}
       propertyPath: Humans
-      value: 46
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
         type: 3}
@@ -1956,12 +1976,17 @@ PrefabInstance:
     - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
         type: 3}
       propertyPath: PlayerHouse
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
         type: 3}
       propertyPath: GuardiansSummonable
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
+        type: 3}
+      propertyPath: DayLightTime
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2135510191290255347, guid: 4c744b904de862c49b734530cf5539f9,
         type: 3}
