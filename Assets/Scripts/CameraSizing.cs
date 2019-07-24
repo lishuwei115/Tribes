@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class CameraSizing : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float Multiplier = 1;
 
     // Update is called once per frame
     void Update()
     {
-        transform.localScale =new Vector3 (Screen.width*(Camera.main.orthographicSize/WorldmapCamera.Instance.ZoomBounds[1]), Screen.height * (Camera.main.orthographicSize / WorldmapCamera.Instance.ZoomBounds[1]), 1);
+        transform.localScale =new Vector3 (Screen.width*(Camera.main.orthographicSize/WorldmapCamera.Instance.ZoomBounds[1])* Multiplier, Screen.height * (Camera.main.orthographicSize / WorldmapCamera.Instance.ZoomBounds[1])* Multiplier, 1);
     }
 }

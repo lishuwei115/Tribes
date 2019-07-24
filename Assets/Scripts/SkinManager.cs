@@ -35,4 +35,5 @@ public class Skin
     public Transform SkinPrefab;
     public Color TribeColor = Color.red;
     public Transform HousePrefab;
+    public Transform Flower;
 }

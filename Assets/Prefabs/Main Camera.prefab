@@ -112,7 +112,7 @@ MonoBehaviour:
   - 210
   ZoomBounds:
   - 8
-  - 300
+  - 400
   Val: 200
   cam: {fileID: 4694765721180042863}
   isMoving: 0
@@ -341,3 +341,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc775362f46c9e46a27e03102e06a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Multiplier: 2.4

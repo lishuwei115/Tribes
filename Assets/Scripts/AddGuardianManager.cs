@@ -34,7 +34,7 @@ public class AddGuardianManager : MonoBehaviour
         //SpawnableArea = false;
 
         Houses = GameManagerScript.Instance.Houses;
-        Houses = Houses.Where(r => r.IsPlayer).ToList();
+        Houses = Houses.Where(r => r.IsPlayer && !r.Defeated).ToList();
 
         Vector3 mPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -52,7 +52,7 @@ public class AddGuardianManager : MonoBehaviour
             {
                 SpawnableArea = true;
             }
-            
+
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -64,16 +64,16 @@ public class AddGuardianManager : MonoBehaviour
             foreach (HouseScript house in Houses)
             {
 
-                if(Vector3.Distance(mPos, house.transform.position)< Vector3.Distance(mPos, SpawnHouse.transform.position))
+                if (Vector3.Distance(mPos, house.transform.position) < Vector3.Distance(mPos, SpawnHouse.transform.position))
                 {
                     SpawnHouse = house;
 
                 }
             }
 
-                GameManagerScript.Instance.SpawnGuardian(SpawnHouse);
+            GameManagerScript.Instance.SpawnGuardian(SpawnHouse);
         }
-        else if (Input.GetMouseButtonUp(0) && !SpawnableArea &&  Vector2.Distance(Offset, Input.mousePosition) < 30)
+        else if (Input.GetMouseButtonUp(0) && !SpawnableArea && Vector2.Distance(Offset, Input.mousePosition) < 30)
         {
             GameManagerScript.Instance.CloseGuardianMenu();
         }

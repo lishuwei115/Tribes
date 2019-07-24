@@ -1070,6 +1070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TribeColor: {r: 1, g: 1, b: 1, a: 1}
+  Tribe: 2
 --- !u!1 &7979586661419002376
 GameObject:
   m_ObjectHideFlags: 0

@@ -89,7 +89,8 @@ public class HouseScript : MonoBehaviour
             HumansAlive = Humans.Where(x => x.Hp > 0).ToList();
             if (HumansAlive.Count <= 0 && !Defeated)
             {
-                gameObject.SetActive(false);
+                //gameObject.SetActive(false);
+                HouseSkin.GetComponent<Animator>().SetBool("UIState", true);
                 if (IsPlayer)
                 {
                     GameManagerScript.Instance.Lost();

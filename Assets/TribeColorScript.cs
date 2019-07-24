@@ -5,4 +5,5 @@ using UnityEngine;
 public class TribeColorScript : MonoBehaviour
 {
     public Color TribeColor = Color.white;
+    public HousesTypes Tribe;
 }

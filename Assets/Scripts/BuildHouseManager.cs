@@ -32,7 +32,7 @@ public class BuildHouseManager : MonoBehaviour
     public void Update()
     {
         Houses = GameManagerScript.Instance.Houses;
-        Houses = Houses.Where(r => r.IsPlayer).ToList();
+        Houses = Houses.Where(r => r.IsPlayer && !r.Defeated).ToList();
 
         Vector3 mPos =  Camera.main.ScreenToWorldPoint(Input.mousePosition);
 

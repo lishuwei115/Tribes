@@ -615,165 +615,7 @@ public class HumanBeingScript : MonoBehaviour
 
 
 
-    /// <summary>
-    /// Move to a specified dest.
-    /// using the old system
-    /// </summary>
-    /// <returns>The move.</returns>
-    /// <param name="dest">Destination.</param>
-    //private int currentID = 0;
-    public IEnumerator Move(Vector3 dest)
-    {
-        yield return new WaitForEndOfFrame();
-        Vector3 offset = transform.position;
-        float distance = Vector3.Distance(offset, dest);
-        //int iD = currentID;
-        if (CurrentState != StateType.FoodFound)
-        {
-            TargetFoodDest = null;
-        }
 
-        TargetHuman = null;
-
-        float timeCount = 0;
-        while (timeCount < 1)
-        {
-            List<RaycastHit> EnemiesCollision = LookAroundForEnemies();
-            List<RaycastHit> Foodcollisions = LookAround("Food");
-            List<RaycastHit> Housecollisions = LookAround("House");
-            InvisibilityIfHouse(Housecollisions);
-
-            //Debug.Log(EnemiesCollision.Count);
-            //Debug.Log(iD);
-            if ((GameManagerScript.Instance.AttackIsEnable || !TargetHouse.IsPlayer))
-            {
-                AttackOrFood(EnemiesCollision, Foodcollisions);
-            }
-            //found enemy house
-            if (CurrentState != StateType.FollowInstruction && !FoodStealed && CurrentState == StateType.LookingForFood && TargetFoodDest == null && TargetHuman == null && Housecollisions.Count > 0 && Housecollisions[0].collider.GetComponent<HouseScript>().FoodStore > 0 && Housecollisions[0].collider.GetComponent<HouseScript>().HouseType != HouseType)
-            {
-                TargetFoodDest = Housecollisions[0].collider.transform;
-                CurrentState = StateType.FoodFound;
-                GoToPosition(TargetFoodDest.position);
-                AttackAction();
-            }
-            //found enemy
-
-            if ((GameManagerScript.Instance.AttackIsEnable || !TargetHouse.IsPlayer) && CurrentState != StateType.FollowInstruction && CurrentState != StateType.ComingBackHome && EnemiesCollision.Count > 0)
-            {
-                TargetHuman = EnemiesCollision[0].collider.transform;
-                FollowCo = null;
-                CurrentState = StateType.LookingForFood;
-
-                AttackEnemy(TargetHuman);
-            }
-            //found food
-            if (CurrentState != StateType.FollowInstruction && CurrentState == StateType.LookingForFood && Foodcollisions.Count > 0 /*&& /*TargetFoodDest == null /*&& TargetHuman == null*/)
-            {
-                TargetFoodDest = Foodcollisions[0].collider.transform;
-                CurrentState = StateType.FoodFound;
-                Vector3 randomPos = TargetFoodDest.position + new Vector3(UnityEngine.Random.Range(-FoodRandomPointDistance, FoodRandomPointDistance), 0, UnityEngine.Random.Range(-FoodRandomPointDistance, FoodRandomPointDistance));
-                GoToPosition(randomPos);
-            }
-            yield return new WaitForEndOfFrame();
-            Vector3 nextpos = Vector3.Lerp(offset, dest, timeCount);
-            transform.position = nextpos;
-            if (!GameManagerScript.Instance.Pause)
-                timeCount = timeCount + Time.deltaTime * Speed / distance * 10;
-            //timeCount = timeCount + Time.deltaTime * Speed/ distance*10 * ((math.abs(.5f - math.abs(timeCount - .5f)/3) + 1f) ); 
-            //timeCount = timeCount + Time.deltaTime * Speed * .1f * ((math.abs(.5f - math.abs(timeCount - .5f)) + 0.5f) / 2);
-
-        }
-
-        if (CurrentState == StateType.FollowInstruction)
-        {
-            List<RaycastHit> EnemiesCollision = LookAroundForEnemies();
-            List<RaycastHit> Foodcollisions = LookAround("Food");
-            if (EnemiesCollision.Count > 0 && (GameManagerScript.Instance.AttackIsEnable || !TargetHouse.IsPlayer))
-            {
-                TargetHuman = EnemiesCollision[0].collider.transform;
-                FollowCo = null;
-                CurrentState = StateType.LookingForFood;
-
-                AttackEnemy(TargetHuman);
-            }
-            else if (Foodcollisions.Count > 0)
-            {
-                TargetFoodDest = Foodcollisions[0].collider.transform;
-                CurrentState = StateType.FoodFound;
-                Vector3 randomPos = TargetFoodDest.position + new Vector3(UnityEngine.Random.Range(-FoodRandomPointDistance, FoodRandomPointDistance), 0, UnityEngine.Random.Range(-FoodRandomPointDistance, FoodRandomPointDistance));
-                GoToPosition(randomPos);
-            }
-            else
-            {
-                CurrentState = StateType.LookingForFood;
-                GoToRandomPos();
-            }
-
-        }
-        else
-
-        if (CurrentState == StateType.ComingBackHome && !DeliverFood)
-        {
-            CurrentState = StateType.Home;
-            HomeSweetHome();
-        }
-        else if (CurrentState == StateType.ComingBackHome && DeliverFood)
-        {
-            TargetHouse.FoodStore += Food;
-            UIManagerScript.Instance.UpdateFood();
-            Food = 0;
-            CanIgetFood = true;
-            CurrentState = StateType.LookingForFood;
-            DeliverFood = false;
-            GoToRandomPos();
-        }
-        else if (CurrentState == StateType.LookingForFood || CurrentState == StateType.FollowInstruction)
-        {
-            CurrentState = StateType.LookingForFood;
-            GoToRandomPos();
-        }
-        else if (CurrentState == StateType.FoodFound)
-        {
-            if (TargetFoodDest.gameObject.layer == LayerMask.NameToLayer("House"))
-            {
-                if (TargetFoodDest.GetComponent<HouseScript>().FoodStore > 0)
-                {
-                    Food += 1;
-                    FoodStealed = true;
-                    TargetFoodDest.GetComponent<HouseScript>().FoodStore--;
-                    DidIFindFood = true;
-                    UIManagerScript.Instance.UpdateFood();
-                    CurrentState = StateType.ComingBackHome;
-                    DeliverFood = true;
-                    GoToPosition(TargetHouse.transform.position);
-                }
-
-                CurrentState = StateType.LookingForFood;
-                GoToRandomPos();
-            }
-            else
-            {
-                if (TargetFoodDest.gameObject.activeInHierarchy)
-                {
-                    DidIFindFood = true;
-                    MineFood(TargetFoodDest.GetComponent<FoodScript>());
-                }
-                else
-                {
-                    CurrentState = StateType.LookingForFood;
-                    GoToRandomPos();
-                }
-            }
-        }
-
-
-        //CurrentState = StateType.ComingBackHome;
-        //GoToPosition(TargetHouse.transform.position);
-
-
-        MoveCo = null;
-    }
 
     private void InvisibilityIfHouse(List<RaycastHit> Housecollisions)
     {
@@ -836,7 +678,7 @@ public class HumanBeingScript : MonoBehaviour
 
     public void AttackEnemy(Transform humanT)
     {
-        if (FollowCo == null && gameObject.activeInHierarchy)
+        if (/*FollowCo == null &&*/ gameObject.activeInHierarchy)
         {
             CurrentState = StateType.LookingForFood;
             StopAllCoroutines();
@@ -844,6 +686,12 @@ public class HumanBeingScript : MonoBehaviour
 
             FollowCo = FollowEnemy(humanT);
             StartCoroutine(FollowCo);
+        }
+        else
+        {
+            FollowCo = null;
+            MoveCo = null;
+            GoToRandomPos();
         }
     }
 
@@ -857,6 +705,7 @@ public class HumanBeingScript : MonoBehaviour
         List<RaycastHit> EnemiesCollision = LookAroundForEnemies();
         HarvestBar.gameObject.SetActive(false);
         //Counterattack
+        if(CurrentState != StateType.FollowInstruction && CurrentState != StateType.ComingBackHome)
         if (!TargetHouse.IsPlayer && GameManagerScript.Instance.DayTime - GameManagerScript.Instance.currentDayTime < GameManagerScript.Instance.DayTime - (TimeToGoBack + TargetHouse.SafetyTimer) && EnemiesCollision.Count > 0)
         {
             AttackEnemy(EnemiesCollision[0].collider.transform);
@@ -865,6 +714,206 @@ public class HumanBeingScript : MonoBehaviour
         {
             AttackEnemy(EnemiesCollision[0].collider.transform);
         }
+    }
+    /// <summary>
+    /// Move to a specified dest.
+    /// using the old system
+    /// </summary>
+    /// <returns>The move.</returns>
+    /// <param name="dest">Destination.</param>
+    //private int currentID = 0;
+    public IEnumerator Move(Vector3 dest)
+    {
+        yield return new WaitForEndOfFrame();
+        Vector3 offset = transform.position;
+        float distance = Vector3.Distance(offset, dest);
+        //int iD = currentID;
+        if (CurrentState != StateType.FoodFound)
+        {
+            TargetFoodDest = null;
+        }
+
+        TargetHuman = null;
+
+        float timeCount = 0;
+        List<RaycastHit> EnemiesCollision = LookAroundForEnemies();
+        List<RaycastHit> Foodcollisions = LookAround("Food");
+        List<RaycastHit> Housecollisions = LookAround("House");
+        while (timeCount < 1)
+        {
+            EnemiesCollision = LookAroundForEnemies();
+            Foodcollisions = LookAround("Food");
+            Housecollisions = LookAround("House");
+            InvisibilityIfHouse(Housecollisions);
+            if (CurrentState != StateType.FollowInstruction && CurrentState != StateType.ComingBackHome)
+            {
+                if (CurrentState == StateType.LookingForFood && (GameManagerScript.Instance.AttackIsEnable || !TargetHouse.IsPlayer) && EnemiesCollision.Count > 0 && Foodcollisions.Count > 0)
+                {
+                    break;
+                }
+                //found enemy house
+                if (!FoodStealed && CurrentState == StateType.LookingForFood && TargetFoodDest == null && TargetHuman == null && Housecollisions.Count > 0 && Housecollisions[0].collider.GetComponent<HouseScript>().FoodStore > 0 && Housecollisions[0].collider.GetComponent<HouseScript>().HouseType != HouseType)
+                {
+                    break;
+                }
+                //found enemy
+
+                if ((GameManagerScript.Instance.AttackIsEnable || !TargetHouse.IsPlayer)   && EnemiesCollision.Count > 0)
+                {
+                    break;
+                }
+                //found food
+                if ( CurrentState == StateType.LookingForFood && Foodcollisions.Count > 0 /*&& /*TargetFoodDest == null /*&& TargetHuman == null*/)
+                {
+                    break;
+                }
+            }
+
+            yield return new WaitForEndOfFrame();
+            Vector3 nextpos = Vector3.Lerp(offset, dest, timeCount);
+            transform.position = nextpos;
+            if (!GameManagerScript.Instance.Pause)
+                timeCount = timeCount + Time.deltaTime * Speed / distance * 10;
+        }
+        EnemiesCollision = LookAroundForEnemies();
+        Foodcollisions = LookAround("Food");
+        Housecollisions = LookAround("House");
+        InvisibilityIfHouse(Housecollisions);
+        if (timeCount < 1)
+        {
+
+            if (CurrentState != StateType.FollowInstruction && CurrentState == StateType.LookingForFood && (GameManagerScript.Instance.AttackIsEnable || !TargetHouse.IsPlayer) && EnemiesCollision.Count > 0 && Foodcollisions.Count > 0)
+            {
+                AttackOrFood(EnemiesCollision, Foodcollisions);
+            }
+            else
+            //found enemy house
+            if (CurrentState != StateType.FollowInstruction && !FoodStealed && CurrentState == StateType.LookingForFood && TargetFoodDest == null && TargetHuman == null && Housecollisions.Count > 0 && Housecollisions[0].collider.GetComponent<HouseScript>().FoodStore > 0 && Housecollisions[0].collider.GetComponent<HouseScript>().HouseType != HouseType)
+            {
+                TargetFoodDest = Housecollisions[0].collider.transform;
+                CurrentState = StateType.FoodFound;
+                GoToPosition(TargetFoodDest.position);
+                AttackAction();
+            }
+            else
+            //found enemy
+
+            if ((GameManagerScript.Instance.AttackIsEnable || !TargetHouse.IsPlayer) && CurrentState != StateType.FollowInstruction && CurrentState != StateType.ComingBackHome && EnemiesCollision.Count > 0)
+            {
+                TargetHuman = EnemiesCollision[0].collider.transform;
+                FollowCo = null;
+                CurrentState = StateType.LookingForFood;
+
+                AttackEnemy(TargetHuman);
+            }
+            else
+            //found food
+            if (CurrentState != StateType.FollowInstruction && CurrentState == StateType.LookingForFood && Foodcollisions.Count > 0 /*&& /*TargetFoodDest == null /*&& TargetHuman == null*/)
+            {
+                TargetFoodDest = Foodcollisions[0].collider.transform;
+                CurrentState = StateType.FoodFound;
+                Vector3 randomPos = TargetFoodDest.position + new Vector3(UnityEngine.Random.Range(-FoodRandomPointDistance, FoodRandomPointDistance), 0, UnityEngine.Random.Range(-FoodRandomPointDistance, FoodRandomPointDistance));
+                GoToPosition(randomPos);
+            }
+            else
+            {
+                CurrentState = StateType.LookingForFood;
+                GoToRandomPos();
+            }
+        }
+        else
+        {
+            if (CurrentState != StateType.FollowInstruction && CurrentState == StateType.LookingForFood && (GameManagerScript.Instance.AttackIsEnable || !TargetHouse.IsPlayer) && EnemiesCollision.Count > 0 && Foodcollisions.Count > 0)
+            {
+                AttackOrFood(EnemiesCollision, Foodcollisions);
+            }
+            else
+            if (CurrentState == StateType.FollowInstruction)
+            {
+                if (EnemiesCollision.Count > 0 && (GameManagerScript.Instance.AttackIsEnable || !TargetHouse.IsPlayer))
+                {
+                    TargetHuman = EnemiesCollision[0].collider.transform;
+                    FollowCo = null;
+                    CurrentState = StateType.LookingForFood;
+
+                    AttackEnemy(TargetHuman);
+                }
+                else if (Foodcollisions.Count > 0)
+                {
+                    TargetFoodDest = Foodcollisions[0].collider.transform;
+                    CurrentState = StateType.FoodFound;
+                    Vector3 randomPos = TargetFoodDest.position + new Vector3(UnityEngine.Random.Range(-FoodRandomPointDistance, FoodRandomPointDistance), 0, UnityEngine.Random.Range(-FoodRandomPointDistance, FoodRandomPointDistance));
+                    GoToPosition(randomPos);
+                }
+                else
+                {
+                    CurrentState = StateType.LookingForFood;
+                    GoToRandomPos();
+                }
+
+            }
+            else
+            if (CurrentState == StateType.ComingBackHome && !DeliverFood)
+            {
+                CurrentState = StateType.Home;
+                HomeSweetHome();
+            }
+            else if (CurrentState == StateType.ComingBackHome && DeliverFood)
+            {
+                TargetHouse.FoodStore += Food;
+                UIManagerScript.Instance.UpdateFood();
+                Food = 0;
+                CanIgetFood = true;
+                CurrentState = StateType.LookingForFood;
+                DeliverFood = false;
+                GoToRandomPos();
+            }
+            else if (CurrentState == StateType.LookingForFood || CurrentState == StateType.FollowInstruction)
+            {
+                CurrentState = StateType.LookingForFood;
+                GoToRandomPos();
+            }
+            else if (CurrentState == StateType.FoodFound)
+            {
+                if (TargetFoodDest.gameObject.layer == LayerMask.NameToLayer("House"))
+                {
+                    if (TargetFoodDest.GetComponent<HouseScript>().FoodStore > 0)
+                    {
+                        Food += 1;
+                        FoodStealed = true;
+                        TargetFoodDest.GetComponent<HouseScript>().FoodStore--;
+                        DidIFindFood = true;
+                        UIManagerScript.Instance.UpdateFood();
+                        CurrentState = StateType.ComingBackHome;
+                        DeliverFood = true;
+                        GoToPosition(TargetHouse.transform.position);
+                    }
+
+                    CurrentState = StateType.LookingForFood;
+                    GoToRandomPos();
+                }
+                else
+                {
+                    if (TargetFoodDest.gameObject.activeInHierarchy)
+                    {
+                        DidIFindFood = true;
+                        MineFood(TargetFoodDest.GetComponent<FoodScript>());
+                    }
+                    else
+                    {
+                        CurrentState = StateType.LookingForFood;
+                        GoToRandomPos();
+                    }
+                }
+            }
+            else
+            {
+                CurrentState = StateType.LookingForFood;
+                GoToRandomPos(); MoveCo = null;
+            }
+        }
+
+
     }
     private IEnumerator Harvest(FoodScript food)
     {
@@ -918,32 +967,49 @@ public class HumanBeingScript : MonoBehaviour
                 ResourceAvaiable = food.Food > 0;
                 if (Food >= StorageCapacity)
                 {
-                    CurrentState = StateType.ComingBackHome;
-                    DeliverFood = true;
-                    GoToPosition(TargetHouse.transform.position);
+                    break;
                 }
                 if (!ResourceAvaiable)
                 {
-                    DidIFindFood = true;
-                    food.Deactivate(); ;
-                    CurrentState = StateType.LookingForFood;
-                    GoToRandomPos();
+                    break;
                 }
             }
             if (Food >= StorageCapacity)
             {
-                CurrentState = StateType.ComingBackHome;
-                DeliverFood = true;
-                GoToPosition(TargetHouse.transform.position);
+                break;
             }
             ResourceAvaiable = food.Food > 0;
 
             yield return new WaitForEndOfFrame();
         }
-        HarvestBar.gameObject.SetActive(false);
-        CurrentState = StateType.LookingForFood;
-        GoToRandomPos();
-        FollowCo = null;
+        if (Food >= StorageCapacity)
+        {
+            CurrentState = StateType.ComingBackHome;
+            DeliverFood = true;
+            GoToPosition(TargetHouse.transform.position);
+        }
+        else
+        if (!ResourceAvaiable)
+        {
+            DidIFindFood = true;
+            food.Deactivate(); ;
+            CurrentState = StateType.LookingForFood;
+            GoToRandomPos();
+        }
+        else
+        if (Food >= StorageCapacity)
+        {
+            CurrentState = StateType.ComingBackHome;
+            DeliverFood = true;
+            GoToPosition(TargetHouse.transform.position);
+        }
+        else
+        {
+            HarvestBar.gameObject.SetActive(false);
+            CurrentState = StateType.LookingForFood;
+            GoToRandomPos();
+            FollowCo = null;
+        }
     }
     private IEnumerator CultivateCo()
     {
@@ -1017,6 +1083,7 @@ public class HumanBeingScript : MonoBehaviour
             humanEnemy = false;
             EnemyMonster = humanT.GetComponent<MonsterScript>();
         }
+        float Dist = 0;
         while (EnemyAlive)
         {
             // yield return new WaitUntil(() => !GameManagerScript.Instance.Pause);
@@ -1030,12 +1097,9 @@ public class HumanBeingScript : MonoBehaviour
             distance = Vector3.Distance(transform.position, humanT.position);
             while (distance >= 5f)
             {
-                if (!Enemy == null && !EnemyMonster == null)
+                if (Enemy == null && EnemyMonster == null)
                 {
-                    CurrentState = StateType.LookingForFood;
-                    FollowCo = null;
-                    GoToRandomPos();
-                    EnemyAlive = false;
+                    break;
                 }
                 //offset = transform.position;
                 timeCount = 0;
@@ -1047,12 +1111,16 @@ public class HumanBeingScript : MonoBehaviour
                 distance = Vector3.Distance(transform.position, humanT.position);
 
             }
+            if (Enemy == null && EnemyMonster == null)
+            {
+                break;
+            }
             bool pause = GameManagerScript.Instance.Pause;
             //start another coroutine, not compatible with current system
             //GoToPosition(humanT.position);
             if (humanT != null)
             {
-                float Dist = Vector3.Distance(transform.position, humanT.position);
+                Dist = Vector3.Distance(transform.position, humanT.position);
                 //Attack
                 if (Dist < 5f && CanIAttack)
                 {
@@ -1072,11 +1140,11 @@ public class HumanBeingScript : MonoBehaviour
                         }
                         if (Enemy.Hp <= 0)
                         {
-
                             Food += Enemy.Food;
                             Enemy.Food = 0;
                             EnemyAlive = false;
                             HPBar.gameObject.SetActive(false);
+                            break;
                         }
                     }
                     else
@@ -1104,16 +1172,12 @@ public class HumanBeingScript : MonoBehaviour
                 }
                 if (Dist > 5 && humanT != null)
                 {
-                    FollowCo = null;
-                    AttackEnemy(humanT.transform);
+                    break;
                 }
                 else
                 if (humanT == null)
                 {
-                    FollowCo = null;
-
-                    CurrentState = StateType.LookingForFood;
-                    GoToRandomPos();
+                    break;
                 }
                 //won?
                 if (!EnemyAlive)
@@ -1134,13 +1198,33 @@ public class HumanBeingScript : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
+        if (Enemy == null && EnemyMonster == null)
+        {
+            CurrentState = StateType.LookingForFood;
+            FollowCo = null;
+            GoToRandomPos();
+            EnemyAlive = false;
+        }
+        else
+            if (Dist > 5 && humanT != null)
+        {
+            FollowCo = null;
+            AttackEnemy(humanT.transform);
+        }
+        else
+                if (humanT == null)
+        {
+            FollowCo = null;
+            CurrentState = StateType.LookingForFood;
+            GoToRandomPos();
+        }
+        else
+        {
+            CurrentState = StateType.LookingForFood;
+            FollowCo = null;
+            GoToRandomPos();
+        }
 
-
-        CurrentState = StateType.LookingForFood;
-        FollowCo = null;
-
-
-        GoToRandomPos();
     }
 
     private void CheckBonusHealth()

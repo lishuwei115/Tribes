@@ -373,11 +373,11 @@ public class GameManagerScript : MonoBehaviour
         foreach (Animator dead in DeadList)
         {
 
-            GameObject flower = Instantiate(Flower, DeadContainer);
+            GameObject flower = Instantiate(SkinManager.Instance.GetSkinInfo( dead.GetComponent<TribeColorScript>().Tribe).Flower.gameObject, DeadContainer);
             flower.SetActive(true);
             flower.transform.position = new Vector3(dead.transform.position.x, 0, dead.transform.position.z) + new Vector3(UnityEngine.Random.Range(-3, 3), 0, UnityEngine.Random.Range(-3, 3));
             FlowerList.Add(flower.GetComponent<Animator>());
-            flower.GetComponent<SpriteRenderer>().color = dead.GetComponent<TribeColorScript>().TribeColor;
+            //flower.GetComponent<SpriteRenderer>().color = dead.GetComponent<TribeColorScript>().TribeColor;
             /*GameObject food = Instantiate(Food, FoodContainer);
             food.SetActive(true);
             food.transform.position = dead.transform.position;
