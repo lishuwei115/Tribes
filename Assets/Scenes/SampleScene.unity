@@ -882,6 +882,11 @@ PrefabInstance:
       propertyPath: AddHouse
       value: 
       objectReference: {fileID: 489920596}
+    - target: {fileID: 4108626450163990535, guid: 39d5715ccbea248df907be3014b7efd2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 155.40039
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39d5715ccbea248df907be3014b7efd2, type: 3}
 --- !u!1 &1162501621
@@ -1965,33 +1970,8 @@ PrefabInstance:
       objectReference: {fileID: 392457232}
     - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
         type: 3}
-      propertyPath: Humans
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
-        type: 3}
-      propertyPath: Pause
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
-        type: 3}
-      propertyPath: PlayerHouse
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
-        type: 3}
-      propertyPath: GuardiansSummonable
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
-        type: 3}
-      propertyPath: DayLightTime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2135510191290255347, guid: 4c744b904de862c49b734530cf5539f9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: DayTime
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c744b904de862c49b734530cf5539f9, type: 3}

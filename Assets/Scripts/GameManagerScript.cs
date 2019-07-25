@@ -392,6 +392,7 @@ public class GameManagerScript : MonoBehaviour
         {
 
             FoodsList[i].gameObject.SetActive(true);
+            FoodsList[i].ResetFood();
             FoodsList[i].GetComponent<Animator>().SetBool("UIState", true);
             FoodsList[i].transform.position = GetFreeSpaceOnGround(0);
         }
@@ -411,6 +412,7 @@ public class GameManagerScript : MonoBehaviour
         {
             GameObject human = Instantiate(Human, home.transform.position, Quaternion.identity, HumansContainer);
             HumanBeingScript hbs = human.GetComponent<HumanBeingScript>();
+            hbs.Hp = hbs.BaseHp;
             HumansList.Add(hbs);
             human.GetComponent<HumanBeingScript>().Hp = 60;
             hbs.TargetHouse = home;
@@ -418,6 +420,7 @@ public class GameManagerScript : MonoBehaviour
             hbs.FinallyBackHome += Hbs_FinallyBackHome;
             home.Humans.Add(hbs);
             hbs.WearSkin();
+            home.HumansAlive = home.Humans.Where(x => x.Hp > 0).ToList();
             ReproducedLastDay++;
             HumansAtHome++;
         }

@@ -45,23 +45,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40ed3aed852640ce97beeb8c916a51a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pause: 0
   HousePrefab: {fileID: 608249987739570934, guid: 78180909e2e32da4081f9136a9522f78,
     type: 3}
   HousesHolder: {fileID: 0}
   MapBorder: {fileID: 2135510191290255344}
   StateOfGame: 0
-  PlayerHouse: 3
+  PlayerHouse: 2
   enemyDefeated: 0
   FoodPlayer: 0
   HumanMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   FoodMaterial: {fileID: 2100000, guid: e601015e84489446e930439e8157fd1b, type: 2}
   UIButtons: []
-  GuardiansSummonable: 0
+  GuardiansSummonable: 6
   UIButtonOver: 0
   GameStatus: 0
-  DayTime: 120
+  DayTime: 30
   DayLightTime: 60
-  Humans: 4
+  Humans: 50
   FoodPerDay: 30
   MaxNumChildren: 2
   Houses:
@@ -108,26 +109,50 @@ MonoBehaviour:
   - House: 0
     SkinPrefab: {fileID: 4085973818741542, guid: 51a4f340725edec439eb76464b487b13,
       type: 3}
+    HarvestPrefab: {fileID: 4085973818741542, guid: 94456c65439a16e458a80b0ed7424f08,
+      type: 3}
+    WarriorPrefab: {fileID: 4085973818741542, guid: 02d53de4b92f16d47960297837985e79,
+      type: 3}
     TribeColor: {r: 0, g: 0.735849, b: 0.19628903, a: 1}
     HousePrefab: {fileID: 7697778713606853072, guid: 3d737876fe5008148b00b7c31aa810f0,
+      type: 3}
+    Flower: {fileID: 7285420253788441266, guid: 83cfe42acfeaf7f47ae3dabae5543575,
       type: 3}
   - House: 2
     SkinPrefab: {fileID: 2774551131370630588, guid: 48d67ef5a06868248bc4338bd5d0e5f3,
       type: 3}
+    HarvestPrefab: {fileID: 2774551131370630588, guid: bb18d418f44dcc047b8048a053561d6f,
+      type: 3}
+    WarriorPrefab: {fileID: 2774551131370630588, guid: 94f235c4d4edc444cb4ae140f4edcab7,
+      type: 3}
     TribeColor: {r: 0.7372549, g: 0, b: 0.43532926, a: 1}
     HousePrefab: {fileID: 7697778713606853072, guid: 73d87cd5db7ebc3418ba208ce834ba2c,
+      type: 3}
+    Flower: {fileID: 7285420253788441266, guid: 83cfe42acfeaf7f47ae3dabae5543575,
       type: 3}
   - House: 3
     SkinPrefab: {fileID: 6510393532586212114, guid: 762a58ddae71f6e42a7efa85ad6331ec,
       type: 3}
+    HarvestPrefab: {fileID: 6510393532586212114, guid: e3d1f764c2e6dbe48bd6452dd7e3d80d,
+      type: 3}
+    WarriorPrefab: {fileID: 6510393532586212114, guid: a515170aa8f9894498b98464eefb72f5,
+      type: 3}
     TribeColor: {r: 0, g: 0.45269147, b: 0.7372549, a: 1}
     HousePrefab: {fileID: 7697778713606853072, guid: 3b58fe29c4773264888267d473256ea8,
+      type: 3}
+    Flower: {fileID: 7285420253788441266, guid: e6962f22832c86246a11543ee6867692,
       type: 3}
   - House: 1
     SkinPrefab: {fileID: 8671424906640433870, guid: 6221da89ac7336747af819dfe65c1eca,
       type: 3}
+    HarvestPrefab: {fileID: 8671424906640433870, guid: 111c397246ebc6b4da3bc48ce960a047,
+      type: 3}
+    WarriorPrefab: {fileID: 8671424906640433870, guid: 71ab1e5ba8dab2541928de1270e3a755,
+      type: 3}
     TribeColor: {r: 0.8301887, g: 0.7558862, b: 0, a: 1}
     HousePrefab: {fileID: 7697778713606853072, guid: 8fd15577b62051d44b16a02dfbc02a28,
+      type: 3}
+    Flower: {fileID: 7285420253788441266, guid: d3e6f15547ce6e04cb0017de3c47e4ea,
       type: 3}
 --- !u!1001 &3393260075048343746
 PrefabInstance:

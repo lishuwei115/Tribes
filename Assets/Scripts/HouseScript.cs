@@ -136,6 +136,10 @@ public class HouseScript : MonoBehaviour
                 foreach (HumanBeingScript human in living)
                 {
                     human.Hp = human.BaseHp*percentage;
+                    human.HPBar.gameObject.SetActive(true);
+
+                    human.HPBar.UpdateHP(human.Hp, human.BaseHp, HouseType);
+                    human.HPBar.gameObject.SetActive(false);
                 }
                 FoodStore = 0;
                 //distribute untill finishing resources
@@ -176,6 +180,7 @@ public class HouseScript : MonoBehaviour
             {
                 human.Reproduce();
             }
+            HumansAlive = Humans.Where(x => x.Hp > 0).ToList();
 
         }
     }

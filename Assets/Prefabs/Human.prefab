@@ -302,8 +302,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HouseType: 1
   CurrentState: 0
-  Radius: 5
+  Radius: 0.2
   Specialization: 0.5
+  HumanJob: 0
   InitialHP: 0
   HPBonus: 0
   PhisicalAttack: 0
@@ -314,6 +315,7 @@ MonoBehaviour:
   TimeToGoBack: 0
   SafetyTime: 0
   Food: 0
+  DeliverFood: 0
   FoodLife: 0
   TransparentDistanceFromHome: 40
   CultivationTarget: 200
@@ -323,6 +325,7 @@ MonoBehaviour:
   - 100
   FoodRandomPointDistance: 10
   RandomFoodGained: 0
+  StorageCapacity: 3
   HpMax: 60
   HpMin: 50
   Hp: 0
@@ -335,6 +338,8 @@ MonoBehaviour:
   AttackFrequency: 0.3
   HarvestIncrement: 0.01
   WarriorIncrement: 0.01
+  WarriorValue: 0.6
+  HarvesterValue: 0.4
   Charity: 50
   Gratitude: 50
   Hate: 50
@@ -464,7 +469,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: e3f5e6bb0f0a46d4b938f415e76be9a5, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -589,7 +594,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: e3f5e6bb0f0a46d4b938f415e76be9a5, type: 3}
   m_Color: {r: 0, g: 1, b: 0.2466259, a: 1}
   m_FlipX: 0
