@@ -24,7 +24,7 @@ public class HumanBeingScript : MonoBehaviour
     [Range(.1f, .9f)]
     [Tooltip("If 0.9 is Warrior, if 0.1 is Farmer, it will distribute the attack accordingly")]
     public float Specialization = 0.5f;
-    
+
     public HumanClass HumanJob = HumanClass.Standard;
     public float InitialHP = 0;
     public float HPBonus = 0;
@@ -175,7 +175,7 @@ public class HumanBeingScript : MonoBehaviour
     Transform StandardSkin = null;
     Transform WarriorSkin = null;
     Transform HarvesterSkin = null;
-
+    bool initialized = false;
     private void Awake()
     {
         MR = GetComponent<MeshRenderer>();
@@ -186,6 +186,11 @@ public class HumanBeingScript : MonoBehaviour
 
     // Use this for initialization
     void Start()
+    {
+        if (!initialized)
+            Initialize();
+    }
+    public void Initialize()
     {
         HarvestBar = GetComponentInChildren<HarvestingBarSprite>();
         HarvestBar.gameObject.SetActive(false);
@@ -198,8 +203,8 @@ public class HumanBeingScript : MonoBehaviour
         SetLayers();
         List<RaycastHit> Housecollisions = LookAround("House");
         InvisibilityIfHouse(Housecollisions);
+        initialized = true;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -330,7 +335,7 @@ public class HumanBeingScript : MonoBehaviour
                 break;
             case HumanClass.Harvester:
                 if (HarvesterSkin == null)
-                { HarvesterSkin = Instantiate(SkinManager.Instance.GetSkinFromHouse(HouseType,  h), transform); }
+                { HarvesterSkin = Instantiate(SkinManager.Instance.GetSkinFromHouse(HouseType, h), transform); }
                 HarvesterSkin.gameObject.SetActive(true);
                 if (HarvesterSkin.GetComponentInChildren<Animator>())
                 {
@@ -340,7 +345,7 @@ public class HumanBeingScript : MonoBehaviour
                 break;
             case HumanClass.Warrior:
                 if (WarriorSkin == null)
-                { WarriorSkin = Instantiate(SkinManager.Instance.GetSkinFromHouse(HouseType,  h), transform); }
+                { WarriorSkin = Instantiate(SkinManager.Instance.GetSkinFromHouse(HouseType, h), transform); }
                 WarriorSkin.gameObject.SetActive(true);
                 if (WarriorSkin.GetComponentInChildren<Animator>())
                 {
@@ -949,6 +954,10 @@ public class HumanBeingScript : MonoBehaviour
             else
             if (CurrentState == StateType.ComingBackHome && !DeliverFood)
             {
+                TargetHouse.FoodStore += Food;
+                UIManagerScript.Instance.UpdateFood();
+                Food = 0;
+                CanIgetFood = true;
                 CurrentState = StateType.Home;
                 HomeSweetHome();
             }
@@ -1372,7 +1381,7 @@ public class HumanBeingScript : MonoBehaviour
         {
             ChangeClass(HumanClass.Warrior);
         }
-        else 
+        else
         {
             ChangeClass(HumanClass.Standard);
         }

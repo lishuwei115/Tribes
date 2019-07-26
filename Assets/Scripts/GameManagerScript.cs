@@ -46,6 +46,8 @@ public class GameManagerScript : MonoBehaviour
 
     [Range(0, 10)]
     public int MaxNumChildren = 3;
+    [Range(0, 1000)]
+    public int MaxHumansForTribe = 100;
 
     [Header("GameElements")]
     public List<HouseScript> Houses = new List<HouseScript>();
@@ -100,6 +102,8 @@ public class GameManagerScript : MonoBehaviour
     public bool AddingPlayerHouse = false;
     public bool Breeding = true;
     public bool AttackIsEnable = true;
+    public DestroyOverTime Pointer;
+
     private void Awake()
     {
         Instance = this;
@@ -373,7 +377,7 @@ public class GameManagerScript : MonoBehaviour
         foreach (Animator dead in DeadList)
         {
 
-            GameObject flower = Instantiate(SkinManager.Instance.GetSkinInfo( dead.GetComponent<TribeColorScript>().Tribe).Flower.gameObject, DeadContainer);
+            GameObject flower = Instantiate(SkinManager.Instance.GetSkinInfo(dead.GetComponent<TribeColorScript>().Tribe).Flower.gameObject, DeadContainer);
             flower.SetActive(true);
             flower.transform.position = new Vector3(dead.transform.position.x, 0, dead.transform.position.z) + new Vector3(UnityEngine.Random.Range(-3, 3), 0, UnityEngine.Random.Range(-3, 3));
             FlowerList.Add(flower.GetComponent<Animator>());
@@ -410,19 +414,23 @@ public class GameManagerScript : MonoBehaviour
         int childNumber = UnityEngine.Random.Range(1, MaxNumChildren + 1);
         for (int i = 0; i < childNumber; i++)
         {
-            GameObject human = Instantiate(Human, home.transform.position, Quaternion.identity, HumansContainer);
-            HumanBeingScript hbs = human.GetComponent<HumanBeingScript>();
-            hbs.Hp = hbs.BaseHp;
-            HumansList.Add(hbs);
-            human.GetComponent<HumanBeingScript>().Hp = 60;
-            hbs.TargetHouse = home;
-            hbs.HouseType = home.HouseType;
-            hbs.FinallyBackHome += Hbs_FinallyBackHome;
-            home.Humans.Add(hbs);
-            hbs.WearSkin();
-            home.HumansAlive = home.Humans.Where(x => x.Hp > 0).ToList();
-            ReproducedLastDay++;
-            HumansAtHome++;
+            if (home.HumansAlive.Count < MaxHumansForTribe)
+            {
+                GameObject human = Instantiate(Human, home.transform.position, Quaternion.identity, HumansContainer);
+                HumanBeingScript hbs = human.GetComponent<HumanBeingScript>();
+                HumansList.Add(hbs);
+                human.GetComponent<HumanBeingScript>().Hp = 60;
+                hbs.TargetHouse = home;
+                hbs.HouseType = home.HouseType;
+                hbs.FinallyBackHome += Hbs_FinallyBackHome;
+                home.Humans.Add(hbs);
+                hbs.WearSkin();
+                hbs.Initialize();
+                home.HumansAlive = home.Humans.Where(x => x.Hp > 0).ToList();
+                ReproducedLastDay++;
+                HumansAtHome++;
+            }
+
         }
     }
 

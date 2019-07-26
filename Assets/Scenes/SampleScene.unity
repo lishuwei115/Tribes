@@ -1968,11 +1968,6 @@ PrefabInstance:
       propertyPath: DeadContainer
       value: 
       objectReference: {fileID: 392457232}
-    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
-        type: 3}
-      propertyPath: DayTime
-      value: 30
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c744b904de862c49b734530cf5539f9, type: 3}
 --- !u!1001 &3603755860728910329

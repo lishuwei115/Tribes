@@ -60,11 +60,12 @@ MonoBehaviour:
   GuardiansSummonable: 6
   UIButtonOver: 0
   GameStatus: 0
-  DayTime: 30
-  DayLightTime: 60
-  Humans: 50
+  DayTime: 60
+  DayLightTime: 120
+  Humans: 100
   FoodPerDay: 30
   MaxNumChildren: 2
+  MaxHumansForTribe: 100
   Houses:
   - {fileID: 0}
   - {fileID: 0}
@@ -93,6 +94,7 @@ MonoBehaviour:
   AddingPlayerHouse: 0
   Breeding: 1
   AttackIsEnable: 1
+  Pointer: {fileID: 0}
 --- !u!114 &3393260075159848030
 MonoBehaviour:
   m_ObjectHideFlags: 0
