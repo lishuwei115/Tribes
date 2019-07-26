@@ -302,7 +302,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HouseType: 1
   CurrentState: 0
-  Radius: 0.2
+  Radius: 1
+  AttackDistance: 20
   Specialization: 0.5
   HumanJob: 0
   InitialHP: 0

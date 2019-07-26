@@ -6,6 +6,7 @@ using Unity.Collections;
 using Unity.Jobs;
 using System.Linq;
 using System;
+using Random = UnityEngine.Random;
 
 public class HumanBeingScript : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class HumanBeingScript : MonoBehaviour
     public StateType CurrentState = StateType.Home;
     [Tooltip("radius of research")]
     public float Radius = 2;
-
+    public float AttackDistance = 5f;
     public delegate void BackHome();
     public event BackHome FinallyBackHome;
 
@@ -176,6 +177,7 @@ public class HumanBeingScript : MonoBehaviour
     Transform WarriorSkin = null;
     Transform HarvesterSkin = null;
     bool initialized = false;
+    Vector3 RandomVector = new Vector3();
     private void Awake()
     {
         MR = GetComponent<MeshRenderer>();
@@ -746,6 +748,7 @@ public class HumanBeingScript : MonoBehaviour
             if (CurrentState != StateType.FollowInstruction && CurrentState != StateType.ComingBackHome && AttackDecision)
             {
                 TargetHuman = EnemiesCollision[0].collider.transform;
+                RandomVector = new Vector3(Random.Range(-AttackDistance, AttackDistance), 0, Random.Range(-AttackDistance, AttackDistance));
                 AttackEnemy(TargetHuman);
             }
         }
@@ -775,7 +778,7 @@ public class HumanBeingScript : MonoBehaviour
         //update HP Bar
         HPBar.gameObject.SetActive(true);
         HPBar.UpdateHP(Hp, BaseHp, HouseType);
-
+        RandomVector = new Vector3();
         Hp -= damage;
         List<RaycastHit> EnemiesCollision = LookAroundForEnemies();
         HarvestBar.gameObject.SetActive(false);
@@ -902,7 +905,7 @@ public class HumanBeingScript : MonoBehaviour
                 TargetHuman = EnemiesCollision[0].collider.transform;
                 FollowCo = null;
                 CurrentState = StateType.LookingForFood;
-
+                RandomVector = new Vector3(Random.Range(-AttackDistance, AttackDistance), 0, Random.Range(-AttackDistance, AttackDistance));
                 AttackEnemy(TargetHuman);
             }
             else
@@ -934,7 +937,7 @@ public class HumanBeingScript : MonoBehaviour
                     TargetHuman = EnemiesCollision[0].collider.transform;
                     FollowCo = null;
                     CurrentState = StateType.LookingForFood;
-
+                    RandomVector =  new Vector3(Random.Range(-AttackDistance, AttackDistance), 0, Random.Range(-AttackDistance, AttackDistance));
                     AttackEnemy(TargetHuman);
                 }
                 else if (Foodcollisions.Count > 0)
@@ -1176,10 +1179,14 @@ public class HumanBeingScript : MonoBehaviour
     private IEnumerator FollowEnemy(Transform humanT)
     {
         yield return new WaitForEndOfFrame();
-
+        Vector3 RandomAttackPos = humanT.position + RandomVector;
+        if(RandomVector == new Vector3())
+        {
+            RandomAttackPos = transform.position;
+        }
         bool EnemyAlive = true;
         Vector3 offset = transform.position;
-        float distance = Vector3.Distance(offset, humanT.position);
+        float distance = Vector3.Distance(offset, RandomAttackPos);
         float timeCount = 0;
         bool humanEnemy = true;
 
@@ -1206,8 +1213,14 @@ public class HumanBeingScript : MonoBehaviour
 
             //stop game
             //move towars target
-            distance = Vector3.Distance(transform.position, humanT.position);
-            while (distance >= 5f)
+            RandomAttackPos = humanT.position + RandomVector;
+            if (RandomVector == new Vector3())
+            {
+                RandomAttackPos = transform.position;
+            }
+
+            distance = Vector3.Distance(transform.position, RandomAttackPos);
+            while (distance >=  Time.deltaTime * Speed / distance * 10)
             {
                 if (Enemy == null && EnemyMonster == null)
                 {
@@ -1217,10 +1230,15 @@ public class HumanBeingScript : MonoBehaviour
                 timeCount = 0;
                 yield return new WaitForEndOfFrame();
                 timeCount = timeCount + Time.deltaTime * Speed / distance * 10;
-                Vector3 nextpos = Vector3.Lerp(transform.position, humanT.position, timeCount);
+                RandomAttackPos = humanT.position + RandomVector;
+                if (RandomVector == new Vector3())
+                {
+                    RandomAttackPos = transform.position;
+                }
+                Vector3 nextpos = Vector3.Lerp(transform.position, RandomAttackPos, timeCount);
                 if (!GameManagerScript.Instance.Pause)
                     transform.position = nextpos;
-                distance = Vector3.Distance(transform.position, humanT.position);
+                distance = Vector3.Distance(transform.position, RandomAttackPos);
 
             }
             if (Enemy == null && EnemyMonster == null)
@@ -1232,9 +1250,14 @@ public class HumanBeingScript : MonoBehaviour
             //GoToPosition(humanT.position);
             if (humanT != null)
             {
-                Dist = Vector3.Distance(transform.position, humanT.position);
+                RandomAttackPos = humanT.position + RandomVector;
+                if (RandomVector == new Vector3())
+                {
+                    RandomAttackPos = transform.position;
+                }
+                Dist = Vector3.Distance(transform.position, RandomAttackPos);
                 //Attack
-                if (Dist < 5f && CanIAttack)
+                if (Dist <= Time.deltaTime * Speed / distance * 10 && Dist <= AttackDistance && CanIAttack)
                 {
                     //update HP Bar
                     HPBar.gameObject.SetActive(true);
@@ -1306,7 +1329,13 @@ public class HumanBeingScript : MonoBehaviour
                         }
                     }
                 }
-                if (Dist > 5 && humanT != null)
+                RandomAttackPos = humanT.position + RandomVector;
+                if (RandomVector == new Vector3())
+                {
+                    RandomAttackPos = transform.position;
+                }
+                Dist = Vector3.Distance(transform.position, RandomAttackPos);
+                if ( Dist > AttackDistance && humanT != null)
                 {
                     break;
                 }
@@ -1350,9 +1379,15 @@ public class HumanBeingScript : MonoBehaviour
             EnemyAlive = false;
         }
         else
-            if (Dist > 5 && humanT != null)
+            if (Dist > AttackDistance && humanT != null)
         {
             FollowCo = null;
+            RandomAttackPos = humanT.position + RandomVector;
+            if (RandomVector == new Vector3())
+            {
+                RandomAttackPos = transform.position;
+            }
+            RandomAttackPos = humanT.position + new Vector3(Random.Range(-AttackDistance, AttackDistance), 0, Random.Range(-AttackDistance, AttackDistance));
             AttackEnemy(humanT.transform);
         }
         else

@@ -60,9 +60,9 @@ MonoBehaviour:
   GuardiansSummonable: 6
   UIButtonOver: 0
   GameStatus: 0
-  DayTime: 60
-  DayLightTime: 120
-  Humans: 100
+  DayTime: 120
+  DayLightTime: 60
+  Humans: 10
   FoodPerDay: 30
   MaxNumChildren: 2
   MaxHumansForTribe: 100
