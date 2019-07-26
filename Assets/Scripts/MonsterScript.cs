@@ -296,7 +296,7 @@ public class MonsterScript : MonoBehaviour
             //stop game
             yield return new WaitUntil(() => !GameManagerScript.Instance.Pause);
             //move towars target
-            while (distance >= 4f)
+            while (distance >= 20)
             {
                 //stop game
                 yield return new WaitUntil(() => !GameManagerScript.Instance.Pause);
@@ -337,11 +337,15 @@ public class MonsterScript : MonoBehaviour
                     CurrentState = MonsterState.Patroll;
                     GoToRandomPos();
                 }
+                if (distance < 20)
+                {
+                    break;
+                }
             }
             //start another coroutine, not compatible with current system
             float Dist = Vector3.Distance(transform.position, humanT.position);
             //Attack
-            if (Dist < 4f && CanIAttack)
+            if (Dist < 20 && CanIAttack)
             {
                 //update HP Bar
                 CurrentState = MonsterState.Attacking;
@@ -382,7 +386,7 @@ public class MonsterScript : MonoBehaviour
                     }
                 }
             }
-            if (Dist > 4)
+            if (Dist > 20)
             {
                 FollowCo = null;
 

@@ -178,6 +178,8 @@ public class HumanBeingScript : MonoBehaviour
     Transform HarvesterSkin = null;
     bool initialized = false;
     Vector3 RandomVector = new Vector3();
+    public float TimetoReachInstruction;
+
     private void Awake()
     {
         MR = GetComponent<MeshRenderer>();
@@ -870,12 +872,15 @@ public class HumanBeingScript : MonoBehaviour
                     }
                 }
             }
-
             yield return new WaitForEndOfFrame();
             Vector3 nextpos = Vector3.Lerp(offset, dest, timeCount);
             transform.position = nextpos;
             if (!GameManagerScript.Instance.Pause)
                 timeCount = timeCount + Time.deltaTime * Speed / distance * 10;
+            if (CurrentState == StateType.FollowInstruction && timeCount >= 1)
+            {
+                yield return new WaitForSeconds(TargetHouse.TimetoReachInstruction-TimetoReachInstruction);
+            }
         }
         EnemiesCollision = LookAroundForEnemies();
         Foodcollisions = LookAround("Food");
@@ -1170,9 +1175,12 @@ public class HumanBeingScript : MonoBehaviour
         }
         if (Food >= StorageCapacity)
         {
+            TargetHouse.FoodStore += Food;
+            UIManagerScript.Instance.UpdateFood();
+            Food = 0;/*
             CurrentState = StateType.ComingBackHome;
             DeliverFood = true;
-            GoToPosition(TargetHouse.transform.position);
+            GoToPosition(TargetHouse.transform.position);*/
         }
 
     }
@@ -1218,7 +1226,7 @@ public class HumanBeingScript : MonoBehaviour
             {
                 RandomAttackPos = transform.position;
             }
-
+            Enemy.UnderAttack(0);
             distance = Vector3.Distance(transform.position, RandomAttackPos);
             while (distance >=  Time.deltaTime * Speed / distance * 10)
             {
@@ -1239,7 +1247,8 @@ public class HumanBeingScript : MonoBehaviour
                 if (!GameManagerScript.Instance.Pause)
                     transform.position = nextpos;
                 distance = Vector3.Distance(transform.position, RandomAttackPos);
-
+                RandomAttackPos = GameManagerScript.Instance.IsInsidePlayground(nextpos);
+               
             }
             if (Enemy == null && EnemyMonster == null)
             {

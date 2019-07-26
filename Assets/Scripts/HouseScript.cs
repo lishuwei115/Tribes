@@ -36,7 +36,7 @@ public class HouseScript : MonoBehaviour
     public List<HumanBeingScript> HumansAlive = new List<HumanBeingScript>();
     public bool IsPlayer = false;
     public Transform HouseSkin;
-
+    public float TimetoReachInstruction = 0;
     [Header("Government parameters")]
     [Range(0, 100)]
     public int TargetAutocracyHealth = 50;
@@ -83,7 +83,7 @@ public class HouseScript : MonoBehaviour
                             target = GameManagerScript.Instance.Houses[i].transform;
                         }
                     }
-                    MoveTribeTo(target.position);
+                    MoveTribeTo(target.position, GameManagerScript.Instance.FollowOrderRandomness);
                 }
             }
             HumansAlive = Humans.Where(x => x.Hp > 0).ToList();
@@ -135,7 +135,7 @@ public class HouseScript : MonoBehaviour
                 //Distribute equally
                 foreach (HumanBeingScript human in living)
                 {
-                    human.Hp = human.BaseHp*percentage;
+                    human.Hp = human.BaseHp * percentage;
                     human.HPBar.gameObject.SetActive(true);
 
                     human.HPBar.UpdateHP(human.Hp, human.BaseHp, HouseType);
@@ -192,7 +192,7 @@ public class HouseScript : MonoBehaviour
         {
             float distance = Vector3.Distance(human.transform.position, transform.position);
             SetCultivateCircle(true);
-            if (distance > CultivateRadiusMin && distance < CultivateRadiusMax && human.gameObject.activeInHierarchy && (human.CurrentState != StateType.ComingBackHome && human.CurrentState != StateType.Home))
+            if (distance < CultivateRadiusMax && human.gameObject.activeInHierarchy && (human.CurrentState != StateType.ComingBackHome && human.CurrentState != StateType.Home))
             {
                 human.Cultivate();
                 /*human.CurrentState = StateType.FollowInstruction;
@@ -231,19 +231,31 @@ public class HouseScript : MonoBehaviour
         }
     }
 
-    internal void MoveTribeTo(Vector3 t)
+    internal void MoveTribeTo(Vector3 t, float precision)
     {
+        Vector3 randomPos = t;
+        float timeHelper = 0;
         foreach (HumanBeingScript human in Humans)
         {
             if (human.gameObject.activeInHierarchy && (human.CurrentState != StateType.ComingBackHome && human.CurrentState != StateType.Home))
             {
+                randomPos = t + new Vector3(UnityEngine.Random.Range(-precision, precision), 0, UnityEngine.Random.Range(-precision, precision));
                 human.CurrentState = StateType.FollowInstruction;
                 human.TargetFoodDest = null;
                 human.TargetHuman = null;
-                human.TargetDest = new Vector3(t.x,0, t.z);
-                human.GoToPosition(t);
+                human.TargetDest = new Vector3(t.x, 0, t.z);
+                human.GoToPosition(randomPos);
+                float distance = Vector3.Distance(human.transform.position, randomPos);
+                float time =  1/(Time.deltaTime * human.Speed / distance  * 10)/60;
+                if (time > timeHelper)
+                {
+                    timeHelper = time;
+                }
+                human.TimetoReachInstruction = time;
             }
         }
+        TimetoReachInstruction = timeHelper;
+
     }
 
     internal void OpenBuildingCircle()

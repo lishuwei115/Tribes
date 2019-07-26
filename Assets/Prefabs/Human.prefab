@@ -302,7 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HouseType: 1
   CurrentState: 0
-  Radius: 1
+  Radius: 5
   AttackDistance: 20
   Specialization: 0.5
   HumanJob: 0
@@ -388,6 +388,7 @@ MonoBehaviour:
   CanIAttack: 1
   FoodStealed: 0
   AmIActing: 0
+  TimetoReachInstruction: 0
 --- !u!135 &135251763841391622
 SphereCollider:
   m_ObjectHideFlags: 0

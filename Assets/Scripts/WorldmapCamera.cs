@@ -273,6 +273,7 @@ public class WorldmapCamera : MonoBehaviour
         bool found = Physics.Raycast(ray, out hit, 10000, layerMask);
         if (found)
         {
+            
             GameManagerScript.Instance.MoveTribeTo(hit.point, GameManagerScript.Instance.PlayerHouse);
             Instantiate(PrefabPointer, hit.point, PrefabPointer.rotation);
         }

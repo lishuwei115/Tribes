@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentState: 0
-  Radius: 10
+  Radius: 15
   PhisicalAttack: 0
   Attack: 0
   Speed: 0

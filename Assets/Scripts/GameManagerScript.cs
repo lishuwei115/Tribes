@@ -27,7 +27,9 @@ public class GameManagerScript : MonoBehaviour
     public bool UIButtonOver;
     public static GameManagerScript Instance;
     public GameStateType GameStatus = GameStateType.Intro;
-
+    [Tooltip("Set the random max value when directiong the tribe in one point")]
+    [Range(0, 300)]
+    public float FollowOrderRandomness = 10;
     [Range(0, 300)]
     public int DayTime = 30;
 
@@ -239,7 +241,7 @@ public class GameManagerScript : MonoBehaviour
         {
             if (house.HouseType == tribe)
             {
-                house.MoveTribeTo(pos);
+                house.MoveTribeTo(pos,FollowOrderRandomness);
             }
         }
     }
@@ -401,7 +403,26 @@ public class GameManagerScript : MonoBehaviour
             FoodsList[i].transform.position = GetFreeSpaceOnGround(0);
         }
     }
-
+    public Vector3 IsInsidePlayground(Vector3 pos)
+    {
+        if(pos.x< -GroundSizeWidth)
+        {
+            pos.x = -GroundSizeWidth;
+        }
+        if (pos.z < -GroundSizeWidth)
+        {
+            pos.z = -GroundSizeWidth;
+        }
+        if (pos.x > GroundSizeWidth)
+        {
+            pos.x = GroundSizeWidth;
+        }
+        if (pos.z > GroundSizeWidth)
+        {
+            pos.z = GroundSizeWidth;
+        }
+        return pos;
+    }
     public Vector3 GetFreeSpaceOnGround(float y)
     {
         Vector3 res = new Vector3(UnityEngine.Random.Range(-GroundSizeWidth, GroundSizeWidth), y, UnityEngine.Random.Range(-GroundSizeWidth, GroundSizeWidth));
