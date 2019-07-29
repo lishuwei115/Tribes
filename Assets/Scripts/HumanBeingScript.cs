@@ -1226,7 +1226,16 @@ public class HumanBeingScript : MonoBehaviour
             {
                 RandomAttackPos = transform.position;
             }
-            Enemy.UnderAttack(0);
+            if (humanEnemy)
+            {
+                Enemy.UnderAttack(0);
+
+            }
+            else
+            {
+                EnemyMonster.UnderAttack(0);
+
+            }
             distance = Vector3.Distance(transform.position, RandomAttackPos);
             while (distance >=  Time.deltaTime * Speed / distance * 10)
             {

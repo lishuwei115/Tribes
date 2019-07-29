@@ -502,12 +502,12 @@ public class GameManagerScript : MonoBehaviour
                 GameStatus = GameStateType.NightTime;
 
             }
-            yield return new WaitForSecondsRealtime(.01f);
-            CurrentTimeMS += .01f;
-            yield return new WaitForSecondsRealtime(1);
+            yield return new WaitForSeconds(.1f);
+            CurrentTimeMS += .1f;
+            //yield return new WaitForSecondsRealtime(1);
             if (!Pause)
             {
-                i--;
+                i = DayTime-(int)CurrentTimeMS;
             }
         }
         //the time of today is ended, start a new day

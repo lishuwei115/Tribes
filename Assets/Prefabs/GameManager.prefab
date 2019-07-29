@@ -62,7 +62,7 @@ MonoBehaviour:
   GameStatus: 0
   FollowOrderRandomness: 6
   DayTime: 120
-  DayLightTime: 60
+  DayLightTime: 110
   Humans: 100
   FoodPerDay: 30
   MaxNumChildren: 2
