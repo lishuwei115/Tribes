@@ -19,10 +19,10 @@ public class UIManagerScript : MonoBehaviour
     public TextMeshProUGUI Charity;
     public TextMeshProUGUI Gratitude;
     public TextMeshProUGUI Hate;
-    public TextMeshProUGUI HouseFoodUpperLeft;
-    public TextMeshProUGUI HouseFoodUpperRight;
-    public TextMeshProUGUI HouseFoodDownwardLeft;
-    public TextMeshProUGUI HouseFoodDownwardRight;
+    public TextMeshProUGUI HouseFoodBlu;
+    public TextMeshProUGUI HouseFoodYellow;
+    public TextMeshProUGUI HouseFoodRed;
+    public TextMeshProUGUI HouseFoodGreen;
     public TextMeshProUGUI HousePeopleUpperLeft;
     public TextMeshProUGUI HousePeopleUpperRight;
     public TextMeshProUGUI HousePeopleDownwardLeft;
@@ -30,6 +30,10 @@ public class UIManagerScript : MonoBehaviour
     public Button AddHouse;
     public int DayNumIterator = 0;
     public CardFactionScript[] PlayerCards;
+    public float RedFood = 0;
+    public float GreenFood = 0;
+    public float YellowFood = 0;
+    public float BlueFood = 0;
     private void Awake()
     {
         Instance = this;
@@ -107,10 +111,33 @@ public class UIManagerScript : MonoBehaviour
         {
             AddHouse.interactable = true;
         }
-        HouseFoodUpperLeft.text = "" + GameManagerScript.Instance.Houses[0].FoodStore;
-        HouseFoodUpperRight.text = "" + GameManagerScript.Instance.Houses[1].FoodStore;
-        HouseFoodDownwardLeft.text = "" + GameManagerScript.Instance.FoodPlayer;
-        HouseFoodDownwardRight.text = "" + GameManagerScript.Instance.Houses[3].FoodStore;
+        GreenFood = 0;
+        BlueFood = 0;
+        RedFood = 0;
+        YellowFood = 0;
+        foreach (HouseScript h in GameManagerScript.Instance.Houses)
+        {
+            switch (h.HouseType)
+            {
+                case HousesTypes.North:
+                    GreenFood += h.FoodStore;
+                    break;
+                case HousesTypes.South:
+                    YellowFood += h.FoodStore;
+                    break;
+                case HousesTypes.East:
+                    RedFood += h.FoodStore;
+                    break;
+                case HousesTypes.West:
+                    BlueFood += h.FoodStore;
+                    break;
+            }
+        }
+        HouseFoodBlu.text = "" + BlueFood;
+        HouseFoodYellow.text = "" + YellowFood;
+        HouseFoodRed.text = "" + RedFood;
+        //HouseFoodDownwardLeft.text = "" + GameManagerScript.Instance.FoodPlayer;
+        HouseFoodGreen.text = "" + GreenFood;
         UpdatePeople();
 
     }

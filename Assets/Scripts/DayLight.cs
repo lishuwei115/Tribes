@@ -23,8 +23,9 @@ public class DayLight : MonoBehaviour
     void Update()
     {
         Color c = Color.white;
-        c.a = GameManagerScript.Instance.currentDayTime < GameManagerScript.Instance.DayLightTime ?
-           1- Mathf.Abs((float)((float)GameManagerScript.Instance.CurrentTimeMS - ((float)(GameManagerScript.Instance.DayLightTime / 2)) ) / (float)( GameManagerScript.Instance.DayLightTime/2 )) : 0;
+        float Nightime = GameManagerScript.Instance.DayTime - GameManagerScript.Instance.DayLightTime;
+        c.a = GameManagerScript.Instance.currentDayTime < Nightime ?
+           1- Mathf.Abs((float)((float)GameManagerScript.Instance.DayTime-(float)GameManagerScript.Instance.CurrentTimeMS - ((float)(Nightime / 2)) ) / (float)( Nightime/2 )) : 0;
         Sky.color = c;
         Filter.color = light.Evaluate((float)(GameManagerScript.Instance.CurrentTimeMS) / GameManagerScript.Instance.DayTime);
     }

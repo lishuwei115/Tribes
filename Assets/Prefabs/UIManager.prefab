@@ -2386,10 +2386,10 @@ MonoBehaviour:
   Charity: {fileID: 114452129603238022}
   Gratitude: {fileID: 114689989674831424}
   Hate: {fileID: 114177485471925564}
-  HouseFoodUpperLeft: {fileID: 5875248142042110963}
-  HouseFoodUpperRight: {fileID: 6108087238093739688}
-  HouseFoodDownwardLeft: {fileID: 8660470361356910690}
-  HouseFoodDownwardRight: {fileID: 796476037}
+  HouseFoodBlu: {fileID: 8660470361356910690}
+  HouseFoodYellow: {fileID: 6108087238093739688}
+  HouseFoodRed: {fileID: 5875248142042110963}
+  HouseFoodGreen: {fileID: 796476037}
   HousePeopleUpperLeft: {fileID: 3174445509725097911}
   HousePeopleUpperRight: {fileID: 4578818289609253143}
   HousePeopleDownwardLeft: {fileID: 6408328816895631486}
@@ -2401,6 +2401,10 @@ MonoBehaviour:
   - {fileID: 5664821444776425754}
   - {fileID: 6882239225176512312}
   - {fileID: 4725695276345237469}
+  RedFood: 0
+  GreenFood: 0
+  YellowFood: 0
+  BlueFood: 0
 --- !u!114 &114573378445719164
 MonoBehaviour:
   m_ObjectHideFlags: 0

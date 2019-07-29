@@ -293,7 +293,7 @@ public class GameManagerScript : MonoBehaviour
     public void StartGame()
     {
         UIButtonOver = false;
-
+        UIManagerScript.Instance.ChangePlayer(PlayerHouse);
         //Initialize all the humans in all houses
         foreach (HouseScript house in Houses)
         {
@@ -301,7 +301,7 @@ public class GameManagerScript : MonoBehaviour
             if (house.HouseType == PlayerHouse)
             {
                 house.IsPlayer = true;
-                UIManagerScript.Instance.ChangePlayer(house.HouseType);
+                
             }
             else
             {
@@ -372,6 +372,8 @@ public class GameManagerScript : MonoBehaviour
     {
         for (int i = 0; i < FoodPerDay - 1; i++)
         {
+            FoodsList[i].Food = 0;
+            FoodsList[i].Slots = 0;
 
             FoodsList[i].GetComponent<Animator>().SetBool("UIState", false);
             Invoke("RandomizeFoodPosition", 0.3f);
@@ -396,11 +398,11 @@ public class GameManagerScript : MonoBehaviour
     {
         for (int i = 0; i < FoodPerDay - 1; i++)
         {
-
+            FoodsList[i].gameObject.SetActive(false);
+            FoodsList[i].transform.position = GetFreeSpaceOnGround(0);
             FoodsList[i].gameObject.SetActive(true);
             FoodsList[i].ResetFood();
             FoodsList[i].GetComponent<Animator>().SetBool("UIState", true);
-            FoodsList[i].transform.position = GetFreeSpaceOnGround(0);
         }
     }
     public Vector3 IsInsidePlayground(Vector3 pos)
@@ -471,7 +473,8 @@ public class GameManagerScript : MonoBehaviour
         HumansAtHome = 0;
         if (DayTimeCoroutine != null)
         {
-            StopCoroutine(DayTimeCoroutine);
+            //StopCoroutine(DayTimeCoroutine);
+            DayTimeCoroutine = null;
         }
         StopAllCoroutines();
 
@@ -498,8 +501,11 @@ public class GameManagerScript : MonoBehaviour
             if (i <= DayTime - DayLightTime)
             {
                 if (GameStatus != GameStateType.NightTime)
+                {
                     SpawnMonsters();
-                GameStatus = GameStateType.NightTime;
+                    GameStatus = GameStateType.NightTime;
+                }
+                    
 
             }
             yield return new WaitForSeconds(.1f);
@@ -547,6 +553,10 @@ public class GameManagerScript : MonoBehaviour
                         {
                             friendHouse.FoodStore--;
                             house.FoodStore++;
+                            if (house.FoodStore >= house.HumansAlive.Count)
+                            {
+                                break;
+                            }
                         }
                     }
                 }
@@ -590,6 +600,8 @@ public class GameManagerScript : MonoBehaviour
 
     public bool UsePlayerFood(int food)
     {
+        UpdatePlayerFood();
+
         if (FoodPlayer >= food)
         {
             while (food > 0)

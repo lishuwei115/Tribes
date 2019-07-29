@@ -409,6 +409,7 @@ public class HumanBeingScript : MonoBehaviour
         }
         else
         {
+            CurrentState = StateType.LookingForFood;
             GoToRandomPos();
         }
     }
@@ -517,27 +518,27 @@ public class HumanBeingScript : MonoBehaviour
 
     private List<RaycastHit> LookAroundForEnemies()
     {
-        //Id++;
-        //Debug.Log(Id +""+ HouseType);
+
         List<RaycastHit> Enemy = new List<RaycastHit>();
-        //List<RaycastHit> hits = new List<RaycastHit>();
-        /*quaternion initialRot = transform.rotation;
-        RaycastHit rayout;
 
-        for (int i = 0; i < 360; i += 20)
-        {
-            if (Physics.Raycast(new Ray(transform.position, transform.forward), out rayout, Radius, EnemyLayer))
-            {
-
-                Enemy.Add(rayout);
-                break;
-
-            }
-            transform.Rotate(new Vector3(0, 1, 0));
-        }
-        transform.rotation = initialRot;*/
         Enemy = Physics.SphereCastAll(transform.position, Radius, transform.forward, Radius, EnemyLayer).ToList<RaycastHit>();
-        //Enemy = hits.ToArray< RaycastHit>().Where(a => a.collider.tag == "Human" && a.collider.GetComponent<HumanBeingScript>().HouseType != HouseType && a.collider.gameObject.activeInHierarchy).ToList();
+        //List < RaycastHit > humans = Enemy.ToArray< RaycastHit>().Where(a => (a.collider.GetComponent<HumanBeingScript>()&&)).ToList();
+        List<RaycastHit> EnemyNotInHome = new List<RaycastHit>();
+        foreach (RaycastHit r in Enemy)
+        {
+            if (r.collider.GetComponent<HumanBeingScript>())
+            {
+                if(r.collider.GetComponent<HumanBeingScript>().CurrentState != StateType.Home)
+                {
+                    EnemyNotInHome.Add(r);
+                }
+            }
+            else
+            {
+                EnemyNotInHome.Add(r);
+            }
+        }
+        Enemy = EnemyNotInHome;
 
         return Enemy;
     }
@@ -1229,7 +1230,10 @@ public class HumanBeingScript : MonoBehaviour
             if (humanEnemy)
             {
                 Enemy.UnderAttack(0);
-
+                if(Enemy.CurrentState == StateType.Home)
+                {
+                    break;
+                }
             }
             else
             {
