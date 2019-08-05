@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class DayLight : MonoBehaviour
 {
-    Image Filter; 
+    public Image Filter; 
     public Gradient light;
     public SpriteRenderer Sky;
+    public bool Transparent = true;
     // Start is called before the first frame update
 
     private void Awake()
@@ -24,9 +25,13 @@ public class DayLight : MonoBehaviour
     {
         Color c = Color.white;
         float Nightime = GameManagerScript.Instance.DayTime - GameManagerScript.Instance.DayLightTime;
-        c.a = GameManagerScript.Instance.currentDayTime < Nightime ?
-           1- Mathf.Abs((float)((float)GameManagerScript.Instance.DayTime-(float)GameManagerScript.Instance.CurrentTimeMS - ((float)(Nightime / 2)) ) / (float)( Nightime/2 )) : 0;
-        Sky.color = c;
+        if (Transparent)
+        {
+            c.a = GameManagerScript.Instance.currentDayTime < Nightime ?
+           1 - Mathf.Abs((float)((float)GameManagerScript.Instance.DayTime - (float)GameManagerScript.Instance.CurrentTimeMS - ((float)(Nightime / 2))) / (float)(Nightime / 2)) : 0;
+            Sky.color = c;
+        }
+            
         Filter.color = light.Evaluate((float)(GameManagerScript.Instance.CurrentTimeMS) / GameManagerScript.Instance.DayTime);
     }
 }

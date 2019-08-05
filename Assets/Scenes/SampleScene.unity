@@ -1743,6 +1743,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameEnviroment
       objectReference: {fileID: 0}
+    - target: {fileID: 7116201422966199144, guid: 986a6680d4e91064b9f367387ae8cea7,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -3
+      objectReference: {fileID: 0}
     - target: {fileID: 2274325635456846484, guid: 986a6680d4e91064b9f367387ae8cea7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1822,11 +1827,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7116201422966199144, guid: 986a6680d4e91064b9f367387ae8cea7,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: -3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 986a6680d4e91064b9f367387ae8cea7, type: 3}
@@ -2003,6 +2003,16 @@ PrefabInstance:
       propertyPath: DeadContainer
       value: 
       objectReference: {fileID: 392457232}
+    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
+        type: 3}
+      propertyPath: FoodPerDay
+      value: 117
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
+        type: 3}
+      propertyPath: DayLightTime
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c744b904de862c49b734530cf5539f9, type: 3}
 --- !u!1001 &3603755860728910329

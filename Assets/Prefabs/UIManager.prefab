@@ -439,6 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd32b2018a197d458f8891d869c87c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Filter: {fileID: 0}
   light:
     serializedVersion: 2
     key0: {r: 0.015686274, g: 0.93050134, b: 1, a: 0.078431375}
@@ -469,6 +470,7 @@ MonoBehaviour:
     m_NumColorKeys: 5
     m_NumAlphaKeys: 4
   Sky: {fileID: 0}
+  Transparent: 1
 --- !u!114 &426362702
 MonoBehaviour:
   m_ObjectHideFlags: 0

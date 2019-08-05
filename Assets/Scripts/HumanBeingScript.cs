@@ -44,6 +44,8 @@ public class HumanBeingScript : MonoBehaviour
 
     [Header("Twickable parameters")]
     [Range(0, 1000)]
+    public float RayMaxDistance = 5;
+    [Range(0, 1000)]
     public float CultivationTarget = 300;
     public List<float> CultivationPercentage = new List<float> { 70, 90, 100 };
     [Range(0, 100)]
@@ -206,6 +208,7 @@ public class HumanBeingScript : MonoBehaviour
         //Set Layer of allies and enemies
         SetLayers();
         List<RaycastHit> Housecollisions = LookAround("House");
+        //AnimController.gameObject.SetActive(false);
         InvisibilityIfHouse(Housecollisions);
         initialized = true;
     }
@@ -396,9 +399,32 @@ public class HumanBeingScript : MonoBehaviour
     {
         if (gameObject.activeInHierarchy)
         {
+            //all map
             TargetDest = GameManagerScript.Instance.GetFreeSpaceOnGround(0);
+            TargetDest = GetFreeSpaceOnGround();
             GoToPosition(TargetDest);
         }
+    }
+    public Vector3 GetFreeSpaceOnGround()
+    {
+        Vector3 res = new Vector3(UnityEngine.Random.Range(transform.position.x- RayMaxDistance, transform.position.x+RayMaxDistance), transform.position.y, UnityEngine.Random.Range(transform.position.z- RayMaxDistance, transform.position.z+RayMaxDistance));
+        if (res.x < -GameManagerScript.Instance.GroundSizeWidth)
+        {
+            res.x = -GameManagerScript.Instance.GroundSizeWidth;
+        }
+        else if (res.x > GameManagerScript.Instance.GroundSizeWidth)
+        {
+            res.x = GameManagerScript.Instance.GroundSizeWidth;
+        }
+        if (res.z < -GameManagerScript.Instance.GroundSizeWidth)
+        {
+            res.z = -GameManagerScript.Instance.GroundSizeWidth;
+        }
+        else if (res.z > GameManagerScript.Instance.GroundSizeWidth)
+        {
+            res.z = GameManagerScript.Instance.GroundSizeWidth;
+        }
+        return res;
     }
     public void MineFood(FoodScript food)
     {
@@ -564,9 +590,10 @@ public class HumanBeingScript : MonoBehaviour
     {
         OffsetTimer = Time.time;
         FoodStealed = false;
+        CurrentState = StateType.LookingForFood;
+
         GoToRandomPos();
 
-        CurrentState = StateType.LookingForFood;
     }
 
 
@@ -961,7 +988,7 @@ public class HumanBeingScript : MonoBehaviour
 
             }
             else
-            if (CurrentState == StateType.ComingBackHome && !DeliverFood)
+            if (CurrentState == StateType.ComingBackHome && !DeliverFood && GameManagerScript.Instance.DayTime - GameManagerScript.Instance.currentDayTime >= GameManagerScript.Instance.DayTime - (TimeToGoBack + SafetyTime))
             {
                 TargetHouse.FoodStore += Food;
                 UIManagerScript.Instance.UpdateFood();

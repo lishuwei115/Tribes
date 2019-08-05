@@ -23,7 +23,7 @@ SpriteAtlas:
     platformSettings:
     - serializedVersion: 2
       m_BuildTarget: DefaultTexturePlatform
-      m_MaxTextureSize: 2048
+      m_MaxTextureSize: 4096
       m_ResizeAlgorithm: 0
       m_TextureFormat: -1
       m_TextureCompression: 2
@@ -32,13 +32,24 @@ SpriteAtlas:
       m_AllowsAlphaSplitting: 0
       m_Overridden: 0
       m_AndroidETC2FallbackOverride: 0
+    - serializedVersion: 2
+      m_BuildTarget: Android
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 65
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
     packingSettings:
       serializedVersion: 2
       padding: 4
       blockOffset: 1
       allowAlphaSplitting: 0
       enableRotation: 1
-      enableTightPacking: 1
+      enableTightPacking: 0
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: f2df2ed9b57a50a40aa249586d4b24df, type: 3}
@@ -49,11 +60,10 @@ SpriteAtlas:
     - {fileID: 2800000, guid: e2c565ce2c18d13468b7e99d56bc1c3a, type: 3}
     - {fileID: 2800000, guid: 6e7f5b431be3a804db7b18fd3b1ef62e, type: 3}
     - {fileID: 2800000, guid: 494d128b413c96844888f248d73103b4, type: 3}
-    - {fileID: 21300000, guid: 5fe8a324e4acf8244bad5b20e564a6cd, type: 3}
     - {fileID: 2800000, guid: 1cfda799fa303f04da631438192d14cb, type: 3}
     - {fileID: 2800000, guid: 7acca754e44678a4cbeebb6774f29144, type: 3}
     - {fileID: 2800000, guid: 9e35b2ace7c9aa1459da48417a773c50, type: 3}
-    - {fileID: 2800000, guid: e71ae2ec65d4a394fa013d3ee00cead2, type: 3}
+    - {fileID: 7994450319214077111, guid: e71ae2ec65d4a394fa013d3ee00cead2, type: 3}
     - {fileID: 2800000, guid: e3f5e6bb0f0a46d4b938f415e76be9a5, type: 3}
     - {fileID: 2800000, guid: 8f7b2a972a3f71647883cc7815274e35, type: 3}
     - {fileID: 2800000, guid: e8484d8c2bcf853488881c132935d549, type: 3}
@@ -63,8 +73,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 4a6181ad50adbfd41a3c06e52f73b1f1, type: 3}
     - {fileID: 10912, guid: 0000000000000000f000000000000000, type: 0}
     - {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
-    - {fileID: 1502302623528315635, guid: c524c7b7e35a6f5488e3d42fa4cf2d1e, type: 2}
-    totalSpriteSurfaceArea: 11927511
+    totalSpriteSurfaceArea: 7053832
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -120,7 +129,6 @@ SpriteAtlas:
   - {fileID: 2051075532803069544, guid: 6e7f5b431be3a804db7b18fd3b1ef62e, type: 3}
   - {fileID: -1652524969385899663, guid: 6e7f5b431be3a804db7b18fd3b1ef62e, type: 3}
   - {fileID: 43038878266385337, guid: 6e7f5b431be3a804db7b18fd3b1ef62e, type: 3}
-  - {fileID: 21300000, guid: 5fe8a324e4acf8244bad5b20e564a6cd, type: 3}
   - {fileID: 3904609761125757330, guid: 7acca754e44678a4cbeebb6774f29144, type: 3}
   - {fileID: 8730519669521795682, guid: 7acca754e44678a4cbeebb6774f29144, type: 3}
   - {fileID: -7827871964146592794, guid: 7acca754e44678a4cbeebb6774f29144, type: 3}
@@ -192,16 +200,7 @@ SpriteAtlas:
   - {fileID: -752719700072469217, guid: 9e35b2ace7c9aa1459da48417a773c50, type: 3}
   - {fileID: 9007092016527589914, guid: 9e35b2ace7c9aa1459da48417a773c50, type: 3}
   - {fileID: -1432469540568947285, guid: 9e35b2ace7c9aa1459da48417a773c50, type: 3}
-  - {fileID: -1657445219498982795, guid: e71ae2ec65d4a394fa013d3ee00cead2, type: 3}
-  - {fileID: 252179758537307286, guid: e71ae2ec65d4a394fa013d3ee00cead2, type: 3}
-  - {fileID: 6219653065830011957, guid: e71ae2ec65d4a394fa013d3ee00cead2, type: 3}
-  - {fileID: 2920576667340390634, guid: e71ae2ec65d4a394fa013d3ee00cead2, type: 3}
-  - {fileID: 907615360864289725, guid: e71ae2ec65d4a394fa013d3ee00cead2, type: 3}
-  - {fileID: 7001098474240630591, guid: e71ae2ec65d4a394fa013d3ee00cead2, type: 3}
   - {fileID: 7994450319214077111, guid: e71ae2ec65d4a394fa013d3ee00cead2, type: 3}
-  - {fileID: -7897085060271605555, guid: e71ae2ec65d4a394fa013d3ee00cead2, type: 3}
-  - {fileID: -6495965346851508254, guid: e71ae2ec65d4a394fa013d3ee00cead2, type: 3}
-  - {fileID: -8939462687141512270, guid: e71ae2ec65d4a394fa013d3ee00cead2, type: 3}
   - {fileID: 21300000, guid: 4a6181ad50adbfd41a3c06e52f73b1f1, type: 3}
   - {fileID: -6336605923543293268, guid: ce32640ee58da7c4c8d2b4b52a0d8025, type: 3}
   - {fileID: 3370410842047852062, guid: ce32640ee58da7c4c8d2b4b52a0d8025, type: 3}
@@ -329,7 +328,6 @@ SpriteAtlas:
   - Character3_Right_UpArm
   - Character4_Weapon
   - Character3_Right_UpLeg
-  - Outsideworld_2K-01
   - Atlas_Flowers_512x512-01_1
   - Atlas_Flowers_512x512-01_0
   - Atlas_Flowers_512x512-01_3
@@ -401,16 +399,7 @@ SpriteAtlas:
   - Monster_flame1
   - Monster_Flame3
   - Monster_Flame2
-  - Atlas_PROTOTYPE-trees_13
-  - Atlas_PROTOTYPE-trees_12
-  - Atlas_PROTOTYPE-trees_15
-  - Atlas_PROTOTYPE-trees_14
-  - Atlas_PROTOTYPE-trees_17
-  - Atlas_PROTOTYPE-trees_16
   - Atlas_PROTOTYPE-trees_8
-  - Atlas_PROTOTYPE-trees_2
-  - Atlas_PROTOTYPE-trees_3
-  - Atlas_PROTOTYPE-trees_4
   - MapBorder
   - Atlas_PROTOTYPE-Watercolor_brush_11
   - Atlas_PROTOTYPE-Watercolor_brush_10

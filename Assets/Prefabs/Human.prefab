@@ -319,6 +319,7 @@ MonoBehaviour:
   DeliverFood: 0
   FoodLife: 0
   TransparentDistanceFromHome: 40
+  RayMaxDistance: 40
   CultivationTarget: 200
   CultivationPercentage:
   - 70

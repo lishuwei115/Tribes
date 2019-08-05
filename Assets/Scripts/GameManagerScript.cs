@@ -312,12 +312,15 @@ public class GameManagerScript : MonoBehaviour
             for (int i = 0; i < Humans; i++)
             {
                 GameObject human = Instantiate(Human, house.transform.position, Quaternion.identity, HumansContainer);
+                
                 HumanBeingScript hbs = human.GetComponent<HumanBeingScript>();
+                hbs.HouseType = house.HouseType;
+                hbs.TargetHouse = house;
+                hbs.Initialize();
                 human.GetComponent<MeshFilter>().sharedMesh = HumanMesh;
                 HumansList.Add(hbs);
 
-                hbs.HouseType = house.HouseType;
-                hbs.TargetHouse = house;
+                
                 hbs.FinallyBackHome += Hbs_FinallyBackHome;
                 hbs.TargetHouse = house.GetComponent<HouseScript>();
                 hbs.WearSkin();
@@ -441,14 +444,15 @@ public class GameManagerScript : MonoBehaviour
             {
                 GameObject human = Instantiate(Human, home.transform.position, Quaternion.identity, HumansContainer);
                 HumanBeingScript hbs = human.GetComponent<HumanBeingScript>();
+                hbs.HouseType = home.HouseType;
+                hbs.TargetHouse = home;
+                hbs.Initialize();
                 HumansList.Add(hbs);
                 human.GetComponent<HumanBeingScript>().Hp = 60;
-                hbs.TargetHouse = home;
                 hbs.HouseType = home.HouseType;
                 hbs.FinallyBackHome += Hbs_FinallyBackHome;
                 home.Humans.Add(hbs);
                 hbs.WearSkin();
-                hbs.Initialize();
                 home.HumansAlive = home.Humans.Where(x => x.Hp > 0).ToList();
                 ReproducedLastDay++;
                 HumansAtHome++;
@@ -488,32 +492,34 @@ public class GameManagerScript : MonoBehaviour
     public IEnumerator DayTimerCo()
     {
         SetFood();
-        DayStarted();
         UIManagerScript.Instance.AddDay();
+        DayStarted();
+
         GameStatus = GameStateType.DayStarted;
         int i = DayTime;
         CurrentTimeMS = 0;
 
         while (i > 0)
         {
-            currentDayTime = i;
-            UIManagerScript.Instance.TimerUpdate(i);
-            if (i <= DayTime - DayLightTime)
-            {
-                if (GameStatus != GameStateType.NightTime)
-                {
-                    SpawnMonsters();
-                    GameStatus = GameStateType.NightTime;
-                }
-                    
-
-            }
             yield return new WaitForSeconds(.1f);
-            CurrentTimeMS += .1f;
-            //yield return new WaitForSecondsRealtime(1);
             if (!Pause)
             {
-                i = DayTime-(int)CurrentTimeMS;
+                currentDayTime = i;
+                UIManagerScript.Instance.TimerUpdate(i);
+                if (i <= DayTime - DayLightTime)
+                {
+                    if (GameStatus != GameStateType.NightTime)
+                    {
+                        SpawnMonsters();
+                        GameStatus = GameStateType.NightTime;
+                    }
+
+
+                }
+                CurrentTimeMS += .1f;
+                //yield return new WaitForSecondsRealtime(1);
+
+                i = DayTime - (int)CurrentTimeMS;
             }
         }
         //the time of today is ended, start a new day

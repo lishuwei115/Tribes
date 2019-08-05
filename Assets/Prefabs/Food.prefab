@@ -95,8 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9d823f8e48d449eab1777f429c1b802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FoodMin: 2
-  FoodMax: 6
+  FoodMin: 48
+  FoodMax: 87
   Food: 2
   HardnessMin: 50
   HardnessMax: 60
