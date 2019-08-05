@@ -317,12 +317,9 @@ public class GameManagerScript : MonoBehaviour
                 hbs.HouseType = house.HouseType;
                 hbs.TargetHouse = house;
                 hbs.Initialize();
-                human.GetComponent<MeshFilter>().sharedMesh = HumanMesh;
+                //human.GetComponent<MeshFilter>().sharedMesh = HumanMesh;
                 HumansList.Add(hbs);
-
-                
                 hbs.FinallyBackHome += Hbs_FinallyBackHome;
-                hbs.TargetHouse = house.GetComponent<HouseScript>();
                 hbs.WearSkin();
                 //hbs.gameObject.tag = "" + house.tag;
                 house.Humans.Add(hbs);

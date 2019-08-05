@@ -3,21 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DayLight : MonoBehaviour
+public class ColorChangerStandard : MonoBehaviour
 {
-    public Image Filter; 
     public Gradient light;
-    public SpriteRenderer Sky;
+    public SpriteRenderer Light;
     public bool Transparent = true;
     // Start is called before the first frame update
 
     private void Awake()
     {
-        Filter = GetComponent<Image>();
     }
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -30,8 +28,8 @@ public class DayLight : MonoBehaviour
             c.a = GameManagerScript.Instance.currentDayTime < Nightime ?
            1 - Mathf.Abs((float)((float)GameManagerScript.Instance.DayTime - (float)GameManagerScript.Instance.CurrentTimeMS - ((float)(Nightime / 2))) / (float)(Nightime / 2)) : 0;
         }
-        Sky.color = c;
+        Light.color = c;
 
-        Filter.color = light.Evaluate((float)(GameManagerScript.Instance.CurrentTimeMS) / GameManagerScript.Instance.DayTime);
+        //Light.color = light.Evaluate((float)(GameManagerScript.Instance.CurrentTimeMS) / GameManagerScript.Instance.DayTime);
     }
 }
