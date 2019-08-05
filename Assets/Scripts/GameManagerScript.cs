@@ -370,7 +370,7 @@ public class GameManagerScript : MonoBehaviour
     }
     public void SetFood()
     {
-        for (int i = 0; i < FoodPerDay - 1; i++)
+        for (int i = 0; i < FoodPerDay; i++)
         {
             FoodsList[i].Food = 0;
             FoodsList[i].Slots = 0;
@@ -396,7 +396,7 @@ public class GameManagerScript : MonoBehaviour
     }
     public void RandomizeFoodPosition()
     {
-        for (int i = 0; i < FoodPerDay - 1; i++)
+        for (int i = 0; i < FoodPerDay ; i++)
         {
             FoodsList[i].gameObject.SetActive(false);
             FoodsList[i].transform.position = GetFreeSpaceOnGround(0);
@@ -477,7 +477,7 @@ public class GameManagerScript : MonoBehaviour
             //StopCoroutine(DayTimeCoroutine);
             DayTimeCoroutine = null;
         }
-        StopAllCoroutines();
+        this.StopAllCoroutines();
 
         DayTimeCoroutine = DayTimerCo();
         StartCoroutine(DayTimeCoroutine);
@@ -488,14 +488,16 @@ public class GameManagerScript : MonoBehaviour
 
     public IEnumerator DayTimerCo()
     {
-        SetFood();
+        
         UIManagerScript.Instance.AddDay();
         DayStarted();
 
         GameStatus = GameStateType.DayStarted;
         int i = DayTime;
         CurrentTimeMS = 0;
-
+        SetFood();
+        AwakePeople();
+        currentDayTime = i;
         while (i > 0)
         {
             yield return new WaitForSeconds(.1f);
@@ -536,6 +538,16 @@ public class GameManagerScript : MonoBehaviour
             house.DistributeFood();
         }
         Invoke("DayStarting", 1);
+    }
+
+    public void AwakePeople()
+    {
+        List<HumanBeingScript> humansAlive = HumansList.Where(r => r.Hp > 0).ToList();
+        foreach (HumanBeingScript human in humansAlive)
+        {
+            human.CurrentState = StateType.LookingForFood;
+            human.GoToRandomPos();
+        }
     }
 
     private void ShareFoodIfNeeded()

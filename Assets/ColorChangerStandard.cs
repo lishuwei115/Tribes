@@ -28,8 +28,8 @@ public class ColorChangerStandard : MonoBehaviour
             c.a = GameManagerScript.Instance.currentDayTime < Nightime ?
            1 - Mathf.Abs((float)((float)GameManagerScript.Instance.DayTime - (float)GameManagerScript.Instance.CurrentTimeMS - ((float)(Nightime / 2))) / (float)(Nightime / 2)) : 0;
         }
-        Light.color = c;
+        //Light.color = c;
 
-        //Light.color = light.Evaluate((float)(GameManagerScript.Instance.CurrentTimeMS) / GameManagerScript.Instance.DayTime);
+        Light.color = light.Evaluate((float)(GameManagerScript.Instance.CurrentTimeMS) / GameManagerScript.Instance.DayTime);
     }
 }

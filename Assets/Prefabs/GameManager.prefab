@@ -61,9 +61,9 @@ MonoBehaviour:
   UIButtonOver: 0
   GameStatus: 0
   FollowOrderRandomness: 6
-  DayTime: 120
-  DayLightTime: 100
-  Humans: 100
+  DayTime: 40
+  DayLightTime: 30
+  Humans: 1
   FoodPerDay: 9
   MaxNumChildren: 2
   MaxHumansForTribe: 100

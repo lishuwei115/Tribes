@@ -1048,7 +1048,8 @@ public class HumanBeingScript : MonoBehaviour
             else
             {
                 CurrentState = StateType.LookingForFood;
-                GoToRandomPos(); MoveCo = null;
+                GoToRandomPos();
+                MoveCo = null;
             }
         }
 

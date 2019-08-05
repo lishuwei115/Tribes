@@ -1778,6 +1778,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 556450489, guid: 986a6680d4e91064b9f367387ae8cea7, type: 3}
+      propertyPath: light.key1.a
+      value: 0.0627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 556450489, guid: 986a6680d4e91064b9f367387ae8cea7, type: 3}
+      propertyPath: light.key0.a
+      value: 0.0627451
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 986a6680d4e91064b9f367387ae8cea7, type: 3}
 --- !u!1001 &3098037845923568339
@@ -1962,6 +1970,11 @@ PrefabInstance:
         type: 3}
       propertyPath: DayTime
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
+        type: 3}
+      propertyPath: Humans
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c744b904de862c49b734530cf5539f9, type: 3}
