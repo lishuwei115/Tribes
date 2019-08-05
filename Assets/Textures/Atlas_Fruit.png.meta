@@ -1,0 +1,352 @@
+fileFormatVersion: 2
+guid: 99265c9ddee602448b42b98eec8887b3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4274447638954113714
+    second: Atlas_Fruit_0
+  - first:
+      213: 2695652309970954538
+    second: Atlas_Fruit_1
+  - first:
+      213: 6530967342500730005
+    second: Atlas_Fruit_2
+  - first:
+      213: 4613979579693267638
+    second: Atlas_Fruit_3
+  - first:
+      213: 4540817371643746821
+    second: Atlas_Fruit_4
+  - first:
+      213: 1231242119909587394
+    second: Fruit_Arm_1
+  - first:
+      213: 7754087692845519265
+    second: Fruit_Arm_2
+  - first:
+      213: 7855380736104296292
+    second: Fruit_Arm_3
+  - first:
+      213: 5085935159258746971
+    second: Fruit_Arm_4
+  - first:
+      213: 3897621596536548394
+    second: Shadow
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Atlas_Fruit_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 444
+        width: 46
+        height: 67
+      alignment: 9
+      pivot: {x: 0.4386886, y: 0.091684826}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02003ad2464b18145808730f2de953c2
+      internalID: -4274447638954113714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_Fruit_1
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 441
+        width: 44
+        height: 71
+      alignment: 9
+      pivot: {x: 0.69870466, y: 0.21796815}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75fcea3919234184eb44dbb8b6e5555e
+      internalID: 2695652309970954538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_Fruit_2
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 446
+        width: 45
+        height: 66
+      alignment: 9
+      pivot: {x: 0.85724115, y: 0.1709627}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df11f52d4eab3e44cb176a27af7faa98
+      internalID: 6530967342500730005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_Fruit_3
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 443
+        width: 48
+        height: 69
+      alignment: 9
+      pivot: {x: 0.18271382, y: 0.25475454}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 277c0461a45404b46b3504d942eb31bd
+      internalID: 4613979579693267638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_Fruit_4
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 451
+        width: 48
+        height: 61
+      alignment: 9
+      pivot: {x: 0.1357085, y: 0.21135373}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e06e0b3deb9ac24388a797671e25b72
+      internalID: 4540817371643746821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit_Arm_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 368
+        width: 45
+        height: 64
+      alignment: 9
+      pivot: {x: 0.84470624, y: 0.13864613}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc1bab77d7403e048985327186177703
+      internalID: 1231242119909587394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit_Arm_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 299
+        width: 44
+        height: 58
+      alignment: 9
+      pivot: {x: 0.38567343, y: 0.34995505}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee859707fc3543946a8c3666a81f7904
+      internalID: 7754087692845519265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit_Arm_3
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 366
+        width: 21
+        height: 73
+      alignment: 9
+      pivot: {x: 0.44627962, y: 0.07502015}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f73f432f90cf3748828bbafb2f261cd
+      internalID: 7855380736104296292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit_Arm_4
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 297
+        width: 27
+        height: 65
+      alignment: 9
+      pivot: {x: 0.45821747, y: 0.109493785}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb1fe1f1719b5a0449fbca2a538f0791
+      internalID: 5085935159258746971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shadow
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 273
+        width: 151
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 561986fc994328a489aba5631cb90631
+      internalID: 3897621596536548394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 340a051a265f2ed4aa96f6b8ccae1a7b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
