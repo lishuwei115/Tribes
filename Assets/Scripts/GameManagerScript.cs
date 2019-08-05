@@ -119,7 +119,7 @@ public class GameManagerScript : MonoBehaviour
     void Start()
     {
         StartGame();
-        Invoke("DayStarting", 3);
+        Invoke("DayStarting", 1);
         UIButtons = UnityEngine.Object.FindObjectsOfType<BlockInput>();
 
     }
