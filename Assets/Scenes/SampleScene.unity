@@ -1847,11 +1847,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4016493718740794209, guid: a31ada27f20cc4e01ac704e5ae7b1e41,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.001
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a31ada27f20cc4e01ac704e5ae7b1e41, type: 3}
 --- !u!1001 &3393260075342986444
@@ -1964,17 +1959,22 @@ PrefabInstance:
     - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
         type: 3}
       propertyPath: DayLightTime
-      value: 30
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
         type: 3}
       propertyPath: DayTime
-      value: 40
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
         type: 3}
       propertyPath: Humans
-      value: 1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393260075159848028, guid: 4c744b904de862c49b734530cf5539f9,
+        type: 3}
+      propertyPath: FoodPerDay
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c744b904de862c49b734530cf5539f9, type: 3}

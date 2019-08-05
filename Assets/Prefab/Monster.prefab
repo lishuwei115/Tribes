@@ -504,11 +504,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4112075000505913760}
     m_Modifications:
-    - target: {fileID: 3992173257434113153, guid: 6aad791d85daf754b9cd2fed8e5b4256,
-        type: 3}
-      propertyPath: m_Name
-      value: Monster_Fire
-      objectReference: {fileID: 0}
     - target: {fileID: 6760935618022254287, guid: 6aad791d85daf754b9cd2fed8e5b4256,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -563,6 +558,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3992173257434113153, guid: 6aad791d85daf754b9cd2fed8e5b4256,
+        type: 3}
+      propertyPath: m_Name
+      value: Monster_Fire
       objectReference: {fileID: 0}
     - target: {fileID: 1492558282930309982, guid: 6aad791d85daf754b9cd2fed8e5b4256,
         type: 3}
