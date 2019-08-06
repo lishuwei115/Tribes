@@ -372,15 +372,14 @@ public class GameManagerScript : MonoBehaviour
     {
         for (int i = 0; i < FoodPerDay; i++)
         {
-            FoodsList[i].Food = 0;
-            FoodsList[i].Slots = 0;
+            FoodsList[i].Food = 6;
+            FoodsList[i].Slots = 6;
 
             FoodsList[i].GetComponent<Animator>().SetBool("UIState", false);
             Invoke("RandomizeFoodPosition", 0.3f);
         }
         foreach (Animator dead in DeadList)
         {
-
             GameObject flower = Instantiate(SkinManager.Instance.GetSkinInfo(dead.GetComponent<TribeColorScript>().Tribe).Flower.gameObject, DeadContainer);
             flower.SetActive(true);
             flower.transform.position = new Vector3(dead.transform.position.x, 0, dead.transform.position.z) + new Vector3(UnityEngine.Random.Range(-3, 3), 0, UnityEngine.Random.Range(-3, 3));
@@ -401,7 +400,6 @@ public class GameManagerScript : MonoBehaviour
             FoodsList[i].gameObject.SetActive(false);
             FoodsList[i].transform.position = GetFreeSpaceOnGround(0);
             FoodsList[i].gameObject.SetActive(true);
-            FoodsList[i].ResetFood();
             FoodsList[i].GetComponent<Animator>().SetBool("UIState", true);
         }
     }
@@ -428,7 +426,6 @@ public class GameManagerScript : MonoBehaviour
     public Vector3 GetFreeSpaceOnGround(float y)
     {
         Vector3 res = new Vector3(UnityEngine.Random.Range(-GroundSizeWidth, GroundSizeWidth), y, UnityEngine.Random.Range(-GroundSizeWidth, GroundSizeWidth));
-
         return res;
     }
 
@@ -454,7 +451,6 @@ public class GameManagerScript : MonoBehaviour
                 ReproducedLastDay++;
                 HumansAtHome++;
             }
-
         }
     }
 
@@ -463,11 +459,8 @@ public class GameManagerScript : MonoBehaviour
         UIManagerScript.Instance.UpdatePeople();
         DiedLastDay++;
     }
-
-
     public void DayStarting()
     {
-
         UIManagerScript.Instance.InfoDailyUpdate(ReproducedLastDay.ToString(), DiedLastDay.ToString());
         ReproducedLastDay = 0;
         DiedLastDay = 0;
@@ -478,20 +471,15 @@ public class GameManagerScript : MonoBehaviour
             DayTimeCoroutine = null;
         }
         this.StopAllCoroutines();
-
         DayTimeCoroutine = DayTimerCo();
         StartCoroutine(DayTimeCoroutine);
         UIManagerScript.Instance.UpdatePeople();
         AudioManager.Instance.StartDay();
-
     }
-
     public IEnumerator DayTimerCo()
     {
-        
         UIManagerScript.Instance.AddDay();
         DayStarted();
-
         GameStatus = GameStateType.DayStarted;
         int i = DayTime;
         CurrentTimeMS = 0;
@@ -512,34 +500,26 @@ public class GameManagerScript : MonoBehaviour
                         SpawnMonsters();
                         GameStatus = GameStateType.NightTime;
                     }
-
-
                 }
                 CurrentTimeMS += .1f;
                 //yield return new WaitForSecondsRealtime(1);
-
                 i = DayTime - (int)CurrentTimeMS;
             }
         }
         //the time of today is ended, start a new day
         GameStatus = GameStateType.EndOfDay;
         KillMonsters();
-
-
         foreach (HouseScript house in Houses)
         {
             house.Breed();
-
         }
         ShareFoodIfNeeded();
-
         foreach (HouseScript house in Houses)
         {
             house.DistributeFood();
         }
         Invoke("DayStarting", 1);
     }
-
     public void AwakePeople()
     {
         List<HumanBeingScript> humansAlive = HumansList.Where(r => r.Hp > 0).ToList();
@@ -549,7 +529,6 @@ public class GameManagerScript : MonoBehaviour
             human.GoToRandomPos();
         }
     }
-
     private void ShareFoodIfNeeded()
     {
         foreach (HouseScript house in Houses)
@@ -578,7 +557,6 @@ public class GameManagerScript : MonoBehaviour
             }
         }
     }
-
     private void SpawnMonsters()
     {
         foreach (MonsterHouse monsterHouse in MonsterHouses)
@@ -597,7 +575,6 @@ public class GameManagerScript : MonoBehaviour
         }
         Monsters = new List<MonsterScript>();
     }
-
     void Hbs_FinallyBackHome()
     {
         HumansAtHome++;
@@ -611,12 +588,9 @@ public class GameManagerScript : MonoBehaviour
             Invoke("DayStarting", 1);
         }*/
     }
-
-
     public bool UsePlayerFood(int food)
     {
         UpdatePlayerFood();
-
         if (FoodPlayer >= food)
         {
             while (food > 0)
@@ -638,7 +612,6 @@ public class GameManagerScript : MonoBehaviour
             return false;
         }
     }
-
     public void UpdatePlayerFood()
     {
         FoodPlayer = 0;
@@ -679,7 +652,6 @@ public class GameManagerScript : MonoBehaviour
             GuardiansSummonable++;
 
         }
-
         else
         {
             foreach (HouseScript house in Houses)
@@ -694,12 +666,8 @@ public class GameManagerScript : MonoBehaviour
                 }
             }
         }
-
-
     }
 }
-
-
 public enum GameStateType
 {
     Intro,
@@ -707,8 +675,6 @@ public enum GameStateType
     EndOfDay,
     NightTime
 }
-
-
 public enum HousesTypes
 {
     North,
@@ -716,14 +682,12 @@ public enum HousesTypes
     East,
     West
 }
-
 public enum GameState
 {
     Playing,
     Won,
     Lost
 }
-
 /*public class ResetableEnumerator<T> : IEnumerator<T>
 {
     public IEnumerator<T> Enumerator { get; set; }
