@@ -45,6 +45,9 @@ public class GameManagerScript : MonoBehaviour
     [Range(1, 500)]
     public int FoodPerDay = 10;
 
+    public AnimationCurve FoodDistanceFromOrigin;
+
+    public float FoodRaySpawn = 60;
 
     [Range(0, 10)]
     public int MaxNumChildren = 3;
@@ -105,6 +108,7 @@ public class GameManagerScript : MonoBehaviour
     public bool Breeding = true;
     public bool AttackIsEnable = true;
     public DestroyOverTime Pointer;
+    private bool FoodRandomized;
 
     private void Awake()
     {
@@ -241,7 +245,7 @@ public class GameManagerScript : MonoBehaviour
         {
             if (house.HouseType == tribe)
             {
-                house.MoveTribeTo(pos,FollowOrderRandomness);
+                house.MoveTribeTo(pos, FollowOrderRandomness);
             }
         }
     }
@@ -301,7 +305,7 @@ public class GameManagerScript : MonoBehaviour
             if (house.HouseType == PlayerHouse)
             {
                 house.IsPlayer = true;
-                
+
             }
             else
             {
@@ -312,7 +316,7 @@ public class GameManagerScript : MonoBehaviour
             for (int i = 0; i < Humans; i++)
             {
                 GameObject human = Instantiate(Human, house.transform.position, Quaternion.identity, HumansContainer);
-                
+
                 HumanBeingScript hbs = human.GetComponent<HumanBeingScript>();
                 hbs.HouseType = house.HouseType;
                 hbs.TargetHouse = house;
@@ -331,10 +335,9 @@ public class GameManagerScript : MonoBehaviour
         {
             GameObject food = Instantiate(Food, FoodContainer);
             //food.GetComponent<MeshFilter>().sharedMesh = FoodMesh;
-            food.GetComponent<MeshRenderer>().sharedMaterial = FoodMaterial;
+            //food.GetComponent<MeshRenderer>().sharedMaterial = FoodMaterial;
             food.SetActive(false);
             FoodsList.Add(food.GetComponent<FoodScript>());
-
         }
 
     }
@@ -376,8 +379,16 @@ public class GameManagerScript : MonoBehaviour
             FoodsList[i].Slots = 6;
 
             FoodsList[i].GetComponent<Animator>().SetBool("UIState", false);
-            Invoke("RandomizeFoodPosition", 0.3f);
+            //Invoke("RandomizeFoodPosition", 0.3f);
         }
+        RandomizeFoodPosition();
+
+
+        FlowerizeDead();
+    }
+
+    private void FlowerizeDead()
+    {
         foreach (Animator dead in DeadList)
         {
             GameObject flower = Instantiate(SkinManager.Instance.GetSkinInfo(dead.GetComponent<TribeColorScript>().Tribe).Flower.gameObject, DeadContainer);
@@ -393,19 +404,31 @@ public class GameManagerScript : MonoBehaviour
         }
         DeadList = new List<Animator>();
     }
+
     public void RandomizeFoodPosition()
     {
-        for (int i = 0; i < FoodPerDay ; i++)
+        for (int i = 0; i < FoodPerDay; i++)
         {
-            FoodsList[i].gameObject.SetActive(false);
-            FoodsList[i].transform.position = GetFreeSpaceOnGround(0);
+            if (FoodRandomized == false)
+            {
+                FoodsList[i].gameObject.SetActive(false);
+                float radiusFromOrigin = FoodDistanceFromOrigin.Evaluate((float)i / (float)FoodPerDay);
+                float f = UnityEngine.Random.Range(0f, 6f);
+                //get the circular position from the random value
+                Vector2 v = new Vector2(Mathf.Cos(f) * (radiusFromOrigin * FoodRaySpawn), Mathf.Sin(f) * (radiusFromOrigin * FoodRaySpawn));
+                FoodsList[i].transform.position = new Vector3(v.x, 0, v.y);
+                
+
+            }
+
             FoodsList[i].gameObject.SetActive(true);
             FoodsList[i].GetComponent<Animator>().SetBool("UIState", true);
         }
+        FoodRandomized = true;
     }
     public Vector3 IsInsidePlayground(Vector3 pos)
     {
-        if(pos.x< -GroundSizeWidth)
+        if (pos.x < -GroundSizeWidth)
         {
             pos.x = -GroundSizeWidth;
         }

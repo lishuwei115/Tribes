@@ -64,7 +64,8 @@ public class FoodScript : MonoBehaviour {
     internal void Deactivate()
     {
         GetComponent<Animator>().SetBool("UIState", false);
-        Invoke("SetDeactive", 0.3f);
+        Slots = 0;
+        //Invoke("SetDeactive", 0.3f);
     }
     internal void SetDeactive()
     {
