@@ -29,8 +29,8 @@ TagManager:
   - MapMask
   - Monster
   - MiniMap
-  - 
-  - 
+  - ObstacleItem
+  - NotRendered
   - 
   - 
   - 

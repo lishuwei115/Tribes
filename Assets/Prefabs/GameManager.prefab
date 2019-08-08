@@ -61,10 +61,53 @@ MonoBehaviour:
   UIButtonOver: 0
   GameStatus: 0
   FollowOrderRandomness: 6
-  DayTime: 40
-  DayLightTime: 30
-  Humans: 1
-  FoodPerDay: 9
+  DayTime: 100
+  DayLightTime: 50
+  Humans: 3
+  FoodPerDay: 50
+  FoodDistanceFromOrigin:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.005630493
+      value: 0.124298096
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.49285674
+      value: 0.38585395
+      inSlope: 1.0249591
+      outSlope: 1.0249591
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.818475
+      value: 0.9477362
+      inSlope: 1.0928411
+      outSlope: 0.28791517
+      tangentMode: 65
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.28791517
+      outSlope: -0.00864385
+      tangentMode: 5
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  FoodRaySpawn: 120
   MaxNumChildren: 2
   MaxHumansForTribe: 100
   Houses:
@@ -164,11 +207,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3393260075159848029}
     m_Modifications:
-    - target: {fileID: 3653988554390937393, guid: 8cf9011b739c583479075260221b57d6,
-        type: 3}
-      propertyPath: m_Name
-      value: MapBorders
-      objectReference: {fileID: 0}
     - target: {fileID: 3653988554390937394, guid: 8cf9011b739c583479075260221b57d6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -223,6 +261,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3653988554390937393, guid: 8cf9011b739c583479075260221b57d6,
+        type: 3}
+      propertyPath: m_Name
+      value: MapBorders
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cf9011b739c583479075260221b57d6, type: 3}
