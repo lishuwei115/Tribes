@@ -257,9 +257,9 @@ public class HumanBeingScript : MonoBehaviour
 
 
             //get the time required to go home
-            TimeToGoBack = (PathFinderManager.Instance.DistanceToKeyPoint(transform.position, PathFinderManager.Instance.GetHousePos(HouseType))) / (Speed) / 10;
+            //TimeToGoBack = (PathFinderManager.Instance.DistanceToKeyPoint(transform.position, PathFinderManager.Instance.GetHousePos(HouseType))) / (Speed) / 10;
             //linear distance
-            //TimeToGoBack = (Vector3.Distance(transform.position, TargetHouse.transform.position)) / (Speed) / 10;
+            TimeToGoBack = (Vector3.Distance(transform.position, TargetHouse.transform.position)) / (Speed) / 10;
             //going back home if the safety time is finished
             //BreakPoint
             if (!TargetHouse.IsPlayer && GameManagerScript.Instance.DayTime - GameManagerScript.Instance.currentDayTime >= GameManagerScript.Instance.DayTime - (TimeToGoBack + TargetHouse.SafetyTimer) && (CurrentState != StateType.Home /*&& CurrentAction != ActionState.Fight*/ && CurrentState != StateType.ComingBackHome))
@@ -267,9 +267,9 @@ public class HumanBeingScript : MonoBehaviour
                 FollowCo = null;
                 CanIgetFood = false;
                 CurrentState = StateType.ComingBackHome;
-                PathToHome = PathFinderManager.Instance.GetPathToDestination(transform.position, PathFinderManager.Instance.GetHousePos(HouseType));
-                GoBackHome(true);
-                //GoToPosition(TargetHouse.transform.position);
+                //PathToHome = PathFinderManager.Instance.GetPathToDestination(transform.position, PathFinderManager.Instance.GetHousePos(HouseType));
+                //GoBackHome(true);
+                GoToPosition(TargetHouse.transform.position);
                 //update HP Bar
                 HPBar.gameObject.SetActive(false);
                 HarvestBar.gameObject.SetActive(false);
@@ -282,10 +282,10 @@ public class HumanBeingScript : MonoBehaviour
                 FollowCo = null;
                 CanIgetFood = false;
                 CurrentState = StateType.ComingBackHome;
-                PathToHome = PathFinderManager.Instance.GetPathToDestination(transform.position, PathFinderManager.Instance.GetHousePos(HouseType));
+                //PathToHome = PathFinderManager.Instance.GetPathToDestination(transform.position, PathFinderManager.Instance.GetHousePos(HouseType));
 
-                GoBackHome(true);
-                //GoToPosition(TargetHouse.transform.position);
+                //GoBackHome(true);
+                GoToPosition(TargetHouse.transform.position);
                 //update HP Bar
                 HPBar.gameObject.SetActive(false);
                 HarvestBar.gameObject.SetActive(false);
@@ -432,7 +432,26 @@ public class HumanBeingScript : MonoBehaviour
     }
     public Vector3 GetFreeSpaceOnGround()
     {
-        Vector3 res = new Vector3(UnityEngine.Random.Range(transform.position.x- RayMaxDistance, transform.position.x+RayMaxDistance), transform.position.y, UnityEngine.Random.Range(transform.position.z- RayMaxDistance, transform.position.z+RayMaxDistance));
+        Vector3 res = new Vector3(UnityEngine.Random.Range(transform.position.x - RayMaxDistance, transform.position.x + RayMaxDistance), transform.position.y, UnityEngine.Random.Range(transform.position.z - RayMaxDistance, transform.position.z + RayMaxDistance));
+        /*
+                LayerMask layerMask = LayerMask.GetMask("ObstacleItem");
+                List<RaycastHit> ElementHitted = new List<RaycastHit>();
+                ElementHitted = Physics.RaycastAll(transform.position, res-transform.position,Vector3.Distance(transform.position, res),layerMask).ToList<RaycastHit>();
+                Debug.DrawLine(transform.position, res, Color.white, 1);
+                for (int i = 0; i<1000; i++)
+                {
+                    if(ElementHitted.Count > 0)
+                    {
+                        res = new Vector3(UnityEngine.Random.Range(transform.position.x - RayMaxDistance, transform.position.x + RayMaxDistance), transform.position.y, UnityEngine.Random.Range(transform.position.z - RayMaxDistance, transform.position.z + RayMaxDistance));
+                        ElementHitted = Physics.RaycastAll(transform.position, res - transform.position, Vector3.Distance(transform.position, res), layerMask).ToList<RaycastHit>();
+                        Debug.DrawLine(transform.position, res, Color.white, 1);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                */
         if (res.x < -GameManagerScript.Instance.GroundSizeWidth)
         {
             res.x = -GameManagerScript.Instance.GroundSizeWidth;
@@ -852,9 +871,9 @@ public class HumanBeingScript : MonoBehaviour
             {
                 CurrentState = StateType.ComingBackHome;
                 DeliverFood = true;
-                //GoToPosition(TargetHouse.transform.position);
-                PathToHome = PathFinderManager.Instance.GetPathToDestination(transform.position, PathFinderManager.Instance.GetHousePos(HouseType));
-                GoBackHome(true);
+                GoToPosition(TargetHouse.transform.position);
+                //PathToHome = PathFinderManager.Instance.GetPathToDestination(transform.position, PathFinderManager.Instance.GetHousePos(HouseType));
+                //GoBackHome(true);
             }
             else
             if (!TargetHouse.IsPlayer && GameManagerScript.Instance.DayTime - GameManagerScript.Instance.currentDayTime < GameManagerScript.Instance.DayTime - (TimeToGoBack + TargetHouse.SafetyTimer) && EnemiesCollision.Count > 0)
@@ -1057,9 +1076,9 @@ public class HumanBeingScript : MonoBehaviour
                         UIManagerScript.Instance.UpdateFood();
                         CurrentState = StateType.ComingBackHome;
                         DeliverFood = true;
-                        //GoToPosition(TargetHouse.transform.position);
-                        PathToHome = PathFinderManager.Instance.GetPathToDestination(transform.position, PathFinderManager.Instance.GetHousePos(HouseType));
-                        GoBackHome(true);
+                        GoToPosition(TargetHouse.transform.position);
+                        //PathToHome = PathFinderManager.Instance.GetPathToDestination(transform.position, PathFinderManager.Instance.GetHousePos(HouseType));
+                        //GoBackHome(true);
                     }
 
                     CurrentState = StateType.LookingForFood;
@@ -1165,9 +1184,9 @@ public class HumanBeingScript : MonoBehaviour
         {
             CurrentState = StateType.ComingBackHome;
             DeliverFood = true;
-            PathToHome = PathFinderManager.Instance.GetPathToDestination(transform.position, PathFinderManager.Instance.GetHousePos(HouseType));
-            GoBackHome(true);
-            //GoToPosition(TargetHouse.transform.position);
+            //PathToHome = PathFinderManager.Instance.GetPathToDestination(transform.position, PathFinderManager.Instance.GetHousePos(HouseType));
+            //GoBackHome(true);
+            GoToPosition(TargetHouse.transform.position);
         }
         else
         if (!ResourceAvaiable)

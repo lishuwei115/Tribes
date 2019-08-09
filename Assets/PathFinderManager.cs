@@ -208,10 +208,6 @@ public class PathFinderManager : MonoBehaviour
     }
     public float DistanceToKeyPoint(Vector3 StartingPoint, Transform destination)
     {
-        /*if (Vector3.Distance(StartingPoint, destination.position) < 20)
-        {
-            return 0;
-        }*/
         Vector3 closerPoint = GetCloserPoint(StartingPoint);
         Vector3 closerPathPoint;
         PathLine closerLine = GetCloserLine(StartingPoint);
@@ -223,22 +219,22 @@ public class PathFinderManager : MonoBehaviour
         {
             closerPathPoint = closerLine.Points[0];
             PathPoint p = VtoPoint(closerPathPoint);
-            List<Transform> path = p.Paths.Where(t => t.destination == destination).ToList()[0].Path;
+            List<Transform> path = p.Paths.Where(t => t.destination == destination && t.Path[0].position== closerPathPoint).ToList()[0].Path;
             List<Vector3> path1 = TransformListToVectorList(path);
             List<Vector3> path2 = new List<Vector3> { StartingPoint, closerPoint, closerLine.Points[0] };
-            path1 = path2.Union(path1).ToList();
-            float dist = CalculateListV3Weight(path1);
+            path2.AddRange(path1);
+            float dist = CalculateListV3Weight(path2);
             return dist;
         }
         else
         {
             closerPathPoint = closerLine.Points[closerLine.Points.Count - 1];
             PathPoint p = VtoPoint(closerPathPoint);
-            List<Transform> path = p.Paths.Where(t => t.destination == destination).ToList()[0].Path;
+            List<Transform> path = p.Paths.Where(t => t.destination == destination && t.Path[0].position == closerPathPoint).ToList()[0].Path;
             List<Vector3> path1 = TransformListToVectorList(path);
-            List<Vector3> path2 = new List<Vector3> { StartingPoint, closerPoint, closerLine.Points[closerLine.Points.Count - 1] };
-            path1 = path2.Union(path1).ToList();
-            float dist = CalculateListV3Weight(path1);
+            List<Vector3> path2 = new List<Vector3> { StartingPoint, closerPoint, closerLine.Points[0] };
+            path2.AddRange(path1);
+            float dist = CalculateListV3Weight(path2);
             return dist;
         }
     }
@@ -251,21 +247,21 @@ public class PathFinderManager : MonoBehaviour
         {
             closerPathPoint = closerLine.Points[0];
             PathPoint p = VtoPoint(closerPathPoint);
-            List<Transform> path = p.Paths.Where(t => t.destination == destination).ToList()[0].Path;
+            List<Transform> path = p.Paths.Where(t => t.destination == destination && t.Path[0].position == closerPathPoint).ToList()[0].Path;
             List<Vector3> path1 = TransformListToVectorList(path);
             List<Vector3> path2 = new List<Vector3> { StartingPoint, closerPoint, closerLine.Points[0] };
-            path1 = path2.Union(path1).ToList();
-            return path1;
+            path2.AddRange(path1);
+            return path2;
         }
         else
         {
             closerPathPoint = closerLine.Points[closerLine.Points.Count - 1];
             PathPoint p = VtoPoint(closerPathPoint);
-            List<Transform> path = p.Paths.Where(t => t.destination == destination).ToList()[0].Path;
+            List<Transform> path = p.Paths.Where(t => t.destination == destination && t.Path[0].position == closerPathPoint).ToList()[0].Path;
             List<Vector3> path1 = TransformListToVectorList(path);
-            List<Vector3> path2 = new List<Vector3> { StartingPoint, closerPoint, closerLine.Points[closerLine.Points.Count - 1] };
-            path1 = path2.Union(path1).ToList();
-            return path1;
+            List<Vector3> path2 = new List<Vector3> { StartingPoint, closerPoint, closerLine.Points[0] };
+            path2.AddRange(path1);
+            return path2;
         }
     }
 
@@ -293,6 +289,11 @@ public class PathFinderManager : MonoBehaviour
     {
         PathToPoint pathToDest = new PathToPoint();
         pathToDest.destination = endingPoint.Position;
+        if(startingPoint == endingPoint)
+        {
+            pathToDest.Path = new List<Transform> { endingPoint.Position };
+            startingPoint.Paths.Add(pathToDest);
+        }
         if (startingPoint.Position == endingPoint.Position)
         {
             pathToDest.Path = new List<Transform> { startingPoint.Position, endingPoint.Position };

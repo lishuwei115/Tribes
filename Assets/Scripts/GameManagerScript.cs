@@ -416,8 +416,25 @@ public class GameManagerScript : MonoBehaviour
                 float f = UnityEngine.Random.Range(0f, 6f);
                 //get the circular position from the random value
                 Vector2 v = new Vector2(Mathf.Cos(f) * (radiusFromOrigin * FoodRaySpawn), Mathf.Sin(f) * (radiusFromOrigin * FoodRaySpawn));
+                LayerMask layerMask = LayerMask.GetMask("ObstacleItem","Food");
+                List<RaycastHit> ElementHitted = Physics.SphereCastAll(new Vector3(v.x, 0, v.y), 10, new Vector3(0, 1, 0), 0, layerMask).ToList<RaycastHit>();
+                Debug.DrawLine(transform.position, new Vector3(v.x, 0, v.y), Color.yellow, 1);
+                for (int i2 = 0; i2 < 1000; i2++)
+                {
+                    if (ElementHitted.Count > 0)
+                    {
+                        f = UnityEngine.Random.Range(0f, 6f);
+                        v = new Vector2(Mathf.Cos(f) * (radiusFromOrigin * FoodRaySpawn), Mathf.Sin(f) * (radiusFromOrigin * FoodRaySpawn));
+                        ElementHitted = Physics.SphereCastAll(new Vector3(v.x, 0, v.y), 10, new Vector3(0, 1, 0), 0, layerMask).ToList<RaycastHit>();
+                        Debug.DrawLine(transform.position, new Vector3(v.x, 0, v.y), Color.yellow, 1);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
                 FoodsList[i].transform.position = new Vector3(v.x, 0, v.y);
-                
+
 
             }
 
