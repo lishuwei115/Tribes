@@ -332,10 +332,10 @@ MonoBehaviour:
   HpMin: 50
   Hp: 0
   BaseHp: 0
-  SpeedMax: 6
-  SpeedMin: 5
-  AttackMax: 6
-  AttackMin: 4
+  SpeedMax: 30
+  SpeedMin: 20
+  AttackMax: 1
+  AttackMin: 0.5
   ReproductionPerc: 50
   AttackFrequency: 0.3
   HarvestIncrement: 0.01
@@ -390,6 +390,8 @@ MonoBehaviour:
   FoodStealed: 0
   AmIActing: 0
   TimetoReachInstruction: 0
+  PathToHome: []
+  PathIndex: 0
 --- !u!135 &135251763841391622
 SphereCollider:
   m_ObjectHideFlags: 0
