@@ -52,7 +52,7 @@ SpriteAtlas:
       enableTightPacking: 0
     variantMultiplier: 1
     packables:
-    - {fileID: 2800000, guid: f2df2ed9b57a50a40aa249586d4b24df, type: 3}
+    - {fileID: 2800000, guid: 99265c9ddee602448b42b98eec8887b3, type: 3}
     - {fileID: 2800000, guid: 811fbc88d6dfbc44aaa22273801514c9, type: 3}
     - {fileID: 2800000, guid: c62e6c6f5c0d13147886487381cee919, type: 3}
     - {fileID: 2800000, guid: b2f428d44bd2d2048b2499b030737707, type: 3}
@@ -73,7 +73,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 4a6181ad50adbfd41a3c06e52f73b1f1, type: 3}
     - {fileID: 10912, guid: 0000000000000000f000000000000000, type: 0}
     - {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
-    totalSpriteSurfaceArea: 7053832
+    totalSpriteSurfaceArea: 7036894
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -144,7 +144,6 @@ SpriteAtlas:
   - {fileID: 2628953877043326570, guid: 1cfda799fa303f04da631438192d14cb, type: 3}
   - {fileID: 5943226388865471542, guid: 1cfda799fa303f04da631438192d14cb, type: 3}
   - {fileID: 579983195502419259, guid: 1cfda799fa303f04da631438192d14cb, type: 3}
-  - {fileID: 21300000, guid: f2df2ed9b57a50a40aa249586d4b24df, type: 3}
   - {fileID: 21300000, guid: a23896dab8566e844b4b5b05ca2780c8, type: 3}
   - {fileID: 5628349384680431234, guid: 494d128b413c96844888f248d73103b4, type: 3}
   - {fileID: -4620129022448314007, guid: 494d128b413c96844888f248d73103b4, type: 3}
@@ -201,6 +200,16 @@ SpriteAtlas:
   - {fileID: 9007092016527589914, guid: 9e35b2ace7c9aa1459da48417a773c50, type: 3}
   - {fileID: -1432469540568947285, guid: 9e35b2ace7c9aa1459da48417a773c50, type: 3}
   - {fileID: 7994450319214077111, guid: e71ae2ec65d4a394fa013d3ee00cead2, type: 3}
+  - {fileID: 3897621596536548394, guid: 99265c9ddee602448b42b98eec8887b3, type: 3}
+  - {fileID: 4540817371643746821, guid: 99265c9ddee602448b42b98eec8887b3, type: 3}
+  - {fileID: 6530967342500730005, guid: 99265c9ddee602448b42b98eec8887b3, type: 3}
+  - {fileID: 4613979579693267638, guid: 99265c9ddee602448b42b98eec8887b3, type: 3}
+  - {fileID: -4274447638954113714, guid: 99265c9ddee602448b42b98eec8887b3, type: 3}
+  - {fileID: 2695652309970954538, guid: 99265c9ddee602448b42b98eec8887b3, type: 3}
+  - {fileID: 1231242119909587394, guid: 99265c9ddee602448b42b98eec8887b3, type: 3}
+  - {fileID: 7855380736104296292, guid: 99265c9ddee602448b42b98eec8887b3, type: 3}
+  - {fileID: 7754087692845519265, guid: 99265c9ddee602448b42b98eec8887b3, type: 3}
+  - {fileID: 5085935159258746971, guid: 99265c9ddee602448b42b98eec8887b3, type: 3}
   - {fileID: 21300000, guid: 4a6181ad50adbfd41a3c06e52f73b1f1, type: 3}
   - {fileID: -6336605923543293268, guid: ce32640ee58da7c4c8d2b4b52a0d8025, type: 3}
   - {fileID: 3370410842047852062, guid: ce32640ee58da7c4c8d2b4b52a0d8025, type: 3}
@@ -343,7 +352,6 @@ SpriteAtlas:
   - Atlas-Grass_anim-PROTOTYPE_2
   - Atlas-Grass_anim-PROTOTYPE_1
   - Atlas-Grass_anim-PROTOTYPE_0
-  - Fruit_Land
   - Icon-PROTOTYPE-ButtonBG
   - Character1_Weapon
   - Character4_Mask
@@ -400,6 +408,16 @@ SpriteAtlas:
   - Monster_Flame3
   - Monster_Flame2
   - Atlas_PROTOTYPE-trees_8
+  - Shadow
+  - Atlas_Fruit_4
+  - Atlas_Fruit_2
+  - Atlas_Fruit_3
+  - Atlas_Fruit_0
+  - Atlas_Fruit_1
+  - Fruit_Arm_1
+  - Fruit_Arm_3
+  - Fruit_Arm_2
+  - Fruit_Arm_4
   - MapBorder
   - Atlas_PROTOTYPE-Watercolor_brush_11
   - Atlas_PROTOTYPE-Watercolor_brush_10
