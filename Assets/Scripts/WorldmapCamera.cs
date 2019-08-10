@@ -267,7 +267,7 @@ public class WorldmapCamera : MonoBehaviour
         Plane p = new Plane(Vector3.up, Vector3.zero);
         float dist = 0;
         p.Raycast(ray, out dist);
-        Debug.DrawRay(ray.origin, ray.direction * 100, Color.red, 30);
+        //Debug.DrawRay(ray.origin, ray.direction * 100, Color.red, 30);
         //point of input
         RaycastHit hit;
         bool found = Physics.Raycast(ray, out hit, 10000, layerMask);
@@ -275,7 +275,17 @@ public class WorldmapCamera : MonoBehaviour
         {
             
             GameManagerScript.Instance.MoveTribeTo(hit.point, GameManagerScript.Instance.PlayerHouse);
-            Instantiate(PrefabPointer, hit.point, PrefabPointer.rotation);
+            if (GameManagerScript.Instance.Pointer != null)
+            {
+                GameManagerScript.Instance.Pointer.gameObject.SetActive(false);
+                GameManagerScript.Instance.Pointer.transform.position = hit.point;
+                GameManagerScript.Instance.Pointer.gameObject.SetActive(true);
+            }
+            else
+            {
+                GameManagerScript.Instance.Pointer = (Instantiate(PrefabPointer, hit.point, PrefabPointer.rotation).GetComponent<DestroyOverTime>());
+
+            }
         }
 
     }

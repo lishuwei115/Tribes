@@ -135,19 +135,19 @@ public class MonsterScript : MonoBehaviour
         {
             switch (HouseHuman.HouseType)
             {
-                case HousesTypes.North:
+                case HousesTypes.Green:
                     gameObject.layer = LayerMask.NameToLayer("North");
                     EnemyLayer = LayerMask.GetMask("West", "South", "East");
                     break;
-                case HousesTypes.South:
+                case HousesTypes.Yellow:
                     gameObject.layer = LayerMask.NameToLayer("South");
                     EnemyLayer = LayerMask.GetMask("West", "North", "East");
                     break;
-                case HousesTypes.East:
+                case HousesTypes.Red:
                     gameObject.layer = LayerMask.NameToLayer("East");
                     EnemyLayer = LayerMask.GetMask("West", "South", "North");
                     break;
-                case HousesTypes.West:
+                case HousesTypes.Blue:
                     gameObject.layer = LayerMask.NameToLayer("West");
                     EnemyLayer = LayerMask.GetMask("North", "South", "East");
                     break;

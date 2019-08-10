@@ -14,6 +14,7 @@ public class BuildHouseManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        
     }
     private void Start()
     {

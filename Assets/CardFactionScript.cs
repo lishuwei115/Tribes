@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CardFactionScript : MonoBehaviour
 {
     public Transform Enemy;
     public Transform Player;
-    public bool IsPlayer = false;
     public HousesTypes house;
+    public bool IsPlayer = false;
+    public TextMeshProUGUI Food;
+    public TextMeshProUGUI Warrior;
+    public TextMeshProUGUI Farmer;
+
+
 
     public void SetPlayer(bool b)
     {

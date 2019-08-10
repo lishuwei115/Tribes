@@ -45,7 +45,7 @@ public class SkinManager : MonoBehaviour
 [System.Serializable]
 public class Skin
 {
-    public HousesTypes House = HousesTypes.East;
+    public HousesTypes House = HousesTypes.Red;
     public Transform SkinPrefab;
     public Transform HarvestPrefab;
     public Transform WarriorPrefab;

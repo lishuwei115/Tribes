@@ -269,16 +269,16 @@ public class PathFinderManager : MonoBehaviour
     {
         switch (houseType)
         {
-            case HousesTypes.North:
+            case HousesTypes.Green:
                 return KeyPoints[0];
                 break;
-            case HousesTypes.South:
+            case HousesTypes.Yellow:
                 return KeyPoints[1];
                 break;
-            case HousesTypes.East:
+            case HousesTypes.Red:
                 return KeyPoints[2];
                 break;
-            case HousesTypes.West:
+            case HousesTypes.Blue:
                 return KeyPoints[3];
                 break;
         }

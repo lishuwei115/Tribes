@@ -60,6 +60,8 @@ MonoBehaviour:
   GuardiansSummonable: 6
   UIButtonOver: 0
   GameStatus: 0
+  FoodRequiredHarvester: 1
+  FoodRequiredWarrior: 5
   FollowOrderRandomness: 6
   DayTime: 100
   DayLightTime: 50
@@ -78,14 +80,23 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.49285674
-      value: 0.38585395
-      inSlope: 1.0249591
-      outSlope: 1.0249591
+      time: 0.074711524
+      value: 0.12375547
+      inSlope: 0.48750597
+      outSlope: 0.48750597
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0.41912645
+    - serializedVersion: 3
+      time: 0.30430388
+      value: 0.44214362
+      inSlope: 0.37997565
+      outSlope: 0.37997565
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.326234
     - serializedVersion: 3
       time: 0.818475
       value: 0.9477362
@@ -107,6 +118,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  FoodMinDistance: 0.1
   FoodRaySpawn: 120
   MaxNumChildren: 2
   MaxHumansForTribe: 100
@@ -207,6 +219,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3393260075159848029}
     m_Modifications:
+    - target: {fileID: 3653988554390937393, guid: 8cf9011b739c583479075260221b57d6,
+        type: 3}
+      propertyPath: m_Name
+      value: MapBorders
+      objectReference: {fileID: 0}
     - target: {fileID: 3653988554390937394, guid: 8cf9011b739c583479075260221b57d6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -261,11 +278,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653988554390937393, guid: 8cf9011b739c583479075260221b57d6,
-        type: 3}
-      propertyPath: m_Name
-      value: MapBorders
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cf9011b739c583479075260221b57d6, type: 3}

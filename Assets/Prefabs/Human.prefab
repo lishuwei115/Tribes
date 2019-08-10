@@ -302,8 +302,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HouseType: 1
   CurrentState: 0
-  Radius: 5
-  AttackDistance: 20
+  Radius: 20
+  AttackDistance: 10
   Specialization: 0.5
   HumanJob: 0
   InitialHP: 0
@@ -318,14 +318,14 @@ MonoBehaviour:
   Food: 0
   DeliverFood: 0
   FoodLife: 0
-  TransparentDistanceFromHome: 40
-  RayMaxDistance: 40
+  TransparentDistanceFromHome: 3
+  RayMaxDistance: 60
   CultivationTarget: 200
   CultivationPercentage:
   - 70
   - 90
   - 100
-  FoodRandomPointDistance: 10
+  FoodRandomPointDistance: 6
   RandomFoodGained: 0
   StorageCapacity: 3
   HpMax: 60
@@ -338,8 +338,8 @@ MonoBehaviour:
   AttackMin: 0.5
   ReproductionPerc: 50
   AttackFrequency: 0.3
-  HarvestIncrement: 0.01
-  WarriorIncrement: 0.01
+  HarvestIncrement: 0
+  WarriorIncrement: 0
   WarriorValue: 0.6
   HarvesterValue: 0.4
   Charity: 50

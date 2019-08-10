@@ -19,17 +19,14 @@ public class UIManagerScript : MonoBehaviour
     public TextMeshProUGUI Charity;
     public TextMeshProUGUI Gratitude;
     public TextMeshProUGUI Hate;
-    public TextMeshProUGUI HouseFoodBlu;
-    public TextMeshProUGUI HouseFoodYellow;
-    public TextMeshProUGUI HouseFoodRed;
-    public TextMeshProUGUI HouseFoodGreen;
-    public TextMeshProUGUI HousePeopleUpperLeft;
-    public TextMeshProUGUI HousePeopleUpperRight;
-    public TextMeshProUGUI HousePeopleDownwardLeft;
-    public TextMeshProUGUI HousePeopleDownwardRight;
     public Button AddHouse;
     public int DayNumIterator = 0;
-    public CardFactionScript[] PlayerCards;
+    public CardFactionScript[] CardsPositioning;
+    public Vector3 PlayerPosition = new Vector3();
+    public CardFactionScript PlayerCardBlue;
+    public CardFactionScript PlayerCardRed;
+    public CardFactionScript PlayerCardGreen;
+    public CardFactionScript PlayerCardYellow;
     public float RedFood = 0;
     public float GreenFood = 0;
     public float YellowFood = 0;
@@ -37,6 +34,7 @@ public class UIManagerScript : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        PlayerPosition = CardsPositioning[0].transform.position;
     }
 
 
@@ -63,16 +61,16 @@ public class UIManagerScript : MonoBehaviour
     }
     public void ChangePlayer(HousesTypes h)
     {
-        PlayerCards[0].SetPlayer(false);
+        CardsPositioning[0].SetPlayer(false);
         Vector2 help;
-        foreach (CardFactionScript c in PlayerCards)
+        foreach (CardFactionScript c in CardsPositioning)
         {
             if (h == c.house)
             {
                 c.SetPlayer(true);
                 help = c.transform.position;
-                c.transform.position = PlayerCards[0].transform.position;
-                PlayerCards[0].transform.position = help;
+                c.transform.position = CardsPositioning[0].transform.position;
+                CardsPositioning[0].transform.position = help;
             }
             else
             {
@@ -87,10 +85,11 @@ public class UIManagerScript : MonoBehaviour
         Timer.text = "" + timer;
     }
 
-    public void InfoDailyUpdate(string bld, string dld)
+    public void InfoDailyUpdate( )
     {
-        BirthLastDay.text = "Births: " + bld;
-        DeathLastDay.text = "Deaths: " + dld;
+        BirthLastDay.text = "total Births: " + (GameManagerScript.Instance.HumansList.Count - (GameManagerScript.Instance.Humans * 4));
+        DeathLastDay.text = "total Deaths: " + GameManagerScript.Instance.HumansList.Where(r=>!r.isActiveAndEnabled).ToList().Count;
+        NumberOfEntity.text = "total Population: " + (GameManagerScript.Instance.HumansList.Where(r=>r.isActiveAndEnabled).ToList().Count);
     }
 
     public void InfoUpdate(string c, string g, string h)
@@ -119,35 +118,39 @@ public class UIManagerScript : MonoBehaviour
         {
             switch (h.HouseType)
             {
-                case HousesTypes.North:
+                case HousesTypes.Green:
                     GreenFood += h.FoodStore;
                     break;
-                case HousesTypes.South:
+                case HousesTypes.Yellow:
                     YellowFood += h.FoodStore;
                     break;
-                case HousesTypes.East:
+                case HousesTypes.Red:
                     RedFood += h.FoodStore;
                     break;
-                case HousesTypes.West:
+                case HousesTypes.Blue:
                     BlueFood += h.FoodStore;
                     break;
             }
         }
-        HouseFoodBlu.text = "" + BlueFood;
-        HouseFoodYellow.text = "" + YellowFood;
-        HouseFoodRed.text = "" + RedFood;
+        PlayerCardBlue.Food.text = "" + BlueFood;
+        PlayerCardYellow.Food.text = "" + YellowFood;
+        PlayerCardRed.Food.text = "" + RedFood;
         //HouseFoodDownwardLeft.text = "" + GameManagerScript.Instance.FoodPlayer;
-        HouseFoodGreen.text = "" + GreenFood;
+        PlayerCardGreen.Food.text = "" + GreenFood;
         UpdatePeople();
 
     }
     public void UpdatePeople()
     {
+        PlayerCardRed.Warrior.text = "" + GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Red && r.isActiveAndEnabled && r.HumanJob == HumanClass.Warrior).ToList().Count;
+        PlayerCardYellow.Warrior.text = "" + GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Yellow && r.isActiveAndEnabled && r.HumanJob == HumanClass.Warrior).ToList().Count;
+        PlayerCardBlue.Warrior.text = "" + GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Blue && r.isActiveAndEnabled && r.HumanJob == HumanClass.Warrior).ToList().Count;
+        PlayerCardGreen.Warrior.text = "" + GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Green && r.isActiveAndEnabled && r.HumanJob == HumanClass.Warrior).ToList().Count;
 
-        HousePeopleUpperLeft.text = "" + GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.East && r.isActiveAndEnabled).ToList().Count;
-        HousePeopleUpperRight.text = "" + GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.South && r.isActiveAndEnabled).ToList().Count;
-        HousePeopleDownwardLeft.text = "" + GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.West && r.isActiveAndEnabled).ToList().Count;
-        HousePeopleDownwardRight.text = "" + GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.North && r.isActiveAndEnabled).ToList().Count;
+        PlayerCardRed.Farmer.text = "" + GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Red && r.isActiveAndEnabled &&r.HumanJob==HumanClass.Harvester).ToList().Count;
+        PlayerCardYellow.Farmer.text = "" + GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Yellow && r.isActiveAndEnabled && r.HumanJob == HumanClass.Harvester).ToList().Count;
+        PlayerCardBlue.Farmer.text = "" + GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Blue && r.isActiveAndEnabled && r.HumanJob == HumanClass.Harvester).ToList().Count;
+        PlayerCardGreen.Farmer.text = "" + GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Green && r.isActiveAndEnabled && r.HumanJob == HumanClass.Harvester).ToList().Count;
     }
     public void AddDay()
     {

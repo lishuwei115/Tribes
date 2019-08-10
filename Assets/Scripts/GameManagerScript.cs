@@ -14,8 +14,8 @@ public class GameManagerScript : MonoBehaviour
     public GameState StateOfGame = GameState.Playing;
     public delegate void StartDay();
     public event StartDay DayStarted;
-    public HousesTypes PlayerHouse = HousesTypes.East;
-    HousesTypes PlayerHouseChake = HousesTypes.East;
+    public HousesTypes PlayerHouse = HousesTypes.Red;
+    HousesTypes PlayerHouseChake = HousesTypes.Red;
     public int enemyDefeated = 0;
     public float FoodPlayer = 0;
     public Mesh HumanMesh;
@@ -27,6 +27,9 @@ public class GameManagerScript : MonoBehaviour
     public bool UIButtonOver;
     public static GameManagerScript Instance;
     public GameStateType GameStatus = GameStateType.Intro;
+    [Header("Harvest/warrior increments")]
+    public int FoodRequiredHarvester = 1;
+    public int FoodRequiredWarrior = 5;
     [Tooltip("Set the random max value when directiong the tribe in one point")]
     [Range(0, 300)]
     public float FollowOrderRandomness = 10;
@@ -46,7 +49,7 @@ public class GameManagerScript : MonoBehaviour
     public int FoodPerDay = 10;
 
     public AnimationCurve FoodDistanceFromOrigin;
-
+    public float FoodMinDistance = 1;
     public float FoodRaySpawn = 60;
 
     [Range(0, 10)]
@@ -144,7 +147,8 @@ public class GameManagerScript : MonoBehaviour
             HumanBeingScript hbs = human.GetComponent<HumanBeingScript>();
             human.GetComponent<MeshFilter>().sharedMesh = HumanMesh;
             HumansList.Add(hbs);
-
+            hbs.Specialization = 0.1f;
+            hbs.HumanJob = HumanClass.Harvester;
             hbs.HouseType = house.HouseType;
             hbs.TargetHouse = house;
             hbs.FinallyBackHome += Hbs_FinallyBackHome;
@@ -260,7 +264,8 @@ public class GameManagerScript : MonoBehaviour
         //                                    HumansList.Where(r => r.gameObject.activeInHierarchy && r.HType == HumanType.Gratitude).ToList().Count.ToString(),
         //                                    HumansList.Where(r => r.gameObject.activeInHierarchy && r.HType == HumanType.Hate).ToList().Count.ToString());
 
-        UIManagerScript.Instance.NumberOfEntity.text = "POPULATION: " + HumansList.Where(r => r.gameObject.activeInHierarchy).ToList().Count.ToString();
+        //UIManagerScript.Instance.NumberOfEntity.text = "POPULATION: " + HumansList.Where(r => r.gameObject.activeInHierarchy).ToList().Count.ToString();
+        UIManagerScript.Instance.InfoDailyUpdate();
         UIButtonOver = false;
 
         foreach (BlockInput item in UIButtons.Where(r => r.isActiveAndEnabled))
@@ -319,6 +324,8 @@ public class GameManagerScript : MonoBehaviour
 
                 HumanBeingScript hbs = human.GetComponent<HumanBeingScript>();
                 hbs.HouseType = house.HouseType;
+                hbs.Specialization = 0.1f;
+                hbs.HumanJob = HumanClass.Harvester;
                 hbs.TargetHouse = house;
                 hbs.Initialize();
                 //human.GetComponent<MeshFilter>().sharedMesh = HumanMesh;
@@ -416,7 +423,7 @@ public class GameManagerScript : MonoBehaviour
                 float f = UnityEngine.Random.Range(0f, 6f);
                 //get the circular position from the random value
                 Vector2 v = new Vector2(Mathf.Cos(f) * (radiusFromOrigin * FoodRaySpawn), Mathf.Sin(f) * (radiusFromOrigin * FoodRaySpawn));
-                LayerMask layerMask = LayerMask.GetMask("ObstacleItem","Food");
+                LayerMask layerMask = LayerMask.GetMask("ObstacleItem", "Food");
                 List<RaycastHit> ElementHitted = Physics.SphereCastAll(new Vector3(v.x, 0, v.y), 10, new Vector3(0, 1, 0), 0, layerMask).ToList<RaycastHit>();
                 Debug.DrawLine(transform.position, new Vector3(v.x, 0, v.y), Color.yellow, 1);
                 for (int i2 = 0; i2 < 1000; i2++)
@@ -425,7 +432,7 @@ public class GameManagerScript : MonoBehaviour
                     {
                         f = UnityEngine.Random.Range(0f, 6f);
                         v = new Vector2(Mathf.Cos(f) * (radiusFromOrigin * FoodRaySpawn), Mathf.Sin(f) * (radiusFromOrigin * FoodRaySpawn));
-                        ElementHitted = Physics.SphereCastAll(new Vector3(v.x, 0, v.y), 10, new Vector3(0, 1, 0), 0, layerMask).ToList<RaycastHit>();
+                        ElementHitted = Physics.SphereCastAll(new Vector3(v.x, 0, v.y), FoodMinDistance* f, new Vector3(0, 1, 0), 0, layerMask).ToList<RaycastHit>();
                         Debug.DrawLine(transform.position, new Vector3(v.x, 0, v.y), Color.yellow, 1);
                     }
                     else
@@ -469,31 +476,55 @@ public class GameManagerScript : MonoBehaviour
         return res;
     }
 
-    public void Reproduction(HouseScript home)
+    public void Reproduction(HouseScript home, HumanClass humanJob)
     {
         int childNumber = UnityEngine.Random.Range(1, MaxNumChildren + 1);
         for (int i = 0; i < childNumber; i++)
         {
             if (home.HumansAlive.Count < MaxHumansForTribe)
             {
-                GameObject human = Instantiate(Human, home.transform.position, Quaternion.identity, HumansContainer);
-                HumanBeingScript hbs = human.GetComponent<HumanBeingScript>();
-                hbs.HouseType = home.HouseType;
-                hbs.TargetHouse = home;
-                hbs.Initialize();
-                HumansList.Add(hbs);
-                human.GetComponent<HumanBeingScript>().Hp = 60;
-                hbs.HouseType = home.HouseType;
-                hbs.FinallyBackHome += Hbs_FinallyBackHome;
-                home.Humans.Add(hbs);
-                hbs.WearSkin();
-                home.HumansAlive = home.Humans.Where(x => x.Hp > 0).ToList();
-                ReproducedLastDay++;
-                HumansAtHome++;
+                SpawnHuman(home, humanJob);
             }
         }
     }
-
+    public void AddPlayerHarvester()
+    {
+        AddHumanUsingFood(Houses.Where(r=>r.IsPlayer).ToList()[0], HumanClass.Harvester);
+    }
+    public void AddPlayerWarrior()
+    {
+        AddHumanUsingFood(Houses.Where(r => r.IsPlayer).ToList()[0], HumanClass.Warrior);
+    }
+    public void AddHumanUsingFood(HouseScript home, HumanClass humanJob)
+    {
+        int foodRequired = humanJob == HumanClass.Harvester ? FoodRequiredHarvester : FoodRequiredWarrior;
+        if(home.FoodStore>= foodRequired && home.HumansAlive.Count<MaxHumansForTribe)
+        {
+            SpawnHuman(home, humanJob);
+            home.FoodStore -= foodRequired;
+        }
+    }
+    public void SpawnHuman(HouseScript home, HumanClass humanJob)
+    {
+        GameObject human = Instantiate(Human, home.transform.position, Quaternion.identity, HumansContainer);
+        HumanBeingScript hbs = human.GetComponent<HumanBeingScript>();
+        hbs.Specialization = humanJob == HumanClass.Harvester ? 0.1f : 0.9f;
+        hbs.HumanJob = humanJob;
+        hbs.HouseType = home.HouseType;
+        hbs.TargetHouse = home;
+        hbs.Initialize();
+        HumansList.Add(hbs);
+        human.GetComponent<HumanBeingScript>().Hp = 60;
+        hbs.HouseType = home.HouseType;
+        hbs.FinallyBackHome += Hbs_FinallyBackHome;
+        home.Humans.Add(hbs);
+        hbs.WearSkin();
+        home.HumansAlive = home.Humans.Where(x => x.Hp > 0).ToList();
+        ReproducedLastDay++;
+        //HumansAtHome++;
+        hbs.CurrentState = StateType.LookingForFood;
+        hbs.GoToRandomPos();
+    }
     public void HumanBeingDied()
     {
         UIManagerScript.Instance.UpdatePeople();
@@ -501,7 +532,7 @@ public class GameManagerScript : MonoBehaviour
     }
     public void DayStarting()
     {
-        UIManagerScript.Instance.InfoDailyUpdate(ReproducedLastDay.ToString(), DiedLastDay.ToString());
+        //UIManagerScript.Instance.InfoDailyUpdate(ReproducedLastDay.ToString(), DiedLastDay.ToString());
         ReproducedLastDay = 0;
         DiedLastDay = 0;
         HumansAtHome = 0;
@@ -549,14 +580,14 @@ public class GameManagerScript : MonoBehaviour
         //the time of today is ended, start a new day
         GameStatus = GameStateType.EndOfDay;
         KillMonsters();
-        foreach (HouseScript house in Houses)
-        {
-            house.Breed();
-        }
         ShareFoodIfNeeded();
         foreach (HouseScript house in Houses)
         {
             house.DistributeFood();
+        }
+        foreach (HouseScript house in Houses)
+        {
+            house.Breed();
         }
         Invoke("DayStarting", 1);
     }
@@ -687,7 +718,18 @@ public class GameManagerScript : MonoBehaviour
     }
     public void AddGuardian(HousesTypes h)
     {
-        if (h == PlayerHouse)
+        foreach (HouseScript house in Houses)
+        {
+            if (house.HouseType == h)
+            {
+                MonsterScript m = Instantiate(MonsterPrefab);
+                m.transform.position = house.transform.position;
+                m.HouseHuman = house;
+                m.House = house.transform;
+                m.RadiusOfExploration = 15;
+            }
+        }
+        /*if (h == PlayerHouse)
         {
             GuardiansSummonable++;
 
@@ -705,7 +747,7 @@ public class GameManagerScript : MonoBehaviour
                     m.RadiusOfExploration = 15;
                 }
             }
-        }
+        }*/
     }
 }
 public enum GameStateType
@@ -717,10 +759,10 @@ public enum GameStateType
 }
 public enum HousesTypes
 {
-    North,
-    South,
-    East,
-    West
+    Green,
+    Yellow,
+    Red,
+    Blue
 }
 public enum GameState
 {

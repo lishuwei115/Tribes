@@ -117,18 +117,20 @@ public class HouseScript : MonoBehaviour
         else
         {
             List<HumanBeingScript> living = Humans.Where(x => x.Hp > 0).ToList();
-            if (FoodStore > living.Count)
+            List<HumanBeingScript> Warrior = Humans.Where(x => x.HumanJob == HumanClass.Warrior).ToList();
+
+            if (FoodStore > (living.Count - Warrior.Count) + (Warrior.Count * GameManagerScript.Instance.FoodRequiredWarrior))
             {
                 foreach (HumanBeingScript human in living)
                 {
                     human.Hp = human.BaseHp;
-                    FoodStore--;
+                    FoodStore-= human.HumanJob==HumanClass.Harvester ? GameManagerScript.Instance.FoodRequiredHarvester: GameManagerScript.Instance.FoodRequiredWarrior;
                     //human.Reproduce();
                 }
             }
             else
             {
-                float percentage = FoodStore / living.Count;
+                float percentage = FoodStore / ((living.Count - Warrior.Count) + (Warrior.Count * GameManagerScript.Instance.FoodRequiredWarrior));
                 if (percentage < 0.1f)
                     percentage = 0.1f;
 
@@ -235,7 +237,8 @@ public class HouseScript : MonoBehaviour
     {
         Vector3 randomPos = t;
         float timeHelper = 0;
-        foreach (HumanBeingScript human in Humans)
+        List<HumanBeingScript> warriors = Humans.Where(r => r.Hp > 0 && r.HumanJob == HumanClass.Warrior).ToList();
+        foreach (HumanBeingScript human in warriors)
         {
             if (human.gameObject.activeInHierarchy && (human.CurrentState != StateType.ComingBackHome && human.CurrentState != StateType.Home))
             {

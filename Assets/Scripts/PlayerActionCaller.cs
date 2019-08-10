@@ -13,7 +13,6 @@ public class PlayerActionCaller : MonoBehaviour
     public Color AttackOn;
     public Color AttackOff;
     public TextMeshProUGUI MonsterNumber = null;
-   
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +43,14 @@ public class PlayerActionCaller : MonoBehaviour
     {
         GameManagerScript.Instance.Cultivate();
     }
-
+    public void AddFarmer()
+    {
+        GameManagerScript.Instance.AddPlayerHarvester();
+    }
+    public void AddWarrior()
+    {
+        GameManagerScript.Instance.AddPlayerWarrior();
+    }
     public void AddHouse()
     {
         GameManagerScript.Instance.AddHouse(GameManagerScript.Instance.PlayerHouse);
