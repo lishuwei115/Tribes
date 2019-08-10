@@ -44,6 +44,8 @@ public class HouseScript : MonoBehaviour
     public GovernmentBehaviour Government;
     int AttackIterated = 0;
     float TimeAttack;
+    [HideInInspector]
+    public AnimationCurve PopulationDistribution;
     private void Awake()
     {
         HouseSkin = transform;
@@ -59,7 +61,7 @@ public class HouseScript : MonoBehaviour
         TimeAttack = Time.time + UnityEngine.Random.Range(TimeAttackMin, TimeAttackMax);
         SetCultivateCircle(false);
         SafetyTimer = UnityEngine.Random.Range(SafetyTimerMin, SafetyTimerMax);
-
+        PopulationDistribution = GameManagerScript.Instance.PopulationDistribution;
     }
 
     private void Update()
@@ -103,6 +105,7 @@ public class HouseScript : MonoBehaviour
 
             }
         }
+        AddPeople();
 
     }
 
@@ -124,7 +127,7 @@ public class HouseScript : MonoBehaviour
                 foreach (HumanBeingScript human in living)
                 {
                     human.Hp = human.BaseHp;
-                    FoodStore-= human.HumanJob==HumanClass.Harvester ? GameManagerScript.Instance.FoodRequiredHarvester: GameManagerScript.Instance.FoodRequiredWarrior;
+                    FoodStore -= human.HumanJob == HumanClass.Harvester ? GameManagerScript.Instance.FoodRequiredHarvester : GameManagerScript.Instance.FoodRequiredWarrior;
                     //human.Reproduce();
                 }
             }
@@ -205,7 +208,30 @@ public class HouseScript : MonoBehaviour
             }
         }
     }
-
+    public void AddPeople()
+    {
+        if (!IsPlayer)
+        {
+            HumansAlive = Humans.Where(r => r.Hp > 0 ).ToList();
+            List<HumanBeingScript> harvester = Humans.Where(r => r.Hp > 0 && r.HumanJob == HumanClass.Harvester).ToList();
+            List<HumanBeingScript> warrior = Humans.Where(r => r.Hp > 0 && r.HumanJob == HumanClass.Warrior).ToList();
+            float foodRequiredHarvester = (harvester.Count * GameManagerScript.Instance.FoodRequiredHarvester) + (warrior.Count * GameManagerScript.Instance.FoodRequiredWarrior) + GameManagerScript.Instance.FoodRequiredHarvester;
+            float foodRequiredWarrior = (harvester.Count * GameManagerScript.Instance.FoodRequiredHarvester) + (warrior.Count * GameManagerScript.Instance.FoodRequiredWarrior) + GameManagerScript.Instance.FoodRequiredWarrior;
+            float populationState = PopulationDistribution.Evaluate(((float)Humans.Count + 1) / (float)GameManagerScript.Instance.MaxHumansForTribe);
+            if (HumansAlive.Count < GameManagerScript.Instance.MaxHumansForTribe)
+                if ((float)harvester.Count / (float)HumansAlive.Count < 1f - populationState && (float)warrior.Count / (float)HumansAlive.Count >= populationState)
+                {
+                    if (FoodStore > foodRequiredHarvester)
+                    {
+                        GameManagerScript.Instance.AddHumanUsingFood(this, HumanClass.Harvester);
+                    }
+                }
+                else if (FoodStore > foodRequiredWarrior)
+                {
+                    GameManagerScript.Instance.AddHumanUsingFood(this, HumanClass.Warrior);
+                }
+        }
+    }
     private void SetCultivateCircle(bool a)
     {
         CultivateCircle.gameObject.SetActive(false);
@@ -249,7 +275,7 @@ public class HouseScript : MonoBehaviour
                 human.TargetDest = new Vector3(t.x, 0, t.z);
                 human.GoToPosition(randomPos);
                 float distance = Vector3.Distance(human.transform.position, randomPos);
-                float time =  1/(Time.deltaTime * human.Speed / distance  * 10)/60;
+                float time = 1 / (Time.deltaTime * human.Speed / distance * 10) / 60;
                 if (time > timeHelper)
                 {
                     timeHelper = time;

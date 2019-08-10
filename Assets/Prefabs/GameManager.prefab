@@ -66,6 +66,39 @@ MonoBehaviour:
   DayTime: 100
   DayLightTime: 50
   Humans: 3
+  PopulationDistribution:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.11951617
+      value: -0.00041468558
+      inSlope: 0.030102042
+      outSlope: 0.7863875
+      tangentMode: 65
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1.0329884
+      value: 0.71792847
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   FoodPerDay: 50
   FoodDistanceFromOrigin:
     serializedVersion: 2

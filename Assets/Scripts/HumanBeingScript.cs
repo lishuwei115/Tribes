@@ -600,22 +600,13 @@ public class HumanBeingScript : MonoBehaviour
     {
         LayerMask layerMask = LayerMask.GetMask(layer);
         List<RaycastHit> ElementHitted = new List<RaycastHit>();
-        /*quaternion initialRot = transform.rotation;
-        for (int i = 0; i < 360; i += 20)
-        {
-            RaycastHit rayout;
-            if (Physics.Raycast(new Ray(transform.position, transform.forward), out rayout, Radius, layerMask))
-            {
-                ElementHitted.Add(rayout);
-                break;
-            }
-
-            transform.Rotate(new Vector3(0, 1, 0));
-
-        }
-        transform.rotation = initialRot;*/
+        
 
         ElementHitted = Physics.SphereCastAll(transform.position, Radius, transform.forward, Radius, layerMask).ToList<RaycastHit>();
+        if (layerMask == LayerMask.GetMask("Food"))
+        {
+            ElementHitted = ElementHitted.Where(r => r.collider.GetComponent<FoodScript>().Slots > 0).ToList();
+        }
         return ElementHitted;
     }
 

@@ -41,6 +41,7 @@ public class GameManagerScript : MonoBehaviour
 
     [Range(1, 500)]
     public int Humans = 10;
+    public AnimationCurve PopulationDistribution;
 
     //[Range(0, 500)]
     //public int NumberOfMonsters = 6;
@@ -264,8 +265,7 @@ public class GameManagerScript : MonoBehaviour
         //                                    HumansList.Where(r => r.gameObject.activeInHierarchy && r.HType == HumanType.Gratitude).ToList().Count.ToString(),
         //                                    HumansList.Where(r => r.gameObject.activeInHierarchy && r.HType == HumanType.Hate).ToList().Count.ToString());
 
-        //UIManagerScript.Instance.NumberOfEntity.text = "POPULATION: " + HumansList.Where(r => r.gameObject.activeInHierarchy).ToList().Count.ToString();
-        UIManagerScript.Instance.InfoDailyUpdate();
+        UIManagerScript.Instance.NumberOfEntity.text = "POPULATION: " + HumansList.Where(r => r.gameObject.activeInHierarchy).ToList().Count.ToString();
         UIButtonOver = false;
 
         foreach (BlockInput item in UIButtons.Where(r => r.isActiveAndEnabled))
@@ -532,7 +532,7 @@ public class GameManagerScript : MonoBehaviour
     }
     public void DayStarting()
     {
-        //UIManagerScript.Instance.InfoDailyUpdate(ReproducedLastDay.ToString(), DiedLastDay.ToString());
+        UIManagerScript.Instance.InfoDailyUpdate();
         ReproducedLastDay = 0;
         DiedLastDay = 0;
         HumansAtHome = 0;
