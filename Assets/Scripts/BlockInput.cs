@@ -10,7 +10,7 @@ public class BlockInput : MonoBehaviour
     {
 
         Rect rect = GetComponent<RectTransform>().rect;
-        rect = new Rect(GetComponent<RectTransform>().position.x, GetComponent<RectTransform>().position.y, rect.width, rect.height);
+        rect = new Rect(GetComponent<RectTransform>().position.x+(rect.width* GetComponent<RectTransform>().pivot.x), GetComponent<RectTransform>().position.y + (rect.height * GetComponent<RectTransform>().pivot.y), rect.width*(float)Screen.width/1920f, rect.height * (float)Screen.width / 1920f);
         if (rect.Contains(Input.mousePosition))
         {
             UIButtonOver = true;

@@ -9,6 +9,6 @@ public class CameraSizing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.localScale =new Vector3 (Screen.width*(Camera.main.orthographicSize/WorldmapCamera.Instance.ZoomBounds[1])* Multiplier, Screen.height * (Camera.main.orthographicSize / WorldmapCamera.Instance.ZoomBounds[1])* Multiplier, 1);
+        transform.localScale =new Vector3 (Screen.width*(Camera.main.orthographicSize/WorldmapCamera.Instance.ZoomBounds[1])* Multiplier / ((float)Screen.width / 1920f), Screen.height * (Camera.main.orthographicSize / WorldmapCamera.Instance.ZoomBounds[1])* Multiplier / ((float)Screen.width / 1920f), 1);
     }
 }

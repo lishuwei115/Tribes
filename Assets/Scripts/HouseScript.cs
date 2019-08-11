@@ -89,7 +89,7 @@ public class HouseScript : MonoBehaviour
                 }
             }
             HumansAlive = Humans.Where(x => x.Hp > 0).ToList();
-            if (HumansAlive.Count <= 0 && !Defeated)
+            if (HumansAlive.Count <= 0 && !Defeated && FoodStore<=0)
             {
                 //gameObject.SetActive(false);
                 HouseSkin.GetComponent<Animator>().SetBool("UIState", true);
@@ -102,11 +102,9 @@ public class HouseScript : MonoBehaviour
                     GameManagerScript.Instance.EnemyDefeated();
                 }
                 Defeated = true;
-
             }
         }
         AddPeople();
-
     }
 
 

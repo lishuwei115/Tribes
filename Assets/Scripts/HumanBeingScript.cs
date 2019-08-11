@@ -13,7 +13,9 @@ public class HumanBeingScript : MonoBehaviour
     public HousesTypes HouseType = HousesTypes.Red;
     public StateType CurrentState = StateType.Home;
     [Tooltip("radius of research")]
-    public float Radius = 2;
+    public float Radius = 20;
+    float RadiusFarmer = 20;
+    public float RadiusWarrior = 20;
     public float AttackDistance = 5f;
     public delegate void BackHome();
     public event BackHome FinallyBackHome;
@@ -21,7 +23,7 @@ public class HumanBeingScript : MonoBehaviour
     public delegate void Reproduced();
     public event Reproduced ReproducedEvent;
 
-    [Header("Info parameters")]
+    [Header("Info parameters - not twickable")]
     [Range(.1f, .9f)]
     [Tooltip("If 0.9 is Warrior, if 0.1 is Farmer, it will distribute the attack accordingly")]
     public float Specialization = 0.5f;
@@ -31,6 +33,8 @@ public class HumanBeingScript : MonoBehaviour
     public float PhisicalAttack;
     public float HarvestAttack;
     public float CultivationProgress = 0;
+    public float Hp;
+    public float BaseHp;
     public float Attack;
     public float Speed;
     public float TimeToGoBack;
@@ -44,34 +48,67 @@ public class HumanBeingScript : MonoBehaviour
     [Header("Twickable parameters")]
     [Range(0, 1000)]
     public float RayMaxDistance = 5;
+    
+    [Range(0, 1000)]
+    public float RayMaxDistanceWarrior = 5;
+    public float FoodRandomPointDistance = 4;
     [Range(0, 1000)]
     public float CultivationTarget = 300;
     public List<float> CultivationPercentage = new List<float> { 70, 90, 100 };
-    [Range(0, 100)]
-    public float FoodRandomPointDistance = 4;
-    public float RandomFoodGained;
+    float RandomFoodGained;
+    float HpMax;
+    float HpMin;
+    float StorageCapacity = 1;
+
+    [Header("Farmers parameters")]
+    [Range(0, 1000)]
+    private float RayMaxDistanceFarmer = 5;
     [Range(0, 30)]
-    public float StorageCapacity = 1;
+    public float StorageCapacityFarmer = 1;
     [Range(0, 1000)]
-    public float HpMax;
+    public float HpMaxFarmer;
     [Range(0, 1000)]
-    public float HpMin;
-
-    public float Hp;
-    public float BaseHp;
-
-    [Range(0, 1000)]
-    public float SpeedMax;
-    [Range(0, 1000)]
-    public float SpeedMin;
-    [Range(0, 1000)]
-    public float AttackMax;
-    [Range(0, 1000)]
-    public float AttackMin;
+    public float HpMinFarmer;
     [Range(1, 100)]
-    public float ReproductionPerc = 5;
+    public float ReproductionPercFarmer = 5;
+    [Range(0, 1000)]
+    public float SpeedMaxFarmer;
+    [Range(0, 1000)]
+    public float SpeedMinFarmer;
+    [Range(0, 1000)]
+    public float AttackMaxFarmer;
+    [Range(0, 1000)]
+    public float AttackMinFarmer;
+    public float AttackFrequencyFarmer = 1;
 
-    public float AttackFrequency = 1;
+
+    [Header("Warriors parameters")]
+    [Range(0, 30)]
+    public float StorageCapacityWarrior = 1;
+    [Range(0, 1000)]
+    public float HpMaxWarrior;
+    [Range(0, 1000)]
+    public float HpMinWarrior;
+
+    float SpeedMax;
+    float SpeedMin;
+    float AttackMax;
+    float AttackMin;
+    [Range(0, 1000)]
+    public float SpeedMaxWarrior;
+    [Range(0, 1000)]
+    public float SpeedMinWarrior;
+    [Range(0, 1000)]
+    public float AttackMaxWarrior;
+    [Range(0, 1000)]
+    public float AttackMinWarrior;
+    [Range(1, 100)]
+    public float ReproductionPercWarrior = 5;
+    float ReproductionPerc = 5;
+
+    public float AttackFrequencyWarrior = 1;
+    float AttackFrequency = 1;
+
     [Header("Harvest/warrior increments")]
 
 
@@ -238,6 +275,7 @@ public class HumanBeingScript : MonoBehaviour
 
         HPBar = GetComponentInChildren<HealthBarSprite>();
         HPBar.gameObject.SetActive(false);
+        InitializeWarriorFarmerParameters();
         InitializeRandomParameters();
         GameManagerScript.Instance.DayStarted += Instance_DayStarted;
         //Set Layer of allies and enemies
@@ -247,6 +285,41 @@ public class HumanBeingScript : MonoBehaviour
         InvisibilityIfHouse(Housecollisions);
         initialized = true;
     }
+
+    private void InitializeWarriorFarmerParameters()
+    {
+        if(HumanJob == HumanClass.Warrior)
+        {
+            Radius = RadiusWarrior;
+            RayMaxDistance = RayMaxDistanceWarrior;
+            StorageCapacity = StorageCapacityWarrior;
+            HpMin = HpMinWarrior;
+            HpMax = HpMaxWarrior;
+            SpeedMin = SpeedMinWarrior;
+            SpeedMax = SpeedMaxWarrior;
+            AttackMin = AttackMinWarrior;
+            AttackMax = AttackMaxWarrior;
+            ReproductionPerc = ReproductionPercWarrior;
+            AttackFrequency = AttackFrequencyWarrior;
+        }
+        else
+        {
+            Radius = RadiusFarmer;
+            RayMaxDistance = RayMaxDistanceFarmer;
+            StorageCapacity = StorageCapacityFarmer;
+            HpMin = HpMinFarmer;
+            HpMax = HpMaxFarmer;
+            SpeedMin = SpeedMinFarmer;
+            SpeedMax = SpeedMaxFarmer;
+            AttackMin = AttackMinFarmer;
+            AttackMax = AttackMaxFarmer;
+            ReproductionPerc = ReproductionPercFarmer;
+            AttackFrequency = AttackFrequencyFarmer;
+        }
+        
+
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -343,10 +416,12 @@ public class HumanBeingScript : MonoBehaviour
 
     private void InitializeRandomParameters()
     {
+
+
         SafetyTime = UnityEngine.Random.Range(0f, 10f);
         Speed = UnityEngine.Random.Range(SpeedMin, SpeedMax) / 10;
         Hp = UnityEngine.Random.Range(HpMin, HpMax);
-        Attack = UnityEngine.Random.Range(AttackMin, AttackMax);
+        Attack = UnityEngine.Random.Range(Attack, Attack);
         InitialHP = Hp;
         BaseHp = Hp;
     }
@@ -600,7 +675,7 @@ public class HumanBeingScript : MonoBehaviour
     {
         LayerMask layerMask = LayerMask.GetMask(layer);
         List<RaycastHit> ElementHitted = new List<RaycastHit>();
-        
+
 
         ElementHitted = Physics.SphereCastAll(transform.position, Radius, transform.forward, Radius, layerMask).ToList<RaycastHit>();
         if (layerMask == LayerMask.GetMask("Food"))

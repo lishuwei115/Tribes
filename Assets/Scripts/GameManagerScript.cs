@@ -57,7 +57,11 @@ public class GameManagerScript : MonoBehaviour
     public int MaxNumChildren = 3;
     [Range(0, 1000)]
     public int MaxHumansForTribe = 100;
-
+    [Header("Special Attack Parameters")]
+    [Range(0, 1000)]
+    public float RangeAttackDistance = 10;
+    [Range(0, 1000)]
+    public float RangeAttackDamage = 40;
     [Header("GameElements")]
     public List<HouseScript> Houses = new List<HouseScript>();
     public List<MonsterHouse> MonsterHouses;
@@ -113,6 +117,8 @@ public class GameManagerScript : MonoBehaviour
     public bool AttackIsEnable = true;
     public DestroyOverTime Pointer;
     private bool FoodRandomized;
+
+    Vector3 RangeAttackPosition;
 
     private void Awake()
     {
@@ -748,6 +754,25 @@ public class GameManagerScript : MonoBehaviour
                 }
             }
         }*/
+    }
+    public void SpecialAttack(Vector3 StartPosition, Vector3 EndPosition)
+    {
+        RangeAttackPosition = EndPosition;
+        Invoke("RangeAttack", 0.3f);
+    }
+
+    public void RangeAttack()
+    {
+        List<HumanBeingScript> humansInRange = HumansList.Where(r=>r.Hp>0 && Vector3.Distance(RangeAttackPosition,r.transform.position)<RangeAttackDistance).ToList();
+        List<MonsterScript> monsterInRange = Monsters.Where(r=>r.Hp>0 && Vector3.Distance(RangeAttackPosition,r.transform.position)<RangeAttackDistance).ToList();
+        foreach (HumanBeingScript h in humansInRange)
+        {
+            h.UnderAttack(RangeAttackDamage);
+        }
+        foreach (MonsterScript m in monsterInRange)
+        {
+            m.UnderAttack(RangeAttackDamage);
+        }
     }
 }
 public enum GameStateType
