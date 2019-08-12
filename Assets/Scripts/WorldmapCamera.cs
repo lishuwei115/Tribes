@@ -5,6 +5,8 @@ using DigitalRuby.Tween;
 using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
 using System.Linq;
+using System;
+using UnityEngine.SceneManagement;
 
 public class WorldmapCamera : MonoBehaviour
 {
@@ -48,6 +50,10 @@ public class WorldmapCamera : MonoBehaviour
     public BuildHouseManager BuildManager;
     public MovementState MovState = MovementState.none;
     bool Initialized = false;
+    [HideInInspector]
+    public List<FakeButton> FakeButtons = new List<FakeButton>();
+
+
     private void Awake()
     {
         Instance = this;
@@ -56,6 +62,15 @@ public class WorldmapCamera : MonoBehaviour
 
     void Start()
     {
+        InputManager_Riki.Instance.ButtonAPressedEvent += Instance_ButtonAPressedEvent;
+        InputManager_Riki.Instance.ButtonBPressedEvent += Instance_ButtonBPressedEvent;
+        InputManager_Riki.Instance.ButtonXPressedEvent += Instance_ButtonXPressedEvent;
+        InputManager_Riki.Instance.ButtonYPressedEvent += Instance_ButtonYPressedEvent;
+        InputManager_Riki.Instance.ButtonPlusPressedEvent += Instance_ButtonPlusPressedEvent;
+        InputManager_Riki.Instance.RightJoystickUsedEvent += Instance_RightJoystickUsedEvent;
+        InputManager_Riki.Instance.LeftJoystickUsedEvent += Instance_LeftJoystickUsedEvent;
+
+
         layerMask = LayerMask.GetMask("Ground", "BlockTouch");
         cam = GetComponent<Camera>();
 #if UNITY_ANDROID
@@ -71,7 +86,100 @@ public class WorldmapCamera : MonoBehaviour
 
     }
 
+    private void Instance_LeftJoystickUsedEvent(Vector2 LeftJoystic)
+    {
+        if (!GameManagerScript.Instance.Pause)
+        {
+            float relativeInc = cam.orthographicSize / ZoomBounds[1] / (ZoomBounds[1] / ZoomBounds[0]);
+            Vector3 move = new Vector3(transform.position.x + LeftJoystic.x * (PanSpeed / 10) * (float)(relativeInc) * (Screen.width / Screen.height), transform.position.y, transform.position.z + LeftJoystic.y * (PanSpeed / 10) * (float)(relativeInc) * (Screen.width / Screen.height));
+            transform.position = move;
+        }
 
+    }
+
+    private void Instance_RightJoystickUsedEvent(Vector2 joystick)
+    {
+        if (!GameManagerScript.Instance.Pause)
+        {
+            float f = GetComponent<Camera>().orthographicSize;
+            float proportionalScaling = f / ZoomBounds[1];
+            if ((f + (joystick.y * ((ZoomSpeedMouse) * proportionalScaling))) < ZoomBounds[1] && joystick.y < 0)
+            {
+                GetComponent<Camera>().orthographicSize = (f - (joystick.y * ((ZoomSpeedMouse) * proportionalScaling)));
+            }
+            else if ((f + (joystick.y * ((ZoomSpeedMouse) * proportionalScaling))) > ZoomBounds[0] && joystick.y > 0)
+            {
+                GetComponent<Camera>().orthographicSize = (f - (joystick.y * ((ZoomSpeedMouse) * proportionalScaling)));
+                //ZoomCamera((f + (joystick.y * ZoomSpeedMouse)) / ZoomBounds[1], ZoomSpeedMouse);
+            }
+        }
+
+    }
+
+    private void Instance_ButtonPlusPressedEvent()
+    {
+        GameManagerScript.Instance.Pause = GameManagerScript.Instance.Pause ? false : true;
+        UIManagerScript.Instance.PauseMenu.SetBool("UIState", GameManagerScript.Instance.Pause);
+        PressFakeButton("Pause", 0.1f);
+
+    }
+
+    private void Instance_ButtonYPressedEvent()
+    {
+        PressFakeButton("Pray", 0.1f);
+        if (!GameManagerScript.Instance.Pause)
+            GameManagerScript.Instance.Cultivate();
+    }
+
+    private void Instance_ButtonXPressedEvent()
+    {
+        if (!GameManagerScript.Instance.Pause)
+        {
+            PressFakeButton("AddFighter", 0.1f);
+            GameManagerScript.Instance.AddPlayerWarrior();
+        }
+    }
+
+    private void Instance_ButtonBPressedEvent()
+    {
+        if (!GameManagerScript.Instance.Pause)
+        {
+            PressFakeButton("AddFarmer", 0.1f);
+            GameManagerScript.Instance.AddPlayerHarvester();
+        }
+        else
+        {
+            GameManagerScript.Instance.Pause = GameManagerScript.Instance.Pause ? false : true;
+            UIManagerScript.Instance.PauseMenu.SetBool("UIState", GameManagerScript.Instance.Pause);
+            PressFakeButton("Pause", 0.1f);
+        }
+    }
+
+    private void Instance_ButtonAPressedEvent()
+    {
+        if (!GameManagerScript.Instance.Pause)
+        {
+            PressFakeButton("GoToPosition", 0.1f);
+            TribeToPoint(new Vector2(Camera.main.scaledPixelWidth / 2, Camera.main.scaledPixelHeight / 2));
+        }
+        else
+        {
+            RemoveEvents();
+            PressFakeButton("Reset", 0);
+            CancelInvoke();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+    public void RemoveEvents()
+    {
+        InputManager_Riki.Instance.ButtonAPressedEvent -= Instance_ButtonAPressedEvent;
+        InputManager_Riki.Instance.ButtonBPressedEvent -= Instance_ButtonBPressedEvent;
+        InputManager_Riki.Instance.ButtonXPressedEvent -= Instance_ButtonXPressedEvent;
+        InputManager_Riki.Instance.ButtonYPressedEvent -= Instance_ButtonYPressedEvent;
+        InputManager_Riki.Instance.ButtonPlusPressedEvent -= Instance_ButtonPlusPressedEvent;
+        InputManager_Riki.Instance.RightJoystickUsedEvent -= Instance_RightJoystickUsedEvent;
+        InputManager_Riki.Instance.LeftJoystickUsedEvent -= Instance_LeftJoystickUsedEvent;
+    }
     public void ResetCam()
     {
         ZoomCamera(40, ZoomSpeedTouch);
@@ -80,7 +188,16 @@ public class WorldmapCamera : MonoBehaviour
         //MoveToPos(new Vector3(-254, 90, -260), .1f);
         MoveToPos(new Vector3(playerHouse.position.x, 90, playerHouse.position.z), .1f);
     }
-
+    public void PressFakeButton(string name, float seconds)
+    {
+        foreach (FakeButton f in FakeButtons)
+        {
+            if(f.ID == name)
+            {
+                f.Press(seconds);
+            }
+        }
+    }
     private void FixedUpdate()
     {
         if (!GameManagerScript.Instance.Pause)
@@ -260,9 +377,6 @@ public class WorldmapCamera : MonoBehaviour
     }
     public void TribeToPoint()
     {
-
-
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane p = new Plane(Vector3.up, Vector3.zero);
         float dist = 0;
@@ -273,7 +387,35 @@ public class WorldmapCamera : MonoBehaviour
         bool found = Physics.Raycast(ray, out hit, 10000, layerMask);
         if (found)
         {
-            
+
+            GameManagerScript.Instance.MoveTribeTo(hit.point, GameManagerScript.Instance.PlayerHouse);
+            if (GameManagerScript.Instance.Pointer != null)
+            {
+                GameManagerScript.Instance.Pointer.gameObject.SetActive(false);
+                GameManagerScript.Instance.Pointer.transform.position = hit.point;
+                GameManagerScript.Instance.Pointer.gameObject.SetActive(true);
+            }
+            else
+            {
+                GameManagerScript.Instance.Pointer = (Instantiate(PrefabPointer, hit.point, PrefabPointer.rotation).GetComponent<DestroyOverTime>());
+
+            }
+        }
+
+    }
+    public void TribeToPoint(Vector2 Destination)
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Destination);
+        Plane p = new Plane(Vector3.up, Vector3.zero);
+        float dist = 0;
+        p.Raycast(ray, out dist);
+        //Debug.DrawRay(ray.origin, ray.direction * 100, Color.red, 30);
+        //point of input
+        RaycastHit hit;
+        bool found = Physics.Raycast(ray, out hit, 10000, layerMask);
+        if (found)
+        {
+
             GameManagerScript.Instance.MoveTribeTo(hit.point, GameManagerScript.Instance.PlayerHouse);
             if (GameManagerScript.Instance.Pointer != null)
             {

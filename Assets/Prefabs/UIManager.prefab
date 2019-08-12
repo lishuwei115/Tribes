@@ -906,7 +906,7 @@ GameObject:
   - component: {fileID: 1081324225}
   - component: {fileID: 1081324224}
   m_Layer: 0
-  m_Name: PauseButton
+  m_Name: Pause-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2974,6 +2974,7 @@ RectTransform:
   - {fileID: 550203404482836248}
   - {fileID: 224917756977893680}
   - {fileID: 4108626450163990535}
+  - {fileID: 3683313267766581013}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3041,6 +3042,7 @@ MonoBehaviour:
   Charity: {fileID: 114452129603238022}
   Gratitude: {fileID: 114689989674831424}
   Hate: {fileID: 114177485471925564}
+  PauseMenu: {fileID: 0}
   AddHouse: {fileID: 0}
   DayNumIterator: 0
   CardsPositioning:
@@ -10207,8 +10209,9 @@ GameObject:
   - component: {fileID: 2015970566}
   - component: {fileID: 2015970567}
   - component: {fileID: 2015970569}
+  - component: {fileID: 661510829}
   m_Layer: 0
-  m_Name: Fighters-Button
+  m_Name: X-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10377,6 +10380,21 @@ MonoBehaviour:
   AttackOn: {r: 0.67058825, g: 0.25882354, b: 0.04705883, a: 1}
   AttackOff: {r: 0.67058825, g: 0.25882354, b: 0.04705883, a: 0.5921569}
   MonsterNumber: {fileID: 0}
+--- !u!114 &661510829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3870974554381410134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8644fdafd48d548bbc0dadd89ac1e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Base: {r: 1, g: 1, b: 1, a: 1}
+  Pressed: {r: 1, g: 0, b: 0, a: 1}
+  ID: AddFighter
 --- !u!1 &3927727603055458309
 GameObject:
   m_ObjectHideFlags: 0
@@ -10622,8 +10640,9 @@ GameObject:
   - component: {fileID: 1963095234}
   - component: {fileID: 1963095235}
   - component: {fileID: 1963095237}
+  - component: {fileID: 1011664338}
   m_Layer: 0
-  m_Name: Workship-Button
+  m_Name: Y-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10792,6 +10811,21 @@ MonoBehaviour:
   AttackOn: {r: 0.67058825, g: 0.25882354, b: 0.04705883, a: 1}
   AttackOff: {r: 0.67058825, g: 0.25882354, b: 0.04705883, a: 0.5921569}
   MonsterNumber: {fileID: 0}
+--- !u!114 &1011664338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3966607707172813936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8644fdafd48d548bbc0dadd89ac1e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Base: {r: 1, g: 1, b: 1, a: 1}
+  Pressed: {r: 1, g: 0, b: 0, a: 1}
+  ID: Pray
 --- !u!1 &4032263047600200264
 GameObject:
   m_ObjectHideFlags: 0
@@ -11355,8 +11389,9 @@ GameObject:
   - component: {fileID: 34283884}
   - component: {fileID: 34283885}
   - component: {fileID: 34283887}
+  - component: {fileID: 834826785}
   m_Layer: 0
-  m_Name: Farmer-Button
+  m_Name: A-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11525,6 +11560,21 @@ MonoBehaviour:
   AttackOn: {r: 0.67058825, g: 0.25882354, b: 0.04705883, a: 1}
   AttackOff: {r: 0.67058825, g: 0.25882354, b: 0.04705883, a: 0.5921569}
   MonsterNumber: {fileID: 0}
+--- !u!114 &834826785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4449049780884096499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8644fdafd48d548bbc0dadd89ac1e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Base: {r: 1, g: 1, b: 1, a: 1}
+  Pressed: {r: 1, g: 0, b: 0, a: 1}
+  ID: GoToPosition
 --- !u!1 &4463851332213592024
 GameObject:
   m_ObjectHideFlags: 0
@@ -11540,8 +11590,9 @@ GameObject:
   - component: {fileID: 480789762}
   - component: {fileID: 480789763}
   - component: {fileID: 480789765}
+  - component: {fileID: 1003452495}
   m_Layer: 0
-  m_Name: Reset-Button
+  m_Name: B-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11721,6 +11772,21 @@ MonoBehaviour:
   AttackOn: {r: 0.67058825, g: 0.25882354, b: 0.04705883, a: 1}
   AttackOff: {r: 0.67058825, g: 0.25882354, b: 0.04705883, a: 0.5921569}
   MonsterNumber: {fileID: 0}
+--- !u!114 &1003452495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4463851332213592024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8644fdafd48d548bbc0dadd89ac1e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Base: {r: 1, g: 1, b: 1, a: 1}
+  Pressed: {r: 1, g: 0, b: 0, a: 1}
+  ID: AddFarmer
 --- !u!1 &4484188886215541669
 GameObject:
   m_ObjectHideFlags: 0
@@ -18545,6 +18611,96 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &8428708772865695004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3683313267766581013}
+  - component: {fileID: 6570880302112004757}
+  - component: {fileID: 4733487842200305729}
+  - component: {fileID: 8428708772865695005}
+  m_Layer: 0
+  m_Name: Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3683313267766581013
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8428708772865695004}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224776045018876338}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6570880302112004757
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8428708772865695004}
+  m_CullTransparentMesh: 0
+--- !u!114 &4733487842200305729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8428708772865695004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: d3f9f79929c708d45b0cc96aa9af8fdd, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!114 &8428708772865695005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8428708772865695004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8644fdafd48d548bbc0dadd89ac1e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Base: {r: 1, g: 1, b: 1, a: 1}
+  Pressed: {r: 1, g: 0, b: 0, a: 1}
+  ID: GoToPosition
 --- !u!1 &8447304957488984333
 GameObject:
   m_ObjectHideFlags: 0

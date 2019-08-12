@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581b3e3c96df0ef42aef16b63b27b87f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dontDestroyOnLoad: 1
+  _dontDestroyOnLoad: 0
   _userData:
     configVars:
       updateLoop: 1
@@ -573,6 +573,15 @@ MonoBehaviour:
       _behaviorId: 0
       _userAssignable: 1
       _categoryId: 0
+    - _id: 16
+      _name: +
+      _type: 1
+      _descriptiveName: +
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 0
     actionCategories:
     - _name: Default
       _descriptiveName: Default
@@ -582,7 +591,7 @@ MonoBehaviour:
     actionCategoryMap:
       list:
       - categoryId: 0
-        actionIds: 00000000030000000100000004000000020000000500000006000000070000000b0000000a00000009000000080000000f0000000e0000000d0000000c000000
+        actionIds: 00000000030000000100000004000000020000000500000006000000070000000b0000000a00000009000000080000000f0000000e0000000d0000000c00000010000000
     inputBehaviors:
     - _id: 0
       _name: Default
@@ -805,7 +814,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: -1
+        _actionId: 16
         _elementType: 1
         _elementIdentifierId: 15
         _axisRange: 0
@@ -1043,7 +1052,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: -1
+        _actionId: 16
         _elementType: 1
         _elementIdentifierId: 13
         _axisRange: 0
@@ -1148,7 +1157,7 @@ MonoBehaviour:
     controllerMapLayoutManagerRuleSets: []
     controllerMapEnablerRuleSets: []
     playerIdCounter: 2
-    actionIdCounter: 16
+    actionIdCounter: 17
     actionCategoryIdCounter: 1
     inputBehaviorIdCounter: 1
     mapCategoryIdCounter: 1
@@ -2175,6 +2184,11 @@ PrefabInstance:
       propertyPath: DeathLastDay
       value: 
       objectReference: {fileID: 5366871133174758137}
+    - target: {fileID: 114771240163488284, guid: 39d5715ccbea248df907be3014b7efd2,
+        type: 3}
+      propertyPath: PauseMenu
+      value: 
+      objectReference: {fileID: 3745776181835502954}
     - target: {fileID: 114771240163488284, guid: 39d5715ccbea248df907be3014b7efd2,
         type: 3}
       propertyPath: AddHouse
@@ -3344,6 +3358,11 @@ PrefabInstance:
     - target: {fileID: 1918255361419976041, guid: 1c79b7fdb9099744981eab236707f6c9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918255359464716513, guid: 1c79b7fdb9099744981eab236707f6c9,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -15,6 +15,8 @@ public class InputManager_Riki : MonoBehaviour
     public event ButtonXPressed ButtonXPressedEvent;
     public delegate void ButtonYPressed();
     public event ButtonYPressed ButtonYPressedEvent;
+    public delegate void ButtonPlusPressed();
+    public event ButtonPlusPressed ButtonPlusPressedEvent;
     public delegate void ButtonUpPressed();
     public event ButtonUpPressed ButtonUpPressedEvent;
     public delegate void ButtonDownPressed();
@@ -31,9 +33,9 @@ public class InputManager_Riki : MonoBehaviour
     public event ButtonLPressed ButtonLPressedEvent;
     public delegate void ButtonZLPressed();
     public event ButtonZLPressed ButtonZLPressedEvent;
-    public delegate void LeftJoystickUsed();
+    public delegate void LeftJoystickUsed(Vector2 LeftJoystic);
     public event LeftJoystickUsed LeftJoystickUsedEvent;
-    public delegate void RightJoystickUsed();
+    public delegate void RightJoystickUsed(Vector2 joystick);
     public event RightJoystickUsed RightJoystickUsedEvent;
 
 
@@ -52,10 +54,12 @@ public class InputManager_Riki : MonoBehaviour
 
     private void Update()
     {
+        Instance = this;
 #if UNITY_SWITCH
         if(player.GetButtonDown("A"))
         {
             Debug.Log(player.GetButtonDown("A"));
+            Debug.Log("A");
             if(ButtonAPressedEvent != null)
             {
                 ButtonAPressedEvent();
@@ -64,6 +68,7 @@ public class InputManager_Riki : MonoBehaviour
         if (player.GetButtonDown("B"))
         {
             Debug.Log(player.GetButtonDown("B"));
+            Debug.Log("B");
             if (ButtonBPressedEvent != null)
             {
                 ButtonBPressedEvent();
@@ -83,6 +88,14 @@ public class InputManager_Riki : MonoBehaviour
             if (ButtonYPressedEvent != null)
             {
                 ButtonYPressedEvent();
+            }
+        }
+        if (player.GetButtonDown("+"))
+        {
+            Debug.Log(player.GetButtonDown("+"));
+            if (ButtonPlusPressedEvent != null)
+            {
+                ButtonPlusPressedEvent();
             }
         }
         if (player.GetButtonDown("R"))
@@ -155,7 +168,7 @@ public class InputManager_Riki : MonoBehaviour
             Debug.Log(player.GetButtonDown("Left Joystic"));
             if (LeftJoystickUsedEvent != null)
             {
-                LeftJoystickUsedEvent();
+                LeftJoystickUsedEvent(LeftJoystic);
             }
         }
         RightJoystic = new Vector2(player.GetAxis("Right Move Horizontal"), player.GetAxis("Right Move Vertical"));
@@ -164,7 +177,7 @@ public class InputManager_Riki : MonoBehaviour
             Debug.Log(player.GetButtonDown("Right Joystic"));
             if (RightJoystickUsedEvent != null)
             {
-                RightJoystickUsedEvent();
+                RightJoystickUsedEvent(RightJoystic);
             }
         }
 

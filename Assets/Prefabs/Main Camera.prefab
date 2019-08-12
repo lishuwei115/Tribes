@@ -108,10 +108,10 @@ MonoBehaviour:
   - -200
   - 200
   BoundsZ:
-  - -210
-  - 210
+  - -150
+  - 150
   ZoomBounds:
-  - 8
+  - 20
   - 400
   Val: 200
   cam: {fileID: 4694765721180042863}
@@ -122,6 +122,7 @@ MonoBehaviour:
   IsTouch: 0
   BuildManager: {fileID: 0}
   MovState: 0
+  FakeButtons: []
 --- !u!1 &4694765721747693838
 GameObject:
   m_ObjectHideFlags: 0

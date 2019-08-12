@@ -19,6 +19,7 @@ public class UIManagerScript : MonoBehaviour
     public TextMeshProUGUI Charity;
     public TextMeshProUGUI Gratitude;
     public TextMeshProUGUI Hate;
+    public Animator PauseMenu;
     public Button AddHouse;
     public int DayNumIterator = 0;
     public CardFactionScript[] CardsPositioning;
@@ -31,6 +32,7 @@ public class UIManagerScript : MonoBehaviour
     public float GreenFood = 0;
     public float YellowFood = 0;
     public float BlueFood = 0;
+
     private void Awake()
     {
         Instance = this;

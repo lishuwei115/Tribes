@@ -54,6 +54,7 @@ public class HouseScript : MonoBehaviour
     }
     private void Start()
     {
+
         CloseBuildingCircle(false);
         CloseGuardianCircle(false);
         UIManagerScript.Instance.UpdateFood();
@@ -194,15 +195,10 @@ public class HouseScript : MonoBehaviour
         foreach (HumanBeingScript human in humans)
         {
             float distance = Vector3.Distance(human.transform.position, transform.position);
-            SetCultivateCircle(true);
-            if (distance < CultivateRadiusMax && human.gameObject.activeInHierarchy && (human.CurrentState != StateType.ComingBackHome && human.CurrentState != StateType.Home))
+            //SetCultivateCircle(true);
+            if (/*distance < CultivateRadiusMax && */human.gameObject.activeInHierarchy && (human.CurrentState != StateType.ComingBackHome && human.CurrentState != StateType.Home))
             {
                 human.Cultivate();
-                /*human.CurrentState = StateType.FollowInstruction;
-                human.TargetFoodDest = null;
-                human.TargetHuman = null;
-                human.TargetDest = transform;
-                human.GoToPosition(transform);*/
             }
         }
     }
