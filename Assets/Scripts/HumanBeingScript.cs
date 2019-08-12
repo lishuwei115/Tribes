@@ -13,8 +13,8 @@ public class HumanBeingScript : MonoBehaviour
     public HousesTypes HouseType = HousesTypes.Red;
     public StateType CurrentState = StateType.Home;
     [Tooltip("radius of research")]
-    public float Radius = 20;
-    float RadiusFarmer = 20;
+    float Radius = 20;
+    public float RadiusFarmer = 20;
     public float RadiusWarrior = 20;
     public float AttackDistance = 5f;
     public delegate void BackHome();
@@ -421,7 +421,7 @@ public class HumanBeingScript : MonoBehaviour
         SafetyTime = UnityEngine.Random.Range(0f, 10f);
         Speed = UnityEngine.Random.Range(SpeedMin, SpeedMax) / 10;
         Hp = UnityEngine.Random.Range(HpMin, HpMax);
-        Attack = UnityEngine.Random.Range(Attack, Attack);
+        Attack = UnityEngine.Random.Range(AttackMin, AttackMax);
         InitialHP = Hp;
         BaseHp = Hp;
     }

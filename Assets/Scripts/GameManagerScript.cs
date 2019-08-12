@@ -120,6 +120,8 @@ public class GameManagerScript : MonoBehaviour
 
     Vector3 RangeAttackPosition;
 
+    public bool Worship = false;
+
     private void Awake()
     {
         Instance = this;
@@ -219,6 +221,8 @@ public class GameManagerScript : MonoBehaviour
     public void Cultivate()
     {
         List<HumanBeingScript> playerHumans = HumansList.Where(r => r.HouseType == PlayerHouse && r.isActiveAndEnabled).ToList();
+        Worship = true;
+        AudioManager.Instance.StartWorship();
         foreach (HouseScript house in Houses)
         {
             if (house.HouseType == PlayerHouse)
@@ -263,6 +267,14 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Worship)
+        {
+            if(HumansList.Where(h=> h.CurrentState == StateType.Cultivating).ToList().Count <= 0)
+            {
+                AudioManager.Instance.StopWorship();
+                Worship = false;
+            }
+        }
         if (Input.GetKeyUp(KeyCode.A))
         {
             SceneManager.LoadScene(0);
@@ -551,7 +563,7 @@ public class GameManagerScript : MonoBehaviour
         DayTimeCoroutine = DayTimerCo();
         StartCoroutine(DayTimeCoroutine);
         UIManagerScript.Instance.UpdatePeople();
-        AudioManager.Instance.StartDay();
+        //AudioManager.Instance.StartDay();
     }
     public IEnumerator DayTimerCo()
     {

@@ -302,7 +302,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HouseType: 1
   CurrentState: 0
-  Radius: 20
+  RadiusFarmer: 20
+  RadiusWarrior: 20
   AttackDistance: 10
   Specialization: 0.5
   HumanJob: 0
@@ -311,6 +312,8 @@ MonoBehaviour:
   PhisicalAttack: 0
   HarvestAttack: 0
   CultivationProgress: 0
+  Hp: 0
+  BaseHp: 0
   Attack: 0
   Speed: 1
   TimeToGoBack: 0
@@ -319,25 +322,32 @@ MonoBehaviour:
   DeliverFood: 0
   FoodLife: 0
   TransparentDistanceFromHome: 3
-  RayMaxDistance: 60
+  RayMaxDistance: 5
+  RayMaxDistanceWarrior: 5
+  FoodRandomPointDistance: 6
   CultivationTarget: 200
   CultivationPercentage:
   - 70
   - 90
   - 100
-  FoodRandomPointDistance: 6
-  RandomFoodGained: 0
-  StorageCapacity: 3
-  HpMax: 60
-  HpMin: 50
-  Hp: 0
-  BaseHp: 0
-  SpeedMax: 30
-  SpeedMin: 20
-  AttackMax: 1
-  AttackMin: 0.5
-  ReproductionPerc: 50
-  AttackFrequency: 0.3
+  StorageCapacityFarmer: 3
+  HpMaxFarmer: 60
+  HpMinFarmer: 40
+  ReproductionPercFarmer: 5
+  SpeedMaxFarmer: 20
+  SpeedMinFarmer: 10
+  AttackMaxFarmer: 10
+  AttackMinFarmer: 5
+  AttackFrequencyFarmer: 0.3
+  StorageCapacityWarrior: 3
+  HpMaxWarrior: 80
+  HpMinWarrior: 50
+  SpeedMaxWarrior: 30
+  SpeedMinWarrior: 20
+  AttackMaxWarrior: 10
+  AttackMinWarrior: 5
+  ReproductionPercWarrior: 5
+  AttackFrequencyWarrior: 0.3
   HarvestIncrement: 0
   WarriorIncrement: 0
   WarriorValue: 0.6

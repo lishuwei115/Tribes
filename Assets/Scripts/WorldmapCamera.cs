@@ -91,7 +91,7 @@ public class WorldmapCamera : MonoBehaviour
         if (!GameManagerScript.Instance.Pause)
         {
             float relativeInc = cam.orthographicSize / ZoomBounds[1] / (ZoomBounds[1] / ZoomBounds[0]);
-            Vector3 move = new Vector3(transform.position.x + LeftJoystic.x * (PanSpeed / 10) * (float)(relativeInc) * (Screen.width / Screen.height), transform.position.y, transform.position.z + LeftJoystic.y * (PanSpeed / 10) * (float)(relativeInc) * (Screen.width / Screen.height));
+            Vector3 move = new Vector3(transform.position.x + LeftJoystic.x * (PanSpeed / 50) * (float)(relativeInc) * (Screen.width / Screen.height), transform.position.y, transform.position.z + LeftJoystic.y * (PanSpeed / 50) * (float)(relativeInc) * (Screen.width / Screen.height));
             transform.position = move;
         }
 
