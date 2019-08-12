@@ -17,7 +17,12 @@ public class PlayerActionCaller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        InputManager_Riki.Instance.ButtonAPressedEvent += Instance_ButtonAPressedEvent;
+    }
+
+    private void Instance_ButtonAPressedEvent()
+    {
+        Debug.Log("add farmer");
     }
 
     // Update is called once per frame
