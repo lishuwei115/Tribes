@@ -50,6 +50,7 @@ MonoBehaviour:
     type: 3}
   HousesHolder: {fileID: 0}
   MapBorder: {fileID: 2135510191290255344}
+  HumanSelected: 1
   StateOfGame: 0
   PlayerHouse: 2
   enemyDefeated: 0
@@ -186,6 +187,7 @@ MonoBehaviour:
   Breeding: 1
   AttackIsEnable: 1
   Pointer: {fileID: 0}
+  PointerBlue: {fileID: 0}
   Worship: 0
 --- !u!114 &3393260075159848030
 MonoBehaviour:

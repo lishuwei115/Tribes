@@ -100,6 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrefabPointer: {fileID: 3497863233429765967, guid: 767ba97f6fc6d54418f4681729b7e27e,
     type: 3}
+  PrefabPointerBlue: {fileID: 3497863233429765967, guid: d871b87756bdc9f4ab048cb98892c878,
+    type: 3}
   IsBuilding: 0
   PanSpeed: 23000
   ZoomSpeedTouch: 0.1

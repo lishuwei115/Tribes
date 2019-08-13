@@ -14,6 +14,7 @@ public class WorldmapCamera : MonoBehaviour
 
     public static WorldmapCamera Instance;
     public Transform PrefabPointer;
+    public Transform PrefabPointerBlue;
     public bool IsBuilding = false;
     public float PanSpeed = 20f;
     public float ZoomSpeedTouch = 0.1f;
@@ -70,7 +71,8 @@ public class WorldmapCamera : MonoBehaviour
         InputManager_Riki.Instance.ButtonPlusPressedEvent += Instance_ButtonPlusPressedEvent;
         InputManager_Riki.Instance.RightJoystickUsedEvent += Instance_RightJoystickUsedEvent;
         InputManager_Riki.Instance.LeftJoystickUsedEvent += Instance_LeftJoystickUsedEvent;
-
+        InputManager_Riki.Instance.ButtonLPressedEvent += Instance_ButtonLPressedEvent;
+        InputManager_Riki.Instance.ButtonRPressedEvent += Instance_ButtonRPressedEvent;
 
         layerMask = LayerMask.GetMask("Ground", "BlockTouch");
         cam = GetComponent<Camera>();
@@ -85,6 +87,16 @@ public class WorldmapCamera : MonoBehaviour
 
 #endif
 
+    }
+
+    private void Instance_ButtonRPressedEvent()
+    {
+        GameManagerScript.Instance.HumanSelected = HumanClass.Warrior;
+    }
+
+    private void Instance_ButtonLPressedEvent()
+    {
+        GameManagerScript.Instance.HumanSelected = HumanClass.Harvester;
     }
 
     private void Instance_LeftJoystickUsedEvent(Vector2 LeftJoystic)
@@ -421,17 +433,35 @@ public class WorldmapCamera : MonoBehaviour
         {
 
             GameManagerScript.Instance.MoveTribeTo(hit.point, GameManagerScript.Instance.PlayerHouse);
-            if (GameManagerScript.Instance.Pointer != null)
+            if(GameManagerScript.Instance.HumanSelected == HumanClass.Warrior)
             {
-                GameManagerScript.Instance.Pointer.gameObject.SetActive(false);
-                GameManagerScript.Instance.Pointer.transform.position = hit.point;
-                GameManagerScript.Instance.Pointer.gameObject.SetActive(true);
+                if (GameManagerScript.Instance.Pointer != null)
+                {
+                    GameManagerScript.Instance.Pointer.gameObject.SetActive(false);
+                    GameManagerScript.Instance.Pointer.transform.position = hit.point;
+                    GameManagerScript.Instance.Pointer.gameObject.SetActive(true);
+                }
+                else
+                {
+                    GameManagerScript.Instance.Pointer = (Instantiate(PrefabPointer, hit.point, PrefabPointer.rotation).GetComponent<DestroyOverTime>());
+
+                }
             }
             else
             {
-                GameManagerScript.Instance.Pointer = (Instantiate(PrefabPointer, hit.point, PrefabPointer.rotation).GetComponent<DestroyOverTime>());
+                if (GameManagerScript.Instance.PointerBlue != null)
+                {
+                    GameManagerScript.Instance.PointerBlue.gameObject.SetActive(false);
+                    GameManagerScript.Instance.PointerBlue.transform.position = hit.point;
+                    GameManagerScript.Instance.PointerBlue.gameObject.SetActive(true);
+                }
+                else
+                {
+                    GameManagerScript.Instance.PointerBlue = (Instantiate(PrefabPointerBlue, hit.point, PrefabPointerBlue.rotation).GetComponent<DestroyOverTime>());
 
+                }
             }
+            
         }
 
     }

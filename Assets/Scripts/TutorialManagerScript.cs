@@ -11,7 +11,7 @@ public class TutorialManagerScript : MonoBehaviour
     {
         Instance = this;
         TutorialPages = GetComponentsInChildren<TutorialPage>();
-        GoToFirstPage();
+        //GoToFirstPage();
     }
 
     public void GoToFirstPage()

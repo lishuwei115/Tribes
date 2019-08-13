@@ -211,7 +211,7 @@ public class HouseScript : MonoBehaviour
             List<HumanBeingScript> warrior = Humans.Where(r => r.Hp > 0 && r.HumanJob == HumanClass.Warrior).ToList();
             float foodRequiredHarvester = (harvester.Count * GameManagerScript.Instance.FoodRequiredHarvester) + (warrior.Count * GameManagerScript.Instance.FoodRequiredWarrior) + GameManagerScript.Instance.FoodRequiredHarvester;
             float foodRequiredWarrior = (harvester.Count * GameManagerScript.Instance.FoodRequiredHarvester) + (warrior.Count * GameManagerScript.Instance.FoodRequiredWarrior) + GameManagerScript.Instance.FoodRequiredWarrior;
-            float populationState = PopulationDistribution.Evaluate(((float)Humans.Count + 1) / (float)GameManagerScript.Instance.MaxHumansForTribe);
+            float populationState = PopulationDistribution.Evaluate(((float)Humans.Where(r => r.Hp > 0).ToList().Count + 1) / (float)GameManagerScript.Instance.MaxHumansForTribe);
             if (HumansAlive.Count < GameManagerScript.Instance.MaxHumansForTribe)
                 if ((float)harvester.Count / (float)HumansAlive.Count < 1f - populationState && (float)warrior.Count / (float)HumansAlive.Count >= populationState)
                 {
@@ -257,8 +257,13 @@ public class HouseScript : MonoBehaviour
     {
         Vector3 randomPos = t;
         float timeHelper = 0;
-        List<HumanBeingScript> warriors = Humans.Where(r => r.Hp > 0 && r.HumanJob == HumanClass.Warrior).ToList();
-        foreach (HumanBeingScript human in warriors)
+        
+        List<HumanBeingScript> humans;
+        if (GameManagerScript.Instance.HumanSelected == HumanClass.Harvester && IsPlayer)
+            humans = Humans.Where(r => r.Hp > 0 && r.HumanJob == HumanClass.Harvester).ToList();
+        else
+            humans = Humans.Where(r => r.Hp > 0 && r.HumanJob == HumanClass.Warrior).ToList();
+        foreach (HumanBeingScript human in humans)
         {
             if (human.gameObject.activeInHierarchy && (human.CurrentState != StateType.ComingBackHome && human.CurrentState != StateType.Home))
             {

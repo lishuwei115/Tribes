@@ -46,11 +46,7 @@ public class HumanBeingScript : MonoBehaviour
     public float TransparentDistanceFromHome;
 
     [Header("Twickable parameters")]
-    [Range(0, 1000)]
-    public float RayMaxDistance = 5;
-    
-    [Range(0, 1000)]
-    public float RayMaxDistanceWarrior = 5;
+
     public float FoodRandomPointDistance = 4;
     [Range(0, 1000)]
     public float CultivationTarget = 300;
@@ -61,8 +57,9 @@ public class HumanBeingScript : MonoBehaviour
     float StorageCapacity = 1;
 
     [Header("Farmers parameters")]
+
     [Range(0, 1000)]
-    private float RayMaxDistanceFarmer = 5;
+    public float RayMaxDistanceFarmer = 5;
     [Range(0, 30)]
     public float StorageCapacityFarmer = 1;
     [Range(0, 1000)]
@@ -83,6 +80,8 @@ public class HumanBeingScript : MonoBehaviour
 
 
     [Header("Warriors parameters")]
+    [Range(0, 1000)]
+    public float RayMaxDistanceWarrior = 5;
     [Range(0, 30)]
     public float StorageCapacityWarrior = 1;
     [Range(0, 1000)]
@@ -253,8 +252,8 @@ public class HumanBeingScript : MonoBehaviour
     public int PathIndex = 0;
     AudioSource HumanAudio;
     public bool WaitingForOthers;
-
-     AudioClip AttackSound;
+    float RayMaxDistance = 5;
+    AudioClip AttackSound;
      AudioClip FarmSound;
      AudioClip DeathSound;
      AudioClip BornSound;
@@ -690,7 +689,7 @@ private void Awake()
         List<RaycastHit> ElementHitted = new List<RaycastHit>();
 
 
-        ElementHitted = Physics.SphereCastAll(transform.position, Radius, transform.forward, 0, layerMask).ToList<RaycastHit>();
+        ElementHitted = Physics.SphereCastAll(transform.position, Radius, transform.forward, Radius, layerMask).ToList<RaycastHit>();
         if (layerMask == LayerMask.GetMask("Food"))
         {
             ElementHitted = ElementHitted.Where(r => r.collider.GetComponent<FoodScript>().Slots > 0).ToList();
@@ -704,7 +703,7 @@ private void Awake()
 
         List<RaycastHit> Enemy = new List<RaycastHit>();
 
-        Enemy = Physics.SphereCastAll(transform.position, Radius, transform.forward, 0, EnemyLayer).ToList<RaycastHit>();
+        Enemy = Physics.SphereCastAll(transform.position, Radius, transform.forward, Radius, EnemyLayer).ToList<RaycastHit>();
         //List < RaycastHit > humans = Enemy.ToArray< RaycastHit>().Where(a => (a.collider.GetComponent<HumanBeingScript>()&&)).ToList();
         List<RaycastHit> EnemyNotInHome = new List<RaycastHit>();
         foreach (RaycastHit r in Enemy)

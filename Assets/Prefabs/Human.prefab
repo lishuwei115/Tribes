@@ -323,14 +323,13 @@ MonoBehaviour:
   DeliverFood: 0
   FoodLife: 0
   TransparentDistanceFromHome: 3
-  RayMaxDistance: 20
-  RayMaxDistanceWarrior: 20
   FoodRandomPointDistance: 6
   CultivationTarget: 200
   CultivationPercentage:
   - 70
   - 90
   - 100
+  RayMaxDistanceFarmer: 40
   StorageCapacityFarmer: 3
   HpMaxFarmer: 60
   HpMinFarmer: 40
@@ -340,6 +339,7 @@ MonoBehaviour:
   AttackMaxFarmer: 10
   AttackMinFarmer: 5
   AttackFrequencyFarmer: 0.3
+  RayMaxDistanceWarrior: 20
   StorageCapacityWarrior: 3
   HpMaxWarrior: 80
   HpMinWarrior: 50

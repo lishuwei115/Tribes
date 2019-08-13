@@ -11,6 +11,7 @@ public class GameManagerScript : MonoBehaviour
     public Transform HousePrefab;
     public Transform HousesHolder;
     public Transform MapBorder;
+    public HumanClass HumanSelected = HumanClass.Harvester;
     public GameState StateOfGame = GameState.Playing;
     public delegate void StartDay();
     public event StartDay DayStarted;
@@ -116,6 +117,7 @@ public class GameManagerScript : MonoBehaviour
     public bool Breeding = true;
     public bool AttackIsEnable = true;
     public DestroyOverTime Pointer;
+    public DestroyOverTime PointerBlue;
     private bool FoodRandomized;
 
     Vector3 RangeAttackPosition;
