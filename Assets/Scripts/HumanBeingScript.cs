@@ -251,12 +251,19 @@ public class HumanBeingScript : MonoBehaviour
     public float TimetoReachInstruction;
     public List<Vector3> PathToHome;
     public int PathIndex = 0;
+    AudioSource HumanAudio;
+    public bool WaitingForOthers;
 
-    public bool WaitingForOthers { get; private set; }
+     AudioClip AttackSound;
+     AudioClip FarmSound;
+     AudioClip DeathSound;
+     AudioClip BornSound;
+     AudioClip WorshipSound;
 
-    private void Awake()
+private void Awake()
     {
         MR = GetComponent<MeshRenderer>();
+        HumanAudio = GetComponent<AudioSource>();
     }
 
 
@@ -272,7 +279,6 @@ public class HumanBeingScript : MonoBehaviour
     {
         HarvestBar = GetComponentInChildren<HarvestingBarSprite>();
         HarvestBar.gameObject.SetActive(false);
-
         HPBar = GetComponentInChildren<HealthBarSprite>();
         HPBar.gameObject.SetActive(false);
         InitializeWarriorFarmerParameters();
@@ -351,6 +357,7 @@ public class HumanBeingScript : MonoBehaviour
                     GameManagerScript.Instance.DeadList.Add(AnimController);
                     AnimController.SetInteger("UIState", 3);
                 }
+                AnimController.gameObject.GetComponent<AudioSource>().PlayOneShot(DeathSound);
                 GameManagerScript.Instance.HumanBeingDied();
                 gameObject.SetActive(false);
                 //Destroy(gameObject);
@@ -436,7 +443,13 @@ public class HumanBeingScript : MonoBehaviour
             AnimController.SetInteger("UIState", 0);
         }
         ChangeClass(HumanJob);
-
+        Skin sInfo = SkinManager.Instance.GetSkinInfo(HouseType);
+        AttackSound = sInfo.Attack;
+        FarmSound = sInfo.Farm;
+        DeathSound = sInfo.Death;
+        BornSound = sInfo.Born;
+        WorshipSound = sInfo.Worship;
+        HumanAudio.PlayOneShot(BornSound);
     }
     public void ChangeClass(HumanClass h)
     {
@@ -677,7 +690,7 @@ public class HumanBeingScript : MonoBehaviour
         List<RaycastHit> ElementHitted = new List<RaycastHit>();
 
 
-        ElementHitted = Physics.SphereCastAll(transform.position, Radius, transform.forward, Radius, layerMask).ToList<RaycastHit>();
+        ElementHitted = Physics.SphereCastAll(transform.position, Radius, transform.forward, 0, layerMask).ToList<RaycastHit>();
         if (layerMask == LayerMask.GetMask("Food"))
         {
             ElementHitted = ElementHitted.Where(r => r.collider.GetComponent<FoodScript>().Slots > 0).ToList();
@@ -691,7 +704,7 @@ public class HumanBeingScript : MonoBehaviour
 
         List<RaycastHit> Enemy = new List<RaycastHit>();
 
-        Enemy = Physics.SphereCastAll(transform.position, Radius, transform.forward, Radius, EnemyLayer).ToList<RaycastHit>();
+        Enemy = Physics.SphereCastAll(transform.position, Radius, transform.forward, 0, EnemyLayer).ToList<RaycastHit>();
         //List < RaycastHit > humans = Enemy.ToArray< RaycastHit>().Where(a => (a.collider.GetComponent<HumanBeingScript>()&&)).ToList();
         List<RaycastHit> EnemyNotInHome = new List<RaycastHit>();
         foreach (RaycastHit r in Enemy)
@@ -1236,6 +1249,9 @@ public class HumanBeingScript : MonoBehaviour
             InvisibilityIfHouse(Housecollisions);
             while (FoodLife > 0)
             {
+
+                if (!HumanAudio.isPlaying)
+                    HumanAudio.PlayOneShot(FarmSound);
                 HarvestBar.gameObject.SetActive(true);
                 HarvestBar.UpdateHarvest(FoodLife, food.Hardness, HouseType);
                 if (!GameManagerScript.Instance.Pause)
@@ -1332,6 +1348,8 @@ public class HumanBeingScript : MonoBehaviour
             //move towars target
             while (CultivationProgress < CultivationTarget * Specialization * 2)
             {
+                if(!HumanAudio.isPlaying)
+                    HumanAudio.PlayOneShot(WorshipSound);
                 HarvestBar.gameObject.SetActive(true);
                 HarvestBar.UpdateHarvest(CultivationProgress, CultivationTarget * Specialization * 2, HouseType);
                 if (!GameManagerScript.Instance.Pause)
@@ -1371,7 +1389,9 @@ public class HumanBeingScript : MonoBehaviour
         {
             TargetHouse.FoodStore += Food;
             UIManagerScript.Instance.UpdateFood();
-            Food = 0;/*
+            Food = 0;
+            Cultivate();
+            /*
             CurrentState = StateType.ComingBackHome;
             DeliverFood = true;
             GoToPosition(TargetHouse.transform.position);*/
@@ -1480,6 +1500,8 @@ public class HumanBeingScript : MonoBehaviour
 
                     CanIAttack = false;
                     Invoke("AttackAction", AttackFrequency);
+                    if (!HumanAudio.isPlaying)
+                        HumanAudio.PlayOneShot(AttackSound);
                     if (humanEnemy)
                     {
                         Enemy.UnderAttack(PhisicalAttack);

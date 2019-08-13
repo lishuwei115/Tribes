@@ -53,4 +53,9 @@ public class Skin
     public Color TribeColor = Color.red;
     public Transform HousePrefab;
     public Transform Flower;
+    public AudioClip Attack;
+    public AudioClip Farm;
+    public AudioClip Death;
+    public AudioClip Born;
+    public AudioClip Worship;
 }

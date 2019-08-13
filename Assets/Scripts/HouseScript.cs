@@ -119,7 +119,7 @@ public class HouseScript : MonoBehaviour
         else
         {
             List<HumanBeingScript> living = Humans.Where(x => x.Hp > 0).ToList();
-            List<HumanBeingScript> Warrior = Humans.Where(x => x.HumanJob == HumanClass.Warrior).ToList();
+            List<HumanBeingScript> Warrior = living.Where(x => x.HumanJob == HumanClass.Warrior).ToList();
 
             if (FoodStore > (living.Count - Warrior.Count) + (Warrior.Count * GameManagerScript.Instance.FoodRequiredWarrior))
             {

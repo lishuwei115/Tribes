@@ -24,6 +24,7 @@ public class WorldmapCamera : MonoBehaviour
     public float[] BoundsZ = new float[] { 0f, 18f };
     float[] ProportionalBoundsZ = new float[] { 0f, 18f };
     public float[] ZoomBounds = new float[] { 30f, 60f };
+    public Vector2 DistanceBounds = new Vector2( 1f, 90f );
     public float Val = 40;
 
     public Camera cam;
@@ -231,6 +232,9 @@ public class WorldmapCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 position = transform.position;
+        position.y = DistanceBounds[0] + ((DistanceBounds[1]- DistanceBounds[0]) * (GetComponent<Camera>().orthographicSize / ZoomBounds[1]));
+        transform.position = position;
     }
 
     public void FinishBuilding()

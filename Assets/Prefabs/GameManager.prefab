@@ -155,6 +155,8 @@ MonoBehaviour:
   FoodRaySpawn: 120
   MaxNumChildren: 2
   MaxHumansForTribe: 100
+  RangeAttackDistance: 10
+  RangeAttackDamage: 40
   Houses:
   - {fileID: 0}
   - {fileID: 0}
@@ -184,6 +186,7 @@ MonoBehaviour:
   Breeding: 1
   AttackIsEnable: 1
   Pointer: {fileID: 0}
+  Worship: 0
 --- !u!114 &3393260075159848030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,7 +203,7 @@ MonoBehaviour:
   - House: 0
     SkinPrefab: {fileID: 4085973818741542, guid: 51a4f340725edec439eb76464b487b13,
       type: 3}
-    HarvestPrefab: {fileID: 4085973818741542, guid: 94456c65439a16e458a80b0ed7424f08,
+    HarvestPrefab: {fileID: 4085973818741542, guid: 51a4f340725edec439eb76464b487b13,
       type: 3}
     WarriorPrefab: {fileID: 4085973818741542, guid: 02d53de4b92f16d47960297837985e79,
       type: 3}
@@ -209,10 +212,15 @@ MonoBehaviour:
       type: 3}
     Flower: {fileID: 7285420253788441266, guid: 83cfe42acfeaf7f47ae3dabae5543575,
       type: 3}
+    Attack: {fileID: 8300000, guid: 23774f25ed5a0be439827e0cefeaa788, type: 3}
+    Farm: {fileID: 8300000, guid: 1afb15644319c2841818ca4923b0e737, type: 3}
+    Death: {fileID: 8300000, guid: a636b49ca1f311a40836176b8a6f0031, type: 3}
+    Born: {fileID: 8300000, guid: afac273c9f33b8549952fc10dec4caa3, type: 3}
+    Worship: {fileID: 8300000, guid: 7a0bd6e0b1e7b8449b9c29a1e64b2733, type: 3}
   - House: 2
     SkinPrefab: {fileID: 2774551131370630588, guid: 48d67ef5a06868248bc4338bd5d0e5f3,
       type: 3}
-    HarvestPrefab: {fileID: 2774551131370630588, guid: bb18d418f44dcc047b8048a053561d6f,
+    HarvestPrefab: {fileID: 2774551131370630588, guid: 48d67ef5a06868248bc4338bd5d0e5f3,
       type: 3}
     WarriorPrefab: {fileID: 2774551131370630588, guid: 94f235c4d4edc444cb4ae140f4edcab7,
       type: 3}
@@ -221,10 +229,15 @@ MonoBehaviour:
       type: 3}
     Flower: {fileID: 7285420253788441266, guid: 83cfe42acfeaf7f47ae3dabae5543575,
       type: 3}
+    Attack: {fileID: 8300000, guid: 2499da9cd1347254e857e09d47493458, type: 3}
+    Farm: {fileID: 8300000, guid: 4acaba895f98b744c850ce7717e11eb8, type: 3}
+    Death: {fileID: 8300000, guid: d752df8b713862349a523cb1e263def5, type: 3}
+    Born: {fileID: 8300000, guid: 675964c4d3c461140a4a3fa662cf1bfc, type: 3}
+    Worship: {fileID: 8300000, guid: 6a60b0b1eee68e24499d87a930c0fd9c, type: 3}
   - House: 3
     SkinPrefab: {fileID: 6510393532586212114, guid: 762a58ddae71f6e42a7efa85ad6331ec,
       type: 3}
-    HarvestPrefab: {fileID: 6510393532586212114, guid: e3d1f764c2e6dbe48bd6452dd7e3d80d,
+    HarvestPrefab: {fileID: 6510393532586212114, guid: 762a58ddae71f6e42a7efa85ad6331ec,
       type: 3}
     WarriorPrefab: {fileID: 6510393532586212114, guid: a515170aa8f9894498b98464eefb72f5,
       type: 3}
@@ -233,10 +246,15 @@ MonoBehaviour:
       type: 3}
     Flower: {fileID: 7285420253788441266, guid: e6962f22832c86246a11543ee6867692,
       type: 3}
+    Attack: {fileID: 8300000, guid: 2091bd340a6f5f149b061dbc0ceab24a, type: 3}
+    Farm: {fileID: 8300000, guid: 0624757b92e98c74aad2abea57d7edb7, type: 3}
+    Death: {fileID: 8300000, guid: fe14513320c33194886baa17b27dab2f, type: 3}
+    Born: {fileID: 8300000, guid: 61b5e902ede9e484baed141a834791cd, type: 3}
+    Worship: {fileID: 8300000, guid: fa408cf87bc136142bd7f652500edc5c, type: 3}
   - House: 1
     SkinPrefab: {fileID: 8671424906640433870, guid: 6221da89ac7336747af819dfe65c1eca,
       type: 3}
-    HarvestPrefab: {fileID: 8671424906640433870, guid: 111c397246ebc6b4da3bc48ce960a047,
+    HarvestPrefab: {fileID: 8671424906640433870, guid: 6221da89ac7336747af819dfe65c1eca,
       type: 3}
     WarriorPrefab: {fileID: 8671424906640433870, guid: 71ab1e5ba8dab2541928de1270e3a755,
       type: 3}
@@ -245,6 +263,11 @@ MonoBehaviour:
       type: 3}
     Flower: {fileID: 7285420253788441266, guid: d3e6f15547ce6e04cb0017de3c47e4ea,
       type: 3}
+    Attack: {fileID: 8300000, guid: 86682d3b7c23a8d4ca10e9564cda6b4c, type: 3}
+    Farm: {fileID: 8300000, guid: 772902e8702ad0a45b3b4d86c1f6956c, type: 3}
+    Death: {fileID: 8300000, guid: aa7ceafbcba8fbe44b86b4bcfd55ce85, type: 3}
+    Born: {fileID: 8300000, guid: 15224060611f84b4fb867a155f492c3c, type: 3}
+    Worship: {fileID: 8300000, guid: 2f8515bf65ade9a43922beec043b1abf, type: 3}
 --- !u!1001 &3393260075048343746
 PrefabInstance:
   m_ObjectHideFlags: 0
