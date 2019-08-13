@@ -113,6 +113,7 @@ MonoBehaviour:
   ZoomBounds:
   - 20
   - 400
+  DistanceBounds: {x: 30, y: 90}
   Val: 200
   cam: {fileID: 4694765721180042863}
   isMoving: 0
