@@ -71,4 +71,12 @@ public class PlayerActionCaller : MonoBehaviour
         GetComponent<Image>().color = attacking ? AttackOn : AttackOff;
         AttackOnOffText.text = attacking ? "is ON" : "is OFF";
     }
+    public void SelectWarriors()
+    {
+        GameManagerScript.Instance.HumanSelected = HumanClass.Warrior;
+    }
+    public void SelectFarmers()
+    {
+        GameManagerScript.Instance.HumanSelected = HumanClass.Harvester;
+    }
 }

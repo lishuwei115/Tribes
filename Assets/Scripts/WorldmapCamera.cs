@@ -91,12 +91,23 @@ public class WorldmapCamera : MonoBehaviour
 
     private void Instance_ButtonRPressedEvent()
     {
-        GameManagerScript.Instance.HumanSelected = HumanClass.Warrior;
+        if (!GameManagerScript.Instance.Pause)
+        {
+            GameManagerScript.Instance.HumanSelected = HumanClass.Warrior;
+            PressFakeButton("SelectWarrior", 0.1f);
+            DeactiveFakeButton("SelectFarmer");
+        }
     }
 
     private void Instance_ButtonLPressedEvent()
     {
-        GameManagerScript.Instance.HumanSelected = HumanClass.Harvester;
+        if (!GameManagerScript.Instance.Pause)
+        {
+            GameManagerScript.Instance.HumanSelected = HumanClass.Harvester;
+            PressFakeButton("SelectFarmer", 0.1f);
+
+            DeactiveFakeButton("SelectWarrior");
+        }
     }
 
     private void Instance_LeftJoystickUsedEvent(Vector2 LeftJoystic)
@@ -208,6 +219,16 @@ public class WorldmapCamera : MonoBehaviour
             if(f.ID == name)
             {
                 f.Press(seconds);
+            }
+        }
+    }
+    public void DeactiveFakeButton(string name)
+    {
+        foreach (FakeButton f in FakeButtons)
+        {
+            if (f.ID == name)
+            {
+                f.DeactiveButton();
             }
         }
     }

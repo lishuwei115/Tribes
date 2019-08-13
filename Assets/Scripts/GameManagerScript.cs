@@ -265,6 +265,7 @@ public class GameManagerScript : MonoBehaviour
                 house.MoveTribeTo(pos, FollowOrderRandomness);
             }
         }
+        OpenMapBorder(.2f);
     }
     // Update is called once per frame
     void Update()
@@ -318,7 +319,16 @@ public class GameManagerScript : MonoBehaviour
         }
 
     }
+    public void OpenMapBorder(float seconds)
+    {
+        MapBorder.gameObject.SetActive(true);
+        Invoke("CloseMapBorder", seconds);
+    }
 
+    public void CloseMapBorder()
+    {
+        MapBorder.gameObject.SetActive(false);
+    }
     public void StartGame()
     {
         UIButtonOver = false;
