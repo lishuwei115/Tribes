@@ -3986,7 +3986,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -79.1}
+  m_AnchoredPosition: {x: 0, y: -70}
   m_SizeDelta: {x: 89.3, y: 25.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2952921331130178271
@@ -4530,7 +4530,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: farmer
+  m_text: Move To
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1b44fc7eb9e91004f86ea77050e01e5a, type: 2}
   m_sharedMaterial: {fileID: 5972200765004811304, guid: 1b44fc7eb9e91004f86ea77050e01e5a,
@@ -4600,10 +4600,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 7251869441141975667}
-    characterCount: 6
+    characterCount: 7
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -7426,7 +7426,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -79.1}
+  m_AnchoredPosition: {x: 0, y: -70}
   m_SizeDelta: {x: 89.3, y: 25.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1060977784625636052
@@ -7457,7 +7457,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 999
+  m_text: '999
+
+    (-999)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1b44fc7eb9e91004f86ea77050e01e5a, type: 2}
   m_sharedMaterial: {fileID: 5972200765004811304, guid: 1b44fc7eb9e91004f86ea77050e01e5a,
@@ -7503,7 +7505,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 4
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -7527,12 +7529,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2540987823457384973}
-    characterCount: 3
+    characterCount: 10
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -8228,7 +8230,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: 26.20011}
+  m_AnchoredPosition: {x: 0.6, y: 26.20011}
   m_SizeDelta: {x: 24.4, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2375646736821231105
@@ -8379,7 +8381,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -79.1}
+  m_AnchoredPosition: {x: 0, y: -70}
   m_SizeDelta: {x: 89.3, y: 25.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7065846246394857087
@@ -8520,7 +8522,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4121511161775931243
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10213,7 +10215,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6209805861460555090
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10307,7 +10309,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -10328,7 +10330,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -7.8756213, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 6461786702556764807}
     characterCount: 1
@@ -10554,6 +10556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Base: {r: 1, g: 1, b: 1, a: 1}
   Pressed: {r: 1, g: 0, b: 0, a: 1}
+  Deactive: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   ID: AddFighter
 --- !u!1 &3927727603055458309
 GameObject:
@@ -10985,6 +10988,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Base: {r: 1, g: 1, b: 1, a: 1}
   Pressed: {r: 1, g: 0, b: 0, a: 1}
+  Deactive: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   ID: Pray
 --- !u!1 &4032263047600200264
 GameObject:
@@ -11734,6 +11738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Base: {r: 1, g: 1, b: 1, a: 1}
   Pressed: {r: 1, g: 0, b: 0, a: 1}
+  Deactive: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   ID: GoToPosition
 --- !u!1 &4463851332213592024
 GameObject:
@@ -11946,6 +11951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Base: {r: 1, g: 1, b: 1, a: 1}
   Pressed: {r: 1, g: 0, b: 0, a: 1}
+  Deactive: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   ID: AddFarmer
 --- !u!1 &4484188886215541669
 GameObject:
@@ -15852,7 +15858,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.9, y: 26.20011}
+  m_AnchoredPosition: {x: -10, y: 26.20011}
   m_SizeDelta: {x: 24.4, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1307868307116396421
@@ -15883,7 +15889,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 3719446802720518843, guid: f4df300756381e04eb938c01d0b91230,
+  m_Sprite: {fileID: -7382743094945873236, guid: f4df300756381e04eb938c01d0b91230,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -18163,7 +18169,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -79.1}
+  m_AnchoredPosition: {x: 0, y: -70}
   m_SizeDelta: {x: 89.3, y: 25.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9172056059538130966
@@ -19018,6 +19024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Base: {r: 1, g: 1, b: 1, a: 1}
   Pressed: {r: 1, g: 0, b: 0, a: 1}
+  Deactive: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   ID: GoToPosition
 --- !u!1 &8447304957488984333
 GameObject:
@@ -19866,7 +19873,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: pause
+  m_text: FARMER
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1b44fc7eb9e91004f86ea77050e01e5a, type: 2}
   m_sharedMaterial: {fileID: 5972200765004811304, guid: 1b44fc7eb9e91004f86ea77050e01e5a,
@@ -19936,7 +19943,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1582682463722025244}
-    characterCount: 5
+    characterCount: 6
     spriteCount: 0
     spaceCount: 0
     wordCount: 1

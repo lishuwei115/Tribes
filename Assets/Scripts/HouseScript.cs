@@ -19,6 +19,10 @@ public class HouseScript : MonoBehaviour
     [Range(0, 1000)]
     public float TimeAttackMax = 180;
     [Range(0, 1000)]
+    public float TimeAttackRangeIncreaseMin = 40;
+    [Range(0, 1000)]
+    public float TimeAttackRangeIncreaseMax = 60;
+    [Range(0, 1000)]
     public float CultivateRadiusMax = 40;
     public Transform CultivateRadiusMaxCircle;
     public bool NewHouse = true;
@@ -44,8 +48,17 @@ public class HouseScript : MonoBehaviour
     public GovernmentBehaviour Government;
     int AttackIterated = 0;
     float TimeAttack;
+    int AttackRangeIncreaseIterated = 0;
+    float TimeAttackRange;
     [HideInInspector]
     public AnimationCurve PopulationDistribution;
+
+    public float BuffTime = 20;
+
+    public float InitialHumanRadius;
+
+    public bool FiredUp { get; private set; }
+
     private void Awake()
     {
         HouseSkin = transform;
@@ -59,7 +72,8 @@ public class HouseScript : MonoBehaviour
         CloseGuardianCircle(false);
         UIManagerScript.Instance.UpdateFood();
         HouseSkin = Instantiate(SkinManager.Instance.GetSkinInfo(HouseType).HousePrefab, transform);
-        TimeAttack = Time.time + UnityEngine.Random.Range(TimeAttackMin, TimeAttackMax);
+        TimeAttack = (UnityEngine.Random.Range(TimeAttackMin, TimeAttackMax)/(float)GameManagerScript.Instance.DayTime);
+        TimeAttackRange = (UnityEngine.Random.Range(TimeAttackRangeIncreaseMin, TimeAttackRangeIncreaseMax) / (float)GameManagerScript.Instance.DayTime);
         SetCultivateCircle(false);
         SafetyTimer = UnityEngine.Random.Range(SafetyTimerMin, SafetyTimerMax);
         PopulationDistribution = GameManagerScript.Instance.PopulationDistribution;
@@ -73,24 +87,31 @@ public class HouseScript : MonoBehaviour
 
             if (!IsPlayer)
             {
-                if (UIManagerScript.Instance.DayNumIterator - AttackIterated >= TimeAttack / GameManagerScript.Instance.DayTime && GameManagerScript.Instance.currentDayTime > 45)
+                if (((float)UIManagerScript.Instance.DayNumIterator ) + (1f-((float)GameManagerScript.Instance.currentDayTime / (float)GameManagerScript.Instance.DayTime)) >= (float)TimeAttack )
                 {
                     AttackIterated = UIManagerScript.Instance.DayNumIterator;
-                    TimeAttack = Time.time + UnityEngine.Random.Range(TimeAttackMin, TimeAttackMax);
-                    Transform target = null;
-                    while (target == null)
-                    {
-                        int i = UnityEngine.Random.Range(0, GameManagerScript.Instance.Houses.Count * 100) / 100; // /100*100 is to increase randomness
-                        if (GameManagerScript.Instance.Houses[i].HouseType != HouseType)
-                        {
-                            target = GameManagerScript.Instance.Houses[i].transform;
-                        }
-                    }
+                    TimeAttack = AttackIterated+(UnityEngine.Random.Range(TimeAttackMin, TimeAttackMax) / (float)GameManagerScript.Instance.DayTime);
+                    List<HouseScript> TargetHouse = GameManagerScript.Instance.Houses.Where(r => r.FoodStore > 0 && r.HouseType != HouseType).ToList();
+                    int i = UnityEngine.Random.Range(0, TargetHouse.Count * 100) / 100; // /100*100 is to increase randomness
+                    Transform target = TargetHouse[i].transform;
                     MoveTribeTo(target.position, GameManagerScript.Instance.FollowOrderRandomness);
+                }
+                if (((float)UIManagerScript.Instance.DayNumIterator )+(1-((float)GameManagerScript.Instance.currentDayTime/ (float)GameManagerScript.Instance.DayTime)) >= (float)TimeAttackRange  && !FiredUp)
+                {
+                    AttackRangeIncreaseIterated = UIManagerScript.Instance.DayNumIterator;
+                    TimeAttackRange = AttackRangeIncreaseIterated+(UnityEngine.Random.Range(TimeAttackRangeIncreaseMin, TimeAttackRangeIncreaseMax) / (float)GameManagerScript.Instance.DayTime);
+                    foreach (HumanBeingScript human in HumansAlive.Where(r=> r.HumanJob == HumanClass.Warrior))
+                    {
+                        InitialHumanRadius = human.Radius;
+                        human.Radius = 1000;
+                        human.FiredUpState(true);
+                    }
+                    FiredUp = true;
+                    Invoke("ResetHumanRadius", BuffTime);
                 }
             }
             HumansAlive = Humans.Where(x => x.Hp > 0).ToList();
-            if (HumansAlive.Count <= 0 && !Defeated && FoodStore<=0)
+            if (HumansAlive.Count <= 0 && !Defeated && FoodStore <= 0)
             {
                 //gameObject.SetActive(false);
                 HouseSkin.GetComponent<Animator>().SetBool("UIState", true);
@@ -108,7 +129,19 @@ public class HouseScript : MonoBehaviour
         AddPeople();
     }
 
+    public void ResetHumanRadius()
+    {
+        AttackRangeIncreaseIterated = UIManagerScript.Instance.DayNumIterator;
+        TimeAttackRange =  (UnityEngine.Random.Range(TimeAttackRangeIncreaseMin, TimeAttackRangeIncreaseMax) / (float)GameManagerScript.Instance.DayTime);
+        foreach (HumanBeingScript human in HumansAlive)
+        {
+            human.Radius = InitialHumanRadius;
+            human.FiredUpState(false);
 
+        }
+        FiredUp = false;
+
+    }
     internal void DistributeFood()
     {
         //GovernmentManaging();
@@ -206,7 +239,7 @@ public class HouseScript : MonoBehaviour
     {
         if (!IsPlayer)
         {
-            HumansAlive = Humans.Where(r => r.Hp > 0 ).ToList();
+            HumansAlive = Humans.Where(r => r.Hp > 0).ToList();
             List<HumanBeingScript> harvester = Humans.Where(r => r.Hp > 0 && r.HumanJob == HumanClass.Harvester).ToList();
             List<HumanBeingScript> warrior = Humans.Where(r => r.Hp > 0 && r.HumanJob == HumanClass.Warrior).ToList();
             float foodRequiredHarvester = (harvester.Count * GameManagerScript.Instance.FoodRequiredHarvester) + (warrior.Count * GameManagerScript.Instance.FoodRequiredWarrior) + GameManagerScript.Instance.FoodRequiredHarvester;
@@ -257,7 +290,7 @@ public class HouseScript : MonoBehaviour
     {
         Vector3 randomPos = t;
         float timeHelper = 0;
-        
+
         List<HumanBeingScript> humans;
         if (GameManagerScript.Instance.HumanSelected == HumanClass.Harvester && IsPlayer)
             humans = Humans.Where(r => r.Hp > 0 && r.HumanJob == HumanClass.Harvester).ToList();

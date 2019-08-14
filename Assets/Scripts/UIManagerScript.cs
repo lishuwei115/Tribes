@@ -118,27 +118,30 @@ public class UIManagerScript : MonoBehaviour
         YellowFood = 0;
         foreach (HouseScript h in GameManagerScript.Instance.Houses)
         {
+            List<HumanBeingScript> harvester = h.Humans.Where(r => r.Hp > 0 && r.HumanJob == HumanClass.Harvester).ToList();
+            List<HumanBeingScript> warrior = h.Humans.Where(r => r.Hp > 0 && r.HumanJob == HumanClass.Warrior).ToList();
+            float foodRequired = (harvester.Count * GameManagerScript.Instance.FoodRequiredHarvester) + (warrior.Count * GameManagerScript.Instance.FoodRequiredWarrior);
+
             switch (h.HouseType)
             {
                 case HousesTypes.Green:
                     GreenFood += h.FoodStore;
+                    PlayerCardGreen.Food.text = "" + h.FoodStore + "\n(-" + foodRequired + ")";
                     break;
                 case HousesTypes.Yellow:
                     YellowFood += h.FoodStore;
+                    PlayerCardYellow.Food.text = "" + h.FoodStore + "\n(-" + foodRequired + ")";
                     break;
                 case HousesTypes.Red:
                     RedFood += h.FoodStore;
+                    PlayerCardRed.Food.text = "" + h.FoodStore + "\n(-" + foodRequired + ")";
                     break;
                 case HousesTypes.Blue:
                     BlueFood += h.FoodStore;
+                    PlayerCardBlue.Food.text = "" + h.FoodStore + "\n(-" + foodRequired + ")";
                     break;
             }
         }
-        PlayerCardBlue.Food.text = "" + BlueFood;
-        PlayerCardYellow.Food.text = "" + YellowFood;
-        PlayerCardRed.Food.text = "" + RedFood;
-        //HouseFoodDownwardLeft.text = "" + GameManagerScript.Instance.FoodPlayer;
-        PlayerCardGreen.Food.text = "" + GreenFood;
         UpdatePeople();
 
     }

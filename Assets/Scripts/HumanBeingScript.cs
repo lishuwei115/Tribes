@@ -13,7 +13,8 @@ public class HumanBeingScript : MonoBehaviour
     public HousesTypes HouseType = HousesTypes.Red;
     public StateType CurrentState = StateType.Home;
     [Tooltip("radius of research")]
-    float Radius = 20;
+    [HideInInspector]
+    public float Radius = 20;
     public float RadiusFarmer = 20;
     public float RadiusWarrior = 20;
     public float AttackDistance = 5f;
@@ -254,12 +255,12 @@ public class HumanBeingScript : MonoBehaviour
     public bool WaitingForOthers;
     float RayMaxDistance = 5;
     AudioClip AttackSound;
-     AudioClip FarmSound;
-     AudioClip DeathSound;
-     AudioClip BornSound;
-     AudioClip WorshipSound;
-
-private void Awake()
+    AudioClip FarmSound;
+    AudioClip DeathSound;
+    AudioClip BornSound;
+    AudioClip WorshipSound;
+    public ParticleSystem FiredUp;
+    private void Awake()
     {
         MR = GetComponent<MeshRenderer>();
         HumanAudio = GetComponent<AudioSource>();
@@ -288,12 +289,15 @@ private void Awake()
         List<RaycastHit> Housecollisions = LookAround("House");
         //AnimController.gameObject.SetActive(false);
         InvisibilityIfHouse(Housecollisions);
+        var p = FiredUp.main;
+
+        p.startColor =HouseType==HousesTypes.Red? Color.red: HouseType == HousesTypes.Blue ? Color.blue: HouseType == HousesTypes.Yellow ? Color.yellow : Color.green;
         initialized = true;
     }
 
     private void InitializeWarriorFarmerParameters()
     {
-        if(HumanJob == HumanClass.Warrior)
+        if (HumanJob == HumanClass.Warrior)
         {
             Radius = RadiusWarrior;
             RayMaxDistance = RayMaxDistanceWarrior;
@@ -321,10 +325,17 @@ private void Awake()
             ReproductionPerc = ReproductionPercFarmer;
             AttackFrequency = AttackFrequencyFarmer;
         }
-        
+
 
     }
+    public void FiredUpState(bool OnOff)
+    {
+        if (OnOff)
+            FiredUp.Play();
+        else
+            FiredUp.Stop();
 
+    }
     // Update is called once per frame
     void Update()
     {
@@ -689,7 +700,7 @@ private void Awake()
         List<RaycastHit> ElementHitted = new List<RaycastHit>();
 
 
-        ElementHitted = Physics.SphereCastAll(transform.position, Radius, transform.forward, Radius, layerMask).ToList<RaycastHit>();
+        ElementHitted = Physics.SphereCastAll(transform.position, Radius, transform.forward, Radius*2, layerMask).ToList<RaycastHit>();
         if (layerMask == LayerMask.GetMask("Food"))
         {
             ElementHitted = ElementHitted.Where(r => r.collider.GetComponent<FoodScript>().Slots > 0).ToList();
@@ -703,7 +714,7 @@ private void Awake()
 
         List<RaycastHit> Enemy = new List<RaycastHit>();
 
-        Enemy = Physics.SphereCastAll(transform.position, Radius, transform.forward, Radius, EnemyLayer).ToList<RaycastHit>();
+        Enemy = Physics.SphereCastAll(transform.position, Radius, transform.forward, Radius*2, EnemyLayer).ToList<RaycastHit>();
         //List < RaycastHit > humans = Enemy.ToArray< RaycastHit>().Where(a => (a.collider.GetComponent<HumanBeingScript>()&&)).ToList();
         List<RaycastHit> EnemyNotInHome = new List<RaycastHit>();
         foreach (RaycastHit r in Enemy)
@@ -1347,7 +1358,7 @@ private void Awake()
             //move towars target
             while (CultivationProgress < CultivationTarget * Specialization * 2)
             {
-                if(!HumanAudio.isPlaying)
+                if (!HumanAudio.isPlaying)
                     HumanAudio.PlayOneShot(WorshipSound);
                 HarvestBar.gameObject.SetActive(true);
                 HarvestBar.UpdateHarvest(CultivationProgress, CultivationTarget * Specialization * 2, HouseType);

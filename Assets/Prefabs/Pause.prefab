@@ -491,8 +491,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8644fdafd48d548bbc0dadd89ac1e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Base: {r: 1, g: 1, b: 1, a: 1}
+  Base: {r: 0.3647059, g: 0.36862746, b: 0.36862746, a: 1}
   Pressed: {r: 1, g: 0, b: 0, a: 1}
+  Deactive: {r: 0.5, g: 0.5, b: 0.5, a: 0.56078434}
   ID: Pause
 --- !u!1 &436226181095301515
 GameObject:
@@ -1496,7 +1497,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: b
+  m_text: +
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1b44fc7eb9e91004f86ea77050e01e5a, type: 2}
   m_sharedMaterial: {fileID: 5972200765004811304, guid: 1b44fc7eb9e91004f86ea77050e01e5a,
@@ -1908,8 +1909,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8644fdafd48d548bbc0dadd89ac1e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Base: {r: 1, g: 1, b: 1, a: 1}
+  Base: {r: 0, g: 0.72156864, b: 1, a: 1}
   Pressed: {r: 1, g: 0, b: 0, a: 1}
+  Deactive: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   ID: Reset
 --- !u!1 &8982802565753171483
 GameObject:

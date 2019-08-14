@@ -45,10 +45,10 @@ SpriteAtlas:
       m_AndroidETC2FallbackOverride: 0
     packingSettings:
       serializedVersion: 2
-      padding: 4
+      padding: 8
       blockOffset: 1
       allowAlphaSplitting: 0
-      enableRotation: 1
+      enableRotation: 0
       enableTightPacking: 0
     variantMultiplier: 1
     packables:
@@ -71,8 +71,6 @@ SpriteAtlas:
     - {fileID: 2800000, guid: b4e6d157b96e2ab408ae2469d4439424, type: 3}
     - {fileID: 2800000, guid: ce32640ee58da7c4c8d2b4b52a0d8025, type: 3}
     - {fileID: 2800000, guid: 4a6181ad50adbfd41a3c06e52f73b1f1, type: 3}
-    - {fileID: 10912, guid: 0000000000000000f000000000000000, type: 0}
-    - {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
     totalSpriteSurfaceArea: 7036894
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}

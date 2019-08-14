@@ -114,6 +114,8 @@ MonoBehaviour:
   SafetyTimerMax: 40
   TimeAttackMin: 80
   TimeAttackMax: 250
+  TimeAttackRangeIncreaseMin: 80
+  TimeAttackRangeIncreaseMax: 120
   CultivateRadiusMax: 40
   CultivateRadiusMaxCircle: {fileID: 612059202977119026}
   NewHouse: 1
@@ -132,6 +134,14 @@ MonoBehaviour:
   TargetAutocracyHealth: 50
   HouseType: 3
   Government: 2
+  PopulationDistribution:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  BuffTime: 10
+  InitialHumanRadius: 0
 --- !u!1 &612059202423828391
 GameObject:
   m_ObjectHideFlags: 0

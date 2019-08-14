@@ -73,7 +73,13 @@ public class WorldmapCamera : MonoBehaviour
         InputManager_Riki.Instance.LeftJoystickUsedEvent += Instance_LeftJoystickUsedEvent;
         InputManager_Riki.Instance.ButtonLPressedEvent += Instance_ButtonLPressedEvent;
         InputManager_Riki.Instance.ButtonRPressedEvent += Instance_ButtonRPressedEvent;
+        if (!GameManagerScript.Instance.Pause)
+        {
+            GameManagerScript.Instance.HumanSelected = HumanClass.Harvester;
+            PressFakeButton("SelectFarmer", 0.1f);
 
+            DeactiveFakeButton("SelectWarrior");
+        }
         layerMask = LayerMask.GetMask("Ground", "BlockTouch");
         cam = GetComponent<Camera>();
 #if UNITY_ANDROID
