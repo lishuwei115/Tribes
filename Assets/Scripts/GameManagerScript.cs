@@ -136,8 +136,8 @@ public class GameManagerScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        StartGame();
-        Invoke("DayStarting", 1);
+        //StartGame();
+        
         UIButtons = UnityEngine.Object.FindObjectsOfType<BlockInput>();
 
     }
@@ -307,7 +307,7 @@ public class GameManagerScript : MonoBehaviour
                 if (house.HouseType == PlayerHouse)
                 {
                     house.IsPlayer = true;
-                    UIManagerScript.Instance.ChangePlayer(house.HouseType);
+                    //UIManagerScript.Instance.ChangePlayer(house.HouseType);
                 }
                 else
                 {
@@ -332,7 +332,7 @@ public class GameManagerScript : MonoBehaviour
     public void StartGame()
     {
         UIButtonOver = false;
-        UIManagerScript.Instance.ChangePlayer(PlayerHouse);
+        //UIManagerScript.Instance.ChangePlayer(PlayerHouse);
         //Initialize all the humans in all houses
         foreach (HouseScript house in Houses)
         {
@@ -365,6 +365,7 @@ public class GameManagerScript : MonoBehaviour
                 //hbs.gameObject.tag = "" + house.tag;
                 house.Humans.Add(hbs);
             }
+
         }
 
         //creating the food resources based on the editable FoodPerDay parameter
@@ -376,7 +377,7 @@ public class GameManagerScript : MonoBehaviour
             food.SetActive(false);
             FoodsList.Add(food.GetComponent<FoodScript>());
         }
-
+        Invoke("DayStarting", 1);
     }
 
 

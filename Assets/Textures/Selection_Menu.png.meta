@@ -1,0 +1,520 @@
+fileFormatVersion: 2
+guid: 416c8c5e3a4dfe4429dbfe3b4daaa50c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3180548540642449273
+    second: Selection_Menu (1)_Icon_Red
+  - first:
+      213: 3115250324037612852
+    second: Selection_Menu (1)_Icon_Yellow
+  - first:
+      213: 3228569686513751367
+    second: Selection_Menu (1)_Icon_blue
+  - first:
+      213: -3761338569519037154
+    second: Selection_Menu (1)_Icon_green
+  - first:
+      213: 463592923507598753
+    second: Selection_Menu (1)_Background_Red
+  - first:
+      213: 2332392144326852667
+    second: Selection_Menu (1)_Background_Yellow
+  - first:
+      213: 6669834621128062574
+    second: Selection_Menu (1)_Background_Blue
+  - first:
+      213: 3010194301260571034
+    second: Selection_Menu (1)_Background_Green
+  - first:
+      213: -5465672099224125768
+    second: Selection_Menu (1)_SelectionSquare
+  - first:
+      213: -7026550160660491351
+    second: Selection_Menu (1)_Human_Red
+  - first:
+      213: -5846908267349207618
+    second: Selection_Menu (1)_Human_Yellow
+  - first:
+      213: 1312513115862710323
+    second: Selection_Menu (1)_Human_Blue
+  - first:
+      213: 6459611792726400856
+    second: Selection_Menu (1)_Human_Green
+  - first:
+      213: 2405575306468475023
+    second: Selection_Menu_Bubble
+  - first:
+      213: 6742416460419880410
+    second: Selection_Menu_BubbleLeft
+  - first:
+      213: 8041649110214992991
+    second: Selection_Menu_L
+  - first:
+      213: 8559128749455766811
+    second: Selection_Menu_R
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Nintendo Switch
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Selection_Menu (1)_Icon_Red
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 1897
+        width: 87
+        height: 140
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ae7b7f564cb7bd4f8cca7fa435d9b8a
+      internalID: 3180548540642449273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selection_Menu (1)_Icon_Yellow
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 1890
+        width: 88
+        height: 151
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12b04634f96d8b642977eb47c16efc8d
+      internalID: 3115250324037612852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selection_Menu (1)_Icon_blue
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 1914
+        width: 116
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acb11899e71ea3a49bb95b42020a4ccf
+      internalID: 3228569686513751367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selection_Menu (1)_Icon_green
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 1912
+        width: 92
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1bcdeed94e20304fb10e2ca2eccc349
+      internalID: -3761338569519037154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selection_Menu (1)_Background_Red
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 1078
+        width: 252
+        height: 805
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f097aa27824d13c46946779797ec00cf
+      internalID: 463592923507598753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selection_Menu (1)_Background_Yellow
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 1043
+        width: 267
+        height: 845
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbc6804e2f8e5b247b492e3fc51e2ec6
+      internalID: 2332392144326852667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selection_Menu (1)_Background_Blue
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 1177
+        width: 270
+        height: 811
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0640ea2cfb8a90245a3929d208726e20
+      internalID: 6669834621128062574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selection_Menu (1)_Background_Green
+      rect:
+        serializedVersion: 2
+        x: 878
+        y: 1233
+        width: 254
+        height: 791
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3122b5a4ec27474788ab91205fb305e
+      internalID: 3010194301260571034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selection_Menu (1)_SelectionSquare
+      rect:
+        serializedVersion: 2
+        x: 1601
+        y: 756
+        width: 414
+        height: 1278
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 688c3302e0e48b944bbd7d35c9e91692
+      internalID: -5465672099224125768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selection_Menu (1)_Human_Red
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 567
+        width: 329
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd43aa500eb04f54b8ca83f9874959b3
+      internalID: -7026550160660491351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selection_Menu (1)_Human_Yellow
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 574
+        width: 315
+        height: 439
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fa35b3520aefcd4086c49ccc3ecaef6
+      internalID: -5846908267349207618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selection_Menu (1)_Human_Blue
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 573
+        width: 241
+        height: 424
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8460e24018c8cbe41b8e8b4094016a09
+      internalID: 1312513115862710323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selection_Menu (1)_Human_Green
+      rect:
+        serializedVersion: 2
+        x: 1030
+        y: 588
+        width: 276
+        height: 411
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc2b7a3581a3b304aa58422528ce9dcf
+      internalID: 6459611792726400856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selection_Menu_Bubble
+      rect:
+        serializedVersion: 2
+        x: 1425
+        y: 6
+        width: 320
+        height: 382
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cf3d1bee64599e4f8c0916af2372025
+      internalID: 2405575306468475023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selection_Menu_BubbleLeft
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 0
+        width: 370
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a47761ffa48d0ab4fbacdbd0ad27e56c
+      internalID: 6742416460419880410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selection_Menu_L
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 17
+        width: 488
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 874526e0db8d40f48882c858fb901c38
+      internalID: 8041649110214992991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selection_Menu_R
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 14
+        width: 490
+        height: 356
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3122bcfda1aa73e48bb9d8c7c8ed9bba
+      internalID: 8559128749455766811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 58a6355074f8d2d49952d5b1cac86a9a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

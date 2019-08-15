@@ -495,6 +495,7 @@ MonoBehaviour:
   Pressed: {r: 1, g: 0, b: 0, a: 1}
   Deactive: {r: 0.5, g: 0.5, b: 0.5, a: 0.56078434}
   ID: Pause
+  TeamColor: 0
 --- !u!1 &436226181095301515
 GameObject:
   m_ObjectHideFlags: 0
@@ -1913,6 +1914,7 @@ MonoBehaviour:
   Pressed: {r: 1, g: 0, b: 0, a: 1}
   Deactive: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   ID: Reset
+  TeamColor: 0
 --- !u!1 &8982802565753171483
 GameObject:
   m_ObjectHideFlags: 0

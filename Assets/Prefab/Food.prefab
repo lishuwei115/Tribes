@@ -1220,6 +1220,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4101294771767772}
     m_Modifications:
+    - target: {fileID: 7973945327708656152, guid: fd903ba65d85d6f49a378e8d7dcb5d46,
+        type: 3}
+      propertyPath: m_Name
+      value: Fruits_20190805 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7973945327708656152, guid: fd903ba65d85d6f49a378e8d7dcb5d46,
+        type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7402044970906171050, guid: fd903ba65d85d6f49a378e8d7dcb5d46,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1274,16 +1284,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7973945327708656152, guid: fd903ba65d85d6f49a378e8d7dcb5d46,
-        type: 3}
-      propertyPath: m_Name
-      value: Fruits_20190805 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7973945327708656152, guid: fd903ba65d85d6f49a378e8d7dcb5d46,
-        type: 3}
-      propertyPath: m_Layer
-      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5292494250941172062, guid: fd903ba65d85d6f49a378e8d7dcb5d46,
         type: 3}

@@ -25,7 +25,7 @@ public class WorldmapCamera : MonoBehaviour
     public float[] BoundsZ = new float[] { 0f, 18f };
     float[] ProportionalBoundsZ = new float[] { 0f, 18f };
     public float[] ZoomBounds = new float[] { 30f, 60f };
-    public Vector2 DistanceBounds = new Vector2( 1f, 90f );
+    public Vector2 DistanceBounds = new Vector2(1f, 90f);
     public float Val = 40;
 
     public Camera cam;
@@ -73,13 +73,12 @@ public class WorldmapCamera : MonoBehaviour
         InputManager_Riki.Instance.LeftJoystickUsedEvent += Instance_LeftJoystickUsedEvent;
         InputManager_Riki.Instance.ButtonLPressedEvent += Instance_ButtonLPressedEvent;
         InputManager_Riki.Instance.ButtonRPressedEvent += Instance_ButtonRPressedEvent;
-        if (!GameManagerScript.Instance.Pause)
-        {
-            GameManagerScript.Instance.HumanSelected = HumanClass.Harvester;
-            PressFakeButton("SelectFarmer", 0.1f);
 
-            DeactiveFakeButton("SelectWarrior");
-        }
+        GameManagerScript.Instance.HumanSelected = HumanClass.Harvester;
+        PressFakeButton("SelectFarmer", 0.1f);
+
+        DeactiveFakeButton("SelectWarrior");
+
         layerMask = LayerMask.GetMask("Ground", "BlockTouch");
         cam = GetComponent<Camera>();
 #if UNITY_ANDROID
@@ -97,107 +96,132 @@ public class WorldmapCamera : MonoBehaviour
 
     private void Instance_ButtonRPressedEvent()
     {
-        if (!GameManagerScript.Instance.Pause)
-        {
-            GameManagerScript.Instance.HumanSelected = HumanClass.Warrior;
-            PressFakeButton("SelectWarrior", 0.1f);
-            DeactiveFakeButton("SelectFarmer");
-        }
+        if (GameManagerScript.Instance.GameStatus != GameStateType.Intro)
+            if (!GameManagerScript.Instance.Pause)
+            {
+                GameManagerScript.Instance.HumanSelected = HumanClass.Warrior;
+                PressFakeButton("SelectWarrior", 0.1f);
+                DeactiveFakeButton("SelectFarmer");
+            }
     }
 
     private void Instance_ButtonLPressedEvent()
     {
-        if (!GameManagerScript.Instance.Pause)
-        {
-            GameManagerScript.Instance.HumanSelected = HumanClass.Harvester;
-            PressFakeButton("SelectFarmer", 0.1f);
+        if (GameManagerScript.Instance.GameStatus != GameStateType.Intro)
+            if (!GameManagerScript.Instance.Pause)
+            {
+                GameManagerScript.Instance.HumanSelected = HumanClass.Harvester;
+                PressFakeButton("SelectFarmer", 0.1f);
 
-            DeactiveFakeButton("SelectWarrior");
-        }
+                DeactiveFakeButton("SelectWarrior");
+            }
     }
 
     private void Instance_LeftJoystickUsedEvent(Vector2 LeftJoystic)
     {
-        if (!GameManagerScript.Instance.Pause)
+        if (GameManagerScript.Instance.GameStatus != GameStateType.Intro && !GameManagerScript.Instance.Pause)
         {
             float relativeInc = cam.orthographicSize / ZoomBounds[1] / (ZoomBounds[1] / ZoomBounds[0]);
             Vector3 move = new Vector3(transform.position.x + LeftJoystic.x * (PanSpeed / 50) * (float)(relativeInc) * (Screen.width / Screen.height), transform.position.y, transform.position.z + LeftJoystic.y * (PanSpeed / 50) * (float)(relativeInc) * (Screen.width / Screen.height));
             transform.position = move;
         }
-
+        else
+            SelectionMenuManager.Instance.SelectionJoystic(LeftJoystic);
     }
 
     private void Instance_RightJoystickUsedEvent(Vector2 joystick)
     {
-        if (!GameManagerScript.Instance.Pause)
-        {
-            float f = GetComponent<Camera>().orthographicSize;
-            float proportionalScaling = f / ZoomBounds[1];
-            if ((f + (joystick.y * ((ZoomSpeedMouse) * proportionalScaling))) < ZoomBounds[1] && joystick.y < 0)
+        if (GameManagerScript.Instance.GameStatus != GameStateType.Intro)
+            if (!GameManagerScript.Instance.Pause)
             {
-                GetComponent<Camera>().orthographicSize = (f - (joystick.y * ((ZoomSpeedMouse) * proportionalScaling)));
+                float f = GetComponent<Camera>().orthographicSize;
+                float proportionalScaling = f / ZoomBounds[1];
+                if ((f + (joystick.y * ((ZoomSpeedMouse) * proportionalScaling))) < ZoomBounds[1] && joystick.y < 0)
+                {
+                    GetComponent<Camera>().orthographicSize = (f - (joystick.y * ((ZoomSpeedMouse) * proportionalScaling)));
+                }
+                else if ((f + (joystick.y * ((ZoomSpeedMouse) * proportionalScaling))) > ZoomBounds[0] && joystick.y > 0)
+                {
+                    GetComponent<Camera>().orthographicSize = (f - (joystick.y * ((ZoomSpeedMouse) * proportionalScaling)));
+                    //ZoomCamera((f + (joystick.y * ZoomSpeedMouse)) / ZoomBounds[1], ZoomSpeedMouse);
+                }
             }
-            else if ((f + (joystick.y * ((ZoomSpeedMouse) * proportionalScaling))) > ZoomBounds[0] && joystick.y > 0)
-            {
-                GetComponent<Camera>().orthographicSize = (f - (joystick.y * ((ZoomSpeedMouse) * proportionalScaling)));
-                //ZoomCamera((f + (joystick.y * ZoomSpeedMouse)) / ZoomBounds[1], ZoomSpeedMouse);
-            }
-        }
 
     }
 
     private void Instance_ButtonPlusPressedEvent()
     {
-        GameManagerScript.Instance.Pause = GameManagerScript.Instance.Pause ? false : true;
-        UIManagerScript.Instance.PauseMenu.SetBool("UIState", GameManagerScript.Instance.Pause);
-        PressFakeButton("Pause", 0.1f);
-
-    }
-
-    private void Instance_ButtonYPressedEvent()
-    {
-        PressFakeButton("Pray", 0.1f);
-        if (!GameManagerScript.Instance.Pause)
-            GameManagerScript.Instance.Cultivate();
-    }
-
-    private void Instance_ButtonXPressedEvent()
-    {
-        if (!GameManagerScript.Instance.Pause)
-        {
-            PressFakeButton("AddFighter", 0.1f);
-            GameManagerScript.Instance.AddPlayerWarrior();
-        }
-    }
-
-    private void Instance_ButtonBPressedEvent()
-    {
-        if (!GameManagerScript.Instance.Pause)
-        {
-            PressFakeButton("AddFarmer", 0.1f);
-            GameManagerScript.Instance.AddPlayerHarvester();
-        }
-        else
+        if (GameManagerScript.Instance.GameStatus != GameStateType.Intro)
         {
             GameManagerScript.Instance.Pause = GameManagerScript.Instance.Pause ? false : true;
             UIManagerScript.Instance.PauseMenu.SetBool("UIState", GameManagerScript.Instance.Pause);
             PressFakeButton("Pause", 0.1f);
         }
+
+
+    }
+
+    private void Instance_ButtonYPressedEvent()
+    {
+        if (GameManagerScript.Instance.GameStatus != GameStateType.Intro)
+        {
+            if (!GameManagerScript.Instance.Pause)
+                GameManagerScript.Instance.Cultivate();
+            PressFakeButton("Pray", 0.1f);
+
+        }
+
+    }
+
+    private void Instance_ButtonXPressedEvent()
+    {
+        if (GameManagerScript.Instance.GameStatus != GameStateType.Intro)
+
+            if (!GameManagerScript.Instance.Pause)
+            {
+                PressFakeButton("AddFighter", 0.1f);
+                GameManagerScript.Instance.AddPlayerWarrior();
+            }
+    }
+
+    private void Instance_ButtonBPressedEvent()
+    {
+        if (GameManagerScript.Instance.GameStatus != GameStateType.Intro)
+            if (!GameManagerScript.Instance.Pause)
+            {
+                PressFakeButton("AddFarmer", 0.1f);
+                GameManagerScript.Instance.AddPlayerHarvester();
+            }
+            else
+            {
+                GameManagerScript.Instance.Pause = GameManagerScript.Instance.Pause ? false : true;
+                UIManagerScript.Instance.PauseMenu.SetBool("UIState", GameManagerScript.Instance.Pause);
+                PressFakeButton("Pause", 0.1f);
+            }
     }
 
     private void Instance_ButtonAPressedEvent()
     {
-        if (!GameManagerScript.Instance.Pause)
+        if (GameManagerScript.Instance.GameStatus != GameStateType.Intro)
+
+            if (!GameManagerScript.Instance.Pause)
+            {
+                PressFakeButton("GoToPosition", 0.1f);
+                TribeToPoint(new Vector2(Camera.main.scaledPixelWidth / 2, Camera.main.scaledPixelHeight / 2));
+            }
+            else
+            {
+                RemoveEvents();
+                PressFakeButton("Reset", 0);
+                CancelInvoke();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+        else if (GameManagerScript.Instance.Pause)
         {
-            PressFakeButton("GoToPosition", 0.1f);
-            TribeToPoint(new Vector2(Camera.main.scaledPixelWidth / 2, Camera.main.scaledPixelHeight / 2));
-        }
-        else
-        {
-            RemoveEvents();
-            PressFakeButton("Reset", 0);
-            CancelInvoke();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SelectionMenuManager.Instance.Selection();
+            SplashScreenManager.Instance.CloseSplash();
+            PressFakeButton("TribeSelection", 1);
+            PressFakeButton("CloseSplashScreen", 1);
         }
     }
     public void RemoveEvents()
@@ -222,7 +246,7 @@ public class WorldmapCamera : MonoBehaviour
     {
         foreach (FakeButton f in FakeButtons)
         {
-            if(f.ID == name)
+            if (f.ID == name)
             {
                 f.Press(seconds);
             }
@@ -272,7 +296,7 @@ public class WorldmapCamera : MonoBehaviour
     void Update()
     {
         Vector3 position = transform.position;
-        position.y = DistanceBounds[0] + ((DistanceBounds[1]- DistanceBounds[0]) * (GetComponent<Camera>().orthographicSize / ZoomBounds[1]));
+        position.y = DistanceBounds[0] + ((DistanceBounds[1] - DistanceBounds[0]) * (GetComponent<Camera>().orthographicSize / ZoomBounds[1]));
         transform.position = position;
     }
 
@@ -460,7 +484,7 @@ public class WorldmapCamera : MonoBehaviour
         {
 
             GameManagerScript.Instance.MoveTribeTo(hit.point, GameManagerScript.Instance.PlayerHouse);
-            if(GameManagerScript.Instance.HumanSelected == HumanClass.Warrior)
+            if (GameManagerScript.Instance.HumanSelected == HumanClass.Warrior)
             {
                 if (GameManagerScript.Instance.Pointer != null)
                 {
@@ -488,7 +512,7 @@ public class WorldmapCamera : MonoBehaviour
 
                 }
             }
-            
+
         }
 
     }

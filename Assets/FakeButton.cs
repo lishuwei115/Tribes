@@ -9,10 +9,21 @@ public class FakeButton : MonoBehaviour
     public Color Pressed = Color.red;
     public Color Deactive = Color.gray;
     public string ID = "Button0";
+    public bool TeamColor = false;
     // Start is called before the first frame update
     void Start()
     {
         WorldmapCamera.Instance.FakeButtons.Add(this);
+        GetComponent<Image>().color = Base;
+    }
+    private void Update()
+    {
+        if (TeamColor)
+        {
+            Base = SkinManager.Instance.GetSkinInfo(GameManagerScript.Instance.PlayerHouse).TribeColor;
+            GetComponent<Image>().color = Base;
+        }
+
     }
     public void DeactiveButton()
     {
