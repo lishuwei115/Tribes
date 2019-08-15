@@ -29,6 +29,12 @@ public class SelectionMenuNavigation : MonoBehaviour
             UpdateSelection();
         }
     }
+    public void GoToIndex(int i)
+    {
+        Index = i;
+        UpdateSelection();
+
+    }
     public void DecreaseIndex()
     {
         if (Index > 0)

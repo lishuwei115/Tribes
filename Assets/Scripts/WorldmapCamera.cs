@@ -122,7 +122,7 @@ public class WorldmapCamera : MonoBehaviour
         if (GameManagerScript.Instance.GameStatus != GameStateType.Intro && !GameManagerScript.Instance.Pause)
         {
             float relativeInc = cam.orthographicSize / ZoomBounds[1] / (ZoomBounds[1] / ZoomBounds[0]);
-            Vector3 move = new Vector3(transform.position.x + LeftJoystic.x * (PanSpeed / 50) * (float)(relativeInc) * (Screen.width / Screen.height), transform.position.y, transform.position.z + LeftJoystic.y * (PanSpeed / 50) * (float)(relativeInc) * (Screen.width / Screen.height));
+            Vector3 move = new Vector3(transform.position.x + LeftJoystic.x * (PanSpeed / 50) * (float)(relativeInc) * (Screen.width / Screen.height), DistanceBounds[0] + ((DistanceBounds[1] - DistanceBounds[0]) * (GetComponent<Camera>().orthographicSize / ZoomBounds[1])), transform.position.z + LeftJoystic.y * (PanSpeed / 50) * (float)(relativeInc) * (Screen.width / Screen.height));
             transform.position = move;
         }
         else
@@ -145,6 +145,7 @@ public class WorldmapCamera : MonoBehaviour
                     GetComponent<Camera>().orthographicSize = (f - (joystick.y * ((ZoomSpeedMouse) * proportionalScaling)));
                     //ZoomCamera((f + (joystick.y * ZoomSpeedMouse)) / ZoomBounds[1], ZoomSpeedMouse);
                 }
+                transform.position = new Vector3(transform.position.x, DistanceBounds[0] + ((DistanceBounds[1] - DistanceBounds[0]) * (GetComponent<Camera>().orthographicSize / ZoomBounds[1])), transform.position.z);
             }
 
     }
@@ -240,7 +241,7 @@ public class WorldmapCamera : MonoBehaviour
 
         Transform playerHouse = GameManagerScript.Instance.Houses.Where(r => r.IsPlayer).ToList()[0].transform;
         //MoveToPos(new Vector3(-254, 90, -260), .1f);
-        MoveToPos(new Vector3(playerHouse.position.x, 90, playerHouse.position.z), .1f);
+        MoveToPos(new Vector3(playerHouse.position.x, 30, playerHouse.position.z), .1f);
     }
     public void PressFakeButton(string name, float seconds)
     {
@@ -264,9 +265,9 @@ public class WorldmapCamera : MonoBehaviour
     }
     private void LateUpdate()
     {
-        Vector3 position = transform.position;
-        position.y = DistanceBounds[0] + ((DistanceBounds[1] - DistanceBounds[0]) * (GetComponent<Camera>().orthographicSize / ZoomBounds[1]));
-        transform.position = position;
+        //Vector3 position = transform.position;
+        //position.y = DistanceBounds[0] + ((DistanceBounds[1] - DistanceBounds[0]) * (GetComponent<Camera>().orthographicSize / ZoomBounds[1]));
+        //transform.position = position;
         if (!GameManagerScript.Instance.Pause)
         {
             if (!Initialized)
@@ -295,11 +296,6 @@ public class WorldmapCamera : MonoBehaviour
         }
 
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void FinishBuilding()
     {
@@ -314,7 +310,7 @@ public class WorldmapCamera : MonoBehaviour
 
         if (GameManagerScript.Instance.UIButtonOver)
         {
-            Debug.Log("there'a a button");
+            //Debug.Log("there'a a button");
         }
         if (!GameManagerScript.Instance.UIButtonOver)
         {

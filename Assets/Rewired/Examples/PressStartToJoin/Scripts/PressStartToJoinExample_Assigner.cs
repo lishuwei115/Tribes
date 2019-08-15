@@ -28,7 +28,7 @@ namespace Rewired.Demos {
         public static Rewired.Player GetRewiredPlayer(int gamePlayerId) {
             if(!Rewired.ReInput.isReady) return null;
             if(instance == null) {
-                Debug.LogError("Not initialized. Do you have a PressStartToJoinPlayerSelector in your scehe?");
+               // Debug.LogError("Not initialized. Do you have a PressStartToJoinPlayerSelector in your scehe?");
                 return null;
             }
             for(int i = 0; i < instance.playerMap.Count; i++) {
@@ -61,7 +61,7 @@ namespace Rewired.Demos {
 
         void AssignNextPlayer(int rewiredPlayerId) {
             if(playerMap.Count >= maxPlayers) {
-                Debug.LogError("Max player limit already reached!");
+                //Debug.LogError("Max player limit already reached!");
                 return;
             }
 
@@ -78,7 +78,7 @@ namespace Rewired.Demos {
             // Enable UI control for this Player now that he has joined
             rewiredPlayer.controllers.maps.SetMapsEnabled(true, "Default");
 
-            Debug.Log("Added Rewired Player id " + rewiredPlayerId + " to game player " + gamePlayerId);
+           // Debug.Log("Added Rewired Player id " + rewiredPlayerId + " to game player " + gamePlayerId);
         }
 
         private int GetNextGamePlayerId() {

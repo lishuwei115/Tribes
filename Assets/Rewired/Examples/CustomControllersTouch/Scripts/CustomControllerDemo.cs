@@ -65,12 +65,12 @@ namespace Rewired.Demos {
             controller = player.controllers.GetControllerWithTag<CustomController>(controllerTag); // get the controller
 
             if(controller == null) {
-                Debug.LogError("A matching controller was not found for tag \"" + controllerTag + "\"");
+                //Debug.LogError("A matching controller was not found for tag \"" + controllerTag + "\"");
             }
 
             // Verify controller has the number of elements we're expecting
             if(controller.buttonCount != buttonValues.Length || controller.axisCount != axisValues.Length) { // controller has wrong number of elements
-                Debug.LogError("Controller has wrong number of elements!");
+                //Debug.LogError("Controller has wrong number of elements!");
             }
 
             // Callback Update Method:

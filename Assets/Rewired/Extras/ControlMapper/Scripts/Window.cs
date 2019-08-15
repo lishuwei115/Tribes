@@ -247,11 +247,11 @@ namespace Rewired.UI.ControlMapper {
             buttonInfo = instance.GetComponent<ButtonInfo>();
             Button button = instance.GetComponent<Button>();
             if(button == null) {
-                Debug.Log("Button prefab is missing Button component!");
+                //Debug.Log("Button prefab is missing Button component!");
                 return null;
             }
             if(buttonInfo == null) {
-                Debug.Log("Button prefab is missing ButtonInfo component!");
+                //Debug.Log("Button prefab is missing ButtonInfo component!");
                 return null;
             }
             return instance;

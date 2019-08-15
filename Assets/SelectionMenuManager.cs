@@ -23,13 +23,13 @@ public class SelectionMenuManager : MonoBehaviour
         GameManagerScript.Instance.Pause = true;
         selectionNavigation = GetComponentInChildren<SelectionMenuNavigation>();
 
-        
+
 
     }
 
-    public  void SelectionJoystic(Vector2 LeftJoystic)
+    public void SelectionJoystic(Vector2 LeftJoystic)
     {
-        if (!SplashScreenManager.Instance.SplashActive && GameManagerScript.Instance.Pause )
+        if (!SplashScreenManager.Instance.SplashActive && GameManagerScript.Instance.Pause)
         {
             /* Fill += LeftJoystic.x;
 
@@ -49,7 +49,7 @@ public class SelectionMenuManager : MonoBehaviour
                 wait = true;
                 Invoke("KeepSelecting", 0.5f);
             }
-            if (LeftJoystic.x <-0.4f && !wait)
+            if (LeftJoystic.x < -0.4f && !wait)
             {
                 DecreaseIndex();
                 wait = true;
@@ -61,7 +61,7 @@ public class SelectionMenuManager : MonoBehaviour
                 wait = false;
             }
         }
-            
+
     }
     void KeepSelecting()
     {
@@ -94,7 +94,36 @@ public class SelectionMenuManager : MonoBehaviour
             //gameObject.SetActive(false);
             GetComponent<Animator>().SetBool("UIState", true);
         }
-        
+
+    }
+    public void TouchSelection(int i)
+    {
+        selectionNavigation.GoToIndex(i);
+        if (!SplashScreenManager.Instance.SplashActive && GameManagerScript.Instance.Pause)
+        {
+            if (Index == 0)
+            {
+                GameManagerScript.Instance.PlayerHouse = HousesTypes.Red;
+            }
+            if (Index == 1)
+            {
+                GameManagerScript.Instance.PlayerHouse = HousesTypes.Yellow;
+            }
+            if (Index == 2)
+            {
+                GameManagerScript.Instance.PlayerHouse = HousesTypes.Blue;
+            }
+            if (Index == 3)
+            {
+                GameManagerScript.Instance.PlayerHouse = HousesTypes.Green;
+            }
+            UIManagerScript.Instance.ChangePlayer(GameManagerScript.Instance.PlayerHouse);
+            GameManagerScript.Instance.Pause = false;
+            GameManagerScript.Instance.StartGame();
+            WorldmapCamera.Instance.ResetCam();
+            //gameObject.SetActive(false);
+            GetComponent<Animator>().SetBool("UIState", true);
+        }
     }
     // Update is called once per frame
     void Update()

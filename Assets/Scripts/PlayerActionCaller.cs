@@ -39,6 +39,31 @@ public class PlayerActionCaller : MonoBehaviour
         }
         
     }
+
+    public void SelectWarriors()
+    {
+        if (GameManagerScript.Instance.GameStatus != GameStateType.Intro)
+            if (!GameManagerScript.Instance.Pause)
+            {
+                GameManagerScript.Instance.HumanSelected = HumanClass.Warrior;
+                WorldmapCamera.Instance.PressFakeButton("SelectWarrior", 0.1f);
+                WorldmapCamera.Instance.DeactiveFakeButton("SelectFarmer");
+            }
+    }
+
+    public void SelectFarmers()
+    {
+        if (GameManagerScript.Instance.GameStatus != GameStateType.Intro)
+            if (!GameManagerScript.Instance.Pause)
+            {
+                GameManagerScript.Instance.HumanSelected = HumanClass.Harvester;
+                WorldmapCamera.Instance.PressFakeButton("SelectFarmer", 0.1f);
+
+                WorldmapCamera.Instance.DeactiveFakeButton("SelectWarrior");
+            }
+    }
+
+
     public void CultivatePlayer()
     {
         GameManagerScript.Instance.Cultivate();
@@ -71,12 +96,5 @@ public class PlayerActionCaller : MonoBehaviour
         GetComponent<Image>().color = attacking ? AttackOn : AttackOff;
         AttackOnOffText.text = attacking ? "is ON" : "is OFF";
     }
-    public void SelectWarriors()
-    {
-        GameManagerScript.Instance.HumanSelected = HumanClass.Warrior;
-    }
-    public void SelectFarmers()
-    {
-        GameManagerScript.Instance.HumanSelected = HumanClass.Harvester;
-    }
+
 }
