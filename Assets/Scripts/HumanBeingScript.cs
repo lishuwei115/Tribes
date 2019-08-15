@@ -291,7 +291,7 @@ public class HumanBeingScript : MonoBehaviour
         InvisibilityIfHouse(Housecollisions);
         var p = FiredUp.main;
 
-        p.startColor =HouseType==HousesTypes.Red? Color.red: HouseType == HousesTypes.Blue ? Color.blue: HouseType == HousesTypes.Yellow ? Color.yellow : Color.green;
+        p.startColor = HouseType == HousesTypes.Red ? Color.red : HouseType == HousesTypes.Blue ? Color.blue : HouseType == HousesTypes.Yellow ? Color.yellow : Color.green;
         initialized = true;
     }
 
@@ -700,7 +700,7 @@ public class HumanBeingScript : MonoBehaviour
         List<RaycastHit> ElementHitted = new List<RaycastHit>();
 
 
-        ElementHitted = Physics.SphereCastAll(transform.position, Radius, transform.forward, Radius*2, layerMask).ToList<RaycastHit>();
+        ElementHitted = Physics.SphereCastAll(transform.position, Radius, transform.forward, Radius * 2, layerMask).ToList<RaycastHit>();
         if (layerMask == LayerMask.GetMask("Food"))
         {
             ElementHitted = ElementHitted.Where(r => r.collider.GetComponent<FoodScript>().Slots > 0).ToList();
@@ -714,7 +714,7 @@ public class HumanBeingScript : MonoBehaviour
 
         List<RaycastHit> Enemy = new List<RaycastHit>();
 
-        Enemy = Physics.SphereCastAll(transform.position, Radius, transform.forward, Radius*2, EnemyLayer).ToList<RaycastHit>();
+        Enemy = Physics.SphereCastAll(transform.position, Radius, transform.forward, Radius * 2, EnemyLayer).ToList<RaycastHit>();
         //List < RaycastHit > humans = Enemy.ToArray< RaycastHit>().Where(a => (a.collider.GetComponent<HumanBeingScript>()&&)).ToList();
         List<RaycastHit> EnemyNotInHome = new List<RaycastHit>();
         foreach (RaycastHit r in Enemy)
@@ -897,14 +897,14 @@ public class HumanBeingScript : MonoBehaviour
         {
             if (Vector3.Distance(Housecollisions[0].collider.ClosestPoint(transform.position), transform.position) < TransparentDistanceFromHome)
             {
-                if (AnimController != null)
+                if (AnimController != null && AnimController.gameObject.activeSelf)
                 {
                     AnimController.gameObject.SetActive(false);
                 }
             }
             else
             {
-                if (AnimController != null)
+                if (AnimController != null && !AnimController.gameObject.activeSelf)
                 {
                     AnimController.gameObject.SetActive(true);
                 }
@@ -912,7 +912,7 @@ public class HumanBeingScript : MonoBehaviour
         }
         else
         {
-            if (AnimController != null)
+            if (AnimController != null && !AnimController.gameObject.activeSelf)
             {
                 AnimController.gameObject.SetActive(true);
             }
@@ -1021,7 +1021,6 @@ public class HumanBeingScript : MonoBehaviour
     //private int currentID = 0;
     public IEnumerator Move(Vector3 dest)
     {
-        yield return new WaitForEndOfFrame();
         Vector3 offset = transform.position;
         float distance = Vector3.Distance(offset, dest);
         //int iD = currentID;
@@ -1047,6 +1046,8 @@ public class HumanBeingScript : MonoBehaviour
             else
                 Foodcollisions = LookAround("Food");
             Housecollisions = LookAround("House");
+
+
             Foodcollisions = Foodcollisions.Where(r => r.collider.GetComponent<FoodScript>().Slots > 0).ToList();
             InvisibilityIfHouse(Housecollisions);
             if (CurrentState != StateType.FollowInstruction && CurrentState != StateType.ComingBackHome)
@@ -1243,7 +1244,6 @@ public class HumanBeingScript : MonoBehaviour
     }
     private IEnumerator Harvest(FoodScript food)
     {
-        yield return new WaitForEndOfFrame();
         bool ResourceAvaiable = true;
         if (FoodLife <= 0)
         {
@@ -1253,7 +1253,6 @@ public class HumanBeingScript : MonoBehaviour
 
         while (ResourceAvaiable)
         {
-            yield return new WaitForEndOfFrame();
             //move towars target
             List<RaycastHit> Housecollisions = LookAround("House");
             InvisibilityIfHouse(Housecollisions);
@@ -1342,7 +1341,6 @@ public class HumanBeingScript : MonoBehaviour
     }
     private IEnumerator CultivateCo()
     {
-        yield return new WaitForEndOfFrame();
         List<RaycastHit> Housecollisions = LookAround("House");
         InvisibilityIfHouse(Housecollisions);
         CurrentState = StateType.Cultivating;
@@ -1350,7 +1348,6 @@ public class HumanBeingScript : MonoBehaviour
         CultivationProgress = 0;
         while (CurrentState == StateType.Cultivating)
         {
-            yield return new WaitForEndOfFrame();
             if (Food >= StorageCapacity)
             {
                 break;

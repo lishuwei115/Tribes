@@ -126,6 +126,7 @@ public class HouseScript : MonoBehaviour
                 Defeated = true;
             }
         }
+        if(UnityEngine.Random.Range(0f,1.01f)>0.9f)
         AddPeople();
     }
 
