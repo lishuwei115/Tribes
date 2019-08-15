@@ -5,12 +5,16 @@ using UnityEngine;
 public class SelectionMenuManager : MonoBehaviour
 {
     public static SelectionMenuManager Instance;
+    public List<AudioClip> HouseSounds;
     SelectionMenuNavigation selectionNavigation;
     public int Index = 0;
+    AudioSource SoundSource;
+    bool wait = false;
     float Fill = 0;
     private void Awake()
     {
         Instance = this;
+        SoundSource = GetComponent<AudioSource>();
     }
     // Start is called before the first frame update
     void Start()
@@ -25,22 +29,43 @@ public class SelectionMenuManager : MonoBehaviour
 
     public  void SelectionJoystic(Vector2 LeftJoystic)
     {
-        if (!SplashScreenManager.Instance.SplashActive && GameManagerScript.Instance.Pause)
+        if (!SplashScreenManager.Instance.SplashActive && GameManagerScript.Instance.Pause )
         {
-            Fill += LeftJoystic.x;
+            /* Fill += LeftJoystic.x;
 
-            if (Fill > 2)
+             if (Fill > 10)
+             {
+                 IncreaseIndex();
+                 Fill = 0;
+             }
+             else if (Fill < -10)
+             {
+                 DecreaseIndex();
+                 Fill = 0;
+             }*/
+            if (LeftJoystic.x > 0.4f && !wait)
             {
                 IncreaseIndex();
-                Fill = 0;
+                wait = true;
+                Invoke("KeepSelecting", 0.5f);
             }
-            else if (Fill < -2)
+            if (LeftJoystic.x <-0.4f && !wait)
             {
                 DecreaseIndex();
-                Fill = 0;
+                wait = true;
+                Invoke("KeepSelecting", 0.5f);
+            }
+            if (Mathf.Abs(LeftJoystic.x) < .3f)
+            {
+                CancelInvoke();
+                wait = false;
             }
         }
             
+    }
+    void KeepSelecting()
+    {
+        wait = false;
     }
     public void Selection()
     {
@@ -79,10 +104,13 @@ public class SelectionMenuManager : MonoBehaviour
     public void IncreaseIndex()
     {
         selectionNavigation.IncreaseIndex();
+        SoundSource.PlayOneShot(HouseSounds[Index]);
     }
     public void DecreaseIndex()
     {
 
         selectionNavigation.DecreaseIndex();
+        SoundSource.PlayOneShot(HouseSounds[Index]);
+
     }
 }

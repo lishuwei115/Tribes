@@ -262,8 +262,11 @@ public class WorldmapCamera : MonoBehaviour
             }
         }
     }
-    private void FixedUpdate()
+    private void LateUpdate()
     {
+        Vector3 position = transform.position;
+        position.y = DistanceBounds[0] + ((DistanceBounds[1] - DistanceBounds[0]) * (GetComponent<Camera>().orthographicSize / ZoomBounds[1]));
+        transform.position = position;
         if (!GameManagerScript.Instance.Pause)
         {
             if (!Initialized)
@@ -295,9 +298,7 @@ public class WorldmapCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 position = transform.position;
-        position.y = DistanceBounds[0] + ((DistanceBounds[1] - DistanceBounds[0]) * (GetComponent<Camera>().orthographicSize / ZoomBounds[1]));
-        transform.position = position;
+        
     }
 
     public void FinishBuilding()
