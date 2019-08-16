@@ -441,7 +441,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!20 &595993143
 Camera:
   m_ObjectHideFlags: 0
@@ -1042,24 +1042,9 @@ PrefabInstance:
       objectReference: {fileID: 555126125}
     - target: {fileID: 223236240908913228, guid: 39d5715ccbea248df907be3014b7efd2,
         type: 3}
-      propertyPath: m_RenderMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 223236240908913228, guid: 39d5715ccbea248df907be3014b7efd2,
-        type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2052415779}
-    - target: {fileID: 223236240908913228, guid: 39d5715ccbea248df907be3014b7efd2,
-        type: 3}
-      propertyPath: m_PlaneDistance
-      value: 136.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 223236240908913228, guid: 39d5715ccbea248df907be3014b7efd2,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39d5715ccbea248df907be3014b7efd2, type: 3}
 --- !u!1 &1162501621
@@ -1333,7 +1318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!20 &1464401890
 Camera:
   m_ObjectHideFlags: 0
