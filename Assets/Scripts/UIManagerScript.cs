@@ -126,19 +126,19 @@ public class UIManagerScript : MonoBehaviour
             {
                 case HousesTypes.Green:
                     GreenFood += h.FoodStore;
-                    PlayerCardGreen.Food.text = "" + h.FoodStore + "\n(-" + foodRequired + ")";
+                    PlayerCardGreen.Food.text = "" + (h.FoodStore - foodRequired);// + "\n(-" + foodRequired + ")";
                     break;
                 case HousesTypes.Yellow:
                     YellowFood += h.FoodStore;
-                    PlayerCardYellow.Food.text = "" + h.FoodStore + "\n(-" + foodRequired + ")";
+                    PlayerCardYellow.Food.text = "" + (h.FoodStore - foodRequired);// + "\n(-" + foodRequired + ")";
                     break;
                 case HousesTypes.Red:
                     RedFood += h.FoodStore;
-                    PlayerCardRed.Food.text = "" + h.FoodStore + "\n(-" + foodRequired + ")";
+                    PlayerCardRed.Food.text = "" + (h.FoodStore - foodRequired);// + "\n(-" + foodRequired + ")";
                     break;
                 case HousesTypes.Blue:
                     BlueFood += h.FoodStore;
-                    PlayerCardBlue.Food.text = "" + h.FoodStore + "\n(-" + foodRequired + ")";
+                    PlayerCardBlue.Food.text = "" + (h.FoodStore - foodRequired);// + "\n(-" + foodRequired + ")";
                     break;
             }
         }
@@ -157,15 +157,15 @@ public class UIManagerScript : MonoBehaviour
         PlayerCardBlue.Farmer.text = "" + GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Blue && r.isActiveAndEnabled && r.HumanJob == HumanClass.Harvester).ToList().Count;
         PlayerCardGreen.Farmer.text = "" + GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Green && r.isActiveAndEnabled && r.HumanJob == HumanClass.Harvester).ToList().Count;
 
-        PlayerCardRed.Warrior.text += "(" + (GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Red && r.isActiveAndEnabled && r.HumanJob == HumanClass.Warrior).ToList().Count*GameManagerScript.Instance.FoodRequiredWarrior)+")";
-        PlayerCardYellow.Warrior.text += "(" + (GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Yellow && r.isActiveAndEnabled && r.HumanJob == HumanClass.Warrior).ToList().Count*GameManagerScript.Instance.FoodRequiredWarrior)+")";
-        PlayerCardBlue.Warrior.text += "(" +( GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Blue && r.isActiveAndEnabled && r.HumanJob == HumanClass.Warrior).ToList().Count*GameManagerScript.Instance.FoodRequiredWarrior)+")";
-        PlayerCardGreen.Warrior.text += "(" + (GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Green && r.isActiveAndEnabled && r.HumanJob == HumanClass.Warrior).ToList().Count*GameManagerScript.Instance.FoodRequiredWarrior)+")";
+        //PlayerCardRed.Warrior.text += "(" + (GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Red && r.isActiveAndEnabled && r.HumanJob == HumanClass.Warrior).ToList().Count*GameManagerScript.Instance.FoodRequiredWarrior)+")";
+        //PlayerCardYellow.Warrior.text += "(" + (GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Yellow && r.isActiveAndEnabled && r.HumanJob == HumanClass.Warrior).ToList().Count*GameManagerScript.Instance.FoodRequiredWarrior)+")";
+        //PlayerCardBlue.Warrior.text += "(" +( GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Blue && r.isActiveAndEnabled && r.HumanJob == HumanClass.Warrior).ToList().Count*GameManagerScript.Instance.FoodRequiredWarrior)+")";
+        //PlayerCardGreen.Warrior.text += "(" + (GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Green && r.isActiveAndEnabled && r.HumanJob == HumanClass.Warrior).ToList().Count*GameManagerScript.Instance.FoodRequiredWarrior)+")";
 
-        PlayerCardRed.Farmer.text += "(" +( GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Red && r.isActiveAndEnabled && r.HumanJob == HumanClass.Harvester).ToList().Count*GameManagerScript.Instance.FoodRequiredHarvester)+")";
-        PlayerCardYellow.Farmer.text += "(" +( GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Yellow && r.isActiveAndEnabled && r.HumanJob == HumanClass.Harvester).ToList().Count*GameManagerScript.Instance.FoodRequiredHarvester) +")";
-        PlayerCardBlue.Farmer.text += "(" +( GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Blue && r.isActiveAndEnabled && r.HumanJob == HumanClass.Harvester).ToList().Count*GameManagerScript.Instance.FoodRequiredHarvester) +")";
-        PlayerCardGreen.Farmer.text += "(" + (GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Green && r.isActiveAndEnabled && r.HumanJob == HumanClass.Harvester).ToList().Count*GameManagerScript.Instance.FoodRequiredHarvester) +")";
+        //PlayerCardRed.Farmer.text += "(" +( GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Red && r.isActiveAndEnabled && r.HumanJob == HumanClass.Harvester).ToList().Count*GameManagerScript.Instance.FoodRequiredHarvester)+")";
+        //PlayerCardYellow.Farmer.text += "(" +( GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Yellow && r.isActiveAndEnabled && r.HumanJob == HumanClass.Harvester).ToList().Count*GameManagerScript.Instance.FoodRequiredHarvester) +")";
+        //PlayerCardBlue.Farmer.text += "(" +( GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Blue && r.isActiveAndEnabled && r.HumanJob == HumanClass.Harvester).ToList().Count*GameManagerScript.Instance.FoodRequiredHarvester) +")";
+        //PlayerCardGreen.Farmer.text += "(" + (GameManagerScript.Instance.HumansList.Where(r => r.HouseType == HousesTypes.Green && r.isActiveAndEnabled && r.HumanJob == HumanClass.Harvester).ToList().Count*GameManagerScript.Instance.FoodRequiredHarvester) +")";
     }
     public void AddDay()
     {

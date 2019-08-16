@@ -1,28 +1,10 @@
 fileFormatVersion: 2
-guid: 9e35b2ace7c9aa1459da48417a773c50
+guid: 8c1fb4412fc1079458ab6ab2e13fc589
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -752719700072469217
-    second: Monster_flame1
-  - first:
-      213: -1432469540568947285
-    second: Monster_Flame2
-  - first:
-      213: 9007092016527589914
-    second: Monster_Flame3
-  - first:
-      213: -3658420075861669727
-    second: Monster_Head
-  - first:
-      213: -5401889148729139370
-    second: Monster_Flame_Atk1
-  - first:
-      213: 6717631778110210273
-    second: Monster_Flame_Atk2
-  - first:
-      213: 2529093195346250502
-    second: Monster_Flame_Atk3
+      213: 1445185029845724305
+    second: 512x512_Gold_Defeat-01_0
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -102,7 +84,7 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
-    buildTarget: Android
+    buildTarget: Nintendo Switch
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -112,100 +94,26 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Nintendo Switch
-    maxTextureSize: 512
-    resizeAlgorithm: 0
-    textureFormat: 12
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 1
-    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Monster_flame1
+      name: 512x512_Gold_Defeat-01_0
       rect:
         serializedVersion: 2
-        x: 29
-        y: 378
-        width: 236
-        height: 646
-      alignment: 9
-      pivot: {x: 0.5051926, y: 0.052961342}
+        x: 177
+        y: 136
+        width: 177
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc3628fa0fac24d4ca17ee4aea59767c
-      internalID: -752719700072469217
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Monster_Flame2
-      rect:
-        serializedVersion: 2
-        x: 278
-        y: 252
-        width: 214
-        height: 772
-      alignment: 9
-      pivot: {x: 0.518317, y: 0.02930108}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a71b26da4694bb54a946c99f0350c3fc
-      internalID: -1432469540568947285
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Monster_Flame3
-      rect:
-        serializedVersion: 2
-        x: 531
-        y: 171
-        width: 226
-        height: 853
-      alignment: 9
-      pivot: {x: 0.49407527, y: 0.08452709}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 75e7a1ebca81fdb47b99e754c51acc40
-      internalID: 9007092016527589914
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Monster_Head
-      rect:
-        serializedVersion: 2
-        x: 822
-        y: 529
-        width: 172
-        height: 268
-      alignment: 9
-      pivot: {x: 0.55387807, y: 0.081219114}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0292f1581864a51428377ce9005d7f72
-      internalID: -3658420075861669727
+      spriteID: 58ecb89b85b29394a9a6ba1f23085f18
+      internalID: 1445185029845724305
       vertices: []
       indices: 
       edges: []
@@ -213,7 +121,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b5b12680f65133c46a3c8230cca48b87
+    spriteID: 3b253dcc542b40a4c9dadd52162448d7
     internalID: 0
     vertices: []
     indices: 
