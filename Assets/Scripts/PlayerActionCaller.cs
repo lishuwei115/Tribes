@@ -63,7 +63,14 @@ public class PlayerActionCaller : MonoBehaviour
             }
     }
 
-
+    public void GoTo()
+    {
+        if (!GameManagerScript.Instance.Pause)
+        {
+            WorldmapCamera.Instance.PressFakeButton("GoToPosition", 0.1f);
+            WorldmapCamera.Instance.TribeToPoint(new Vector2(Camera.main.scaledPixelWidth / 2, Camera.main.scaledPixelHeight / 2));
+        }
+    }
     public void CultivatePlayer()
     {
         GameManagerScript.Instance.Cultivate();

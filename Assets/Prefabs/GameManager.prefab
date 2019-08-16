@@ -62,7 +62,7 @@ MonoBehaviour:
   UIButtonOver: 0
   GameStatus: 0
   FoodRequiredHarvester: 1
-  FoodRequiredWarrior: 5
+  FoodRequiredWarrior: 10
   FollowOrderRandomness: 6
   DayTime: 100
   DayLightTime: 50
