@@ -137,7 +137,7 @@ public class GameManagerScript : MonoBehaviour
     void Start()
     {
         //StartGame();
-        
+
         UIButtons = UnityEngine.Object.FindObjectsOfType<BlockInput>();
 
     }
@@ -272,7 +272,7 @@ public class GameManagerScript : MonoBehaviour
     {
         if (Worship)
         {
-            if(HumansList.Where(h=> h.CurrentState == StateType.Cultivating).ToList().Count <= 0)
+            if (HumansList.Where(h => h.CurrentState == StateType.Cultivating).ToList().Count <= 0)
             {
                 AudioManager.Instance.StopWorship();
                 Worship = false;
@@ -463,7 +463,7 @@ public class GameManagerScript : MonoBehaviour
                     {
                         f = UnityEngine.Random.Range(0f, 6f);
                         v = new Vector2(Mathf.Cos(f) * (radiusFromOrigin * FoodRaySpawn), Mathf.Sin(f) * (radiusFromOrigin * FoodRaySpawn));
-                        ElementHitted = Physics.SphereCastAll(new Vector3(v.x, 0, v.y), FoodMinDistance* f, new Vector3(0, 1, 0), 0, layerMask).ToList<RaycastHit>();
+                        ElementHitted = Physics.SphereCastAll(new Vector3(v.x, 0, v.y), FoodMinDistance * f, new Vector3(0, 1, 0), 0, layerMask).ToList<RaycastHit>();
                         //Debug.DrawLine(transform.position, new Vector3(v.x, 0, v.y), Color.yellow, 1);
                     }
                     else
@@ -520,7 +520,7 @@ public class GameManagerScript : MonoBehaviour
     }
     public void AddPlayerHarvester()
     {
-        AddHumanUsingFood(Houses.Where(r=>r.IsPlayer).ToList()[0], HumanClass.Harvester);
+        AddHumanUsingFood(Houses.Where(r => r.IsPlayer).ToList()[0], HumanClass.Harvester);
     }
     public void AddPlayerWarrior()
     {
@@ -529,10 +529,12 @@ public class GameManagerScript : MonoBehaviour
     public void AddHumanUsingFood(HouseScript home, HumanClass humanJob)
     {
         int foodRequired = humanJob == HumanClass.Harvester ? FoodRequiredHarvester : FoodRequiredWarrior;
-        if(home.FoodStore>= foodRequired && home.HumansAlive.Count<MaxHumansForTribe)
+        if (home.FoodStore >= foodRequired && home.HumansAlive.Count < MaxHumansForTribe)
         {
             SpawnHuman(home, humanJob);
             home.FoodStore -= foodRequired;
+            if (home.HouseType == PlayerHouse)
+                UIFollowSprite.Instance.ViewFoodConsumed(-foodRequired);
         }
     }
     public void SpawnHuman(HouseScript home, HumanClass humanJob)
@@ -788,8 +790,8 @@ public class GameManagerScript : MonoBehaviour
 
     public void RangeAttack()
     {
-        List<HumanBeingScript> humansInRange = HumansList.Where(r=>r.Hp>0 && Vector3.Distance(RangeAttackPosition,r.transform.position)<RangeAttackDistance).ToList();
-        List<MonsterScript> monsterInRange = Monsters.Where(r=>r.Hp>0 && Vector3.Distance(RangeAttackPosition,r.transform.position)<RangeAttackDistance).ToList();
+        List<HumanBeingScript> humansInRange = HumansList.Where(r => r.Hp > 0 && Vector3.Distance(RangeAttackPosition, r.transform.position) < RangeAttackDistance).ToList();
+        List<MonsterScript> monsterInRange = Monsters.Where(r => r.Hp > 0 && Vector3.Distance(RangeAttackPosition, r.transform.position) < RangeAttackDistance).ToList();
         foreach (HumanBeingScript h in humansInRange)
         {
             h.UnderAttack(RangeAttackDamage);
