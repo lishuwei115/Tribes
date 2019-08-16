@@ -1027,10 +1027,6 @@ PrefabInstance:
       propertyPath: AttackOnOffText
       value: 
       objectReference: {fileID: 555126125}
-    - target: {fileID: 228492632, guid: 39d5715ccbea248df907be3014b7efd2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 3745776181835502954}
     - target: {fileID: 228492629, guid: 39d5715ccbea248df907be3014b7efd2, type: 3}
       propertyPath: AttackOnOffText
       value: 
@@ -2099,11 +2095,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2198180231229337737, guid: 3c30e7e6a5e607246b2c332fbbf0f803,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2198180231371512420, guid: 3c30e7e6a5e607246b2c332fbbf0f803,
         type: 3}
       propertyPath: m_RenderMode
@@ -2123,6 +2114,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 1002
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198180231229337737, guid: 3c30e7e6a5e607246b2c332fbbf0f803,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2198180231638117018, guid: 3c30e7e6a5e607246b2c332fbbf0f803,
         type: 3}
@@ -2162,11 +2158,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameEnviroment
-      objectReference: {fileID: 0}
-    - target: {fileID: 2274325635456846485, guid: 986a6680d4e91064b9f367387ae8cea7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2274325635456846484, guid: 986a6680d4e91064b9f367387ae8cea7,
         type: 3}
@@ -2546,7 +2537,7 @@ PrefabInstance:
     - target: {fileID: 4694765721180042856, guid: 2902c641872b3fb4cb46b53728f2af23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4694765721180042856, guid: 2902c641872b3fb4cb46b53728f2af23,
         type: 3}
@@ -2592,11 +2583,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4694765721180042857, guid: 2902c641872b3fb4cb46b53728f2af23,
-        type: 3}
-      propertyPath: DistanceBounds.y
-      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2902c641872b3fb4cb46b53728f2af23, type: 3}
@@ -2740,11 +2726,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2052415779}
-    - target: {fileID: 9086812971038042482, guid: 9bc4a32f5210c854b8321619b297dedc,
-        type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bc4a32f5210c854b8321619b297dedc, type: 3}
 --- !u!1001 &5440494081489002323

@@ -100,13 +100,13 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  FoodPerDay: 50
+  FoodPerDay: 70
   FoodDistanceFromOrigin:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.005630493
-      value: 0.124298096
+      time: -0.0013465881
+      value: 0.2939148
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -114,8 +114,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.074711524
-      value: 0.12375547
+      time: 0.08575889
+      value: 0.29767513
       inSlope: 0.48750597
       outSlope: 0.48750597
       tangentMode: 0

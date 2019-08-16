@@ -327,7 +327,7 @@ MonoBehaviour:
   FoodLife: 0
   TransparentDistanceFromHome: 3
   FoodRandomPointDistance: 6
-  CultivationTarget: 200
+  CultivationTarget: 400
   CultivationPercentage:
   - 70
   - 90
