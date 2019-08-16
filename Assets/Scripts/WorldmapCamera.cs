@@ -188,10 +188,17 @@ public class WorldmapCamera : MonoBehaviour
     private void Instance_ButtonBPressedEvent()
     {
         if (GameManagerScript.Instance.GameStatus != GameStateType.Intro)
+        {
             if (!GameManagerScript.Instance.Pause)
             {
                 PressFakeButton("AddFarmer", 0.1f);
                 GameManagerScript.Instance.AddPlayerHarvester();
+            }
+            else
+            if (GameManagerScript.Instance.StateOfGame != GameState.Playing)
+            {
+                WinLoseManager.Instance.CloseWinLoseMenu();
+                GameManagerScript.Instance.StateOfGame = GameState.Playing;
             }
             else
             {
@@ -199,6 +206,9 @@ public class WorldmapCamera : MonoBehaviour
                 UIManagerScript.Instance.PauseMenu.SetBool("UIState", GameManagerScript.Instance.Pause);
                 PressFakeButton("Pause", 0.1f);
             }
+        }
+            
+
     }
 
     private void Instance_ButtonAPressedEvent()

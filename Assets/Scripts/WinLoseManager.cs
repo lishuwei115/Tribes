@@ -18,6 +18,9 @@ public class WinLoseManager : MonoBehaviour
         controller.SetInteger("UIState", state);
     }
 
-
+    public void CloseWinLoseMenu()
+    {
+        controller.SetInteger("UIState", 0);
+    }
 
 }

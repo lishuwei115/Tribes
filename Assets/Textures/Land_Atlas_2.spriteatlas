@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Land_Atlas_2
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 0da8240e059c64146b338cc1d5a0e427, type: 3}
+    - {fileID: 2800000, guid: f9cb25e62f9753341b2a92b02092b8af, type: 3}
+    - {fileID: 2800000, guid: 8c1fb4412fc1079458ab6ab2e13fc589, type: 3}
+    - {fileID: 2800000, guid: a19897b365af63045b174984e5f56d14, type: 3}
+    - {fileID: 2800000, guid: 6d18f6a43441d02438e753999b091bf9, type: 3}
+    - {fileID: 2800000, guid: 272281a95d0e84142b1d8b2d30dcd406, type: 3}
+    - {fileID: 2800000, guid: a35accd9913ae0c4f8eaf0889d4cf69f, type: 3}
+    - {fileID: 2800000, guid: 5e32e33c803015746a25afaea0fca7e6, type: 3}
+    - {fileID: 2800000, guid: 65ac9b092982051418edf7b86ae947ab, type: 3}
+    - {fileID: 2800000, guid: 4a6181ad50adbfd41a3c06e52f73b1f1, type: 3}
+    totalSpriteSurfaceArea: 917328
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 1445185029845724305, guid: 8c1fb4412fc1079458ab6ab2e13fc589, type: 3}
+  - {fileID: 7607944806652961508, guid: a19897b365af63045b174984e5f56d14, type: 3}
+  - {fileID: 1830126548026920850, guid: 6d18f6a43441d02438e753999b091bf9, type: 3}
+  - {fileID: 6115404609906653181, guid: f9cb25e62f9753341b2a92b02092b8af, type: 3}
+  - {fileID: -6780963885434740975, guid: 65ac9b092982051418edf7b86ae947ab, type: 3}
+  - {fileID: -1900917026047474385, guid: 272281a95d0e84142b1d8b2d30dcd406, type: 3}
+  - {fileID: 3988426771669529957, guid: a35accd9913ae0c4f8eaf0889d4cf69f, type: 3}
+  - {fileID: 4233884272300503212, guid: 5e32e33c803015746a25afaea0fca7e6, type: 3}
+  - {fileID: 21300000, guid: 4a6181ad50adbfd41a3c06e52f73b1f1, type: 3}
+  - {fileID: -1008843298913779238, guid: 0da8240e059c64146b338cc1d5a0e427, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - 512x512_Gold_Defeat-01_0
+  - 512x512_Gold_Victory-01_0
+  - 512x512_Green_Defeat-01_0
+  - 512x512_Blue_Victory-01_0
+  - 512x5123_White_BG-01_0
+  - 512x512_Green_Victory-01_0
+  - 512x512_Red_Defeat-01_0
+  - 512x512_Red_Victory-01_0
+  - MapBorder
+  - 512x512_Blue_Defeat-01_0
+  m_Tag: Land_Atlas_2
+  m_IsVariant: 0
