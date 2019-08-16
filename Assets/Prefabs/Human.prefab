@@ -332,15 +332,15 @@ MonoBehaviour:
   - 70
   - 90
   - 100
-  RayMaxDistanceFarmer: 40
+  RayMaxDistanceFarmer: 50
   StorageCapacityFarmer: 3
   HpMaxFarmer: 60
   HpMinFarmer: 40
   ReproductionPercFarmer: 5
-  SpeedMaxFarmer: 20
-  SpeedMinFarmer: 10
-  AttackMaxFarmer: 10
-  AttackMinFarmer: 5
+  SpeedMaxFarmer: 7
+  SpeedMinFarmer: 6
+  AttackMaxFarmer: 4
+  AttackMinFarmer: 3
   AttackFrequencyFarmer: 0.3
   RayMaxDistanceWarrior: 20
   StorageCapacityWarrior: 3

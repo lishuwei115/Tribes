@@ -97,8 +97,8 @@ MonoBehaviour:
   FoodMin: 4
   FoodMax: 12
   Food: 2
-  HardnessMin: 1
-  HardnessMax: 3
+  HardnessMin: 10
+  HardnessMax: 20
   Hardness: 3
   Slots: 0
 --- !u!135 &135897408745985892
