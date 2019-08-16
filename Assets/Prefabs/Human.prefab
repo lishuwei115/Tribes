@@ -306,7 +306,7 @@ MonoBehaviour:
   HouseType: 1
   CurrentState: 0
   Radius: 20
-  RadiusFarmer: 40
+  RadiusFarmer: 20
   RadiusWarrior: 40
   AttackDistance: 10
   Specialization: 0.5
@@ -332,7 +332,7 @@ MonoBehaviour:
   - 70
   - 90
   - 100
-  RayMaxDistanceFarmer: 50
+  RayMaxDistanceFarmer: 100
   StorageCapacityFarmer: 3
   HpMaxFarmer: 60
   HpMinFarmer: 40

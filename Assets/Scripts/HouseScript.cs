@@ -241,11 +241,16 @@ public class HouseScript : MonoBehaviour
         if (!IsPlayer)
         {
             HumansAlive = Humans.Where(r => r.Hp > 0).ToList();
-            List<HumanBeingScript> harvester = Humans.Where(r => r.Hp > 0 && r.HumanJob == HumanClass.Harvester).ToList();
-            List<HumanBeingScript> warrior = Humans.Where(r => r.Hp > 0 && r.HumanJob == HumanClass.Warrior).ToList();
+            List<HumanBeingScript> harvester = HumansAlive.Where(r => r.Hp > 0 && r.HumanJob == HumanClass.Harvester).ToList();
+            List<HumanBeingScript> warrior = HumansAlive.Where(r => r.Hp > 0 && r.HumanJob == HumanClass.Warrior).ToList();
             float foodRequiredHarvester = (harvester.Count * GameManagerScript.Instance.FoodRequiredHarvester) + (warrior.Count * GameManagerScript.Instance.FoodRequiredWarrior) + GameManagerScript.Instance.FoodRequiredHarvester;
             float foodRequiredWarrior = (harvester.Count * GameManagerScript.Instance.FoodRequiredHarvester) + (warrior.Count * GameManagerScript.Instance.FoodRequiredWarrior) + GameManagerScript.Instance.FoodRequiredWarrior;
-            float populationState = PopulationDistribution.Evaluate(((float)Humans.Where(r => r.Hp > 0).ToList().Count + 1) / (float)GameManagerScript.Instance.MaxHumansForTribe);
+            float populationState = PopulationDistribution.Evaluate(((float)Humans.Where(r => r.Hp > 0).ToList().Count ) / (float)GameManagerScript.Instance.MaxHumansForTribe);
+            if(harvester.Count == 0 && FoodStore > 0)
+            {
+                GameManagerScript.Instance.AddHumanUsingFood(this, HumanClass.Harvester);
+                return;
+            }
             if (HumansAlive.Count < GameManagerScript.Instance.MaxHumansForTribe)
                 if ((float)harvester.Count / (float)HumansAlive.Count < 1f - populationState && (float)warrior.Count / (float)HumansAlive.Count >= populationState)
                 {

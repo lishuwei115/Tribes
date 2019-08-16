@@ -2080,71 +2080,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2198180231371512423, guid: 3c30e7e6a5e607246b2c332fbbf0f803,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198180231371512423, guid: 3c30e7e6a5e607246b2c332fbbf0f803,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198180231371512423, guid: 3c30e7e6a5e607246b2c332fbbf0f803,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198180231371512420, guid: 3c30e7e6a5e607246b2c332fbbf0f803,
-        type: 3}
-      propertyPath: m_RenderMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2198180231371512420, guid: 3c30e7e6a5e607246b2c332fbbf0f803,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2052415779}
-    - target: {fileID: 2198180231371512420, guid: 3c30e7e6a5e607246b2c332fbbf0f803,
-        type: 3}
-      propertyPath: m_PlaneDistance
-      value: 136.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198180231371512420, guid: 3c30e7e6a5e607246b2c332fbbf0f803,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1002
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198180231229337737, guid: 3c30e7e6a5e607246b2c332fbbf0f803,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198180231638117018, guid: 3c30e7e6a5e607246b2c332fbbf0f803,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9218994980312754191, guid: 3c30e7e6a5e607246b2c332fbbf0f803,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7304855593638001488, guid: 3c30e7e6a5e607246b2c332fbbf0f803,
-        type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7304855593638001488, guid: 3c30e7e6a5e607246b2c332fbbf0f803,
-        type: 3}
-      propertyPath: m_Interactable
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7304855593638001488, guid: 3c30e7e6a5e607246b2c332fbbf0f803,
-        type: 3}
-      propertyPath: m_BlocksRaycasts
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c30e7e6a5e607246b2c332fbbf0f803, type: 3}
 --- !u!1001 &2274325635262385101
@@ -2726,6 +2666,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2052415779}
+    - target: {fileID: 9086812971038042482, guid: 9bc4a32f5210c854b8321619b297dedc,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bc4a32f5210c854b8321619b297dedc, type: 3}
 --- !u!1001 &5440494081489002323

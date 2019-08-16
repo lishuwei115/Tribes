@@ -705,6 +705,10 @@ public class HumanBeingScript : MonoBehaviour
         {
             ElementHitted = ElementHitted.Where(r => r.collider.GetComponent<FoodScript>().Slots > 0).ToList();
         }
+        else if(layerMask == LayerMask.GetMask("House") && ElementHitted.Count>0)
+        {
+            InvisibilityIfHouse(ElementHitted);
+        }
         return ElementHitted;
     }
 

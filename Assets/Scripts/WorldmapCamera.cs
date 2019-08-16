@@ -251,7 +251,7 @@ public class WorldmapCamera : MonoBehaviour
 
         Transform playerHouse = GameManagerScript.Instance.Houses.Where(r => r.IsPlayer).ToList()[0].transform;
         //MoveToPos(new Vector3(-254, 90, -260), .1f);
-        MoveToPos(new Vector3(playerHouse.position.x, 30, playerHouse.position.z), .1f);
+        MoveToPos(new Vector3(playerHouse.position.x, 40, playerHouse.position.z), .1f);
     }
     public void PressFakeButton(string name, float seconds)
     {
