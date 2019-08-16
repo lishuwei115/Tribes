@@ -24,6 +24,6 @@ public class HarvestingBarSprite : MonoBehaviour
         HarvestingBase = harvestBase;
         HarvestingRemaining = harvestNow;
         HarvestingBar.transform.localScale = new Vector3(HarvestingRemaining / HarvestingBase, HarvestingBar.transform.localScale.y, HarvestingBar.transform.localScale.z);
-        HarvestingBar.color = SkinManager.Instance.GetSkinInfo(house).TribeColor;
+        //HarvestingBar.color = SkinManager.Instance.GetSkinInfo(house).TribeColor;
     }
 }
