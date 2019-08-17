@@ -1945,11 +1945,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinLoseCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 2198180231371512416, guid: 3c30e7e6a5e607246b2c332fbbf0f803,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2198180231371512423, guid: 3c30e7e6a5e607246b2c332fbbf0f803,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2785,6 +2780,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 3745776181835502954}
+    - target: {fileID: 5050378520380339104, guid: f35789cff5d851d4f800cc696575ddc1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -116.40015
+      objectReference: {fileID: 0}
     - target: {fileID: 5440494082080382059, guid: f35789cff5d851d4f800cc696575ddc1,
         type: 3}
       propertyPath: m_RenderMode
