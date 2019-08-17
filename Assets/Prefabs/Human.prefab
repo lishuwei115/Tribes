@@ -337,8 +337,8 @@ MonoBehaviour:
   HpMaxFarmer: 60
   HpMinFarmer: 40
   ReproductionPercFarmer: 5
-  SpeedMaxFarmer: 6
-  SpeedMinFarmer: 5
+  SpeedMaxFarmer: 5
+  SpeedMinFarmer: 4
   AttackMaxFarmer: 4
   AttackMinFarmer: 3
   AttackFrequencyFarmer: 0.3

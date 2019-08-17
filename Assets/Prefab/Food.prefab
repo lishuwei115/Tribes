@@ -94,12 +94,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9d823f8e48d449eab1777f429c1b802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FoodMin: 4
-  FoodMax: 12
+  FoodMin: 12
+  FoodMax: 30
   Food: 2
-  HardnessMin: 10
-  HardnessMax: 20
-  Hardness: 3
+  HardnessMin: 30
+  HardnessMax: 40
+  Hardness: 10
   Slots: 0
 --- !u!135 &135897408745985892
 SphereCollider:

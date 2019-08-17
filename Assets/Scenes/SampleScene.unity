@@ -1826,21 +1826,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4815898672701046062, guid: 3283fb7907496e549bb7f40844c76b19,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815898672701046062, guid: 3283fb7907496e549bb7f40844c76b19,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815898672701046062, guid: 3283fb7907496e549bb7f40844c76b19,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7929999067433417946, guid: 3283fb7907496e549bb7f40844c76b19,
         type: 3}
       propertyPath: m_TargetGraphic
@@ -1848,24 +1833,9 @@ PrefabInstance:
       objectReference: {fileID: 1760693757}
     - target: {fileID: 4815898672701046061, guid: 3283fb7907496e549bb7f40844c76b19,
         type: 3}
-      propertyPath: m_RenderMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815898672701046061, guid: 3283fb7907496e549bb7f40844c76b19,
-        type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2052415779}
-    - target: {fileID: 4815898672701046061, guid: 3283fb7907496e549bb7f40844c76b19,
-        type: 3}
-      propertyPath: m_PlaneDistance
-      value: 136.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815898672701046061, guid: 3283fb7907496e549bb7f40844c76b19,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1002
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3283fb7907496e549bb7f40844c76b19, type: 3}
 --- !u!224 &1853885198256852453 stripped
@@ -1974,6 +1944,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WinLoseCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198180231371512416, guid: 3c30e7e6a5e607246b2c332fbbf0f803,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2198180231371512423, guid: 3c30e7e6a5e607246b2c332fbbf0f803,
         type: 3}
@@ -2406,10 +2381,6 @@ PrefabInstance:
     - target: {fileID: 1117377009214392, guid: a91af74e5d3194f0ebb4824e1beaad74, type: 3}
       propertyPath: m_Name
       value: Food
-      objectReference: {fileID: 0}
-    - target: {fileID: 1117377009214392, guid: a91af74e5d3194f0ebb4824e1beaad74, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4101294771767772, guid: a91af74e5d3194f0ebb4824e1beaad74, type: 3}
       propertyPath: m_LocalPosition.x
